@@ -1,0 +1,9 @@
+export function PageHero({ eyebrow, title, description }) {
+  return (
+    <section className="page-hero container">
+      <p className="page-hero__eyebrow">{eyebrow}</p>
+      <h1 className="page-hero__title">{title}</h1>
+      {description && <p className="page-hero__desc">{description}</p>}
+    </section>
+  );
+}
