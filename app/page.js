@@ -122,16 +122,30 @@ export default function HomePage() {
           </ScrollReveal>
 
           <StaggerReveal className="services-grid" staggerDelay={0.1}>
-            {services.map((service) => (
+            <Link href="/tenant-improvement" className="service-item service-item--link">
+              <div className="service-item__index">{services[0].index}</div>
+              <h3 className="service-item__title">{services[0].title}</h3>
+              <p className="service-item__desc">{services[0].description}</p>
+              <div className="service-item__tags">
+                {services[0].points.map((point) => (
+                  <span className="service-item__tag" key={point}>{point}</span>
+                ))}
+              </div>
+              <span className="service-item__bubble" aria-hidden="true">
+                Explore
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </Link>
+            {services.slice(1).map((service) => (
               <div className="service-item" key={service.title}>
                 <div className="service-item__index">{service.index}</div>
                 <h3 className="service-item__title">{service.title}</h3>
                 <p className="service-item__desc">{service.description}</p>
                 <div className="service-item__tags">
                   {service.points.map((point) => (
-                    <span className="service-item__tag" key={point}>
-                      {point}
-                    </span>
+                    <span className="service-item__tag" key={point}>{point}</span>
                   ))}
                 </div>
               </div>

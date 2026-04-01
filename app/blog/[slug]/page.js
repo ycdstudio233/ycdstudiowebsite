@@ -117,7 +117,7 @@ export default async function BlogPostPage({ params }) {
             <h2 className="cta__title">{cta.title}</h2>
             <p className="cta__desc">{cta.desc}</p>
             <div className="cta__actions">
-              <Link href="/contact" className="btn btn--primary">
+              <Link href="/contact" className="btn btn--inverse">
                 Start a conversation
               </Link>
               <Link href="/work" className="btn btn--outline">

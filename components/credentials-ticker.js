@@ -28,10 +28,34 @@ const items = [
   { label: "Arkitera", sub: "Publication", type: "press" },
 ];
 
-// Shuffle once for variety
-const shuffled = [...items].sort(() => 0.5 - Math.random());
-// Double for seamless loop
-const ticker = [...shuffled, ...shuffled];
+function buildTickerItems(source) {
+  const buckets = {
+    award: source.filter((item) => item.type === "award"),
+    client: source.filter((item) => item.type === "client"),
+    press: source.filter((item) => item.type === "press"),
+  };
+  const order = ["award", "client", "press"];
+  const mixed = [];
+  let index = 0;
+
+  while (
+    index < buckets.award.length ||
+    index < buckets.client.length ||
+    index < buckets.press.length
+  ) {
+    order.forEach((type) => {
+      const item = buckets[type][index];
+      if (item) {
+        mixed.push(item);
+      }
+    });
+    index += 1;
+  }
+
+  return [...mixed, ...mixed];
+}
+
+const ticker = buildTickerItems(items);
 
 const typeColors = {
   award: "#5700EF",

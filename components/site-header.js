@@ -39,11 +39,14 @@ export function SiteHeader() {
           </Link>
 
           <nav className="header__nav" aria-label="Main navigation">
-            {navLinks.map((item) => (
-              <Link className="header__link" href={item.href} key={item.href}>
-                {item.label}
-              </Link>
-            ))}
+            {navLinks.map((item) => {
+              const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
+              return (
+                <Link className={`header__link${isActive ? ' header__link--active' : ''}`} href={item.href} key={item.href}>
+                  {item.label}
+                </Link>
+              );
+            })}
             <Link className="btn btn--primary header__cta" href="/contact">
               Start a project
             </Link>

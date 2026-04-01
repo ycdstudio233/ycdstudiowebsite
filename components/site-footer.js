@@ -28,11 +28,7 @@ export function SiteFooter() {
             <div>
               <div className="footer__column-title">Connect</div>
               <div className="footer__column">
-                <a
-                  href="mailto:info@ycd.studio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="mailto:info@ycd.studio">
                   Email
                 </a>
                 <a
