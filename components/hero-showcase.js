@@ -79,11 +79,21 @@ export function HeroShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
   const [isReady, setIsReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [loadedImages, setLoadedImages] = useState({});
-  // Start with first 5 for SSR consistency, then shuffle client-side
   const [projects, setProjects] = useState(() => allHeroProjects.slice(0, HERO_COUNT));
+  const touchStartX = useRef(0);
+  const autoplayRef = useRef(null);
 
-  // Shuffle on client mount only — avoids hydration mismatch
+  // Detect mobile
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // Shuffle on client mount
   useEffect(() => {
     const arr = [...allHeroProjects];
     for (let i = arr.length - 1; i > 0; i--) {
@@ -93,19 +103,50 @@ export function HeroShowcase() {
     setProjects(arr.slice(0, HERO_COUNT));
   }, []);
 
+  // Mobile autoplay — cycle every 4s
+  useEffect(() => {
+    if (!isMobile) return;
+    autoplayRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % HERO_COUNT);
+    }, 4000);
+    return () => clearInterval(autoplayRef.current);
+  }, [isMobile]);
+
+  // Desktop mouse tracking
   const onMove = useCallback((e) => {
+    if (isMobile) return;
     const el = containerRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width;
     const y = (e.clientY - rect.top) / rect.height;
     setMousePos({ x, y });
-
-    const index = Math.min(
-      projects.length - 1,
-      Math.floor(x * projects.length)
-    );
+    const index = Math.min(projects.length - 1, Math.floor(x * projects.length));
     setActiveIndex(index);
+  }, [projects, isMobile]);
+
+  // Mobile swipe
+  const onTouchStart = useCallback((e) => {
+    touchStartX.current = e.touches[0].clientX;
+    // Pause autoplay on touch
+    clearInterval(autoplayRef.current);
+  }, []);
+
+  const onTouchEnd = useCallback((e) => {
+    const diff = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(diff) > 40) {
+      if (diff < 0) {
+        // Swipe left → next
+        setActiveIndex((prev) => Math.min(prev + 1, projects.length - 1));
+      } else {
+        // Swipe right → prev
+        setActiveIndex((prev) => Math.max(prev - 1, 0));
+      }
+    }
+    // Restart autoplay
+    autoplayRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % HERO_COUNT);
+    }, 4000);
   }, [projects]);
 
   useEffect(() => {
@@ -113,7 +154,7 @@ export function HeroShowcase() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Preload images and track which ones exist
+  // Preload images
   useEffect(() => {
     projects.forEach((project) => {
       const img = new Image();
@@ -132,7 +173,6 @@ export function HeroShowcase() {
   const active = projects[activeIndex];
 
   const handleClick = useCallback((e) => {
-    // Don't navigate if clicking a link, button, or scroll indicator
     if (e.target.closest("a, button")) return;
     router.push(`/work/${active.slug}`);
   }, [active, router]);
@@ -142,57 +182,62 @@ export function HeroShowcase() {
       ref={containerRef}
       className={`hero-showcase${isReady ? " hero-showcase--ready" : ""}`}
       onMouseMove={onMove}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       onClick={handleClick}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: isMobile ? "default" : "pointer" }}
       data-dark
     >
-      {/* Background layers — one per project */}
+      {/* Background layers */}
       {projects.map((project, i) => (
         <div
           key={project.slug}
           className={`hero-showcase__bg${i === activeIndex ? " hero-showcase__bg--active" : ""}`}
           style={{ background: project.gradient }}
         >
-          {/* Project image (if available) */}
           {loadedImages[project.slug] && (
             <div
               className="hero-showcase__image"
               style={{
                 backgroundImage: `url(${project.image})`,
-                transform: `scale(1.05) translate(${(mousePos.x - 0.5) * -15}px, ${(mousePos.y - 0.5) * -10}px)`,
+                transform: isMobile
+                  ? "scale(1.05)"
+                  : `scale(1.05) translate(${(mousePos.x - 0.5) * -15}px, ${(mousePos.y - 0.5) * -10}px)`,
               }}
             />
           )}
-          {/* Architectural grid pattern overlay */}
           <div className="hero-showcase__pattern" />
-          {/* Abstract shapes (visible when no image) */}
           {!loadedImages[project.slug] && (
             <>
               <div
                 className="hero-showcase__shape"
                 style={{
-                  transform: `translate(${(mousePos.x - 0.5) * -30}px, ${(mousePos.y - 0.5) * -20}px)`,
+                  transform: isMobile
+                    ? "none"
+                    : `translate(${(mousePos.x - 0.5) * -30}px, ${(mousePos.y - 0.5) * -20}px)`,
                 }}
               />
               <div
                 className="hero-showcase__shape hero-showcase__shape--secondary"
                 style={{
-                  transform: `translate(${(mousePos.x - 0.5) * 20}px, ${(mousePos.y - 0.5) * 15}px)`,
+                  transform: isMobile
+                    ? "none"
+                    : `translate(${(mousePos.x - 0.5) * 20}px, ${(mousePos.y - 0.5) * 15}px)`,
                 }}
               />
             </>
           )}
-          {/* Dark overlay for text readability */}
           <div className="hero-showcase__overlay" />
         </div>
       ))}
 
-      {/* Zone indicators */}
-      <div className="hero-showcase__zones" aria-hidden="true">
+      {/* Zone indicators — dots on mobile */}
+      <div className={`hero-showcase__zones${isMobile ? " hero-showcase__zones--mobile" : ""}`} aria-hidden="true">
         {projects.map((_, i) => (
           <div
             key={i}
             className={`hero-showcase__zone${i === activeIndex ? " hero-showcase__zone--active" : ""}`}
+            onClick={(e) => { e.stopPropagation(); setActiveIndex(i); }}
           />
         ))}
       </div>
@@ -205,10 +250,12 @@ export function HeroShowcase() {
         </span>
       </div>
 
-      {/* Coordinates — top left */}
-      <div className="hero-showcase__coords" aria-hidden="true">
-        {(mousePos.x * 100).toFixed(1)}° N — {(mousePos.y * 100).toFixed(1)}° W
-      </div>
+      {/* Coordinates — desktop only */}
+      {!isMobile && (
+        <div className="hero-showcase__coords" aria-hidden="true">
+          {(mousePos.x * 100).toFixed(1)}° N — {(mousePos.y * 100).toFixed(1)}° W
+        </div>
+      )}
 
       {/* Counter — top right */}
       <div className="hero-showcase__counter" aria-hidden="true">
@@ -255,7 +302,6 @@ export function HeroShowcase() {
         <span className="hero-showcase__scroll-line" />
         <span className="hero-showcase__scroll-text">Scroll</span>
       </button>
-
     </section>
   );
 }
