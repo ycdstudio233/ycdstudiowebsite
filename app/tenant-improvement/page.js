@@ -9,7 +9,7 @@ export const metadata = {
   description:
     "Bay Area tenant improvement architecture — restaurant TI, retail build-outs, office renovations, ADA compliance, and permit-ready drawings. YCD Studio designs and permits commercial interior projects across San Francisco, Oakland, and the greater Bay Area.",
   keywords:
-    "tenant improvement architect, Bay Area TI, San Francisco tenant improvement, restaurant tenant improvement, commercial renovation architect, ADA compliance architect, permit drawings Bay Area",
+    "tenant improvement architect, Bay Area TI, San Francisco tenant improvement, restaurant tenant improvement, commercial renovation architect, ADA compliance architect, permit drawings Bay Area, restaurant design Bay Area, retail build-out San Francisco",
   openGraph: {
     title: "Tenant Improvement Architecture — YCD Studio",
     description:
@@ -26,52 +26,65 @@ const tiStats = [
 
 const tiServices = [
   {
+    slug: "restaurant",
     index: "01",
-    title: "Restaurant & Food Service",
+    title: "Restaurant & Food Service TI",
     description:
-      "Kitchen layout, exhaust systems, health department coordination, grease traps, ADA restrooms, and front-of-house design — from fast-casual to fine dining.",
-    tags: ["Kitchen design", "Hood systems", "Health dept.", "FOH/BOH flow"],
+      "Full-service restaurant design from kitchen to front-of-house. We coordinate exhaust hoods, grease traps, health department requirements, ADA restrooms, and guest flow — so your space works on opening day.",
+    tags: ["Kitchen layout", "Type I/II hoods", "Health dept.", "FOH/BOH", "Grease traps", "Bar design"],
+    image: null,
+    imageAlt: "Restaurant tenant improvement — kitchen and dining layout",
   },
   {
+    slug: "retail",
     index: "02",
-    title: "Retail & Commercial",
+    title: "Retail & Office Build-Out",
     description:
-      "Storefront renovations, office build-outs, and mixed-use conversions. We design spaces that work for your business and meet code on the first submittal.",
-    tags: ["Office build-out", "Retail refresh", "ADA path-of-travel", "Code compliance"],
+      "Storefront refreshes, office build-outs, coworking conversions, and medical/dental clinics. We design interiors that maximize your TI allowance and pass plan check on the first try.",
+    tags: ["Office layout", "Storefront", "ADA path-of-travel", "MEP coord.", "Coworking", "Medical/dental"],
+    image: null,
+    imageAlt: "Retail tenant improvement — storefront and office layout",
   },
   {
+    slug: "adaptive-reuse",
     index: "03",
-    title: "Adaptive Reuse & Conversions",
+    title: "Adaptive Reuse & Change of Use",
     description:
-      "Transforming existing buildings into new uses — warehouse to restaurant, office to retail, residential to commercial. We navigate zoning, permits, and structural realities.",
-    tags: ["Change of use", "Zoning review", "Structural coord.", "Historic sensitivity"],
+      "Converting warehouses to restaurants, offices to retail, or residential to commercial. We navigate zoning changes, structural realities, and complex permit pathways that come with changing a building's purpose.",
+    tags: ["Change of use", "Zoning review", "Structural", "Historic", "Mixed-use", "Seismic"],
+    image: null,
+    imageAlt: "Adaptive reuse — warehouse to restaurant conversion",
   },
 ];
 
 const tiProcess = [
   {
     step: "01",
-    title: "Site Assessment",
+    title: "Pre-Lease Consultation",
     description:
-      "We visit your space, review the existing conditions, assess code requirements, and identify any red flags before you commit to a lease or a scope.",
+      "Before you sign a lease, we visit the space and assess existing conditions, code requirements, and potential deal-breakers. This 1–2 hour walkthrough can save months of surprises.",
+    detail: "Free for qualified projects",
   },
   {
     step: "02",
-    title: "Design & Documentation",
+    title: "Design & Space Planning",
     description:
-      "Space planning, material selection, and construction documents — all designed to maximize your TI allowance and minimize change orders during build-out.",
+      "We develop your layout, material palette, and construction documents — all designed to maximize your TI allowance, minimize change orders, and reflect your brand identity.",
+    detail: "2–4 weeks typical",
   },
   {
     step: "03",
-    title: "Permitting",
+    title: "Permitting & Approvals",
     description:
-      "We prepare and submit permit drawings to the city, respond to plan check comments, and coordinate with consultants (MEP, structural) to keep approvals on track.",
+      "We prepare and submit permit drawings, respond to plan check comments, and coordinate with MEP engineers, structural consultants, and city reviewers to keep approvals moving.",
+    detail: "4–12 weeks depending on city",
   },
   {
     step: "04",
-    title: "Construction Support",
+    title: "Construction Administration",
     description:
-      "We stay involved through construction — answering contractor questions, reviewing submittals, and making sure the built result matches the design intent.",
+      "We stay involved through build-out — answering RFIs, reviewing submittals, conducting site visits, and ensuring the built result matches the design intent down to the last detail.",
+    detail: "Through final inspection",
   },
 ];
 
@@ -81,6 +94,8 @@ const tiProjects = [
     title: "Tabya Restaurant",
     type: "Restaurant TI",
     location: "Bay Area, CA",
+    scope: "Full gut renovation — 2,400 SF",
+    description: "A modern Turkish restaurant with open kitchen, custom bar, and warm material palette. Full permit coordination with health department and fire marshal.",
     image: null,
   },
   {
@@ -88,6 +103,8 @@ const tiProjects = [
     title: "PiddeG Restaurant",
     type: "Restaurant TI",
     location: "Bay Area, CA",
+    scope: "Interior renovation — 1,800 SF",
+    description: "Fast-casual concept with efficient kitchen layout, branded interior, and ADA-compliant restrooms. Designed and permitted in under 6 weeks.",
     image: null,
   },
   {
@@ -95,6 +112,8 @@ const tiProjects = [
     title: "HFA Office",
     type: "Commercial TI",
     location: "San Francisco, CA",
+    scope: "Office build-out — 3,200 SF",
+    description: "Professional office conversion with conference rooms, open workspace, private offices, and full ADA path-of-travel upgrades.",
     image: null,
   },
   {
@@ -102,7 +121,97 @@ const tiProjects = [
     title: "Pier 41 Restaurant",
     type: "Restaurant TI",
     location: "San Francisco, CA",
+    scope: "Waterfront renovation — 4,100 SF",
+    description: "High-profile waterfront dining venue. Complex permit coordination with Port of SF, fire department, and health department.",
     image: null,
+  },
+];
+
+const costRanges = [
+  {
+    level: "Light",
+    range: "$50–$100 /sf",
+    scope: "Cosmetic refresh",
+    includes: "Paint, flooring, lighting, minor fixture updates. No wall moves or plumbing changes.",
+    timeline: "4–6 weeks to permit",
+  },
+  {
+    level: "Mid-Range",
+    range: "$100–$200 /sf",
+    scope: "Partial renovation",
+    includes: "New layout, some MEP modifications, ADA upgrades, new finishes throughout.",
+    timeline: "8–12 weeks to permit",
+  },
+  {
+    level: "Full Build-Out",
+    range: "$200–$350+ /sf",
+    scope: "Gut renovation",
+    includes: "Complete interior demo, new walls, full MEP, kitchen exhaust, structural modifications.",
+    timeline: "12–24 weeks to permit",
+  },
+];
+
+const bayAreaCities = [
+  {
+    city: "San Francisco",
+    note: "Over-the-counter permits for minor work. Plan check for full TI. Expect 8–16 week review for restaurant projects.",
+    link: "/tenant-improvement/san-francisco",
+  },
+  {
+    city: "Oakland",
+    note: "Streamlined review for small commercial. Full plan check for change-of-use. Typical review: 6–12 weeks.",
+    link: "/tenant-improvement/oakland",
+  },
+  {
+    city: "San Jose",
+    note: "Express permits available for basic TI. Full review for food service and assembly occupancies.",
+    link: "/tenant-improvement/san-jose",
+  },
+  {
+    city: "Palo Alto",
+    note: "Design review required in downtown zone. Architectural review board for visible exterior changes.",
+    link: "/tenant-improvement/palo-alto",
+  },
+  {
+    city: "Berkeley",
+    note: "Use permit required for most commercial changes. Additional review for historic districts.",
+    link: "/tenant-improvement/berkeley",
+  },
+  {
+    city: "Walnut Creek",
+    note: "Efficient permit process for standard TI. Design review for downtown core projects.",
+    link: "/tenant-improvement/walnut-creek",
+  },
+];
+
+const checklist = [
+  "Lease agreement (or LOI) with TI allowance details",
+  "Existing floor plan or as-built drawings (if available)",
+  "Photos of the current space — all walls, ceiling, floor, restrooms",
+  "Desired layout changes or space requirements",
+  "Equipment list (kitchen equipment, specialty items)",
+  "Brand guidelines (logo, colors, signage preferences)",
+  "Target opening date or move-in deadline",
+  "Budget range or TI allowance amount",
+  "Landlord contact information for coordination",
+  "Any prior permit history or known code issues",
+];
+
+const tiTestimonials = [
+  {
+    quote: "YCD helped us navigate a nightmare permit situation in SF. We were open within 4 months of signing our lease.",
+    name: "Restaurant Owner",
+    project: "Bay Area Restaurant TI",
+  },
+  {
+    quote: "They maximized our TI allowance and delivered drawings that the contractor could actually build from without constant questions.",
+    name: "Commercial Tenant",
+    project: "Office Build-Out, San Francisco",
+  },
+  {
+    quote: "The pre-lease walkthrough saved us from signing a space that would have needed $80K in structural work we hadn't budgeted for.",
+    name: "Retail Business Owner",
+    project: "Retail TI, Oakland",
   },
 ];
 
@@ -112,28 +221,41 @@ export default function TenantImprovementPage() {
       {/* ── Hero ── */}
       <section className="ti-hero">
         <div className="container">
-          <ScrollReveal>
-            <div className="ti-hero__eyebrow">Tenant Improvement Architecture</div>
-            <h1 className="ti-hero__title">
-              Your space, <br className="ti-hero__br" />
-              designed to perform.
-            </h1>
-            <p className="ti-hero__subtitle">
-              We design, document, and permit commercial interior renovations
-              across the San Francisco Bay Area — restaurants, retail, offices,
-              and adaptive reuse. From first walkthrough to final inspection.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.15}>
-            <div className="ti-hero__actions">
-              <Link href="/contact" className="btn btn--primary btn--large">
-                Start your TI project
-              </Link>
-              <Link href="#ti-process" className="btn btn--secondary btn--large">
-                See how it works
-              </Link>
+          <div className="ti-hero__layout">
+            <div className="ti-hero__content">
+              <ScrollReveal>
+                <div className="ti-hero__eyebrow">Tenant Improvement Architecture</div>
+                <h1 className="ti-hero__title">
+                  Your space,<br />
+                  designed to perform.
+                </h1>
+                <p className="ti-hero__subtitle">
+                  We design, document, and permit commercial interior renovations
+                  across the San Francisco Bay Area — restaurants, retail, offices,
+                  and adaptive reuse. From first walkthrough to final inspection.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.15}>
+                <div className="ti-hero__actions">
+                  <Link href="/contact" className="btn btn--primary btn--large">
+                    Start your TI project
+                  </Link>
+                  <Link href="#ti-process" className="btn btn--secondary btn--large">
+                    See how it works
+                  </Link>
+                </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <div className="ti-hero__visual">
+                {/* Placeholder for hero image — replace with actual project photo */}
+                <div className="ti-hero__image-placeholder">
+                  <span className="ti-hero__image-label">Featured TI Project Photo</span>
+                  <span className="ti-hero__image-sub">Replace with actual before/after or completed project image</span>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -158,138 +280,194 @@ export default function TenantImprovementPage() {
         </div>
       </section>
 
-      {/* ── What We Do ── */}
+      {/* ── Service Types — each links to dedicated sub-page ── */}
       <section className="section" id="ti-services">
         <div className="container">
           <ScrollReveal>
             <SectionHeading
               eyebrow="TI Services"
               title="Every type of commercial interior."
-              description="Whether you're opening a restaurant, refreshing a retail space, or converting an existing building — we handle design through permits."
+              description="Each project type has its own requirements, timelines, and permit pathways. We specialize in all of them."
             />
           </ScrollReveal>
 
           <StaggerReveal className="ti-services-grid" staggerDelay={0.1}>
             {tiServices.map((service) => (
-              <div className="ti-service" key={service.title}>
-                <div className="ti-service__index">{service.index}</div>
-                <h3 className="ti-service__title">{service.title}</h3>
-                <p className="ti-service__desc">{service.description}</p>
-                <div className="ti-service__tags">
-                  {service.tags.map((tag) => (
-                    <span className="ti-service__tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
+              <Link
+                href={`/tenant-improvement/${service.slug}`}
+                className="ti-service ti-service--link"
+                key={service.title}
+              >
+                <div className="ti-service__image">
+                  {service.image ? (
+                    <img src={service.image} alt={service.imageAlt} />
+                  ) : (
+                    <div className="ti-service__image-placeholder">
+                      <span>{service.index}</span>
+                    </div>
+                  )}
                 </div>
-              </div>
+                <div className="ti-service__body">
+                  <h3 className="ti-service__title">{service.title}</h3>
+                  <p className="ti-service__desc">{service.description}</p>
+                  <div className="ti-service__tags">
+                    {service.tags.map((tag) => (
+                      <span className="ti-service__tag" key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <span className="ti-service__cta">
+                    Learn more
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                      <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
             ))}
           </StaggerReveal>
         </div>
       </section>
 
-      {/* ── Process ── */}
-      <section className="section section--dark" id="ti-process">
+      {/* ── Before / After Showcase ── */}
+      <section className="section section--dark">
         <div className="container">
           <ScrollReveal>
             <SectionHeading
-              eyebrow="Process"
-              title="Four steps. No guesswork."
-              description="A clear, linear process designed to keep your TI project on budget and on schedule — from lease signing to opening day."
-            />
-          </ScrollReveal>
-
-          <StaggerReveal className="ti-process-grid" staggerDelay={0.12}>
-            {tiProcess.map((step) => (
-              <div className="ti-process-step" key={step.title}>
-                <div className="ti-process-step__number">{step.step}</div>
-                <h3 className="ti-process-step__title">{step.title}</h3>
-                <p className="ti-process-step__desc">{step.description}</p>
-              </div>
-            ))}
-          </StaggerReveal>
-        </div>
-      </section>
-
-      {/* ── What to Expect — useful info band ── */}
-      <section className="section">
-        <div className="container">
-          <ScrollReveal>
-            <SectionHeading
-              eyebrow="What to Expect"
-              title="TI basics every tenant should know."
+              eyebrow="Transformations"
+              title="Before and after."
+              description="Every TI project starts with an empty or outdated space. Here's what we turn them into."
             />
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="ti-info-grid">
-              <div className="ti-info-card">
-                <h3 className="ti-info-card__title">Permits are required</h3>
-                <p className="ti-info-card__text">
-                  Nearly all commercial interior work in San Francisco and the Bay Area
-                  requires a building permit — even &ldquo;minor&rdquo; changes like moving a wall
-                  or adding a sink. We handle the full permit process so you don&apos;t have to.
-                </p>
+            <div className="ti-showcase">
+              <div className="ti-showcase__item">
+                <div className="ti-showcase__before">
+                  <div className="ti-showcase__placeholder">
+                    <span>Before Photo</span>
+                    <small>Upload existing condition photo</small>
+                  </div>
+                  <span className="ti-showcase__label">Before</span>
+                </div>
+                <div className="ti-showcase__after">
+                  <div className="ti-showcase__placeholder">
+                    <span>After Photo</span>
+                    <small>Upload completed project photo</small>
+                  </div>
+                  <span className="ti-showcase__label">After</span>
+                </div>
               </div>
-              <div className="ti-info-card">
-                <h3 className="ti-info-card__title">ADA triggers at renovation</h3>
-                <p className="ti-info-card__text">
-                  When you renovate a commercial space, ADA compliance is triggered.
-                  California&apos;s 20% rule means path-of-travel upgrades may be required.
-                  We design compliance into every project from the start — no surprises at plan check.
-                </p>
-              </div>
-              <div className="ti-info-card">
-                <h3 className="ti-info-card__title">Maximize your TI allowance</h3>
-                <p className="ti-info-card__text">
-                  Your landlord&apos;s TI contribution is finite. We design efficiently,
-                  prioritize high-impact work, and produce clear documentation that
-                  reduces contractor questions and change orders — stretching every dollar.
-                </p>
-              </div>
-              <div className="ti-info-card">
-                <h3 className="ti-info-card__title">Timeline depends on scope</h3>
-                <p className="ti-info-card__text">
-                  Light cosmetic work: 4–6 weeks to permit. Full gut renovation:
-                  3–6 months. Restaurant with kitchen exhaust: plan for the longer end.
-                  We give you a realistic timeline on day one so you can plan your opening.
-                </p>
+              <div className="ti-showcase__caption">
+                <h3>Placeholder Project Name</h3>
+                <p>Restaurant TI — 2,400 SF gut renovation in San Francisco. Completed in 4 months from lease signing to opening day.</p>
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
+      {/* ── Process ── */}
+      <section className="section" id="ti-process">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="How It Works"
+              title="Four steps. No guesswork."
+              description="A clear, linear process designed to keep your TI project on budget and on schedule — from lease signing to opening day."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="ti-process-timeline" staggerDelay={0.12}>
+            {tiProcess.map((step, i) => (
+              <div className="ti-timeline-step" key={step.title}>
+                <div className="ti-timeline-step__marker">
+                  <span className="ti-timeline-step__number">{step.step}</span>
+                  {i < tiProcess.length - 1 && <div className="ti-timeline-step__line" />}
+                </div>
+                <div className="ti-timeline-step__content">
+                  <h3 className="ti-timeline-step__title">{step.title}</h3>
+                  <p className="ti-timeline-step__desc">{step.description}</p>
+                  <span className="ti-timeline-step__detail">{step.detail}</span>
+                </div>
+              </div>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── Cost Guide ── */}
+      <section className="section section--dark" id="ti-costs">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Budget Planning"
+              title="What does a TI project cost?"
+              description="Bay Area construction costs vary by scope, location, and building condition. Here are realistic ranges to help you plan."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="ti-cost-grid" staggerDelay={0.1}>
+            {costRanges.map((tier) => (
+              <div className="ti-cost-card" key={tier.level}>
+                <div className="ti-cost-card__level">{tier.level}</div>
+                <div className="ti-cost-card__range">{tier.range}</div>
+                <div className="ti-cost-card__scope">{tier.scope}</div>
+                <p className="ti-cost-card__includes">{tier.includes}</p>
+                <div className="ti-cost-card__timeline">{tier.timeline}</div>
+              </div>
+            ))}
+          </StaggerReveal>
+
+          <ScrollReveal delay={0.15}>
+            <p className="ti-cost-disclaimer">
+              Ranges are for Bay Area projects as of 2024 and include design and permit fees.
+              Actual construction costs depend on contractor, materials, and site conditions.
+              We provide detailed cost guidance specific to your project during the design phase.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ── Featured TI Projects ── */}
-      <section className="section section--dark">
+      <section className="section">
         <div className="container">
           <ScrollReveal>
             <SectionHeading
               eyebrow="TI Portfolio"
               title="Recent tenant improvement projects."
+              description="A selection of completed and in-progress TI work across the Bay Area."
             />
           </ScrollReveal>
 
-          <StaggerReveal className="ti-projects-grid" staggerDelay={0.12}>
+          <StaggerReveal className="ti-projects-list" staggerDelay={0.1}>
             {tiProjects.map((project) => (
               <Link
                 href={`/work/${project.slug}`}
-                className="ti-project-card"
+                className="ti-project-row"
                 key={project.slug}
               >
-                <div className="ti-project-card__visual">
+                <div className="ti-project-row__visual">
                   {project.image ? (
                     <img src={project.image} alt={project.title} />
                   ) : (
-                    <div className="ti-project-card__placeholder">
+                    <div className="ti-project-row__placeholder">
                       <span>{project.title.charAt(0)}</span>
                     </div>
                   )}
                 </div>
-                <div className="ti-project-card__body">
-                  <span className="ti-project-card__type">{project.type}</span>
-                  <h3 className="ti-project-card__title">{project.title}</h3>
-                  <span className="ti-project-card__location">{project.location}</span>
+                <div className="ti-project-row__body">
+                  <span className="ti-project-row__type">{project.type}</span>
+                  <h3 className="ti-project-row__title">{project.title}</h3>
+                  <p className="ti-project-row__desc">{project.description}</p>
+                  <div className="ti-project-row__meta">
+                    <span>{project.location}</span>
+                    <span>{project.scope}</span>
+                  </div>
+                </div>
+                <div className="ti-project-row__arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
               </Link>
             ))}
@@ -297,7 +475,7 @@ export default function TenantImprovementPage() {
 
           <ScrollReveal delay={0.15}>
             <div style={{ textAlign: "center", marginTop: "48px" }}>
-              <Link href="/work" className="btn btn--ghost-light">
+              <Link href="/work" className="btn btn--primary">
                 View all projects
               </Link>
             </div>
@@ -305,8 +483,138 @@ export default function TenantImprovementPage() {
         </div>
       </section>
 
+      {/* ── Testimonials ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Client Stories"
+              title="What TI clients say."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="ti-testimonials" staggerDelay={0.1}>
+            {tiTestimonials.map((t) => (
+              <div className="ti-testimonial" key={t.name}>
+                <p className="ti-testimonial__quote">&ldquo;{t.quote}&rdquo;</p>
+                <div className="ti-testimonial__author">
+                  <span className="ti-testimonial__name">{t.name}</span>
+                  <span className="ti-testimonial__project">{t.project}</span>
+                </div>
+              </div>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── Bay Area City Guides ── */}
+      <section className="section" id="ti-cities">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Where We Work"
+              title="Bay Area city permit guides."
+              description="Every city has different permit timelines, fees, and review processes. Here's what to expect."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="ti-cities-grid" staggerDelay={0.08}>
+            {bayAreaCities.map((c) => (
+              <div className="ti-city-card" key={c.city}>
+                <h3 className="ti-city-card__name">{c.city}</h3>
+                <p className="ti-city-card__note">{c.note}</p>
+              </div>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── What to Expect — useful info ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Before You Start"
+              title="TI basics every tenant should know."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="ti-info-grid">
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Permits are almost always required</h3>
+                <p className="ti-info-card__text">
+                  Nearly all commercial interior work in the Bay Area requires a building permit —
+                  even &ldquo;minor&rdquo; changes like moving a wall or adding a sink. Unpermitted work
+                  risks fines, forced removal, and lease complications. We handle the full permit
+                  process so you stay compliant from day one.
+                </p>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">ADA compliance triggers at renovation</h3>
+                <p className="ti-info-card__text">
+                  When you renovate a commercial space in California, ADA upgrades are triggered.
+                  The state&apos;s 20% rule means if your renovation costs exceed 20% of the building&apos;s
+                  assessed value, path-of-travel upgrades (restrooms, ramps, signage) are required.
+                  We design compliance in from the start — no surprises at plan check.
+                </p>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Maximize your TI allowance</h3>
+                <p className="ti-info-card__text">
+                  Your landlord&apos;s TI contribution is negotiated in your lease and finite. We design
+                  efficiently, prioritize high-impact work, and produce clear documentation that reduces
+                  contractor questions and change orders. Every dollar of your allowance should go toward
+                  what actually matters for your business.
+                </p>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Don&apos;t sign a lease without a walkthrough</h3>
+                <p className="ti-info-card__text">
+                  Hidden conditions — structural deficiencies, asbestos, inadequate electrical, missing
+                  grease interceptors — can add tens of thousands to your budget. A pre-lease walkthrough
+                  with an architect takes 1–2 hours and can save months of surprises. We offer this as a
+                  standalone service for any Bay Area commercial space.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── Checklist ── */}
+      <section className="section">
+        <div className="container">
+          <div className="ti-checklist-layout">
+            <ScrollReveal>
+              <div className="ti-checklist__header">
+                <SectionHeading
+                  eyebrow="Get Ready"
+                  title="Your TI project checklist."
+                  description="Bring these to your first meeting with us and we'll hit the ground running."
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <div className="ti-checklist__list">
+                {checklist.map((item, i) => (
+                  <div className="ti-checklist__item" key={i}>
+                    <span className="ti-checklist__check">
+                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                        <rect x="1" y="1" width="18" height="18" rx="4" stroke="currentColor" strokeWidth="1.5" />
+                      </svg>
+                    </span>
+                    <span className="ti-checklist__text">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ── */}
-      <section className="section" id="ti-faq">
+      <section className="section section--dark" id="ti-faq">
         <div className="container">
           <ScrollReveal>
             <SectionHeading
@@ -339,9 +647,14 @@ export default function TenantImprovementPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <Link className="btn btn--inverse btn--large" href="/contact">
-              Get started
-            </Link>
+            <div className="ti-cta-actions">
+              <Link className="btn btn--inverse btn--large" href="/contact">
+                Start a TI project
+              </Link>
+              <Link className="btn btn--ghost-light btn--large" href="mailto:hello@ycd.studio?subject=TI%20Pre-Lease%20Walkthrough">
+                Book a pre-lease walkthrough
+              </Link>
+            </div>
           </ScrollReveal>
         </div>
       </section>

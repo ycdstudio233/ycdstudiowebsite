@@ -26,6 +26,16 @@ export function SiteFooter() {
             </div>
 
             <div>
+              <div className="footer__column-title">Services</div>
+              <div className="footer__column">
+                <Link href="/tenant-improvement">Tenant Improvement</Link>
+                <Link href="/tenant-improvement/restaurant">Restaurant Design</Link>
+                <Link href="/tenant-improvement/retail">Retail &amp; Office</Link>
+                <Link href="/tenant-improvement/adaptive-reuse">Adaptive Reuse</Link>
+              </div>
+            </div>
+
+            <div>
               <div className="footer__column-title">Connect</div>
               <div className="footer__column">
                 <a href="mailto:info@ycd.studio">

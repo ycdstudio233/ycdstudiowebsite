@@ -14,10 +14,48 @@ export async function generateMetadata({ params }) {
   const project = projectDetails[slug];
   if (!project) return {};
 
+  const ogImage = project.gallery?.[0]?.image;
+
   return {
-    title: project.title,
+    title: `${project.title} — ${project.category} in ${project.location}`,
     description: project.summary,
+    openGraph: {
+      title: `${project.title} — ${project.category} | YCD Studio`,
+      description: project.summary,
+      ...(ogImage && { images: [{ url: ogImage, alt: project.title }] }),
+    },
   };
+}
+
+function ProjectJsonLd({ project, slug }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.summary,
+    url: `https://ycd.studio/work/${slug}`,
+    creator: {
+      "@type": "Organization",
+      name: "YCD Studio",
+      url: "https://ycd.studio",
+    },
+    locationCreated: {
+      "@type": "Place",
+      name: project.location,
+    },
+    dateCreated: project.year,
+    genre: project.category,
+    ...(project.gallery?.[0]?.image && {
+      image: `https://ycd.studio${project.gallery[0].image}`,
+    }),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
 }
 
 export default async function ProjectPage({ params }) {
@@ -32,6 +70,7 @@ export default async function ProjectPage({ params }) {
 
   return (
     <main className="page-shell">
+      <ProjectJsonLd project={project} slug={slug} />
       <section className="project-detail container">
         <ScrollReveal>
           <div className="project-detail__nav-bar">

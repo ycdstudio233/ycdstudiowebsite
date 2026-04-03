@@ -8,6 +8,11 @@ export const metadata = {
   title: "Contact",
   description:
     "Start a project conversation with YCD Studio. Architecture, interiors, and tenant improvement design in the San Francisco Bay Area.",
+  openGraph: {
+    title: "Contact — YCD Studio",
+    description:
+      "Start a project conversation with YCD Studio. Architecture, interiors, and tenant improvement design in the San Francisco Bay Area.",
+  },
 };
 
 export default function ContactPage() {

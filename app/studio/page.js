@@ -15,6 +15,11 @@ export const metadata = {
   title: "Studio",
   description:
     "Meet YCD Studio — a San Francisco Bay Area architecture firm built on listening, precision, and follow-through. Restaurant TI, commercial design, residential, and adaptive reuse.",
+  openGraph: {
+    title: "Studio — About YCD Studio",
+    description:
+      "A San Francisco Bay Area architecture firm built on listening, precision, and follow-through. Restaurant TI, commercial design, residential, and adaptive reuse.",
+  },
 };
 
 export default function StudioPage() {

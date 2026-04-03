@@ -8,6 +8,11 @@ export const metadata = {
   title: "Work",
   description:
     "Selected YCD Studio projects across hospitality, retail, residential, and adaptive reuse architecture in the San Francisco Bay Area.",
+  openGraph: {
+    title: "Work — YCD Studio Portfolio",
+    description:
+      "Selected projects across hospitality, retail, residential, and adaptive reuse architecture in the San Francisco Bay Area.",
+  },
 };
 
 export default function WorkPage() {

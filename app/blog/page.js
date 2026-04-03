@@ -7,6 +7,11 @@ export const metadata = {
   title: "Blog",
   description:
     "Insights on tenant improvements, permitting, ADUs, and residential design across the San Francisco Bay Area — from the YCD Studio team.",
+  openGraph: {
+    title: "Blog — YCD Studio",
+    description:
+      "Insights on tenant improvements, permitting, ADUs, and residential design across the San Francisco Bay Area.",
+  },
 };
 
 function formatDate(dateString) {
