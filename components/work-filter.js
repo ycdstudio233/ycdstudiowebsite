@@ -6,19 +6,21 @@ import { ProjectVisual } from "./project-visual";
 
 const categories = [
   "All",
-  "Commercial",
   "Residential",
-  "Mixed-Use",
-  "Experimental",
+  "Hospitality",
+  "Multi-Family",
+  "Commercial",
+  "Sacred",
 ];
 
 function getCategory(project) {
   const cat = project.category.toLowerCase();
-  if (cat.includes("commercial") || cat.includes("adaptive") || cat.includes("public") || cat.includes("tenant")) return "Commercial";
-  if (cat.includes("mixed")) return "Mixed-Use";
-  if (cat.includes("experimental")) return "Experimental";
+  if (cat.includes("sacred") || cat.includes("liturgical")) return "Sacred";
+  if (cat.includes("hospitality") || cat.includes("restaurant") || cat.includes("hotel")) return "Hospitality";
+  if (cat.includes("multi-family")) return "Multi-Family";
+  if (cat.includes("commercial") || cat.includes("adaptive") || cat.includes("public") || cat.includes("tenant") || cat.includes("market")) return "Commercial";
   if (cat.includes("residential")) return "Residential";
-  return "Other";
+  return "Commercial";
 }
 
 export function WorkFilter({ projects }) {

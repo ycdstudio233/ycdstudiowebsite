@@ -8,7 +8,7 @@ const allHeroProjects = [
   {
     slug: "market-tower",
     title: "Market Tower",
-    category: "Commercial / Adaptive Reuse",
+    category: "Commercial",
     location: "San Francisco, CA",
     image: "/projects/market-tower/Image-1.webp",
     gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
@@ -16,7 +16,7 @@ const allHeroProjects = [
   {
     slug: "neighborhood-commons",
     title: "Neighborhood Commons",
-    category: "Multi-Family Housing",
+    category: "Multi-Family",
     location: "Bay Area, CA",
     image: "/projects/neighborhood-commons/Image-1.webp",
     gradient: "linear-gradient(135deg, #1e272e 0%, #2d3436 50%, #2c3e50 100%)",
@@ -24,7 +24,7 @@ const allHeroProjects = [
   {
     slug: "lady-bird-boardwalk",
     title: "Lady Bird Lake Boardwalk",
-    category: "Commercial / Public Realm",
+    category: "Commercial",
     location: "Austin, TX",
     image: "/projects/lady-bird-boardwalk/Image-1.webp",
     gradient: "linear-gradient(135deg, #0a1628 0%, #0c2461 50%, #1e3799 100%)",
@@ -40,7 +40,7 @@ const allHeroProjects = [
   {
     slug: "pixel-heights",
     title: "Pixel Heights",
-    category: "Mixed-Use Residential",
+    category: "Multi-Family",
     location: "San Francisco, CA",
     image: "/projects/pixel-heights/Image-1.webp",
     gradient: "linear-gradient(135deg, #1b1b2f 0%, #2a2a3d 50%, #3e3e52 100%)",
@@ -56,7 +56,7 @@ const allHeroProjects = [
   {
     slug: "spacearc-pod",
     title: "SpaceArc Pod",
-    category: "Experimental",
+    category: "Residential",
     location: "Conceptual",
     image: "/projects/spacearc/Image-1.webp",
     gradient: "linear-gradient(135deg, #1e1e2e 0%, #2e2e3e 50%, #4a4a5a 100%)",
@@ -69,9 +69,41 @@ const allHeroProjects = [
     image: "/projects/bird-residence/Image-2.webp",
     gradient: "linear-gradient(135deg, #2a1a0a 0%, #3d2e1e 50%, #4a3a2a 100%)",
   },
+  {
+    slug: "holy-cross",
+    title: "Holy Cross Church",
+    category: "Sacred",
+    location: "West Fargo, ND",
+    image: "/projects/holy-cross/Image-1.webp",
+    gradient: "linear-gradient(135deg, #1a1a2e 0%, #2a2040 50%, #3a3058 100%)",
+  },
+  {
+    slug: "coastal-house",
+    title: "Coastal House",
+    category: "Residential",
+    location: "Turkey",
+    image: "/projects/coastal-house/Image-3.webp",
+    gradient: "linear-gradient(135deg, #0a1a2a 0%, #1a2a3a 50%, #2a3a4a 100%)",
+  },
+  {
+    slug: "piddeg-restaurant",
+    title: "PiddeG Restaurant",
+    category: "Hospitality",
+    location: "Bay Area, CA",
+    image: "/projects/piddeg-restaurant/Image-2.webp",
+    gradient: "linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 50%, #3a4a3a 100%)",
+  },
+  {
+    slug: "hampton-by-hilton-ordu",
+    title: "Hampton by Hilton Ordu",
+    category: "Hospitality",
+    location: "Ordu, Turkey",
+    image: "/projects/hampton-by-hilton-ordu/Image-1.webp",
+    gradient: "linear-gradient(135deg, #0a1628 0%, #1a2638 50%, #2a3648 100%)",
+  },
 ];
 
-const HERO_COUNT = 5;
+const HERO_COUNT = 7;
 
 export function HeroShowcase() {
   const router = useRouter();
@@ -107,7 +139,7 @@ export function HeroShowcase() {
   useEffect(() => {
     if (!isMobile) return;
     autoplayRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % HERO_COUNT);
+      setActiveIndex((prev) => (prev + 1) % projects.length);
     }, 4000);
     return () => clearInterval(autoplayRef.current);
   }, [isMobile]);
@@ -145,7 +177,7 @@ export function HeroShowcase() {
     }
     // Restart autoplay
     autoplayRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % HERO_COUNT);
+      setActiveIndex((prev) => (prev + 1) % projects.length);
     }, 4000);
   }, [projects]);
 
