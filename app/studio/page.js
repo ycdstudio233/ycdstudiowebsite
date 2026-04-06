@@ -104,25 +104,36 @@ export default function StudioPage() {
           </ScrollReveal>
 
           <StaggerReveal className="team-grid" staggerDelay={0.08}>
-            {teamMembers.map((member) => (
-              <div className="team-member" key={member.name}>
-                <div className="team-member__avatar">
-                  {member.image ? (
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={160}
-                      height={160}
-                      style={{ objectFit: "cover", borderRadius: "50%" }}
-                    />
-                  ) : (
-                    member.name.split(" ").map(n => n[0]).join("")
-                  )}
+            {teamMembers.map((member) => {
+              const inner = (
+                <>
+                  <div className="team-member__avatar">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={160}
+                        height={160}
+                        style={{ objectFit: "cover", borderRadius: "50%" }}
+                      />
+                    ) : (
+                      member.name.split(" ").map(n => n[0]).join("")
+                    )}
+                  </div>
+                  <div className="team-member__name">{member.name}</div>
+                  <div className="team-member__role">{member.role}</div>
+                </>
+              );
+              return member.slug ? (
+                <Link href={`/team/${member.slug}`} className="team-member team-member--linked" key={member.name}>
+                  {inner}
+                </Link>
+              ) : (
+                <div className="team-member" key={member.name}>
+                  {inner}
                 </div>
-                <div className="team-member__name">{member.name}</div>
-                <div className="team-member__role">{member.role}</div>
-              </div>
-            ))}
+              );
+            })}
           </StaggerReveal>
         </div>
       </section>
