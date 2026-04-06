@@ -111,8 +111,8 @@ export default function StudioPage() {
                     <Image
                       src={member.image}
                       alt={member.name}
-                      width={80}
-                      height={80}
+                      width={160}
+                      height={160}
                       style={{ objectFit: "cover", borderRadius: "50%" }}
                     />
                   ) : (
