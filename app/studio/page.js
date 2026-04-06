@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "../../components/page-hero";
 import { SectionHeading } from "../../components/section-heading";
@@ -106,7 +107,17 @@ export default function StudioPage() {
             {teamMembers.map((member) => (
               <div className="team-member" key={member.name}>
                 <div className="team-member__avatar">
-                  {member.name.split(" ").map(n => n[0]).join("")}
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={80}
+                      height={80}
+                      style={{ objectFit: "cover", borderRadius: "50%" }}
+                    />
+                  ) : (
+                    member.name.split(" ").map(n => n[0]).join("")
+                  )}
                 </div>
                 <div className="team-member__name">{member.name}</div>
                 <div className="team-member__role">{member.role}</div>

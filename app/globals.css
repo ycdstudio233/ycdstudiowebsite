@@ -3187,6 +3187,7 @@ ul, ol { list-style: none; }
   letter-spacing: 0.02em;
   margin: 0 auto 16px;
   transition: var(--transition);
+  overflow: hidden;
 }
 
 .team-member:hover .team-member__avatar {
