@@ -94,27 +94,11 @@ const allHeroProjects = [
     gradient: "linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 50%, #3a4a3a 100%)",
   },
   {
-    slug: "hampton-by-hilton-ordu",
-    title: "Hampton by Hilton Ordu",
-    category: "Hospitality",
-    location: "Ordu, Turkey",
-    image: "/projects/hampton-by-hilton-ordu/Image-1.webp",
-    gradient: "linear-gradient(135deg, #0a1628 0%, #1a2638 50%, #2a3648 100%)",
-  },
-  {
-    slug: "pier-41-restaurant",
-    title: "Pier 41 — Cousins Maine Lobster",
-    category: "Hospitality",
-    location: "San Francisco, CA",
-    image: "/projects/pier-41-restaurant/Image-5.webp",
-    gradient: "linear-gradient(135deg, #1a0a0a 0%, #2d1a1a 50%, #3d2a2a 100%)",
-  },
-  {
     slug: "alemany-farmers-market",
     title: "Alemany Farmers Market",
     category: "Commercial",
     location: "San Francisco, CA",
-    image: "/projects/alemany-farmers-market/Image-2.webp",
+    image: "/projects/alemany-farmers-market/Image-3.webp",
     gradient: "linear-gradient(135deg, #1a1a0a 0%, #2d2d1a 50%, #3d3d2a 100%)",
   },
   {
