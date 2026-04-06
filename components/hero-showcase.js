@@ -101,9 +101,103 @@ const allHeroProjects = [
     image: "/projects/hampton-by-hilton-ordu/Image-1.webp",
     gradient: "linear-gradient(135deg, #0a1628 0%, #1a2638 50%, #2a3648 100%)",
   },
+  {
+    slug: "hfa-tenant-improvement",
+    title: "Hawaii Fluid Art",
+    category: "Commercial",
+    location: "Bay Area, CA",
+    image: "/projects/hfa-tenant-improvement/Image-8.webp",
+    gradient: "linear-gradient(135deg, #2a0a2a 0%, #3d1a3d 50%, #4a2a4a 100%)",
+  },
+  {
+    slug: "pier-41-restaurant",
+    title: "Pier 41 — Cousins Maine Lobster",
+    category: "Hospitality",
+    location: "San Francisco, CA",
+    image: "/projects/pier-41-restaurant/Image-1.webp",
+    gradient: "linear-gradient(135deg, #1a0a0a 0%, #2d1a1a 50%, #3d2a2a 100%)",
+  },
+  {
+    slug: "alemany-farmers-market",
+    title: "Alemany Farmers Market",
+    category: "Commercial",
+    location: "San Francisco, CA",
+    image: "/projects/alemany-farmers-market/Image-2.webp",
+    gradient: "linear-gradient(135deg, #1a1a0a 0%, #2d2d1a 50%, #3d3d2a 100%)",
+  },
+  {
+    slug: "moraga-adu",
+    title: "Moraga ADU",
+    category: "Residential",
+    location: "Moraga, CA",
+    image: "/projects/moraga-adu/Image-1.webp",
+    gradient: "linear-gradient(135deg, #1a2a2a 0%, #2a3a3a 50%, #3a4a4a 100%)",
+  },
+  {
+    slug: "coastline-residence",
+    title: "Coastline Residence",
+    category: "Residential",
+    location: "Turkey",
+    image: "/projects/coastline-residence/Image-2.webp",
+    gradient: "linear-gradient(135deg, #0a1a1a 0%, #1a2a2a 50%, #2a3a3a 100%)",
+  },
+  {
+    slug: "cyprus-residence",
+    title: "Cyprus Residence",
+    category: "Residential",
+    location: "Cyprus",
+    image: "/projects/cyprus-residence/Image-4.webp",
+    gradient: "linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 50%, #3a3a4e 100%)",
+  },
+  {
+    slug: "tabya-restaurant",
+    title: "Tabyabasi Balik Restaurant",
+    category: "Hospitality",
+    location: "Ordu, Turkey",
+    image: "/projects/tabya-restaurant/Image-1.webp",
+    gradient: "linear-gradient(135deg, #0a1a2a 0%, #1a2a3a 50%, #2a3a4a 100%)",
+  },
+  {
+    slug: "fatsa-ilica",
+    title: "Fatsa Ilica Hotel",
+    category: "Hospitality",
+    location: "Fatsa, Turkey",
+    image: "/projects/fatsa-ilica/Image-5.webp",
+    gradient: "linear-gradient(135deg, #0a2a1a 0%, #1a3a2a 50%, #2a4a3a 100%)",
+  },
+  {
+    slug: "aurora-residences",
+    title: "Aurora Residences",
+    category: "Multi-Family",
+    location: "Ankara, Turkey",
+    image: "/projects/aurora-residences/Image-2.webp",
+    gradient: "linear-gradient(135deg, #1a1a2a 0%, #2a2a3a 50%, #3a3a4a 100%)",
+  },
+  {
+    slug: "north-loft-residences",
+    title: "North Loft Residences",
+    category: "Multi-Family",
+    location: "Turkey",
+    image: "/projects/north-loft-residences/Image-5.webp",
+    gradient: "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #3a3a3a 100%)",
+  },
+  {
+    slug: "st-marys-cathedral",
+    title: "Cathedral of St. Mary",
+    category: "Sacred",
+    location: "Fargo, ND",
+    image: "/projects/st-marys-cathedral/Image-1.webp",
+    gradient: "linear-gradient(135deg, #1a1a2e 0%, #2a2040 50%, #3a3058 100%)",
+  },
+  {
+    slug: "st-marys-grand-forks",
+    title: "St. Mary's Church",
+    category: "Sacred",
+    location: "Grand Forks, ND",
+    image: "/projects/st-marys-grand-forks/Image-1.webp",
+    gradient: "linear-gradient(135deg, #1a1a2e 0%, #2a2a40 50%, #3a3a58 100%)",
+  },
 ];
-
-const HERO_COUNT = 7;
 
 export function HeroShowcase() {
   const router = useRouter();
@@ -113,7 +207,7 @@ export function HeroShowcase() {
   const [isReady, setIsReady] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [loadedImages, setLoadedImages] = useState({});
-  const [projects, setProjects] = useState(() => allHeroProjects.slice(0, HERO_COUNT));
+  const [projects, setProjects] = useState(() => allHeroProjects);
   const touchStartX = useRef(0);
   const autoplayRef = useRef(null);
 
@@ -132,7 +226,7 @@ export function HeroShowcase() {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    setProjects(arr.slice(0, HERO_COUNT));
+    setProjects(arr);
   }, []);
 
   // Mobile autoplay — cycle every 4s
@@ -140,7 +234,7 @@ export function HeroShowcase() {
     if (!isMobile) return;
     autoplayRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projects.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(autoplayRef.current);
   }, [isMobile]);
 
@@ -178,7 +272,7 @@ export function HeroShowcase() {
     // Restart autoplay
     autoplayRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projects.length);
-    }, 4000);
+    }, 3000);
   }, [projects]);
 
   useEffect(() => {
@@ -263,15 +357,12 @@ export function HeroShowcase() {
         </div>
       ))}
 
-      {/* Zone indicators — dots on mobile */}
-      <div className={`hero-showcase__zones${isMobile ? " hero-showcase__zones--mobile" : ""}`} aria-hidden="true">
-        {projects.map((_, i) => (
-          <div
-            key={i}
-            className={`hero-showcase__zone${i === activeIndex ? " hero-showcase__zone--active" : ""}`}
-            onClick={(e) => { e.stopPropagation(); setActiveIndex(i); }}
-          />
-        ))}
+      {/* Progress bar */}
+      <div className="hero-showcase__progress" aria-hidden="true">
+        <div
+          className="hero-showcase__progress-fill"
+          style={{ width: `${((activeIndex + 1) / projects.length) * 100}%` }}
+        />
       </div>
 
       {/* Studio tagline — top center */}

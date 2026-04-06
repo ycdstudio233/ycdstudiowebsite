@@ -457,57 +457,20 @@ ul, ol { list-style: none; }
 }
 
 /* Zone indicators */
-.hero-showcase__zones {
+.hero-showcase__progress {
   position: absolute;
-  inset: 0;
-  display: flex;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.hero-showcase__zone {
-  flex: 1;
-  border-right: 1px solid rgba(255,255,255,0.04);
-  transition: background 0.5s;
-}
-
-.hero-showcase__zone:last-child {
-  border-right: none;
-}
-
-.hero-showcase__zone--active {
-  background: rgba(255,255,255,0.02);
-}
-
-/* Mobile dots mode */
-.hero-showcase__zones--mobile {
-  position: absolute;
-  inset: auto auto 24px auto;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  pointer-events: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
   z-index: 5;
-  width: auto;
 }
 
-.hero-showcase__zones--mobile .hero-showcase__zone {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-right: none;
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.hero-showcase__zones--mobile .hero-showcase__zone--active {
-  background: #fff;
-  border-color: #fff;
-  transform: scale(1.3);
+.hero-showcase__progress-fill {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  transition: width 0.4s var(--ease);
 }
 
 /* Counter — top right */
@@ -2490,7 +2453,6 @@ ul, ol { list-style: none; }
   .hero-showcase__scroll { bottom: 48px; }
   .hero-showcase__info { bottom: 72px; }
   .hero-showcase__cta { bottom: 72px; }
-  .hero-showcase__zones:not(.hero-showcase__zones--mobile) { display: none; }
   .intro { padding: 80px 0 60px; }
   .intro__stats { flex-direction: row; gap: 24px; justify-content: space-between; }
   .intro__stat-value { font-size: 1.5rem; }
@@ -3710,10 +3672,6 @@ ul, ol { list-style: none; }
     -webkit-backdrop-filter: blur(10px);
   }
 
-  .hero-showcase__zones--mobile {
-    bottom: calc(20px + env(safe-area-inset-bottom));
-  }
-
   .hero-showcase__scroll {
     display: none;
   }
@@ -4115,10 +4073,6 @@ ul, ol { list-style: none; }
     left: 16px;
     right: 16px;
     bottom: calc(64px + env(safe-area-inset-bottom));
-  }
-
-  .hero-showcase__zones--mobile {
-    bottom: calc(16px + env(safe-area-inset-bottom));
   }
 
   .intro__heading {
