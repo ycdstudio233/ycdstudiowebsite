@@ -102,19 +102,11 @@ const allHeroProjects = [
     gradient: "linear-gradient(135deg, #0a1628 0%, #1a2638 50%, #2a3648 100%)",
   },
   {
-    slug: "hfa-tenant-improvement",
-    title: "Hawaii Fluid Art",
-    category: "Commercial",
-    location: "Bay Area, CA",
-    image: "/projects/hfa-tenant-improvement/Image-8.webp",
-    gradient: "linear-gradient(135deg, #2a0a2a 0%, #3d1a3d 50%, #4a2a4a 100%)",
-  },
-  {
     slug: "pier-41-restaurant",
     title: "Pier 41 — Cousins Maine Lobster",
     category: "Hospitality",
     location: "San Francisco, CA",
-    image: "/projects/pier-41-restaurant/Image-1.webp",
+    image: "/projects/pier-41-restaurant/Image-5.webp",
     gradient: "linear-gradient(135deg, #1a0a0a 0%, #2d1a1a 50%, #3d2a2a 100%)",
   },
   {
