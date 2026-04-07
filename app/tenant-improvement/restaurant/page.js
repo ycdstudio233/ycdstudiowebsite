@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SectionHeading } from "../../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
+import { RotatingHeroImage } from "../../../components/rotating-hero-image";
 
 export const metadata = {
   title:
@@ -357,16 +358,16 @@ export default function RestaurantTenantImprovementPage() {
             </div>
             <ScrollReveal delay={0.2}>
               <div className="ti-sub-hero__visual">
-                <div className="ti-sub-hero__image-wrap">
-                  <Image
-                    src="/projects/piddeg-restaurant/Image-2.webp"
-                    alt="PiddeG Restaurant — completed interior with branded wall and dining area"
-                    width={640}
-                    height={480}
-                    style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
-                    priority
-                  />
-                </div>
+                <RotatingHeroImage
+                  interval={4000}
+                  images={[
+                    { src: "/projects/piddeg-restaurant/Image-2.webp", alt: "PiddeG Restaurant — interior with green accent wall and neon lighting" },
+                    { src: "/projects/piddeg-restaurant/Image-1.webp", alt: "PiddeG Restaurant — gold pattern wall with modern pendant light" },
+                    { src: "/projects/tabya-restaurant/Image-4.webp", alt: "Tabya Restaurant — outdoor dining with retractable roof" },
+                    { src: "/projects/tabya-restaurant/Image-2.webp", alt: "Tabya Restaurant — storefront exterior with stone facade" },
+                    { src: "/projects/tabya-restaurant/Image-5.webp", alt: "Tabya Restaurant — aerial view of glass-enclosed dining" },
+                  ]}
+                />
               </div>
             </ScrollReveal>
           </div>
