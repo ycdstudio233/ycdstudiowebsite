@@ -136,7 +136,7 @@ function MagneticLink({ href, children, className = "" }) {
       className={className}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      style={{ transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)", display: "inline-block" }}
+      style={{ transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}
     >
       {children}
     </Link>

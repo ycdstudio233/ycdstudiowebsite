@@ -5501,6 +5501,7 @@ ul, ol { list-style: none; }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 12px 48px 40px;
+  align-items: stretch;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -5520,6 +5521,8 @@ ul, ol { list-style: none; }
   cursor: pointer;
   transition: all 0.4s var(--person-ease);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .htl-card::after {
@@ -5595,6 +5598,7 @@ ul, ol { list-style: none; }
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1;
 }
 
 .htl-card__project {
