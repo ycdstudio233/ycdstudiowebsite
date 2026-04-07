@@ -1,5 +1,6 @@
 import { projectDetails } from "../lib/project-details";
 import { blogPosts } from "../lib/blog-data";
+import { teamDetails } from "../lib/team-data";
 
 const BASE_URL = "https://ycd.studio";
 
@@ -30,5 +31,12 @@ export default function sitemap() {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...projectPages, ...blogPages];
+  const teamPages = Object.keys(teamDetails).map((slug) => ({
+    url: `${BASE_URL}/team/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...projectPages, ...blogPages, ...teamPages];
 }
