@@ -175,6 +175,16 @@ export default async function BlogPostPage({ params }) {
                   {post.content.map((block, index) => (
                     <ContentBlock key={index} block={block} />
                   ))}
+
+                  {/* Article footer */}
+                  <div className="blog-article__footer">
+                    <div className="blog-article__footer-line" />
+                    <div className="blog-article__footer-meta">
+                      <span>Published {formatDate(post.date)}</span>
+                      <span className="blog-article__dot" />
+                      <span>{readingTime} min read</span>
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
 
@@ -184,13 +194,7 @@ export default async function BlogPostPage({ params }) {
                   <div className="blog-article__sidebar-sticky">
                     {/* Author */}
                     <div className="blog-article__author-card">
-                      <Image
-                        src="/people/Burak.webp"
-                        alt="YCD Studio"
-                        width={48}
-                        height={48}
-                        style={{ borderRadius: "50%", objectFit: "cover" }}
-                      />
+                      <div className="blog-article__logo-mark" aria-hidden="true" />
                       <div>
                         <div className="blog-article__author-name">YCD Studio</div>
                         <div className="blog-article__author-role">Bay Area Architecture & Design</div>

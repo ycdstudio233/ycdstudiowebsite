@@ -13,6 +13,14 @@ const categories = [
   "Sacred",
 ];
 
+const categoryPages = {
+  Residential: "/residential",
+  Hospitality: "/hospitality",
+  "Multi-Family": "/multi-family",
+  Commercial: "/commercial",
+  Sacred: "/sacred",
+};
+
 function getCategory(project) {
   const cat = project.category.toLowerCase();
   if (cat.includes("sacred") || cat.includes("liturgical")) return "Sacred";
@@ -43,6 +51,14 @@ export function WorkFilter({ projects }) {
           </button>
         ))}
       </div>
+
+      {active !== "All" && categoryPages[active] && (
+        <div className="work-filter__service-link">
+          <Link href={categoryPages[active]}>
+            Learn more about our {active} practice →
+          </Link>
+        </div>
+      )}
 
       <div className="project-grid project-grid--three work-filter__grid">
         {filtered.map((project) => (

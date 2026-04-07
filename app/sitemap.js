@@ -15,6 +15,11 @@ export default function sitemap() {
     { url: `${BASE_URL}/tenant-improvement/restaurant`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/tenant-improvement/retail`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/tenant-improvement/adaptive-reuse`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/residential`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE_URL}/hospitality`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE_URL}/multi-family`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE_URL}/commercial`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE_URL}/sacred`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   ];
 
   const projectPages = Object.keys(projectDetails).map((slug) => ({

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { PageHero } from "../../components/page-hero";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
-import { blogPosts } from "../../lib/blog-data";
+import { blogPosts as rawPosts } from "../../lib/blog-data";
+
+const blogPosts = [...rawPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
 
 export const metadata = {
   title: "Blog",

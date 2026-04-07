@@ -28,10 +28,12 @@ export function SiteFooter() {
             <div>
               <div className="footer__column-title">Services</div>
               <div className="footer__column">
+                <Link href="/residential">Residential</Link>
+                <Link href="/hospitality">Hospitality</Link>
+                <Link href="/commercial">Commercial</Link>
+                <Link href="/multi-family">Multi-Family</Link>
+                <Link href="/sacred">Sacred</Link>
                 <Link href="/tenant-improvement">Tenant Improvement</Link>
-                <Link href="/tenant-improvement/restaurant">Restaurant Design</Link>
-                <Link href="/tenant-improvement/retail">Retail &amp; Office</Link>
-                <Link href="/tenant-improvement/adaptive-reuse">Adaptive Reuse</Link>
               </div>
             </div>
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 const services = [
   {
     title: "Restaurant & Hospitality",
-    href: "/tenant-improvement/restaurant",
+    href: "/hospitality",
     description:
       "Guest flow, atmosphere, and operational logic — designed to land at once. We handle everything from initial concept through permitting, so your space opens on time and on brand.",
     image: "/projects/lady-bird-boardwalk/Image-4.webp",
@@ -14,7 +14,7 @@ const services = [
   },
   {
     title: "Commercial & Tenant Improvement",
-    href: "/tenant-improvement",
+    href: "/commercial",
     description:
       "Feasibility-led upgrades, permit-ready drawings, and creative problem-solving for Bay Area commercial spaces. We navigate Title 24, accessibility, and city review so you don't have to.",
     image: "/projects/neighborhood-commons/Image-1.webp",
@@ -22,19 +22,19 @@ const services = [
   },
   {
     title: "Residential",
-    href: "/work",
+    href: "/residential",
     description:
       "Homes and remodels shaped around lifestyle, site, and a cleaner line between beautiful ideas and buildable sets. From ADUs to ground-up — designed to feel like you from day one.",
     image: "/projects/sonoma-house/Image-1.webp",
     tags: ["New construction", "Remodels", "ADUs"],
   },
   {
-    title: "Adaptive Reuse",
-    href: "/tenant-improvement/adaptive-reuse",
+    title: "Multi-Family & Mixed-Use",
+    href: "/multi-family",
     description:
-      "Preserving what works, transforming what doesn't. High-performance retrofits that respect existing structures while achieving contemporary standards for energy, comfort, and presence.",
-    image: "/projects/market-tower/Image-1.webp",
-    tags: ["Facade systems", "Energy retrofit", "Preservation"],
+      "Housing that strengthens communities — from urban infill apartments to mixed-use developments with ground-floor retail. We navigate density bonuses, CEQA, and community review.",
+    image: "/projects/neighborhood-commons/Image-1.webp",
+    tags: ["Apartments", "Mixed-use", "Urban infill"],
   },
 ];
 
