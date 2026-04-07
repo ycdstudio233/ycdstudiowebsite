@@ -3301,6 +3301,10 @@ ul, ol { list-style: none; }
 
 /* ===== Work Filter ===== */
 
+.work-page__grid {
+  padding: 24px 0 96px;
+}
+
 .work-filter {
   display: flex;
   flex-wrap: wrap;

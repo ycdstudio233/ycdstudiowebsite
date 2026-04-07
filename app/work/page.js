@@ -24,7 +24,7 @@ export default function WorkPage() {
         description="A curated selection across commercial, residential, hospitality, and public realm projects — each driven by narrative and built for real outcomes."
       />
 
-      <section className="section">
+      <section className="section work-page__grid">
         <div className="container">
           <WorkFilter projects={allProjects} />
         </div>
