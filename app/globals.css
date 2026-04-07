@@ -5472,7 +5472,7 @@ ul, ol { list-style: none; }
 }
 
 .person-htl__header {
-  max-width: 1320px;
+  max-width: 1680px;
   margin: 0 auto 48px;
 }
 
@@ -5496,12 +5496,15 @@ ul, ol { list-style: none; }
 }
 
 .person-htl__track {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 380px;
   gap: 28px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 12px 48px 40px;
-  align-items: stretch;
+  padding: 12px 0 40px;
+  max-width: 1680px;
+  margin: 0 auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -5512,7 +5515,6 @@ ul, ol { list-style: none; }
 
 /* Horizontal cards */
 .htl-card {
-  flex: 0 0 380px;
   scroll-snap-align: start;
   padding: 36px;
   border-radius: 20px;
@@ -5765,8 +5767,9 @@ ul, ol { list-style: none; }
   .person-htl__track {
     padding: 12px 20px 40px;
   }
-  .htl-card {
-    flex: 0 0 300px;
+  .person-htl__track {
+    grid-auto-columns: 300px;
+    padding: 12px 20px 40px;
   }
   .person-cta {
     padding: 80px 20px;
