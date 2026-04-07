@@ -4928,48 +4928,6 @@ ul, ol { list-style: none; }
   padding-bottom: 24px;
 }
 
-/* TI Sub-pages (shared) */
-.ti-sub-hero {
-  padding: 140px 0 80px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-
-.ti-sub-hero__breadcrumb {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.ti-sub-hero__breadcrumb a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.ti-sub-hero__breadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.ti-sub-hero__title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  max-width: 680px;
-}
-
-.ti-sub-hero__subtitle {
-  font-size: clamp(16px, 1.8vw, 19px);
-  line-height: 1.65;
-  color: var(--muted);
-  max-width: 600px;
-  margin-bottom: 36px;
-}
-
 /* TI Page Responsive */
 @media (max-width: 1024px) {
   .ti-hero__layout {
@@ -5076,6 +5034,567 @@ ul, ol { list-style: none; }
 
   .ti-stats__value {
     font-size: 1.75rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TI SUB-PAGES — Restaurant, Retail, Adaptive Reuse
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Sub Hero ─── */
+.ti-sub-hero {
+  padding: 140px 0 80px;
+  background: var(--bg);
+}
+
+.ti-sub-hero__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.ti-sub-hero__content {
+  max-width: 620px;
+}
+
+.ti-sub-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: color 0.2s;
+}
+
+.ti-sub-hero__back:hover {
+  color: var(--ink);
+}
+
+.ti-sub-hero__title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.ti-sub-hero__subtitle {
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+
+.ti-sub-hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ti-sub-hero__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.ti-sub-hero__image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ti-sub-hero__image-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.ti-sub-hero__image-sub {
+  font-size: 13px;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* ─── Scope Cards ─── */
+.ti-sub-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ti-sub-scope-card {
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.ti-sub-scope-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.ti-sub-scope-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.ti-sub-scope-card__desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.ti-sub-scope-card__details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.ti-sub-scope-card__details li {
+  font-size: 13px;
+  color: var(--muted);
+  padding-left: 16px;
+  position: relative;
+}
+
+.ti-sub-scope-card__details li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ─── Timeline ─── */
+.ti-sub-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ti-sub-timeline__step {
+  display: flex;
+  gap: 28px;
+}
+
+.ti-sub-timeline__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+}
+
+.ti-sub-timeline__number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ti-sub-timeline__line {
+  width: 2px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.15);
+  min-height: 40px;
+}
+
+.ti-sub-timeline__content {
+  padding-bottom: 40px;
+}
+
+.ti-sub-timeline__header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.ti-sub-timeline__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ti-sub-timeline__duration {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(108, 99, 255, 0.15);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.ti-sub-timeline__desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 520px;
+}
+
+/* ─── Handle Cards ─── */
+.ti-sub-handle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ti-sub-handle-card {
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: border-color 0.3s;
+}
+
+.ti-sub-handle-card:hover {
+  border-color: var(--accent);
+}
+
+.ti-sub-handle-card__title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.ti-sub-handle-card__desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ─── Cost Cards ─── */
+.ti-sub-cost-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ti-sub-cost-card {
+  padding: 36px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.ti-sub-cost-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.ti-sub-cost-card__level {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.ti-sub-cost-card__range {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.ti-sub-cost-card__scope {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 16px;
+}
+
+.ti-sub-cost-card__includes {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ti-sub-cost-card__timeline {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ti-sub-cost-disclaimer {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 720px;
+  margin: 32px auto 0;
+  text-align: center;
+}
+
+/* ─── Projects ─── */
+.ti-sub-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.ti-sub-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.ti-sub-project:nth-child(even) {
+  direction: rtl;
+}
+
+.ti-sub-project:nth-child(even) > * {
+  direction: ltr;
+}
+
+.ti-sub-project__visual {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ti-sub-project__placeholder {
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ti-sub-project__placeholder-label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.ti-sub-project__meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.ti-sub-project__title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ti-sub-project__desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.ti-sub-project__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ti-sub-project__highlights li {
+  font-size: 14px;
+  color: var(--ink);
+  padding-left: 16px;
+  position: relative;
+}
+
+.ti-sub-project__highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.ti-sub-project__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.ti-sub-project__link:hover {
+  gap: 10px;
+}
+
+/* ─── Challenges ─── */
+.ti-sub-challenges {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ti-sub-challenge {
+  padding: 32px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.3s;
+}
+
+.ti-sub-challenge:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ti-sub-challenge__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.ti-sub-challenge__desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ─── Checklist ─── */
+.ti-sub-checklist-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.ti-sub-checklist__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ti-sub-checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ti-sub-checklist__check {
+  flex-shrink: 0;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.ti-sub-checklist__text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ─── CTA actions ─── */
+.ti-sub-cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── TI Sub Responsive ─── */
+@media (max-width: 1024px) {
+  .ti-sub-hero__layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ti-sub-scope-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ti-sub-handle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ti-sub-cost-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ti-sub-project {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .ti-sub-project:nth-child(even) {
+    direction: ltr;
+  }
+
+  .ti-sub-challenges {
+    grid-template-columns: 1fr;
+  }
+
+  .ti-sub-checklist-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ti-sub-hero {
+    padding: 120px 0 60px;
+  }
+
+  .ti-sub-hero__actions,
+  .ti-sub-cta-actions {
+    flex-direction: column;
+  }
+
+  .ti-sub-hero__actions .btn,
+  .ti-sub-cta-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ti-sub-scope-grid {
+    grid-template-columns: 1fr;
   }
 }
 
