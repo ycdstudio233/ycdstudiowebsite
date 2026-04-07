@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { AnimatedCounter } from "../../components/animated-counter";
@@ -32,7 +33,7 @@ const tiServices = [
     description:
       "Full-service restaurant design from kitchen to front-of-house. We coordinate exhaust hoods, grease traps, health department requirements, ADA restrooms, and guest flow — so your space works on opening day.",
     tags: ["Kitchen layout", "Type I/II hoods", "Health dept.", "FOH/BOH", "Grease traps", "Bar design"],
-    image: null,
+    image: "/projects/piddeg-restaurant/Image-2.webp",
     imageAlt: "Restaurant tenant improvement — kitchen and dining layout",
   },
   {
@@ -42,7 +43,7 @@ const tiServices = [
     description:
       "Storefront refreshes, office build-outs, coworking conversions, and medical/dental clinics. We design interiors that maximize your TI allowance and pass plan check on the first try.",
     tags: ["Office layout", "Storefront", "ADA path-of-travel", "MEP coord.", "Coworking", "Medical/dental"],
-    image: null,
+    image: "/projects/hfa-tenant-improvement/Image-1.webp",
     imageAlt: "Retail tenant improvement — storefront and office layout",
   },
   {
@@ -52,7 +53,7 @@ const tiServices = [
     description:
       "Converting warehouses to restaurants, offices to retail, or residential to commercial. We navigate zoning changes, structural realities, and complex permit pathways that come with changing a building's purpose.",
     tags: ["Change of use", "Zoning review", "Structural", "Historic", "Mixed-use", "Seismic"],
-    image: null,
+    image: "/projects/market-tower/Image-1.webp",
     imageAlt: "Adaptive reuse — warehouse to restaurant conversion",
   },
 ];
@@ -96,7 +97,7 @@ const tiProjects = [
     location: "Bay Area, CA",
     scope: "Full gut renovation — 2,400 SF",
     description: "A modern Turkish restaurant with open kitchen, custom bar, and warm material palette. Full permit coordination with health department and fire marshal.",
-    image: null,
+    image: "/projects/tabya-restaurant/Image-3.webp",
   },
   {
     slug: "piddeg-restaurant",
@@ -105,7 +106,7 @@ const tiProjects = [
     location: "Bay Area, CA",
     scope: "Interior renovation — 1,800 SF",
     description: "Fast-casual concept with efficient kitchen layout, branded interior, and ADA-compliant restrooms. Designed and permitted in under 6 weeks.",
-    image: null,
+    image: "/projects/piddeg-restaurant/Image-4.webp",
   },
   {
     slug: "hfa-tenant-improvement",
@@ -114,7 +115,7 @@ const tiProjects = [
     location: "San Francisco, CA",
     scope: "Office build-out — 3,200 SF",
     description: "Professional office conversion with conference rooms, open workspace, private offices, and full ADA path-of-travel upgrades.",
-    image: null,
+    image: "/projects/hfa-tenant-improvement/Image-1.webp",
   },
   {
     slug: "pier-41-restaurant",
@@ -123,7 +124,7 @@ const tiProjects = [
     location: "San Francisco, CA",
     scope: "Waterfront renovation — 4,100 SF",
     description: "High-profile waterfront dining venue. Complex permit coordination with Port of SF, fire department, and health department.",
-    image: null,
+    image: "/projects/pier-41-restaurant/Image-1.webp",
   },
 ];
 
@@ -249,10 +250,14 @@ export default function TenantImprovementPage() {
             <ScrollReveal delay={0.2}>
               <div className="ti-hero__visual">
                 {/* Placeholder for hero image — replace with actual project photo */}
-                <div className="ti-hero__image-placeholder">
-                  <span className="ti-hero__image-label">Featured TI Project Photo</span>
-                  <span className="ti-hero__image-sub">Replace with actual before/after or completed project image</span>
-                </div>
+                <Image
+                  src="/projects/piddeg-restaurant/Image-2.webp"
+                  alt="PiddeG Restaurant — completed tenant improvement"
+                  width={640}
+                  height={480}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                  priority
+                />
               </div>
             </ScrollReveal>
           </div>
@@ -300,7 +305,7 @@ export default function TenantImprovementPage() {
               >
                 <div className="ti-service__image">
                   {service.image ? (
-                    <img src={service.image} alt={service.imageAlt} />
+                    <Image src={service.image} alt={service.imageAlt} width={600} height={400} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : (
                     <div className="ti-service__image-placeholder">
                       <span>{service.index}</span>
@@ -343,17 +348,11 @@ export default function TenantImprovementPage() {
             <div className="ti-showcase">
               <div className="ti-showcase__item">
                 <div className="ti-showcase__before">
-                  <div className="ti-showcase__placeholder">
-                    <span>Before Photo</span>
-                    <small>Upload existing condition photo</small>
-                  </div>
+                  <Image src="/projects/hfa-tenant-improvement/Image-7.webp" alt="Before — existing condition" width={600} height={400} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   <span className="ti-showcase__label">Before</span>
                 </div>
                 <div className="ti-showcase__after">
-                  <div className="ti-showcase__placeholder">
-                    <span>After Photo</span>
-                    <small>Upload completed project photo</small>
-                  </div>
+                  <Image src="/projects/hfa-tenant-improvement/Image-1.webp" alt="After — completed renovation" width={600} height={400} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   <span className="ti-showcase__label">After</span>
                 </div>
               </div>
@@ -448,7 +447,7 @@ export default function TenantImprovementPage() {
               >
                 <div className="ti-project-row__visual">
                   {project.image ? (
-                    <img src={project.image} alt={project.title} />
+                    <Image src={project.image} alt={project.title} width={200} height={150} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : (
                     <div className="ti-project-row__placeholder">
                       <span>{project.title.charAt(0)}</span>

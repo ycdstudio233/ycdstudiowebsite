@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SectionHeading } from "../../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
 
@@ -312,10 +313,14 @@ export default function AdaptiveReusePage() {
             </div>
             <ScrollReveal delay={0.2}>
               <div className="ti-sub-hero__visual">
-                <div className="ti-sub-hero__image-placeholder">
-                  <span className="ti-sub-hero__image-label">Adaptive Reuse Project Photo</span>
-                  <span className="ti-sub-hero__image-sub">Warehouse to restaurant conversion — before and after</span>
-                </div>
+                <Image
+                  src="/projects/market-tower/Image-1.webp"
+                  alt="Market Tower — facade-led adaptive reuse retrofit"
+                  width={640}
+                  height={480}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                  priority
+                />
               </div>
             </ScrollReveal>
           </div>
@@ -478,10 +483,13 @@ export default function AdaptiveReusePage() {
                   {project.image ? (
                     <img src={project.image} alt={project.title} />
                   ) : (
-                    <div className="ti-sub-project-card__placeholder">
-                      <span>{project.title.charAt(0)}</span>
-                      <small>Project photo coming soon</small>
-                    </div>
+                    <Image
+                      src="/projects/market-tower/Image-3.webp"
+                      alt="Market Tower — facade detail"
+                      width={600}
+                      height={400}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }}
+                    />
                   )}
                 </div>
                 <div className="ti-sub-project-card__body">

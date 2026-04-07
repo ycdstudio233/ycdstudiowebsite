@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SectionHeading } from "../../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
 
@@ -273,15 +274,14 @@ export default function RetailOfficeTIPage() {
 
             <ScrollReveal delay={0.2}>
               <div className="ti-sub-hero__visual">
-                <div className="ti-sub-hero__image-placeholder">
-                  <span className="ti-sub-hero__image-label">
-                    Retail / Office TI Hero Photo
-                  </span>
-                  <span className="ti-sub-hero__image-sub">
-                    Replace with completed office build-out or storefront
-                    renovation image
-                  </span>
-                </div>
+                <Image
+                  src="/projects/hfa-tenant-improvement/Image-1.webp"
+                  alt="Hawaii Fluid Art — completed retail tenant improvement"
+                  width={640}
+                  height={480}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                  priority
+                />
               </div>
             </ScrollReveal>
           </div>
@@ -463,26 +463,11 @@ export default function RetailOfficeTIPage() {
           <ScrollReveal delay={0.1}>
             <div className="ti-sub-featured">
               <div className="ti-sub-featured__gallery">
-                <div className="ti-sub-featured__image-placeholder ti-sub-featured__image-placeholder--large">
-                  <span>HFA Office — Main View</span>
-                  <small>
-                    Replace with primary project photo showing open workspace and
-                    reception area
-                  </small>
-                </div>
+                <Image src="/projects/hfa-tenant-improvement/Image-1.webp" alt="Hawaii Fluid Art — open workspace" width={800} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
                 <div className="ti-sub-featured__image-row">
-                  <div className="ti-sub-featured__image-placeholder">
-                    <span>Conference Room</span>
-                    <small>Replace with conference room photo</small>
-                  </div>
-                  <div className="ti-sub-featured__image-placeholder">
-                    <span>Private Office</span>
-                    <small>Replace with private office photo</small>
-                  </div>
-                  <div className="ti-sub-featured__image-placeholder">
-                    <span>Floor Plan</span>
-                    <small>Replace with architectural floor plan</small>
-                  </div>
+                  <Image src="/projects/hfa-tenant-improvement/Image-5.webp" alt="Hawaii Fluid Art — art studio" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+                  <Image src="/projects/hfa-tenant-improvement/Image-3.webp" alt="Hawaii Fluid Art — workshop area" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+                  <Image src="/projects/hfa-tenant-improvement/Image-7.webp" alt="Hawaii Fluid Art — floor plan" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
                 </div>
               </div>
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SectionHeading } from "../../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
 
@@ -235,24 +236,11 @@ const costRanges = [
 
 const featuredProjects = [
   {
-    slug: "tabya-restaurant",
-    title: "Tabya Restaurant",
-    location: "Bay Area, CA",
-    scope: "Full gut renovation — 2,400 SF",
-    description:
-      "A modern Turkish restaurant with open kitchen, custom bar, and warm material palette. The project required full kitchen exhaust design with rooftop fan installation, a new gravity grease interceptor, health department plan approval, and fire marshal sign-off. Completed permit process in 12 weeks.",
-    highlights: [
-      "Open kitchen with Type I hood system",
-      "Custom bar with draft beer rough-in",
-      "New grease interceptor installation",
-      "Full ADA restroom renovation",
-    ],
-  },
-  {
     slug: "piddeg-restaurant",
     title: "PiddeG Restaurant",
     location: "Bay Area, CA",
     scope: "Interior renovation — 1,800 SF",
+    image: "/projects/piddeg-restaurant/Image-4.webp",
     description:
       "Fast-casual pide (Turkish flatbread) concept with an efficient open kitchen visible to guests. The design centered on a custom stone oven as the focal point, with a streamlined prep-to-serve workflow. Designed and permitted in under 6 weeks — one of our fastest restaurant TI projects.",
     highlights: [
@@ -267,6 +255,7 @@ const featuredProjects = [
     title: "Pier 41 Restaurant",
     location: "San Francisco, CA",
     scope: "Waterfront renovation — 4,100 SF",
+    image: "/projects/pier-41-restaurant/Image-1.webp",
     description:
       "High-profile waterfront dining venue at Fisherman's Wharf. This project involved complex multi-agency coordination: Port of San Francisco (as landlord), SF Building Department, SF Fire Department, and SF Environmental Health. The waterfront location added structural and wind-load considerations for rooftop exhaust equipment.",
     highlights: [
@@ -368,11 +357,15 @@ export default function RestaurantTenantImprovementPage() {
             </div>
             <ScrollReveal delay={0.2}>
               <div className="ti-sub-hero__visual">
-                <div className="ti-sub-hero__image-placeholder">
-                  <span className="ti-sub-hero__image-label">Restaurant Project Photo</span>
-                  <span className="ti-sub-hero__image-sub">
-                    Replace with completed restaurant interior or kitchen layout photo
-                  </span>
+                <div className="ti-sub-hero__image-wrap">
+                  <Image
+                    src="/projects/piddeg-restaurant/Image-2.webp"
+                    alt="PiddeG Restaurant — completed interior with branded wall and dining area"
+                    width={640}
+                    height={480}
+                    style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                    priority
+                  />
                 </div>
               </div>
             </ScrollReveal>
@@ -510,11 +503,21 @@ export default function RestaurantTenantImprovementPage() {
             {featuredProjects.map((project) => (
               <div className="ti-sub-project" key={project.slug}>
                 <div className="ti-sub-project__visual">
-                  <div className="ti-sub-project__placeholder">
-                    <span className="ti-sub-project__placeholder-label">
-                      Replace with {project.title} project photo
-                    </span>
-                  </div>
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={640}
+                      height={480}
+                      style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                    />
+                  ) : (
+                    <div className="ti-sub-project__placeholder">
+                      <span className="ti-sub-project__placeholder-label">
+                        Replace with {project.title} project photo
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="ti-sub-project__body">
                   <div className="ti-sub-project__meta">
