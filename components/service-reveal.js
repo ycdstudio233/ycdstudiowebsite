@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const services = [
   {
     title: "Restaurant & Hospitality",
+    href: "/tenant-improvement/restaurant",
     description:
       "Guest flow, atmosphere, and operational logic — designed to land at once. We handle everything from initial concept through permitting, so your space opens on time and on brand.",
     image: "/projects/lady-bird-boardwalk/Image-4.webp",
@@ -12,6 +14,7 @@ const services = [
   },
   {
     title: "Commercial & Tenant Improvement",
+    href: "/tenant-improvement",
     description:
       "Feasibility-led upgrades, permit-ready drawings, and creative problem-solving for Bay Area commercial spaces. We navigate Title 24, accessibility, and city review so you don't have to.",
     image: "/projects/neighborhood-commons/Image-1.webp",
@@ -19,6 +22,7 @@ const services = [
   },
   {
     title: "Residential",
+    href: "/work",
     description:
       "Homes and remodels shaped around lifestyle, site, and a cleaner line between beautiful ideas and buildable sets. From ADUs to ground-up — designed to feel like you from day one.",
     image: "/projects/sonoma-house/Image-1.webp",
@@ -26,6 +30,7 @@ const services = [
   },
   {
     title: "Adaptive Reuse",
+    href: "/tenant-improvement/adaptive-reuse",
     description:
       "Preserving what works, transforming what doesn't. High-performance retrofits that respect existing structures while achieving contemporary standards for energy, comfort, and presence.",
     image: "/projects/market-tower/Image-1.webp",
@@ -90,6 +95,12 @@ export function ServiceReveal() {
               <span className="service-reveal__tag" key={tag}>{tag}</span>
             ))}
           </div>
+          <Link href={services[active].href} className="service-reveal__link">
+            Learn more
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+              <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
         </div>
       </div>
     </div>
