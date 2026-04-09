@@ -5,13 +5,13 @@ import { WorkFilter } from "../../components/work-filter";
 import { allProjects } from "../../lib/site-data";
 
 export const metadata = {
-  title: "Work",
+  title: "YCD Studio Portfolio — Bay Area Architecture & Design Work",
   description:
-    "Selected YCD Studio projects across hospitality, retail, residential, and adaptive reuse architecture in the San Francisco Bay Area.",
+    "Browse YCD Studio's design portfolio across the San Francisco Bay Area, featuring restaurant tenant improvements, retail, and modern residential spaces.",
   openGraph: {
-    title: "Work — YCD Studio Portfolio",
+    title: "YCD Studio Portfolio — Bay Area Architecture & Design Work",
     description:
-      "Selected projects across hospitality, retail, residential, and adaptive reuse architecture in the San Francisco Bay Area.",
+      "Browse YCD Studio's design portfolio across the San Francisco Bay Area, featuring restaurant tenant improvements, retail, and modern residential spaces.",
   },
 };
 

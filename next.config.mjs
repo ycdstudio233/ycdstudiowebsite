@@ -345,7 +345,91 @@ const nextConfig = {
         permanent: true,
       },
 
-      // ── WordPress taxonomy pages (low value but avoid 404s) ──
+      // ── Portfolio tag pages (indexed in Search Console) ──
+      {
+        source: "/portfolio-tags/residential",
+        destination: "/residential",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/residential/",
+        destination: "/residential",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/multi-family",
+        destination: "/multi-family",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/multi-family/",
+        destination: "/multi-family",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/restaurant",
+        destination: "/hospitality",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/restaurant/",
+        destination: "/hospitality",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/hospitality",
+        destination: "/hospitality",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/hospitality/",
+        destination: "/hospitality",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/tenant-improvement",
+        destination: "/tenant-improvement",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/tenant-improvement/",
+        destination: "/tenant-improvement",
+        permanent: true,
+      },
+      {
+        source: "/portfolio/expanding-digital-boundaries",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/portfolio/expanding-digital-boundaries/",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/portfolio/the-endless-pattern-of-innovation",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/portfolio/the-endless-pattern-of-innovation/",
+        destination: "/work",
+        permanent: true,
+      },
+
+      // ── Paginated archives ──
+      {
+        source: "/works/page/:num",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/portfolio/page/:num",
+        destination: "/work",
+        permanent: true,
+      },
+
+      // ── WordPress taxonomy pages (catch-all) ──
       {
         source: "/category/:slug*",
         destination: "/blog",
@@ -359,6 +443,16 @@ const nextConfig = {
       {
         source: "/tag/:slug*",
         destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-tags/:slug*",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-categories/:slug*",
+        destination: "/work",
         permanent: true,
       },
     ];

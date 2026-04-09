@@ -8,13 +8,13 @@ const blogPosts = [...rawPosts].sort(
 );
 
 export const metadata = {
-  title: "Journal — Field Notes on Building Better",
+  title: "Architecture And Design Blog — Expert Insights By YCD Studio",
   description:
-    "Insights on tenant improvements, permitting, ADUs, and residential design across the San Francisco Bay Area — from the YCD Studio team.",
+    "Read YCD Studio's blog for insights on restaurant tenant improvement, commercial renovations, permitting, and retail and hospitality design trends.",
   openGraph: {
-    title: "Journal — YCD Studio",
+    title: "Architecture And Design Blog — Expert Insights By YCD Studio",
     description:
-      "Insights on tenant improvements, permitting, ADUs, and residential design across the San Francisco Bay Area.",
+      "Read YCD Studio's blog for insights on restaurant tenant improvement, commercial renovations, permitting, and retail and hospitality design trends.",
   },
 };
 

@@ -5,13 +5,13 @@ import { ContactForm } from "../../components/contact-form";
 import { contactOptions } from "../../lib/site-data";
 
 export const metadata = {
-  title: "Contact",
+  title: "Contact YCD Studio — Top Bay Area Architecture & Design Firm",
   description:
-    "Start a project conversation with YCD Studio. Architecture, interiors, and tenant improvement design in the San Francisco Bay Area.",
+    "Contact YCD Studio to discuss restaurant tenant improvement, commercial renovations, hospitality spaces, or select residential projects in the Bay Area today.",
   openGraph: {
-    title: "Contact — YCD Studio",
+    title: "Contact YCD Studio — Top Bay Area Architecture & Design Firm",
     description:
-      "Start a project conversation with YCD Studio. Architecture, interiors, and tenant improvement design in the San Francisco Bay Area.",
+      "Contact YCD Studio to discuss restaurant tenant improvement, commercial renovations, hospitality spaces, or select residential projects in the Bay Area today.",
   },
 };
 

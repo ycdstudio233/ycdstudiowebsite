@@ -6,15 +6,15 @@ import { AnimatedCounter } from "../../components/animated-counter";
 import { FaqAccordion } from "../../components/faq-accordion";
 
 export const metadata = {
-  title: "Tenant Improvement Architect — Bay Area TI Design & Permits | YCD Studio",
+  title: "Bay Area Tenant Improvement Architect & TI Permits",
   description:
-    "Bay Area tenant improvement architecture — restaurant TI, retail build-outs, office renovations, ADA compliance, and permit-ready drawings. YCD Studio designs and permits commercial interior projects across San Francisco, Oakland, and the greater Bay Area.",
+    "Tenant improvement architect in the San Francisco Bay Area providing design, permitting, and build-ready drawings for restaurants, retail, clinics, and offices.",
   keywords:
     "tenant improvement architect, Bay Area TI, San Francisco tenant improvement, restaurant tenant improvement, commercial renovation architect, ADA compliance architect, permit drawings Bay Area, restaurant design Bay Area, retail build-out San Francisco",
   openGraph: {
-    title: "Tenant Improvement Architecture — YCD Studio",
+    title: "Bay Area Tenant Improvement Architect & TI Permits — YCD Studio",
     description:
-      "Commercial interior renovation, restaurant TI, and permit-ready design across the San Francisco Bay Area.",
+      "Tenant improvement architect in the San Francisco Bay Area providing design, permitting, and build-ready drawings for restaurants, retail, clinics, and offices.",
   },
 };
 

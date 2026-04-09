@@ -14,11 +14,11 @@ export async function generateMetadata({ params }) {
   if (!post) return {};
 
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: post.seoTitle || post.title,
+    description: post.seoDescription || post.excerpt,
     openGraph: {
-      title: `${post.title} | YCD Studio`,
-      description: post.excerpt,
+      title: `${post.seoTitle || post.title} | YCD Studio`,
+      description: post.seoDescription || post.excerpt,
       ...(post.heroImage && { images: [{ url: post.heroImage, alt: post.title }] }),
     },
   };

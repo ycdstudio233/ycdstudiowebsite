@@ -13,13 +13,13 @@ import {
 } from "../../lib/site-data";
 
 export const metadata = {
-  title: "Studio",
+  title: "About YCD Studio — Bay Area Architects and Designers",
   description:
-    "Meet YCD Studio — a San Francisco Bay Area architecture firm built on listening, precision, and follow-through. Restaurant TI, commercial design, residential, and adaptive reuse.",
+    "YCD Studio is a San Francisco Bay Area design firm specializing in expert restaurant tenant improvements and custom commercial renovations for hospitality.",
   openGraph: {
-    title: "Studio — About YCD Studio",
+    title: "About YCD Studio — Bay Area Architects and Designers",
     description:
-      "A San Francisco Bay Area architecture firm built on listening, precision, and follow-through. Restaurant TI, commercial design, residential, and adaptive reuse.",
+      "YCD Studio is a San Francisco Bay Area design firm specializing in expert restaurant tenant improvements and custom commercial renovations for hospitality.",
   },
 };
 
