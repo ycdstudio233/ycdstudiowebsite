@@ -134,7 +134,7 @@ const featuredProjects = [
     image: "/projects/lady-bird-boardwalk/Image-1.webp",
   },
   {
-    slug: "hawaii-fluid-art",
+    slug: "hfa-tenant-improvement",
     title: "Hawaii Fluid Art",
     type: "Retail / Creative Commercial",
     location: "San Francisco, CA",

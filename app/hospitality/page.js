@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
+import { RotatingHeroImage } from "../../components/rotating-hero-image";
 
 export const metadata = {
   title:
@@ -143,6 +144,51 @@ const costRanges = [
 
 const featuredProjects = [
   {
+    slug: "hampton-by-hilton-ordu",
+    title: "Hampton by Hilton Ordu",
+    location: "Ordu, Turkey",
+    scope: "Full-service hotel — guest rooms, lobby, restaurant, pool",
+    image: "/projects/hampton-by-hilton-ordu/Image-1.webp",
+    description:
+      "A 35,000 sq ft Hampton by Hilton hotel on the Black Sea coast — designed within Hilton's brand framework while introducing local material and spatial character. Guest rooms, ground-floor restaurant, outdoor pool, lobby lounge, and bar coordinated as one cohesive guest experience from arrival to departure.",
+    highlights: [
+      "Branded hotel meeting Hilton design standards",
+      "Guest rooms, lobby, restaurant, lounge, and bar",
+      "Outdoor pool integrated with dining and lounge",
+      "Coastal context with regional material identity",
+    ],
+  },
+  {
+    slug: "fatsa-ilica",
+    title: "Fatsa Ilica Hotel",
+    location: "Fatsa, Turkey",
+    scope: "Boutique hotel — marble reception, valley setting",
+    image: "/projects/fatsa-ilica/Image-1.webp",
+    description:
+      "A 28,000 sq ft mountain valley hotel with marble reception, warm guest rooms, and a deep connection to its forested riverside setting. Lobby, lounge, and dining spaces are designed as extensions of the landscape, with natural materials and generous glazing throughout.",
+    highlights: [
+      "Boutique hotel in dramatic valley setting",
+      "Marble reception with geometric inlay",
+      "Guest rooms framing the forested landscape",
+      "Public spaces designed as landscape extensions",
+    ],
+  },
+  {
+    slug: "pier-41-restaurant",
+    title: "Pier 41 — Cousins Maine Lobster",
+    location: "San Francisco, CA",
+    scope: "Waterfront restaurant — multi-agency permit coordination",
+    image: "/projects/pier-41-restaurant/Image-1.webp",
+    description:
+      "High-profile waterfront tenant improvement at Fisherman's Wharf requiring coordination with the Port of San Francisco, SF Building Department, Fire Department, and Environmental Health. The waterfront location added structural and wind-load considerations for all rooftop equipment.",
+    highlights: [
+      "Port of SF landlord coordination",
+      "Multi-agency permit management",
+      "Wind-rated rooftop exhaust systems",
+      "High-occupancy waterfront dining",
+    ],
+  },
+  {
     slug: "piddeg-restaurant",
     title: "PiddeG Restaurant",
     location: "Bay Area, CA",
@@ -155,36 +201,6 @@ const featuredProjects = [
       "Open kitchen with guest visibility",
       "Counter-service FOH design",
       "6-week design-to-permit timeline",
-    ],
-  },
-  {
-    slug: "pier-41-cousins-maine-lobster",
-    title: "Pier 41 Cousins Maine Lobster",
-    location: "San Francisco, CA",
-    scope: "Waterfront restaurant — multi-agency permit coordination",
-    image: "/projects/pier-41-restaurant/Image-1.webp",
-    description:
-      "High-profile waterfront dining venue at Fisherman's Wharf requiring coordination with the Port of San Francisco, SF Building Department, Fire Department, and Environmental Health. The waterfront location added structural and wind-load considerations for all rooftop equipment.",
-    highlights: [
-      "Port of SF landlord coordination",
-      "Multi-agency permit management",
-      "Wind-rated rooftop exhaust systems",
-      "High-occupancy waterfront dining",
-    ],
-  },
-  {
-    slug: "tabya-restaurant",
-    title: "Tabya Restaurant",
-    location: "Bay Area, CA",
-    scope: "Full-service restaurant with outdoor dining",
-    image: "/projects/tabya-restaurant/Image-1.webp",
-    description:
-      "Full-service Mediterranean restaurant featuring a retractable glass roof over the dining room, stone facade exterior, and a kitchen designed for high-volume service. Indoor-outdoor flow was central to the concept.",
-    highlights: [
-      "Retractable glass roof dining area",
-      "Stone facade exterior design",
-      "High-volume kitchen layout",
-      "Indoor-outdoor guest flow",
     ],
   },
 ];
@@ -233,13 +249,16 @@ export default function HospitalityPage() {
             </div>
             <ScrollReveal delay={0.2}>
               <div className="ti-sub-hero__visual">
-                <Image
-                  src="/projects/piddeg-restaurant/Image-2.webp"
-                  alt="PiddeG Restaurant — interior dining space with green accent wall and warm lighting"
-                  width={720}
-                  height={540}
-                  priority
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                <RotatingHeroImage
+                  interval={4500}
+                  images={[
+                    { src: "/projects/fatsa-ilica/Image-1.webp", alt: "Fatsa Ilica Hotel — exterior in mountain valley setting" },
+                    { src: "/projects/hampton-by-hilton-ordu/Image-1.webp", alt: "Hampton by Hilton Ordu — exterior with pool and restaurant at night" },
+                    { src: "/projects/fatsa-ilica/Image-2.webp", alt: "Fatsa Ilica Hotel — marble lobby with globe pendants" },
+                    { src: "/projects/hampton-by-hilton-ordu/Image-2.webp", alt: "Hampton by Hilton Ordu — lounge dining area overlooking pool" },
+                    { src: "/projects/piddeg-restaurant/Image-2.webp", alt: "PiddeG Restaurant — interior dining space with green accent wall" },
+                    { src: "/projects/tabya-restaurant/Image-1.webp", alt: "Tabya Restaurant — interior dining with retractable roof" },
+                  ]}
                 />
               </div>
             </ScrollReveal>

@@ -62,7 +62,7 @@ const principles = [
 
 const featuredProjects = [
   {
-    slug: "cathedral-of-st-mary",
+    slug: "st-marys-cathedral",
     title: "Cathedral of St. Mary",
     type: "Cathedral",
     image: "/projects/st-marys-cathedral/Image-1.webp",
@@ -70,7 +70,7 @@ const featuredProjects = [
       "A landmark of mid-century sacred architecture. Our work on the Cathedral of St. Mary engages with one of San Francisco's most iconic worship spaces — a building where structure, light, and liturgical purpose are inseparable.",
   },
   {
-    slug: "holy-cross-church",
+    slug: "holy-cross",
     title: "Holy Cross Church",
     type: "Church",
     image: "/projects/holy-cross/Image-1.webp",
