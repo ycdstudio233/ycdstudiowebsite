@@ -245,7 +245,7 @@ export default function ResidentialPage() {
                   width={720}
                   height={540}
                   priority
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                  style={{ width: "100%", height: "100%", borderRadius: "16px", objectFit: "cover" }}
                 />
               </div>
             </ScrollReveal>
@@ -312,7 +312,7 @@ export default function ResidentialPage() {
       </section>
 
       {/* ── Cost Guide ── */}
-      <section className="section" id="cost">
+      <section className="section section--dark" id="cost">
         <div className="container">
           <ScrollReveal>
             <SectionHeading
