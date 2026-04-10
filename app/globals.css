@@ -2411,15 +2411,15 @@ ul, ol { list-style: none; }
 
 /* Center bold segment */
 .cursor-crosshair__v {
-  top: -8px;
-  height: 16px;
+  top: -10px;
+  height: 20px;
   background: var(--ink);
 }
 
 /* Extending thin lines */
 .cursor-crosshair__v::before {
   bottom: 100%;
-  height: 12px;
+  height: 14px;
   opacity: 0.3;
   width: 1px;
   left: 0.5px;
@@ -2427,7 +2427,7 @@ ul, ol { list-style: none; }
 
 .cursor-crosshair__v::after {
   top: 100%;
-  height: 12px;
+  height: 14px;
   opacity: 0.3;
   width: 1px;
   left: 0.5px;
@@ -2453,15 +2453,15 @@ ul, ol { list-style: none; }
 
 /* Center bold segment */
 .cursor-crosshair__h {
-  left: -8px;
-  width: 16px;
+  left: -10px;
+  width: 20px;
   background: var(--ink);
 }
 
 /* Extending thin lines */
 .cursor-crosshair__h::before {
   right: 100%;
-  width: 12px;
+  width: 14px;
   opacity: 0.3;
   height: 1px;
   top: 0.5px;
@@ -2469,7 +2469,7 @@ ul, ol { list-style: none; }
 
 .cursor-crosshair__h::after {
   left: 100%;
-  width: 12px;
+  width: 14px;
   opacity: 0.3;
   height: 1px;
   top: 0.5px;
@@ -2487,18 +2487,34 @@ ul, ol { list-style: none; }
   transition: transform 0.3s var(--ease), background 0.3s;
 }
 
-/* Hover state — center + turns purple */
+/* Hover state — only center + turns purple, extending lines stay */
 .cursor-crosshair--hover .cursor-crosshair__v {
   background: var(--accent);
+}
+.cursor-crosshair--hover .cursor-crosshair__v::before,
+.cursor-crosshair--hover .cursor-crosshair__v::after {
+  background: var(--ink);
 }
 
 .cursor-crosshair--hover .cursor-crosshair__h {
   background: var(--accent);
 }
+.cursor-crosshair--hover .cursor-crosshair__h::before,
+.cursor-crosshair--hover .cursor-crosshair__h::after {
+  background: var(--ink);
+}
 
 .cursor-crosshair--hover .cursor-crosshair__dot {
   background: var(--accent);
   transform: scale(1.5);
+}
+
+/* Light hover — extending lines stay white */
+.cursor-crosshair--light.cursor-crosshair--hover .cursor-crosshair__v::before,
+.cursor-crosshair--light.cursor-crosshair--hover .cursor-crosshair__v::after,
+.cursor-crosshair--light.cursor-crosshair--hover .cursor-crosshair__h::before,
+.cursor-crosshair--light.cursor-crosshair--hover .cursor-crosshair__h::after {
+  background: var(--ink-inverse);
 }
 
 /* Click state — shrink */
@@ -2516,8 +2532,6 @@ ul, ol { list-style: none; }
   background: var(--ink-inverse);
 }
 
-.cursor-crosshair--light.cursor-crosshair--hover .cursor-crosshair__v,
-.cursor-crosshair--light.cursor-crosshair--hover .cursor-crosshair__h,
 .cursor-crosshair--light.cursor-crosshair--hover .cursor-crosshair__dot {
   background: var(--accent);
 }
