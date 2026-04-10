@@ -170,7 +170,7 @@ const allHeroProjects = [
     title: "St. Mary's Church",
     category: "Sacred",
     location: "Grand Forks, ND",
-    image: "/projects/st-marys-grand-forks/Image-8.webp",
+    image: "/projects/st-marys-grand-forks/Image-9.webp",
     gradient: "linear-gradient(135deg, #1a1a2e 0%, #2a2a40 50%, #3a3a58 100%)",
   },
 ];
