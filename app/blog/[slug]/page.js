@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ScrollReveal } from "../../../components/scroll-reveal";
+import { YCDLogo } from "../../../components/ycd-logo";
 import { blogPosts, getBlogPost, getAllSlugs } from "../../../lib/blog-data";
 
 export function generateStaticParams() {
@@ -194,7 +195,9 @@ export default async function BlogPostPage({ params }) {
                   <div className="blog-article__sidebar-sticky">
                     {/* Author */}
                     <div className="blog-article__author-card">
-                      <div className="blog-article__logo-mark" aria-hidden="true" />
+                      <div className="blog-article__logo-mark" aria-hidden="true">
+                        <YCDLogo size={44} />
+                      </div>
                       <div>
                         <div className="blog-article__author-name">YCD Studio</div>
                         <div className="blog-article__author-role">Bay Area Architecture & Design</div>

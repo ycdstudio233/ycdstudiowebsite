@@ -115,11 +115,7 @@ ul, ol { list-style: none; }
 
 .header--transparent .header__logo {
   background: rgba(255,255,255,0.15);
-}
-
-.header--transparent .header__logo::before,
-.header--transparent .header__logo::after {
-  background: #fff;
+  color: #fff;
 }
 
 .header--transparent .header__menu-toggle span,
@@ -165,24 +161,12 @@ ul, ol { list-style: none; }
   position: relative;
   overflow: hidden;
   transition: transform var(--transition-fast);
+  color: var(--bg);
 }
 
 .header__brand:hover .header__logo {
   transform: rotate(-4deg) scale(1.05);
 }
-
-.header__logo::before,
-.header__logo::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 18px;
-  background: var(--bg);
-  border-radius: 1px;
-}
-
-.header__logo::before { transform: rotate(25deg); left: 12px; }
-.header__logo::after { transform: rotate(-25deg); right: 12px; }
 
 .header__nav {
   display: flex;
@@ -2905,23 +2889,11 @@ ul, ol { list-style: none; }
   height: 44px;
   background: var(--ink);
   border-radius: 10px;
-  position: relative;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
+  color: #fff;
 }
-
-.blog-article__logo-mark::before,
-.blog-article__logo-mark::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 60%;
-  top: 20%;
-  background: #fff;
-  border-radius: 1px;
-}
-
-.blog-article__logo-mark::before { transform: rotate(25deg); left: 14px; }
-.blog-article__logo-mark::after { transform: rotate(-25deg); right: 14px; }
 
 .blog-article__author-name {
   font-size: 14px;

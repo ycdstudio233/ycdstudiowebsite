@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { navLinks } from "../lib/site-data";
+import { YCDLogo } from "./ycd-logo";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +35,9 @@ export function SiteHeader() {
       <header className={headerClass}>
         <div className="header__inner">
           <Link className="header__brand" href="/" onClick={() => setMenuOpen(false)}>
-            <span className="header__logo" aria-hidden="true" />
+            <span className="header__logo" aria-hidden="true">
+              <YCDLogo size={36} />
+            </span>
             YCD Studio
           </Link>
 
