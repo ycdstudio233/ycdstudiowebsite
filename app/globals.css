@@ -978,15 +978,28 @@ ul, ol { list-style: none; }
 .section--dark .ti-sub-scope-card__title,
 .section--dark .ti-sub-scope-card__desc,
 .section--dark .ti-sub-cost-card__scope,
+.section--dark .ti-sub-handle-card__title,
 .section--dark .blog-card__title,
 .section--dark .section__title {
   color: var(--ink-inverse);
 }
 
+.section--dark .ti-sub-project__meta,
+.section--dark .ti-sub-project__meta span,
+.section--dark .ti-sub-scope-card__details li,
+.section--dark .ti-sub-handle-card__desc {
+  color: var(--muted-light);
+}
+
 .section--dark .ti-sub-scope-card,
+.section--dark .ti-sub-handle-card,
 .section--dark .blog-card {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+.section--dark .ti-sub-scope-card__details li::before {
+  background: var(--accent);
 }
 
 .section--dark .section__eyebrow,
@@ -2657,74 +2670,6 @@ ul, ol { list-style: none; }
 
 /* ===== Blog ===== */
 
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 32px;
-  margin-top: 56px;
-}
-
-.blog-card {
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  transition: var(--transition);
-  background: var(--surface);
-}
-
-.blog-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 8px 32px rgba(87, 0, 239, 0.06);
-  transform: translateY(-2px);
-}
-
-.blog-card__category {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.blog-card__title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.35;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-
-.blog-card__date {
-  font-size: 13px;
-  color: var(--muted-light);
-  margin-bottom: 16px;
-}
-
-.blog-card__excerpt {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--muted);
-  flex: 1;
-  margin-bottom: 20px;
-}
-
-.blog-card__link {
-  font-size: 14px;
-  font-weight: 550;
-  color: var(--accent);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: var(--transition-fast);
-}
-
-.blog-card__link:hover {
-  gap: 10px;
-}
-
 /* ═══════════════════════════════════════════════════════════
    BLOG ARTICLE — Magazine-style layout
    ═══════════════════════════════════════════════════════════ */
@@ -3135,21 +3080,6 @@ ul, ol { list-style: none; }
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .blog-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .blog-card {
-    padding: 24px;
-  }
-
-  .blog-post__content h2 {
-    margin-top: 36px;
-  }
-}
-
 /* ═══════════════════════════════════════════════════════════
    BLOG INDEX — Magazine layout (lead, featured, archive)
    ═══════════════════════════════════════════════════════════ */
@@ -3529,7 +3459,9 @@ ul, ol { list-style: none; }
   .blog-lead-v2__content {
     padding: 32px;
   }
+}
 
+@media (max-width: 768px) {
   .blog-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -6334,13 +6266,13 @@ ul, ol { list-style: none; }
 .ti-sub-cost-card__timeline {
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .ti-sub-cost-disclaimer {
   font-size: 13px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.55);
   max-width: 720px;
   margin: 32px auto 0;
   text-align: center;
@@ -6480,7 +6412,7 @@ ul, ol { list-style: none; }
 .ti-sub-challenge__desc {
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ─── Checklist ─── */
@@ -6882,6 +6814,10 @@ ul, ol { list-style: none; }
 
 /* ─── TI Sub Responsive ─── */
 @media (max-width: 1024px) {
+  .ti-sub-section {
+    padding: 80px 0;
+  }
+
   .ti-sub-hero__layout {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -6933,6 +6869,10 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 768px) {
+  .ti-sub-section {
+    padding: 64px 0;
+  }
+
   .ti-sub-hero {
     padding: 64px 0 48px;
   }
@@ -6950,6 +6890,24 @@ ul, ol { list-style: none; }
 
   .ti-sub-scope-grid {
     grid-template-columns: 1fr;
+  }
+
+  .closing {
+    padding: 80px 0;
+  }
+
+  .ti-sub-timeline__marker {
+    min-width: 36px;
+  }
+
+  .ti-sub-timeline__number {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .ti-sub-timeline__step {
+    gap: 16px;
   }
 }
 
