@@ -5916,6 +5916,7 @@ ul, ol { list-style: none; }
 
 .ti-sub-hero__content {
   max-width: 620px;
+  min-width: 0;
 }
 
 .ti-sub-hero__back {
@@ -6073,6 +6074,21 @@ ul, ol { list-style: none; }
   line-height: 1.7;
   color: var(--muted);
   margin-bottom: 20px;
+}
+
+.ti-sub-scope-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ti-sub-scope-card__tag {
+  font-size: 0.8125rem;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  color: var(--muted);
 }
 
 .ti-sub-scope-card__details {
@@ -6819,7 +6835,7 @@ ul, ol { list-style: none; }
   }
 
   .ti-sub-hero__layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
 
