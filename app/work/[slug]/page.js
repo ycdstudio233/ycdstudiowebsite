@@ -193,19 +193,23 @@ export default async function ProjectPage({ params }) {
           </ScrollReveal>
         )}
 
-        {/* Gallery — alternating full + pairs, skip hero image (index 0) */}
+        {/* Gallery — full-width + asymmetric pairs, skip hero (index 0) */}
         <div className="project-detail__gallery-flow">
           {(() => {
             const items = project.gallery?.slice(1) || [];
             const rows = [];
             let i = 0;
+            let pairCount = 0;
             while (i < items.length) {
               if (items[i].wide) {
                 rows.push({ type: "full", items: [items[i]] });
                 i++;
               } else if (i + 1 < items.length && !items[i + 1].wide) {
-                rows.push({ type: "pair", items: [items[i], items[i + 1]] });
+                // Alternate asymmetric direction
+                const type = pairCount % 2 === 0 ? "asym" : "asym-rev";
+                rows.push({ type, items: [items[i], items[i + 1]] });
                 i += 2;
+                pairCount++;
               } else {
                 rows.push({ type: "full", items: [items[i]] });
                 i++;
@@ -225,17 +229,23 @@ export default async function ProjectPage({ params }) {
                     </div>
                   </div>
                 ) : (
-                  <div className="gallery-row gallery-row--pair">
-                    {row.items.map((item) => (
-                      <div className="gallery-item gallery-item--half" key={item.label}>
-                        <img
-                          src={item.image}
-                          alt={item.label}
-                          className="gallery-item__img"
-                        />
-                        <span className="gallery-item__label">{item.label}</span>
-                      </div>
-                    ))}
+                  <div className={`gallery-row gallery-row--${row.type}`}>
+                    <div className={`gallery-item gallery-item--${row.type === "asym" ? "major" : "minor"}`}>
+                      <img
+                        src={row.items[0].image}
+                        alt={row.items[0].label}
+                        className="gallery-item__img"
+                      />
+                      <span className="gallery-item__label">{row.items[0].label}</span>
+                    </div>
+                    <div className={`gallery-item gallery-item--${row.type === "asym" ? "minor" : "major"}`}>
+                      <img
+                        src={row.items[1].image}
+                        alt={row.items[1].label}
+                        className="gallery-item__img"
+                      />
+                      <span className="gallery-item__label">{row.items[1].label}</span>
+                    </div>
                   </div>
                 )}
               </ScrollReveal>

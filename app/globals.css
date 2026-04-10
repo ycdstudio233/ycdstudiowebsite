@@ -2033,6 +2033,19 @@ ul, ol { list-style: none; }
   gap: 16px;
 }
 
+/* Asymmetric pairs — large landscape + smaller portrait, alternating */
+.gallery-row--asym {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 16px;
+}
+
+.gallery-row--asym-rev {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 16px;
+}
+
 .gallery-item {
   position: relative;
   border-radius: 12px;
@@ -2046,6 +2059,17 @@ ul, ol { list-style: none; }
 
 .gallery-item--half {
   aspect-ratio: 4 / 3;
+}
+
+/* Major image — generous landscape */
+.gallery-item--major {
+  aspect-ratio: 4 / 3;
+}
+
+/* Minor image — matches height of major via grid stretch */
+.gallery-item--minor {
+  aspect-ratio: auto;
+  min-height: 0;
 }
 
 .gallery-item__img {
@@ -2685,6 +2709,9 @@ ul, ol { list-style: none; }
   .footer__bottom { flex-direction: column; gap: 16px; text-align: center; }
   .cta__title { font-size: clamp(2rem, 6vw, 3rem); }
   .gallery-row--pair { grid-template-columns: 1fr; }
+  .gallery-row--asym,
+  .gallery-row--asym-rev { grid-template-columns: 1fr; }
+  .gallery-item--minor { aspect-ratio: 4 / 3; }
   .gallery-item--full { aspect-ratio: 4 / 3; }
   .project-detail__specs { grid-template-columns: repeat(2, 1fr); }
   .project-nav { grid-template-columns: 1fr; }
