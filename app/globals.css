@@ -35,7 +35,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Custom YCD crosshair cursors (base64 embedded) ── */
+/* ── Custom YCD crosshair cursors (32×32 base64 embedded) ── */
 body {
   min-height: 100vh;
   color: var(--ink);
@@ -45,26 +45,26 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkklEQVR4nO3XQQqDQAxA0WwzOUvv6NG8WcssCt0NrdXf0P8g4MLFhK+IESeqqtuc6KpcAGYBmgVoFqBZgGYBWusCmbmNMe5z5nV0ky4AswDNArSfL5CZ22L2lwX21f1x9Gv57jwP962pD8/Rf4H2j9DfvsQrLkCzAM0CtPYF2v/UTy5AswDNAjQL0CxAswDtigIPgC2g6fWXd8YAAAAASUVORK5CYII=") 24 24, crosshair;
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcUlEQVR4nO2WwQrAIAxDe+77Fv/BT/L/Lxs9CDvImNukBxMIeCgaSFtj9gFACVoWkABkAWrCsu8YAtXdj2CcJcBkwUoAdcB2acI2qpkaJW7YH5rlk7stXUC6BW+hRYRWMcmfUUCZEGVCds6EAQngBwtO6jlhQUREO8MAAAAASUVORK5CYII=") 16 16, crosshair;
 }
 
 /* Purple center + on clickable elements */
 a, button, [role="button"], input[type="submit"],
 select, label[for], .btn, [onclick],
 summary, [tabindex]:not([tabindex="-1"]) {
-  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAlUlEQVR4nO3Xyw2DQAwAUd9dS+rZdihtO6IEEEoOewpK+EyszJN847DWsEJEXCgzH9tEVekCMAvQLECzAM0CNAvQShdoMU8t5uU1U1TTXABmAZoFaD9foD0P+G76sEDfez6Ofi0/neFwp0x+eY76C5R/hf72Eu9xAZoFaBaglS9Q/qd+4wI0C9AsQLMAzQI0C9DuKLACNt9IRI45BisAAAAASUVORK5CYII=") 24 24, pointer;
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAdklEQVR4nO1WQQqAMAzLPW/ZH/oK+w1/vicohQkDQZyKPSyBwA5jBJJ2AV6AZAkiC5QAygIqhGXeMXRUc9St0SQAsuCHwFnPBXU9QtjOpztDo8QLdmkf4p23kS4g3YKn0CJyrWIkf0YBdUKqE3LmThiQAH5gwQ7EJs+5jVJzIwAAAABJRU5ErkJggg==") 16 16, pointer;
 }
 
 /* Invert cursor on dark backgrounds */
 .section--dark, .hero, .mobile-nav, .header--transparent {
-  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAiElEQVR4nO3XywmEQBAG4c7JBA1tMvsX8bCeVvBV21gf9M3DNKXIVN0oybRMdRUXgFmAZgGaBWgWoFmA1rpAkjlfc3UTF4BZgGYB2t8XyHrAXzM2C4y95+vs3/LAXG06Mv0XaP8KvfYj3uMCNAvQLEBrX6D9pX7hAjQL0CxAswDNAjQL0J4o8AEL3YIy/fwozgAAAABJRU5ErkJggg==") 24 24, crosshair;
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAaUlEQVR4nO2WQQqAMAwE90/9QJ7U/19GclJEFFsxh+5AbiUsbJKuNAHQslQFFoAtwEPY1l1DINgJC5At+GHg4lT9MIT96s2rVeK+RnnsrXIB5RaM4kOETzHFn1HiTIgzIStnwsQC+MCCDUcZRAuTD+ZxAAAAAElFTkSuQmCC") 16 16, crosshair;
 }
 
 .section--dark a, .section--dark button, .section--dark .btn,
 .hero a, .hero button, .hero .btn,
 .mobile-nav a, .mobile-nav button,
 .header--transparent a, .header--transparent button {
-  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkklEQVR4nO3XwQ2DMAxAUe/EMFmH0dgoI7hC9JBTUSnwa/Gf5BuHWJ8IEXGhzJzWiarSBWAWoFmAZgGaBWgWoJUu0KLPLXq+Z45qmgvALECzAO3vC7TtgJ9mGRZY9p6PX7+W385wuFMmD56j/gLlX6HHXuI9LkCzAM0CtPIFyv/Ur1yAZgGaBWgWoFmAZgHaHQVeLnuLM1JxoSEAAAAASUVORK5CYII=") 24 24, pointer;
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAdElEQVR4nO1WQQrAIAzLn/xAX7F+Yz/3CRkFB8Jg6DbWgwkEPIgEktYAL0CyBJEFSgBlARXCsu4YOqo5KhtNAiALfgic9dxQ9zOE7Xy5MzVKvGGX9imOvI10AekWPIUWkWsVI/kzCqgTUp2QK3fCgATwAwsOA7OfWNtoKxsAAAAASUVORK5CYII=") 16 16, pointer;
 }
 
 a { color: inherit; text-decoration: none; }
