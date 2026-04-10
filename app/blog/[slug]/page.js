@@ -170,7 +170,7 @@ export default async function BlogPostPage({ params }) {
           <div className="container">
             <div className="blog-article__grid">
               {/* Main Content */}
-              <ScrollReveal delay={0.2}>
+              <ScrollReveal delay={0.2} threshold={0}>
                 <div className="blog-article__content">
                   {post.content.map((block, index) => (
                     <ContentBlock key={index} block={block} />
