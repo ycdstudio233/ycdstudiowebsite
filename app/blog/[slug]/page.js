@@ -196,7 +196,7 @@ export default async function BlogPostPage({ params }) {
                     {/* Author */}
                     <div className="blog-article__author-card">
                       <div className="blog-article__logo-mark" aria-hidden="true">
-                        <YCDLogo size={44} />
+                        <YCDLogo size={30} />
                       </div>
                       <div>
                         <div className="blog-article__author-name">YCD Studio</div>

@@ -35,6 +35,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Custom YCD crosshair cursors ── */
 body {
   min-height: 100vh;
   color: var(--ink);
@@ -44,6 +45,26 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  cursor: url("/cursors/crosshair.svg?v=2") 20 20, crosshair;
+}
+
+/* Purple center + on clickable elements */
+a, button, [role="button"], input[type="submit"],
+select, label[for], .btn, [onclick],
+summary, [tabindex]:not([tabindex="-1"]) {
+  cursor: url("/cursors/crosshair-pointer.svg?v=2") 20 20, pointer;
+}
+
+/* Invert cursor on dark backgrounds */
+.section--dark, .hero, .mobile-nav, .header--transparent {
+  cursor: url("/cursors/crosshair-light.svg?v=2") 20 20, crosshair;
+}
+
+.section--dark a, .section--dark button, .section--dark .btn,
+.hero a, .hero button, .hero .btn,
+.mobile-nav a, .mobile-nav button,
+.header--transparent a, .header--transparent button {
+  cursor: url("/cursors/crosshair-light-pointer.svg?v=2") 20 20, pointer;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -115,8 +136,8 @@ ul, ol { list-style: none; }
 
 .header--transparent .header__logo {
   background: rgba(255,255,255,0.15);
-  color: #fff;
 }
+
 
 .header--transparent .header__menu-toggle span,
 .header--transparent .header__menu-toggle span::before,
@@ -152,10 +173,10 @@ ul, ol { list-style: none; }
 }
 
 .header__logo {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   background: var(--ink);
-  border-radius: 10px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   position: relative;
