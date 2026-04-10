@@ -193,10 +193,10 @@ export default async function ProjectPage({ params }) {
           </ScrollReveal>
         )}
 
-        {/* Gallery — smart layout: alternating full + pairs */}
+        {/* Gallery — alternating full + pairs, skip hero image (index 0) */}
         <div className="project-detail__gallery-flow">
           {(() => {
-            const items = project.gallery;
+            const items = project.gallery?.slice(1) || [];
             const rows = [];
             let i = 0;
             while (i < items.length) {
