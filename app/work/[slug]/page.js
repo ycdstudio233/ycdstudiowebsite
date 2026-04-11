@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProjectVisual } from "../../../components/project-visual";
 import { ScrollReveal } from "../../../components/scroll-reveal";
+import { CinematicReveal } from "../../../components/cinematic-reveal";
 import { projectDetails } from "../../../lib/project-details";
 import { allProjects } from "../../../lib/site-data";
 
@@ -48,59 +49,94 @@ function ProjectJsonLd({ project, slug }) {
   );
 }
 
-/* ── Build the journey frames ──
-   Three image frame types based on composition:
-   • "bleed"    — wide/landscape images fill the entire viewport
-   • "pair"     — two consecutive portrait images share a frame
-   • "showcase" — solo portrait centered on dark, gallery-style
-   Text sections weave between at natural breakpoints.            */
-function buildFrames(project) {
+/* ── Build cinema frames ──
+   Four immersive frame types — each with directional scroll reveals:
+   • "immersive"  — wide landscapes fill the viewport, slide from left/right
+   • "diptych"    — two portraits enter from opposing sides
+   • "float"      — solo portrait floats on dark, offset and scaled
+   • "narrative"  — text overlaid on an image with gradient veil          */
+function buildCinemaFrames(project) {
   const images = project.gallery?.slice(1) || [];
   const frames = [];
-  const total = images.length;
+  if (images.length === 0) return frames;
 
-  // Text insertion points
-  const overviewAt = Math.min(2, total);
-  const approachAt = Math.min(overviewAt + 2, total);
-  const detailsAt = project.details ? Math.min(approachAt + 2, total) : -1;
+  /* Collect text sections */
+  const allTexts = [];
+  if (project.overview) allTexts.push({ heading: "Overview", body: project.overview });
+  if (project.approach) allTexts.push({ heading: "Approach", body: project.approach });
+  if (project.details) allTexts.push({ heading: "Details", body: project.details });
 
+  /* Limit narrative frames — max floor(images/2) — and merge overflow */
+  const maxN = Math.min(allTexts.length, Math.floor(images.length / 2));
+  const narratives = allTexts.slice(0, maxN);
+  for (let t = maxN; t < allTexts.length; t++) {
+    if (narratives.length > 0) narratives[narratives.length - 1].body += "\n\n" + allTexts[t].body;
+  }
+
+  /* Calculate narrative insertion indices — evenly spaced with min-gap 2 */
+  const step = images.length / (narratives.length + 1);
+  const narrativeAt = [];
+  for (let ni = 0; ni < narratives.length; ni++) {
+    let pos = Math.round((ni + 1) * step);
+    if (narrativeAt.length > 0) pos = Math.max(pos, narrativeAt[narrativeAt.length - 1] + 2);
+    else pos = Math.max(1, pos);
+    narrativeAt.push(Math.min(pos, images.length - 1));
+  }
+
+  /* Walk through images and assign frame types */
+  let dir = 0;
+  let nDir = 0; /* separate counter so narratives alternate left/right independently */
+  let nIdx = 0;
+  let count = 0;
   let i = 0;
-  let imageCount = 0;
 
   while (i < images.length) {
     const img = images[i];
+    const from = dir % 2 === 0 ? "left" : "right";
 
+    /* Narrative frame at insertion point */
+    if (nIdx < narratives.length && count === narrativeAt[nIdx]) {
+      const nFrom = nDir % 2 === 0 ? "left" : "right";
+      frames.push({
+        kind: "narrative", image: img,
+        heading: narratives[nIdx].heading, body: narratives[nIdx].body,
+        from: nFrom, align: nFrom,
+      });
+      nIdx++; nDir++; dir++; i++; count++;
+      continue;
+    }
+
+    /* Visual frames */
     if (img.wide) {
-      // Wide image → full-bleed frame
-      frames.push({ kind: "bleed", image: img });
-      i++;
-    } else if (i + 1 < images.length && !images[i + 1].wide) {
-      // Two consecutive portraits → pair them
-      frames.push({ kind: "pair", left: img, right: images[i + 1] });
-      i += 2;
-      imageCount++; // count extra
+      frames.push({ kind: "immersive", image: img, from });
+      dir++;
     } else {
-      // Solo portrait → showcase on dark
-      frames.push({ kind: "showcase", image: img });
-      i++;
+      const next = images[i + 1];
+      const nextReserved = nIdx < narratives.length && count + 1 === narrativeAt[nIdx];
+      if (next && !next.wide && !nextReserved) {
+        frames.push({ kind: "diptych", left: img, right: next });
+        dir++; i++; count++;
+      } else {
+        frames.push({ kind: "float", image: img, from });
+        dir++;
+      }
     }
-    imageCount++;
-
-    // Insert text at the right moments
-    if (imageCount === overviewAt) {
-      frames.push({ kind: "text", heading: "Overview", body: project.overview });
-    } else if (imageCount === approachAt) {
-      frames.push({ kind: "text-dark", heading: "Approach", body: project.approach });
-    } else if (imageCount === detailsAt) {
-      frames.push({ kind: "text", heading: "Details", body: project.details });
-    }
+    i++; count++;
   }
 
-  // Ensure all text sections appear
-  const has = (h) => frames.some((f) => f.heading === h);
-  if (!has("Overview")) frames.push({ kind: "text", heading: "Overview", body: project.overview });
-  if (!has("Approach")) frames.push({ kind: "text-dark", heading: "Approach", body: project.approach });
-  if (project.details && !has("Details")) frames.push({ kind: "text", heading: "Details", body: project.details });
+  /* Fallback for remaining narratives */
+  while (nIdx < narratives.length) {
+    const nFrom = nDir % 2 === 0 ? "left" : "right";
+    const bg = images[images.length - 1] || project.gallery?.[0];
+    if (bg) {
+      frames.push({
+        kind: "narrative", image: bg,
+        heading: narratives[nIdx].heading, body: narratives[nIdx].body,
+        from: nFrom, align: nFrom,
+      });
+    }
+    nIdx++; nDir++; dir++;
+  }
 
   return frames;
 }
@@ -115,7 +151,7 @@ export default async function ProjectPage({ params }) {
   const nextProject =
     currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
-  const frames = buildFrames(project);
+  const frames = buildCinemaFrames(project);
 
   return (
     <main className="page-shell">
@@ -194,56 +230,63 @@ export default async function ProjectPage({ params }) {
         </ScrollReveal>
       </section>
 
-      {/* ── LAYER 2: Sticky card stack ── */}
-      <section className="jstack">
+      {/* ── LAYER 2: Cinematic journey ── */}
+      <section className="cinema">
         {frames.map((frame, idx) => {
-          /* ── Full-bleed landscape ── */
-          if (frame.kind === "bleed") {
+          /* ── Immersive: wide landscape, full bleed ── */
+          if (frame.kind === "immersive") {
             return (
-              <div className="jf jf--bleed" key={idx}>
-                <img src={frame.image.image} alt={frame.image.label} className="jf__img" />
-                <span className="jf__label">{frame.image.label}</span>
+              <div className="cinema__moment" key={idx}>
+                <CinematicReveal from={frame.from} className="cinema__fill">
+                  <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
+                  <span className="cinema__label">{frame.image.label}</span>
+                </CinematicReveal>
               </div>
             );
           }
 
-          /* ── Portrait pair — two images share a frame ── */
-          if (frame.kind === "pair") {
+          /* ── Diptych: two portraits, opposing entry ── */
+          if (frame.kind === "diptych") {
             return (
-              <div className="jf jf--pair" key={idx}>
-                <div className="jf__pair-cell">
-                  <img src={frame.left.image} alt={frame.left.label} className="jf__pair-img" />
-                  <span className="jf__pair-label">{frame.left.label}</span>
-                </div>
-                <div className="jf__pair-cell">
-                  <img src={frame.right.image} alt={frame.right.label} className="jf__pair-img" />
-                  <span className="jf__pair-label">{frame.right.label}</span>
-                </div>
+              <div className="cinema__moment cinema__moment--duo" key={idx}>
+                <CinematicReveal from="left" className="cinema__duo-cell">
+                  <img src={frame.left.image} alt={frame.left.label} className="cinema__duo-img" />
+                  <span className="cinema__duo-caption">{frame.left.label}</span>
+                </CinematicReveal>
+                <CinematicReveal from="right" delay={0.12} className="cinema__duo-cell">
+                  <img src={frame.right.image} alt={frame.right.label} className="cinema__duo-img" />
+                  <span className="cinema__duo-caption">{frame.right.label}</span>
+                </CinematicReveal>
               </div>
             );
           }
 
-          /* ── Solo portrait — centered on dark ── */
-          if (frame.kind === "showcase") {
+          /* ── Float: solo portrait, gallery-style on void ── */
+          if (frame.kind === "float") {
             return (
-              <div className="jf jf--showcase" key={idx}>
-                <div className="jf__showcase-frame">
-                  <img src={frame.image.image} alt={frame.image.label} className="jf__showcase-img" />
-                </div>
-                <span className="jf__showcase-label">{frame.image.label}</span>
+              <div className="cinema__moment cinema__moment--void" key={idx}>
+                <CinematicReveal from={frame.from} scale className={`cinema__float cinema__float--${frame.from}`}>
+                  <div className="cinema__float-frame">
+                    <img src={frame.image.image} alt={frame.image.label} className="cinema__float-img" />
+                  </div>
+                  <span className="cinema__float-caption">{frame.image.label}</span>
+                </CinematicReveal>
               </div>
             );
           }
 
-          /* ── Text frames ── */
-          if (frame.kind === "text" || frame.kind === "text-dark") {
-            const isDark = frame.kind === "text-dark";
+          /* ── Narrative: text integrated on image ── */
+          if (frame.kind === "narrative") {
             return (
-              <div className={`jf jf--text ${isDark ? "jf--dark" : ""}`} key={idx}>
-                <div className="jf__text-inner">
-                  <h2 className="jf__heading">{frame.heading}</h2>
-                  <p className="jf__body">{frame.body}</p>
-                </div>
+              <div className="cinema__moment" key={idx}>
+                <CinematicReveal from={frame.from} scale className="cinema__fill cinema__fill--story">
+                  <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
+                  <div className={`cinema__veil cinema__veil--${frame.align}`} />
+                  <div className={`cinema__story cinema__story--${frame.align}`}>
+                    <span className="cinema__story-tag">{frame.heading}</span>
+                    <p className="cinema__story-body">{frame.body}</p>
+                  </div>
+                </CinematicReveal>
               </div>
             );
           }
