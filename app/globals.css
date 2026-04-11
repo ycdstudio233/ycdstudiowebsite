@@ -1995,108 +1995,92 @@ ul, ol { list-style: none; }
   object-fit: cover;
 }
 
-.project-detail__content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 80px;
-}
+/* ===== Journey — Immersive Project Experience ===== */
 
-.project-detail__content h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-
-.project-detail__content p {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-
-.project-detail__gallery-flow {
+.journey {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 80px;
+  gap: 0;
 }
 
-.gallery-row--full {
-  width: 100%;
-}
-
-.gallery-row--pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-/* Asymmetric pairs — large landscape + smaller portrait, alternating */
-.gallery-row--asym {
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: 16px;
-}
-
-.gallery-row--asym-rev {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 16px;
-}
-
-.gallery-item {
+/* Image moment — full-width, cinematic */
+.journey__moment {
   position: relative;
-  border-radius: 12px;
+  width: 100%;
   overflow: hidden;
   background: linear-gradient(135deg, #E8E8E6 0%, #D8D8D4 100%);
 }
 
-.gallery-item--full {
-  aspect-ratio: 16 / 9;
-}
-
-.gallery-item--half {
-  aspect-ratio: 4 / 3;
-}
-
-/* Major image — generous landscape */
-.gallery-item--major {
-  aspect-ratio: 4 / 3;
-}
-
-/* Minor image — matches height of major via grid stretch */
-.gallery-item--minor {
-  aspect-ratio: auto;
-  min-height: 0;
-}
-
-.gallery-item__img {
+.journey__moment-img {
   width: 100%;
-  height: 100%;
+  display: block;
+  max-height: 85vh;
   object-fit: cover;
-  transition: transform 0.6s var(--ease);
 }
 
-.gallery-item:hover .gallery-item__img {
-  transform: scale(1.03);
+/* Contained moments — images that aren't wide, shown within container */
+.journey__moment--contained {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 48px;
 }
 
-.gallery-item__label {
+.journey__moment--contained .journey__moment-img {
+  border-radius: 12px;
+  max-height: 75vh;
+}
+
+.journey__moment-label {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
+  bottom: 24px;
+  left: 24px;
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  padding: 6px 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
   border-radius: 6px;
   z-index: 1;
+  max-width: calc(100% - 48px);
+}
+
+.journey__moment--contained .journey__moment-label {
+  left: 72px;
+  bottom: 24px;
+}
+
+/* Narrative text blocks — the breathing pauses */
+.journey__narrative {
+  padding: 96px 0;
+}
+
+.journey__narrative--dark {
+  background: var(--bg-dark);
+  color: var(--ink-inverse);
+}
+
+.journey__narrative-inner {
+  max-width: 680px;
+}
+
+.journey__narrative-heading {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.journey__narrative-body {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.journey__narrative--dark .journey__narrative-body {
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .project-detail__specs {
@@ -2645,7 +2629,6 @@ ul, ol { list-style: none; }
   .project-grid--three { grid-template-columns: repeat(2, 1fr); }
   .footer__columns { gap: 40px; }
   .project-detail__header { grid-template-columns: 1fr; gap: 32px; }
-  .project-detail__content { grid-template-columns: 1fr; gap: 48px; }
   .project-detail__specs { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -2708,16 +2691,16 @@ ul, ol { list-style: none; }
   .footer__columns { gap: 32px; flex-wrap: wrap; }
   .footer__bottom { flex-direction: column; gap: 16px; text-align: center; }
   .cta__title { font-size: clamp(2rem, 6vw, 3rem); }
-  .gallery-row--pair { grid-template-columns: 1fr; }
-  .gallery-row--asym,
-  .gallery-row--asym-rev { grid-template-columns: 1fr; }
-  .gallery-item--minor { aspect-ratio: 4 / 3; }
-  .gallery-item--full { aspect-ratio: 4 / 3; }
   .project-detail__specs { grid-template-columns: repeat(2, 1fr); }
   .project-nav { grid-template-columns: 1fr; }
   .project-nav__item:first-child { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; }
   .project-nav__item:last-child { padding-left: 0; text-align: left; }
-  .gallery-item__label { right: 16px; font-size: 0.6875rem; text-transform: none; line-height: 1.4; white-space: normal; max-width: calc(100% - 32px); }
+  .journey__moment--contained { padding: 0 20px; }
+  .journey__moment--contained .journey__moment-label { left: 36px; }
+  .journey__moment-img { max-height: 60vh; }
+  .journey__narrative { padding: 64px 0; }
+  .journey__narrative-heading { font-size: 1.4rem; }
+  .journey__moment-label { bottom: 16px; left: 16px; font-size: 0.6875rem; max-width: calc(100% - 32px); }
   .cta { padding: 72px 0; }
   .footer__column a { padding: 12px 0; }
   .work-filter__btn { padding: 12px 20px; min-height: 44px; }
@@ -4844,16 +4827,6 @@ ul, ol { list-style: none; }
     margin-bottom: 56px;
   }
 
-  .project-detail__content {
-    gap: 40px;
-    margin-bottom: 56px;
-  }
-
-  .project-detail__content h2 {
-    font-size: 1.4rem;
-    margin-bottom: 14px;
-  }
-
   .project-detail__specs {
     gap: 18px;
     padding: 32px 0;
@@ -4862,13 +4835,6 @@ ul, ol { list-style: none; }
 
   .project-detail__spec-value {
     font-size: 1rem;
-  }
-
-  .gallery-item__label {
-    bottom: 12px;
-    left: 12px;
-    max-width: calc(100% - 24px);
-    padding: 6px 10px;
   }
 
   .project-nav__item {

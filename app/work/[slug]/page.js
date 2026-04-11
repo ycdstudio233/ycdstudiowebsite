@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProjectVisual } from "../../../components/project-visual";
-import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
+import { ScrollReveal } from "../../../components/scroll-reveal";
 import { projectDetails } from "../../../lib/project-details";
 import { allProjects } from "../../../lib/site-data";
 
@@ -58,6 +58,61 @@ function ProjectJsonLd({ project, slug }) {
   );
 }
 
+/* ── Build the journey sequence ──
+   Interleaves images with text sections so the page
+   reads as a paced narrative, not a grid dump.          */
+function buildJourney(project) {
+  const images = project.gallery?.slice(1) || [];
+  const sequence = [];
+
+  // Decide split points based on image count
+  const total = images.length;
+  const overviewAfter = Math.min(2, total);              // show 2 images, then overview
+  const approachAfter = Math.min(overviewAfter + 2, total); // 2 more, then approach
+  const detailsAfter = project.details
+    ? Math.min(approachAfter + 2, total)                  // 2 more, then details
+    : total;
+
+  images.forEach((img, i) => {
+    // Add image moment
+    sequence.push({ type: img.wide ? "moment" : "moment-contained", image: img });
+
+    // Weave in text at the right points
+    if (i + 1 === overviewAfter) {
+      sequence.push({
+        type: "narrative",
+        heading: "Overview",
+        body: project.overview,
+      });
+    } else if (i + 1 === approachAfter) {
+      sequence.push({
+        type: "narrative-dark",
+        heading: "Approach",
+        body: project.approach,
+      });
+    } else if (project.details && i + 1 === detailsAfter && detailsAfter > approachAfter) {
+      sequence.push({
+        type: "narrative",
+        heading: "Details",
+        body: project.details,
+      });
+    }
+  });
+
+  // If very few images, ensure all text sections appear at the end
+  if (overviewAfter >= total) {
+    sequence.push({ type: "narrative", heading: "Overview", body: project.overview });
+  }
+  if (approachAfter >= total && overviewAfter < total) {
+    sequence.push({ type: "narrative-dark", heading: "Approach", body: project.approach });
+  }
+  if (project.details && detailsAfter >= total && approachAfter < total) {
+    sequence.push({ type: "narrative", heading: "Details", body: project.details });
+  }
+
+  return sequence;
+}
+
 export default async function ProjectPage({ params }) {
   const { slug } = await params;
   const project = projectDetails[slug];
@@ -68,9 +123,13 @@ export default async function ProjectPage({ params }) {
   const nextProject =
     currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
+  const journey = buildJourney(project);
+
   return (
     <main className="page-shell">
       <ProjectJsonLd project={project} slug={slug} />
+
+      {/* ── LAYER 1: The clean intro — unchanged ── */}
       <section className="project-detail container">
         <ScrollReveal>
           <div className="project-detail__nav-bar">
@@ -122,21 +181,7 @@ export default async function ProjectPage({ params }) {
           </div>
         </ScrollReveal>
 
-        {/* Content */}
-        <ScrollReveal>
-          <div className="project-detail__content">
-            <div>
-              <h2>Overview</h2>
-              <p>{project.overview}</p>
-            </div>
-            <div>
-              <h2>Approach</h2>
-              <p>{project.approach}</p>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* Specs */}
+        {/* Specs — compact row below hero */}
         <ScrollReveal>
           <div className="project-detail__specs">
             <div className="project-detail__spec">
@@ -157,22 +202,67 @@ export default async function ProjectPage({ params }) {
             </div>
           </div>
         </ScrollReveal>
+      </section>
 
-        {/* Details */}
-        {project.details && (
-          <ScrollReveal>
-            <div className="project-detail__content">
-              <div>
-                <h2>Details</h2>
-                <p>{project.details}</p>
+      {/* ── LAYER 2: The journey — images and text interleaved ── */}
+      <section className="journey">
+        {journey.map((block, i) => {
+          if (block.type === "moment") {
+            return (
+              <ScrollReveal key={i} duration={1.2} distance={60} threshold={0.08}>
+                <div className="journey__moment">
+                  <img
+                    src={block.image.image}
+                    alt={block.image.label}
+                    className="journey__moment-img"
+                  />
+                  <span className="journey__moment-label">{block.image.label}</span>
+                </div>
+              </ScrollReveal>
+            );
+          }
+
+          if (block.type === "moment-contained") {
+            return (
+              <ScrollReveal key={i} duration={1.2} distance={60} threshold={0.08}>
+                <div className="journey__moment journey__moment--contained">
+                  <img
+                    src={block.image.image}
+                    alt={block.image.label}
+                    className="journey__moment-img"
+                  />
+                  <span className="journey__moment-label">{block.image.label}</span>
+                </div>
+              </ScrollReveal>
+            );
+          }
+
+          if (block.type === "narrative" || block.type === "narrative-dark") {
+            const isDark = block.type === "narrative-dark";
+            return (
+              <div
+                key={i}
+                className={`journey__narrative ${isDark ? "journey__narrative--dark" : ""}`}
+              >
+                <div className="container">
+                  <ScrollReveal duration={1} distance={30}>
+                    <div className="journey__narrative-inner">
+                      <h2 className="journey__narrative-heading">{block.heading}</h2>
+                      <p className="journey__narrative-body">{block.body}</p>
+                    </div>
+                  </ScrollReveal>
+                </div>
               </div>
-              <div />
-            </div>
-          </ScrollReveal>
-        )}
+            );
+          }
 
-        {/* Videos */}
-        {project.videos && project.videos.length > 0 && (
+          return null;
+        })}
+      </section>
+
+      {/* ── Videos (if any) ── */}
+      {project.videos && project.videos.length > 0 && (
+        <section className="container" style={{ paddingBottom: 80 }}>
           <ScrollReveal>
             <div className="project-detail__videos">
               {project.videos.map((video) => (
@@ -191,69 +281,11 @@ export default async function ProjectPage({ params }) {
               ))}
             </div>
           </ScrollReveal>
-        )}
+        </section>
+      )}
 
-        {/* Gallery — full-width + asymmetric pairs, skip hero (index 0) */}
-        <div className="project-detail__gallery-flow">
-          {(() => {
-            const items = project.gallery?.slice(1) || [];
-            const rows = [];
-            let i = 0;
-            let pairCount = 0;
-            while (i < items.length) {
-              if (items[i].wide) {
-                rows.push({ type: "full", items: [items[i]] });
-                i++;
-              } else if (i + 1 < items.length && !items[i + 1].wide) {
-                // Alternate asymmetric direction
-                const type = pairCount % 2 === 0 ? "asym" : "asym-rev";
-                rows.push({ type, items: [items[i], items[i + 1]] });
-                i += 2;
-                pairCount++;
-              } else {
-                rows.push({ type: "full", items: [items[i]] });
-                i++;
-              }
-            }
-            return rows.map((row, ri) => (
-              <ScrollReveal key={ri} delay={ri * 0.08}>
-                {row.type === "full" ? (
-                  <div className="gallery-row gallery-row--full">
-                    <div className="gallery-item gallery-item--full">
-                      <img
-                        src={row.items[0].image}
-                        alt={row.items[0].label}
-                        className="gallery-item__img"
-                      />
-                      <span className="gallery-item__label">{row.items[0].label}</span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className={`gallery-row gallery-row--${row.type}`}>
-                    <div className={`gallery-item gallery-item--${row.type === "asym" ? "major" : "minor"}`}>
-                      <img
-                        src={row.items[0].image}
-                        alt={row.items[0].label}
-                        className="gallery-item__img"
-                      />
-                      <span className="gallery-item__label">{row.items[0].label}</span>
-                    </div>
-                    <div className={`gallery-item gallery-item--${row.type === "asym" ? "minor" : "major"}`}>
-                      <img
-                        src={row.items[1].image}
-                        alt={row.items[1].label}
-                        className="gallery-item__img"
-                      />
-                      <span className="gallery-item__label">{row.items[1].label}</span>
-                    </div>
-                  </div>
-                )}
-              </ScrollReveal>
-            ));
-          })()}
-        </div>
-
-        {/* Project navigation */}
+      {/* ── Project navigation ── */}
+      <section className="container">
         <nav className="project-nav">
           <div className="project-nav__item">
             {prevProject ? (
