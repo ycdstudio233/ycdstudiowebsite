@@ -82,7 +82,7 @@ const allHeroProjects = [
     title: "Coastal House",
     category: "Residential",
     location: "Turkey",
-    image: "/projects/coastal-house/Image-6.webp",
+    image: "/projects/coastal-house/Image-2.webp",
     gradient: "linear-gradient(135deg, #0a1a2a 0%, #1a2a3a 50%, #2a3a4a 100%)",
   },
   {
