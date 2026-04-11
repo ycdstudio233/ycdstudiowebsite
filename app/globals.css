@@ -2304,9 +2304,9 @@ ul, ol { list-style: none; }
   border-radius: 6px;
 }
 
-/* Split — text + image editorial blocks */
+/* Split — full-bleed text + image editorial blocks (Olson Kundig style) */
 .ed-split {
-  padding: 96px 0;
+  /* No padding — the grid itself is edge-to-edge */
 }
 
 .ed-split--dark {
@@ -2317,8 +2317,7 @@ ul, ol { list-style: none; }
 .ed-split__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+  min-height: 80vh;
 }
 
 .ed-split__grid--reverse {
@@ -2327,6 +2326,15 @@ ul, ol { list-style: none; }
 
 .ed-split__grid--reverse > * {
   direction: ltr;
+}
+
+.ed-split__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .ed-split__heading {
@@ -2338,7 +2346,7 @@ ul, ol { list-style: none; }
 
 .ed-split__body {
   font-size: 1.0625rem;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--muted);
 }
 
@@ -2347,8 +2355,8 @@ ul, ol { list-style: none; }
 }
 
 .ed-split__image {
-  border-radius: 12px;
   overflow: hidden;
+  /* No border-radius — edge-to-edge */
 }
 
 .ed-split__img {
@@ -2356,12 +2364,12 @@ ul, ol { list-style: none; }
   height: 100%;
   object-fit: cover;
   display: block;
-  aspect-ratio: 4 / 3;
-  transition: transform 0.6s var(--ease);
+  /* Fill the entire grid cell — no aspect-ratio constraint */
 }
 
 .ed-split__image:hover .ed-split__img {
-  transform: scale(1.03);
+  transform: scale(1.02);
+  transition: transform 0.8s var(--ease);
 }
 
 /* Gallery section */
@@ -2502,19 +2510,24 @@ ul, ol { list-style: none; }
     gap: 20px;
   }
 
-  .ed-split {
-    padding: 64px 0;
-  }
-
   .ed-split__grid,
   .ed-split__grid--reverse {
     grid-template-columns: 1fr;
-    gap: 32px;
+    min-height: auto;
     direction: ltr;
+  }
+
+  .ed-split__text {
+    padding: 48px 24px;
+    max-width: none;
   }
 
   .ed-split__heading {
     font-size: 1.4rem;
+  }
+
+  .ed-split__image {
+    aspect-ratio: 4 / 3;
   }
 
   .ed-full-image__img {

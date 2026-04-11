@@ -106,20 +106,18 @@ export default function CoastalHouseEditorial() {
         </div>
       </ScrollReveal>
 
-      {/* ── Editorial split: Overview text + image ── */}
+      {/* ── Editorial split: Overview — text LEFT, image RIGHT ── */}
       <section className="ed-split">
-        <div className="container">
-          <ScrollReveal>
-            <div className="ed-split__grid">
-              <div className="ed-split__text">
-                <h2 className="ed-split__heading">Overview</h2>
-                <p className="ed-split__body">{project.overview}</p>
-              </div>
-              <div className="ed-split__image">
-                <img src={g[2].image} alt={g[2].label} className="ed-split__img" />
-              </div>
-            </div>
-          </ScrollReveal>
+        <div className="ed-split__grid">
+          <div className="ed-split__text">
+            <ScrollReveal>
+              <h2 className="ed-split__heading">Overview</h2>
+              <p className="ed-split__body">{project.overview}</p>
+            </ScrollReveal>
+          </div>
+          <div className="ed-split__image">
+            <img src={g[2].image} alt={g[2].label} className="ed-split__img" />
+          </div>
         </div>
       </section>
 
@@ -130,20 +128,18 @@ export default function CoastalHouseEditorial() {
         </div>
       </ScrollReveal>
 
-      {/* ── Editorial split (reversed): image + Approach text ── */}
+      {/* ── Editorial split (reversed): image LEFT, Approach RIGHT — dark ── */}
       <section className="ed-split ed-split--dark">
-        <div className="container">
-          <ScrollReveal>
-            <div className="ed-split__grid ed-split__grid--reverse">
-              <div className="ed-split__image">
-                <img src={g[4].image} alt={g[4].label} className="ed-split__img" />
-              </div>
-              <div className="ed-split__text">
-                <h2 className="ed-split__heading">Approach</h2>
-                <p className="ed-split__body">{project.approach}</p>
-              </div>
-            </div>
-          </ScrollReveal>
+        <div className="ed-split__grid ed-split__grid--reverse">
+          <div className="ed-split__image">
+            <img src={g[4].image} alt={g[4].label} className="ed-split__img" />
+          </div>
+          <div className="ed-split__text">
+            <ScrollReveal>
+              <h2 className="ed-split__heading">Approach</h2>
+              <p className="ed-split__body">{project.approach}</p>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -155,20 +151,18 @@ export default function CoastalHouseEditorial() {
         </div>
       </ScrollReveal>
 
-      {/* ── Editorial split: Details text + image ── */}
+      {/* ── Editorial split: Details — text LEFT, image RIGHT ── */}
       <section className="ed-split">
-        <div className="container">
-          <ScrollReveal>
-            <div className="ed-split__grid">
-              <div className="ed-split__text">
-                <h2 className="ed-split__heading">Details</h2>
-                <p className="ed-split__body">{project.details}</p>
-              </div>
-              <div className="ed-split__image">
-                <img src={g[6].image} alt={g[6].label} className="ed-split__img" />
-              </div>
-            </div>
-          </ScrollReveal>
+        <div className="ed-split__grid">
+          <div className="ed-split__text">
+            <ScrollReveal>
+              <h2 className="ed-split__heading">Details</h2>
+              <p className="ed-split__body">{project.details}</p>
+            </ScrollReveal>
+          </div>
+          <div className="ed-split__image">
+            <img src={g[6].image} alt={g[6].label} className="ed-split__img" />
+          </div>
         </div>
       </section>
 
