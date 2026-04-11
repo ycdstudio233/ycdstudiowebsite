@@ -4,6 +4,7 @@ import { ProjectVisual } from "../../../components/project-visual";
 import { ScrollReveal } from "../../../components/scroll-reveal";
 import { CinematicReveal } from "../../../components/cinematic-reveal";
 import { ScrollOverlay } from "../../../components/scroll-overlay";
+import { RevealPair } from "../../../components/reveal-pair";
 import { projectDetails } from "../../../lib/project-details";
 import { allProjects } from "../../../lib/site-data";
 
@@ -90,8 +91,10 @@ function buildCinemaFrames(project) {
   let nIdx = 0;
   let count = 0;
   let i = 0;
+  const used = new Set(); /* track images consumed by lookahead pairing */
 
   while (i < images.length) {
+    if (used.has(i)) { i++; count++; continue; }
     const img = images[i];
     const from = dir % 2 === 0 ? "left" : "right";
 
@@ -114,11 +117,32 @@ function buildCinemaFrames(project) {
     } else {
       const next = images[i + 1];
       const nextReserved = nIdx < narratives.length && count + 1 === narrativeAt[nIdx];
-      if (next && !next.wide && !nextReserved) {
+      if (next && !next.wide && !nextReserved && !used.has(i + 1)) {
+        /* Immediate portrait pair → static diptych */
         frames.push({ kind: "diptych", left: img, right: next });
         dir++; i++; count++;
       } else {
-        frames.push({ kind: "float", image: img, from });
+        /* Lone portrait → look ahead for a partner (up to 4 slots) */
+        let partner = null;
+        let pIdx = -1;
+        for (let j = i + 1; j < images.length && j <= i + 4; j++) {
+          if (used.has(j)) continue;
+          const jCount = count + (j - i);
+          const jReserved = narrativeAt.includes(jCount);
+          if (!images[j].wide && !jReserved) {
+            partner = images[j];
+            pIdx = j;
+            break;
+          }
+        }
+        if (partner) {
+          /* Progressive diptych — second image reveals on scroll */
+          frames.push({ kind: "reveal", first: img, second: partner, from });
+          used.add(pIdx);
+        } else {
+          /* Truly alone — go full-bleed, no void */
+          frames.push({ kind: "immersive", image: img, from });
+        }
         dir++;
       }
     }
@@ -262,20 +286,11 @@ export default async function ProjectPage({ params }) {
             );
           }
 
-          /* ── Float: solo portrait, gallery-style on void ── */
-          if (frame.kind === "float") {
-            const textSide = frame.from === "left" ? "right" : "left";
+          /* ── Reveal: progressive diptych — second image slides in on scroll ── */
+          if (frame.kind === "reveal") {
             return (
-              <div className="cinema__moment cinema__moment--void" key={idx}>
-                <CinematicReveal from={frame.from} scale className={`cinema__float cinema__float--${frame.from}`}>
-                  <div className="cinema__float-frame">
-                    <img src={frame.image.image} alt={frame.image.label} className="cinema__float-img" />
-                  </div>
-                  <span className="cinema__float-caption">{frame.image.label}</span>
-                </CinematicReveal>
-                <CinematicReveal from={textSide} delay={0.35} className={`cinema__float-text cinema__float-text--${textSide}`}>
-                  <p className="cinema__float-statement">{frame.image.label}</p>
-                </CinematicReveal>
+              <div className="cinema__moment" key={idx}>
+                <RevealPair first={frame.first} second={frame.second} from={frame.from} />
               </div>
             );
           }

@@ -2083,82 +2083,27 @@ ul, ol { list-style: none; }
   line-height: 1.4;
 }
 
-/* ── Float: solo portrait on dark void ── */
-.cinema__moment--void {
-  background: #0a0a0a;
-  height: 100vh;
-}
-
-.cinema__float {
+/* ── Reveal pair: progressive diptych — second slides in on scroll ── */
+.cinema__reveal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
+  background: #0a0a0a;
+}
+
+.cinema__reveal-cell {
   position: relative;
-}
-
-.cinema__float--left {
-  justify-content: flex-start;
-  padding-left: 12%;
-}
-
-.cinema__float--right {
-  justify-content: flex-end;
-  padding-right: 12%;
-}
-
-.cinema__float-frame {
-  width: 44%;
-  height: 82vh;
   overflow: hidden;
-  border-radius: 6px;
-  box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.04);
+  height: 100%;
 }
 
-.cinema__float-img {
+.cinema__reveal-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.cinema__float-caption {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.6875rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
-  white-space: nowrap;
-}
-
-/* Float text — elegant label on the empty side */
-.cinema__float-text {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 45%;
-  display: flex;
-  align-items: center;
-  padding: 64px;
-}
-
-.cinema__float-text--left { left: 0; }
-.cinema__float-text--right { right: 0; text-align: right; justify-content: flex-end; }
-
-.cinema__float-statement {
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-  max-width: 400px;
 }
 
 /* ── Narrative: scroll-driven progressive reveal ── */
@@ -2858,11 +2803,7 @@ ul, ol { list-style: none; }
   .cinema__moment--duo { height: 50vh; gap: 2px; }
   .cinema__duo-img { height: 50vh; min-height: 260px; }
   .cinema__duo-caption { bottom: 16px; left: 16px; font-size: 0.5625rem; padding: 6px 10px; max-width: calc(100% - 32px); }
-  .cinema__moment--void { height: 75vh; }
-  .cinema__float--left, .cinema__float--right { justify-content: center; padding: 0 8%; }
-  .cinema__float-frame { width: 72%; height: 58vh; }
-  .cinema__float-caption { font-size: 0.625rem; bottom: 20px; }
-  .cinema__float-text { display: none; }
+  .cinema__reveal { gap: 2px; }
   .cinema__label { bottom: 20px; left: 20px; font-size: 0.625rem; padding: 8px 12px; max-width: calc(100% - 40px); }
   .cinema__veil--left, .cinema__veil--right {
     background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 40%, rgba(10, 10, 10, 0.1) 70%, transparent 100%);
