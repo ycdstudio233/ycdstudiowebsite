@@ -40,6 +40,10 @@ export const metadata = {
     description:
       "Architecture, interiors, and tenant improvement design rooted in the San Francisco Bay Area.",
   },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
   robots: {
     index: true,
     follow: true,

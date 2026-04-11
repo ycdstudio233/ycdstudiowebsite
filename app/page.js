@@ -8,7 +8,6 @@ import {
   featuredProjects,
   heroStats,
   services,
-  processSteps,
   testimonials,
 } from "../lib/site-data";
 
@@ -139,28 +138,6 @@ export default function HomePage() {
                   </svg>
                 </span>
               </Link>
-            ))}
-          </StaggerReveal>
-        </div>
-      </section>
-
-      {/* ── Process ── */}
-      <section className="section section--dark">
-        <div className="container">
-          <ScrollReveal>
-            <SectionHeading
-              eyebrow="How It Works"
-              title="Three phases. No surprises."
-              description="A process built to keep your project moving with confidence — from first call to final walkthrough."
-            />
-          </ScrollReveal>
-
-          <StaggerReveal className="process-grid" staggerDelay={0.12}>
-            {processSteps.map((step) => (
-              <div className="process-item" key={step.title}>
-                <h3 className="process-item__title">{step.title}</h3>
-                <p className="process-item__desc">{step.description}</p>
-              </div>
             ))}
           </StaggerReveal>
         </div>

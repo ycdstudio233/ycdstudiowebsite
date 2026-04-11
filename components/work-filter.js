@@ -11,6 +11,7 @@ const categories = [
   "Multi-Family",
   "Commercial",
   "Sacred",
+  "Tenant Improvement",
 ];
 
 const categoryPages = {
@@ -19,6 +20,7 @@ const categoryPages = {
   "Multi-Family": "/multi-family",
   Commercial: "/commercial",
   Sacred: "/sacred",
+  "Tenant Improvement": "/tenant-improvement",
 };
 
 function getCategory(project) {
@@ -26,7 +28,8 @@ function getCategory(project) {
   if (cat.includes("sacred") || cat.includes("liturgical")) return "Sacred";
   if (cat.includes("hospitality") || cat.includes("restaurant") || cat.includes("hotel")) return "Hospitality";
   if (cat.includes("multi-family")) return "Multi-Family";
-  if (cat.includes("commercial") || cat.includes("adaptive") || cat.includes("public") || cat.includes("tenant") || cat.includes("market")) return "Commercial";
+  if (cat.includes("tenant improvement")) return "Tenant Improvement";
+  if (cat.includes("commercial") || cat.includes("adaptive") || cat.includes("public") || cat.includes("market")) return "Commercial";
   if (cat.includes("residential")) return "Residential";
   return "Commercial";
 }

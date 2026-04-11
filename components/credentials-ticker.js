@@ -14,7 +14,7 @@ const items = [
   { label: "Benjamin Moore", sub: "Commercial", type: "client" },
   { label: "Tabyabasi Balik", sub: "Restaurant", type: "client" },
   { label: "SpaceArc", sub: "Experimental", type: "client" },
-  { label: "Cenine Maine Lobster", sub: "Restaurant", type: "client" },
+  { label: "Cousins Maine Lobster", sub: "Restaurant", type: "client" },
   // Publications
   { label: "Archinect", sub: "Publication", type: "press" },
   { label: "ArchDaily", sub: "Publication", type: "press" },
