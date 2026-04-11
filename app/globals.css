@@ -2372,6 +2372,11 @@ ul, ol { list-style: none; }
   transition: transform 0.8s var(--ease);
 }
 
+/* Hybrid: when project-detail follows ed-hero (no page-shell wrapper) */
+.ed-hero + .project-detail {
+  padding-top: 48px;
+}
+
 /* Full-bleed image pair — edge-to-edge 50/50 */
 .ed-pair {
   display: grid;
