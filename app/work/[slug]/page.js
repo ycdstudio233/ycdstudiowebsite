@@ -264,6 +264,7 @@ export default async function ProjectPage({ params }) {
 
           /* ── Float: solo portrait, gallery-style on void ── */
           if (frame.kind === "float") {
+            const textSide = frame.from === "left" ? "right" : "left";
             return (
               <div className="cinema__moment cinema__moment--void" key={idx}>
                 <CinematicReveal from={frame.from} scale className={`cinema__float cinema__float--${frame.from}`}>
@@ -271,6 +272,9 @@ export default async function ProjectPage({ params }) {
                     <img src={frame.image.image} alt={frame.image.label} className="cinema__float-img" />
                   </div>
                   <span className="cinema__float-caption">{frame.image.label}</span>
+                </CinematicReveal>
+                <CinematicReveal from={textSide} delay={0.35} className={`cinema__float-text cinema__float-text--${textSide}`}>
+                  <p className="cinema__float-statement">{frame.image.label}</p>
                 </CinematicReveal>
               </div>
             );

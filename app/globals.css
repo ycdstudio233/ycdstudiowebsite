@@ -2137,6 +2137,30 @@ ul, ol { list-style: none; }
   white-space: nowrap;
 }
 
+/* Float text — elegant label on the empty side */
+.cinema__float-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  padding: 64px;
+}
+
+.cinema__float-text--left { left: 0; }
+.cinema__float-text--right { right: 0; text-align: right; justify-content: flex-end; }
+
+.cinema__float-statement {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  max-width: 400px;
+}
+
 /* ── Narrative: scroll-driven progressive reveal ── */
 .cinema__overlay-root {
   position: absolute;
@@ -2838,6 +2862,7 @@ ul, ol { list-style: none; }
   .cinema__float--left, .cinema__float--right { justify-content: center; padding: 0 8%; }
   .cinema__float-frame { width: 72%; height: 58vh; }
   .cinema__float-caption { font-size: 0.625rem; bottom: 20px; }
+  .cinema__float-text { display: none; }
   .cinema__label { bottom: 20px; left: 20px; font-size: 0.625rem; padding: 8px 12px; max-width: calc(100% - 40px); }
   .cinema__veil--left, .cinema__veil--right {
     background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 40%, rgba(10, 10, 10, 0.1) 70%, transparent 100%);
