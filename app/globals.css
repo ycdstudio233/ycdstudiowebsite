@@ -2033,11 +2033,16 @@ ul, ol { list-style: none; }
   gap: 16px;
 }
 
-/* Equal pairs — both images get generous equal space */
-.gallery-row--asym,
+/* Asymmetric pairs — large landscape + smaller portrait, alternating */
+.gallery-row--asym {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 16px;
+}
+
 .gallery-row--asym-rev {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 7fr;
   gap: 16px;
 }
 
@@ -2052,10 +2057,19 @@ ul, ol { list-style: none; }
   aspect-ratio: 16 / 9;
 }
 
-.gallery-item--half,
-.gallery-item--major,
-.gallery-item--minor {
+.gallery-item--half {
   aspect-ratio: 4 / 3;
+}
+
+/* Major image — generous landscape */
+.gallery-item--major {
+  aspect-ratio: 4 / 3;
+}
+
+/* Minor image — matches height of major via grid stretch */
+.gallery-item--minor {
+  aspect-ratio: auto;
+  min-height: 0;
 }
 
 .gallery-item__img {
