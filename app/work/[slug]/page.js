@@ -295,14 +295,16 @@ export default async function ProjectPage({ params }) {
             );
           }
 
-          /* ── Narrative: image first → overlay fades → text rises ── */
+          /* ── Narrative: image pins → overlay fades → text rises → move on ── */
           if (frame.kind === "narrative") {
             return (
-              <div className="cinema__moment" key={idx}>
-                <CinematicReveal from={frame.from} scale className="cinema__fill cinema__fill--story">
-                  <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
-                  <ScrollOverlay align={frame.align} heading={frame.heading} body={frame.body} />
-                </CinematicReveal>
+              <div className="cinema__moment cinema__moment--narrative" key={idx}>
+                <div className="cinema__sticky-runway">
+                  <CinematicReveal from={frame.from} scale className="cinema__fill cinema__fill--story cinema__sticky-frame">
+                    <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
+                    <ScrollOverlay align={frame.align} heading={frame.heading} body={frame.body} />
+                  </CinematicReveal>
+                </div>
               </div>
             );
           }

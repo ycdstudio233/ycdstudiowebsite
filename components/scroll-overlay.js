@@ -3,10 +3,12 @@ import { useEffect, useRef } from "react";
 
 /**
  * Scroll-driven progressive reveal for narrative frames.
- * Sequence: clean image → gradient veil fades in → text rises into view.
  *
- * Uses requestAnimationFrame-throttled scroll listener to map the
- * element's viewport position to opacity/transform values.
+ * The image is pinned via position:sticky inside a tall runway.
+ * This component tracks how far through the runway the user has
+ * scrolled and maps that to overlay + text opacity/transform.
+ *
+ * Sequence: clean image (pinned) → veil fades in → text rises → unpin.
  */
 export function ScrollOverlay({ align, heading, body }) {
   const rootRef = useRef(null);
@@ -22,21 +24,25 @@ export function ScrollOverlay({ align, heading, body }) {
     veil.style.willChange = "opacity";
     story.style.willChange = "opacity, transform";
 
-    const moment = root.closest(".cinema__moment");
-    if (!moment) return;
+    /* Track the sticky runway wrapper — its rect.top going negative
+       tells us how far through the pinned scroll phase we are. */
+    const runway = root.closest(".cinema__sticky-runway");
+    if (!runway) return;
 
     let ticking = false;
     const update = () => {
-      const rect = moment.getBoundingClientRect();
+      const rect = runway.getBoundingClientRect();
       const vh = window.innerHeight;
-      const progress = 1 - rect.bottom / (vh + rect.height);
+      const scrolled = -rect.top;                   // how far past the pin point
+      const totalScroll = rect.height - vh;          // total scrollable runway
+      const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
 
-      // Veil: fades in from 30% → 55%
-      const v = Math.max(0, Math.min(1, (progress - 0.30) / 0.25));
+      // Veil: fades in from 15% → 55%
+      const v = Math.max(0, Math.min(1, (progress - 0.15) / 0.40));
       veil.style.opacity = v;
 
-      // Text: fades in + rises from 42% → 65%
-      const t = Math.max(0, Math.min(1, (progress - 0.42) / 0.23));
+      // Text: fades in + rises from 40% → 75%
+      const t = Math.max(0, Math.min(1, (progress - 0.40) / 0.35));
       story.style.opacity = t;
       story.style.transform = `translateY(${24 * (1 - t)}px)`;
 

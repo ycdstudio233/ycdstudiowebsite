@@ -1999,7 +1999,7 @@ ul, ol { list-style: none; }
 
 .cinema {
   background: #0a0a0a;
-  overflow: hidden;
+  overflow-x: clip;         /* clips horizontal slide-in without breaking sticky */
   position: relative;
 }
 
@@ -2007,6 +2007,22 @@ ul, ol { list-style: none; }
 .cinema__moment {
   position: relative;
   overflow: hidden;
+}
+
+/* ── Narrative: sticky pinning ── */
+.cinema__moment--narrative {
+  overflow: visible;        /* allow sticky to work */
+}
+
+.cinema__sticky-runway {
+  height: 200vh;            /* scroll runway while image stays pinned */
+  position: relative;
+}
+
+.cinema__sticky-frame.cinema__fill {
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 /* ── Shared fill container ── */
@@ -2110,6 +2126,7 @@ ul, ol { list-style: none; }
 .cinema__overlay-root {
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -2800,6 +2817,7 @@ ul, ol { list-style: none; }
   .project-nav__item:last-child { padding-left: 0; text-align: left; }
   .cinema__fill { height: 60vh; }
   .cinema__fill--story { height: 100vh; }
+  .cinema__sticky-runway { height: 180vh; }
   .cinema__moment--duo { height: 50vh; gap: 2px; }
   .cinema__duo-img { height: 50vh; min-height: 260px; }
   .cinema__duo-caption { bottom: 16px; left: 16px; font-size: 0.5625rem; padding: 6px 10px; max-width: calc(100% - 32px); }
