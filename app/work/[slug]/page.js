@@ -13,9 +13,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = projectDetails[slug];
   if (!project) return {};
-
   const ogImage = project.gallery?.[0]?.image;
-
   return {
     title: `${project.title} — ${project.category} in ${project.location}`,
     description: project.summary,
@@ -34,22 +32,14 @@ function ProjectJsonLd({ project, slug }) {
     name: project.title,
     description: project.summary,
     url: `https://ycd.studio/work/${slug}`,
-    creator: {
-      "@type": "Organization",
-      name: "YCD Studio",
-      url: "https://ycd.studio",
-    },
-    locationCreated: {
-      "@type": "Place",
-      name: project.location,
-    },
+    creator: { "@type": "Organization", name: "YCD Studio", url: "https://ycd.studio" },
+    locationCreated: { "@type": "Place", name: project.location },
     dateCreated: project.year,
     genre: project.category,
     ...(project.gallery?.[0]?.image && {
       image: `https://ycd.studio${project.gallery[0].image}`,
     }),
   };
-
   return (
     <script
       type="application/ld+json"
@@ -58,59 +48,42 @@ function ProjectJsonLd({ project, slug }) {
   );
 }
 
-/* ── Build the journey sequence ──
-   Interleaves images with text sections so the page
-   reads as a paced narrative, not a grid dump.          */
-function buildJourney(project) {
+/* ── Build the journey frames ──
+   Every image and text block becomes a full-viewport sticky frame.
+   As you scroll, each frame slides up and covers the previous one —
+   like a deck of cards being revealed.                                */
+function buildFrames(project) {
   const images = project.gallery?.slice(1) || [];
-  const sequence = [];
-
-  // Decide split points based on image count
+  const frames = [];
   const total = images.length;
-  const overviewAfter = Math.min(2, total);              // show 2 images, then overview
-  const approachAfter = Math.min(overviewAfter + 2, total); // 2 more, then approach
-  const detailsAfter = project.details
-    ? Math.min(approachAfter + 2, total)                  // 2 more, then details
-    : total;
+
+  // Split points for weaving text between images
+  const overviewAt = Math.min(2, total);
+  const approachAt = Math.min(overviewAt + 2, total);
+  const detailsAt = project.details ? Math.min(approachAt + 2, total) : -1;
 
   images.forEach((img, i) => {
-    // Add image moment
-    sequence.push({ type: img.wide ? "moment" : "moment-contained", image: img });
+    frames.push({ kind: "image", image: img });
 
-    // Weave in text at the right points
-    if (i + 1 === overviewAfter) {
-      sequence.push({
-        type: "narrative",
-        heading: "Overview",
-        body: project.overview,
-      });
-    } else if (i + 1 === approachAfter) {
-      sequence.push({
-        type: "narrative-dark",
-        heading: "Approach",
-        body: project.approach,
-      });
-    } else if (project.details && i + 1 === detailsAfter && detailsAfter > approachAfter) {
-      sequence.push({
-        type: "narrative",
-        heading: "Details",
-        body: project.details,
-      });
+    const pos = i + 1;
+    if (pos === overviewAt) {
+      frames.push({ kind: "text", heading: "Overview", body: project.overview });
+    } else if (pos === approachAt) {
+      frames.push({ kind: "text-dark", heading: "Approach", body: project.approach });
+    } else if (pos === detailsAt) {
+      frames.push({ kind: "text", heading: "Details", body: project.details });
     }
   });
 
-  // If very few images, ensure all text sections appear at the end
-  if (overviewAfter >= total) {
-    sequence.push({ type: "narrative", heading: "Overview", body: project.overview });
-  }
-  if (approachAfter >= total && overviewAfter < total) {
-    sequence.push({ type: "narrative-dark", heading: "Approach", body: project.approach });
-  }
-  if (project.details && detailsAfter >= total && approachAfter < total) {
-    sequence.push({ type: "narrative", heading: "Details", body: project.details });
-  }
+  // Ensure text appears even if very few images
+  const hasOverview = frames.some((f) => f.heading === "Overview");
+  const hasApproach = frames.some((f) => f.heading === "Approach");
+  const hasDetails = frames.some((f) => f.heading === "Details");
+  if (!hasOverview) frames.push({ kind: "text", heading: "Overview", body: project.overview });
+  if (!hasApproach) frames.push({ kind: "text-dark", heading: "Approach", body: project.approach });
+  if (project.details && !hasDetails) frames.push({ kind: "text", heading: "Details", body: project.details });
 
-  return sequence;
+  return frames;
 }
 
 export default async function ProjectPage({ params }) {
@@ -123,13 +96,13 @@ export default async function ProjectPage({ params }) {
   const nextProject =
     currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
-  const journey = buildJourney(project);
+  const frames = buildFrames(project);
 
   return (
     <main className="page-shell">
       <ProjectJsonLd project={project} slug={slug} />
 
-      {/* ── LAYER 1: The clean intro — unchanged ── */}
+      {/* ── LAYER 1: Clean intro ── */}
       <section className="project-detail container">
         <ScrollReveal>
           <div className="project-detail__nav-bar">
@@ -166,7 +139,6 @@ export default async function ProjectPage({ params }) {
           </div>
         </ScrollReveal>
 
-        {/* Hero image */}
         <ScrollReveal delay={0.2}>
           <div className="project-detail__hero-image">
             {project.gallery?.[0]?.image ? (
@@ -181,7 +153,6 @@ export default async function ProjectPage({ params }) {
           </div>
         </ScrollReveal>
 
-        {/* Specs — compact row below hero */}
         <ScrollReveal>
           <div className="project-detail__specs">
             <div className="project-detail__spec">
@@ -204,87 +175,57 @@ export default async function ProjectPage({ params }) {
         </ScrollReveal>
       </section>
 
-      {/* ── LAYER 2: The journey — images and text interleaved ── */}
-      <section className="journey">
-        {journey.map((block, i) => {
-          if (block.type === "moment") {
+      {/* ── LAYER 2: The immersive journey — sticky card stack ── */}
+      <section className="jstack">
+        {frames.map((frame, i) => {
+          if (frame.kind === "image") {
             return (
-              <ScrollReveal key={i} duration={1.2} distance={60} threshold={0.08}>
-                <div className="journey__moment">
-                  <img
-                    src={block.image.image}
-                    alt={block.image.label}
-                    className="journey__moment-img"
-                  />
-                  <span className="journey__moment-label">{block.image.label}</span>
-                </div>
-              </ScrollReveal>
-            );
-          }
-
-          if (block.type === "moment-contained") {
-            return (
-              <ScrollReveal key={i} duration={1.2} distance={60} threshold={0.08}>
-                <div className="journey__moment journey__moment--contained">
-                  <img
-                    src={block.image.image}
-                    alt={block.image.label}
-                    className="journey__moment-img"
-                  />
-                  <span className="journey__moment-label">{block.image.label}</span>
-                </div>
-              </ScrollReveal>
-            );
-          }
-
-          if (block.type === "narrative" || block.type === "narrative-dark") {
-            const isDark = block.type === "narrative-dark";
-            return (
-              <div
-                key={i}
-                className={`journey__narrative ${isDark ? "journey__narrative--dark" : ""}`}
-              >
-                <div className="container">
-                  <ScrollReveal duration={1} distance={30}>
-                    <div className="journey__narrative-inner">
-                      <h2 className="journey__narrative-heading">{block.heading}</h2>
-                      <p className="journey__narrative-body">{block.body}</p>
-                    </div>
-                  </ScrollReveal>
-                </div>
+              <div className="jf jf--image" key={i}>
+                <img
+                  src={frame.image.image}
+                  alt={frame.image.label}
+                  className="jf__img"
+                />
+                <span className="jf__label">{frame.image.label}</span>
               </div>
             );
           }
 
-          return null;
+          const isDark = frame.kind === "text-dark";
+          return (
+            <div className={`jf jf--text ${isDark ? "jf--dark" : ""}`} key={i}>
+              <div className="jf__text-inner">
+                <h2 className="jf__heading">{frame.heading}</h2>
+                <p className="jf__body">{frame.body}</p>
+              </div>
+            </div>
+          );
         })}
       </section>
 
-      {/* ── Videos (if any) ── */}
+      {/* ── Videos ── */}
       {project.videos && project.videos.length > 0 && (
-        <section className="container" style={{ paddingBottom: 80 }}>
-          <ScrollReveal>
-            <div className="project-detail__videos">
-              {project.videos.map((video) => (
-                <div className="project-detail__video-item" key={video.src}>
-                  <video
-                    className="project-detail__video"
-                    src={video.src}
-                    controls
-                    preload="metadata"
-                    playsInline
-                  />
-                  {video.label && (
-                    <div className="project-detail__video-label">{video.label}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+        <section className="container" style={{ padding: "80px 0" }}>
+          <div className="project-detail__videos">
+            {project.videos.map((video) => (
+              <div className="project-detail__video-item" key={video.src}>
+                <video
+                  className="project-detail__video"
+                  src={video.src}
+                  controls
+                  preload="metadata"
+                  playsInline
+                />
+                {video.label && (
+                  <div className="project-detail__video-label">{video.label}</div>
+                )}
+              </div>
+            ))}
+          </div>
         </section>
       )}
 
-      {/* ── Project navigation ── */}
+      {/* ── Navigation ── */}
       <section className="container">
         <nav className="project-nav">
           <div className="project-nav__item">
@@ -316,7 +257,6 @@ export default async function ProjectPage({ params }) {
         </nav>
       </section>
 
-      {/* CTA */}
       <section className="cta">
         <div className="container">
           <ScrollReveal>
