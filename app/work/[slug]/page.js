@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ProjectVisual } from "../../../components/project-visual";
 import { ScrollReveal } from "../../../components/scroll-reveal";
 import { CinematicReveal } from "../../../components/cinematic-reveal";
+import { ScrollOverlay } from "../../../components/scroll-overlay";
 import { projectDetails } from "../../../lib/project-details";
 import { allProjects } from "../../../lib/site-data";
 
@@ -275,17 +276,13 @@ export default async function ProjectPage({ params }) {
             );
           }
 
-          /* ── Narrative: text integrated on image ── */
+          /* ── Narrative: image first → overlay fades → text rises ── */
           if (frame.kind === "narrative") {
             return (
               <div className="cinema__moment" key={idx}>
                 <CinematicReveal from={frame.from} scale className="cinema__fill cinema__fill--story">
                   <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
-                  <div className={`cinema__veil cinema__veil--${frame.align}`} />
-                  <div className={`cinema__story cinema__story--${frame.align}`}>
-                    <span className="cinema__story-tag">{frame.heading}</span>
-                    <p className="cinema__story-body">{frame.body}</p>
-                  </div>
+                  <ScrollOverlay align={frame.align} heading={frame.heading} body={frame.body} />
                 </CinematicReveal>
               </div>
             );

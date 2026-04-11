@@ -2137,7 +2137,17 @@ ul, ol { list-style: none; }
   white-space: nowrap;
 }
 
-/* ── Narrative: text integrated on image ── */
+/* ── Narrative: scroll-driven progressive reveal ── */
+.cinema__overlay-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cinema__overlay-root .cinema__story {
+  pointer-events: auto;
+}
+
 .cinema__veil {
   position: absolute;
   inset: 0;
@@ -2819,8 +2829,7 @@ ul, ol { list-style: none; }
   .project-nav__item:first-child { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; }
   .project-nav__item:last-child { padding-left: 0; text-align: left; }
   .cinema__fill { height: 60vh; }
-  .cinema__fill--story { height: auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; }
-  .cinema__fill--story .cinema__cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cinema__fill--story { height: 100vh; }
   .cinema__moment--duo { height: 50vh; gap: 2px; }
   .cinema__duo-img { height: 50vh; min-height: 260px; }
   .cinema__duo-caption { bottom: 16px; left: 16px; font-size: 0.5625rem; padding: 6px 10px; max-width: calc(100% - 32px); }
@@ -2832,7 +2841,7 @@ ul, ol { list-style: none; }
   .cinema__veil--left, .cinema__veil--right {
     background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.65) 45%, rgba(10, 10, 10, 0.1) 75%, transparent 100%);
   }
-  .cinema__story { width: 100%; top: auto; bottom: 0; left: 0; right: auto; padding: 40px 24px 48px; text-align: left; position: relative; }
+  .cinema__story { width: 100%; top: auto; bottom: 0; left: 0; right: auto; padding: 40px 24px 48px; text-align: left; }
   .cinema__story--right { text-align: left; }
   .cinema__story--right .cinema__story-body { margin-left: 0; }
   .cinema__story-tag { font-size: 0.625rem; margin-bottom: 12px; }
