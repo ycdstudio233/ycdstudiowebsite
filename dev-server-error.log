@@ -1,10 +1,71 @@
- ⨯ Failed to start server
-Error: listen EADDRINUSE: address already in use :::3000
-    at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
-    at new Promise (<anonymous>) {
-  code: 'EADDRINUSE',
-  errno: -4091,
-  syscall: 'listen',
-  address: '::',
-  port: 3000
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\webpack-runtime.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\app\work\[slug]\page.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\require.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\load-components.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\build\utils.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/work/sonoma-residence'
 }
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\webpack-runtime.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\app\work\[slug]\page.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\require.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\load-components.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\build\utils.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/work/sonoma-residence'
+}
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\webpack-runtime.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\app\work\[slug]\page.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\require.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\load-components.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\build\utils.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/work/sonoma-residence'
+}
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\webpack-runtime.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\app\work\[slug]\page.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\require.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\load-components.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\build\utils.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/work/neighborhood-commons'
+}
+ ⨯ [Error: Cannot find module './vendor-chunks/@swc.js'
+Require stack:
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\webpack-runtime.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\.next\server\app\work\[slug]\page.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\require.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\load-components.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\build\utils.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\Ege Yener\Projects\ycd-website-codex\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/work/the-cottage'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: EPERM: operation not permitted, rename 'C:\Users\Ege Yener\Projects\ycd-website-codex\.next\cache\webpack\server-development\0.pack.gz_' -> 'C:\Users\Ege Yener\Projects\ycd-website-codex\.next\cache\webpack\server-development\0.pack.gz'
