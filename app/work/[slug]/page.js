@@ -49,39 +49,58 @@ function ProjectJsonLd({ project, slug }) {
 }
 
 /* ── Build the journey frames ──
-   Every image and text block becomes a full-viewport sticky frame.
-   As you scroll, each frame slides up and covers the previous one —
-   like a deck of cards being revealed.                                */
+   Three image frame types based on composition:
+   • "bleed"    — wide/landscape images fill the entire viewport
+   • "pair"     — two consecutive portrait images share a frame
+   • "showcase" — solo portrait centered on dark, gallery-style
+   Text sections weave between at natural breakpoints.            */
 function buildFrames(project) {
   const images = project.gallery?.slice(1) || [];
   const frames = [];
   const total = images.length;
 
-  // Split points for weaving text between images
+  // Text insertion points
   const overviewAt = Math.min(2, total);
   const approachAt = Math.min(overviewAt + 2, total);
   const detailsAt = project.details ? Math.min(approachAt + 2, total) : -1;
 
-  images.forEach((img, i) => {
-    frames.push({ kind: "image", image: img });
+  let i = 0;
+  let imageCount = 0;
 
-    const pos = i + 1;
-    if (pos === overviewAt) {
+  while (i < images.length) {
+    const img = images[i];
+
+    if (img.wide) {
+      // Wide image → full-bleed frame
+      frames.push({ kind: "bleed", image: img });
+      i++;
+    } else if (i + 1 < images.length && !images[i + 1].wide) {
+      // Two consecutive portraits → pair them
+      frames.push({ kind: "pair", left: img, right: images[i + 1] });
+      i += 2;
+      imageCount++; // count extra
+    } else {
+      // Solo portrait → showcase on dark
+      frames.push({ kind: "showcase", image: img });
+      i++;
+    }
+    imageCount++;
+
+    // Insert text at the right moments
+    if (imageCount === overviewAt) {
       frames.push({ kind: "text", heading: "Overview", body: project.overview });
-    } else if (pos === approachAt) {
+    } else if (imageCount === approachAt) {
       frames.push({ kind: "text-dark", heading: "Approach", body: project.approach });
-    } else if (pos === detailsAt) {
+    } else if (imageCount === detailsAt) {
       frames.push({ kind: "text", heading: "Details", body: project.details });
     }
-  });
+  }
 
-  // Ensure text appears even if very few images
-  const hasOverview = frames.some((f) => f.heading === "Overview");
-  const hasApproach = frames.some((f) => f.heading === "Approach");
-  const hasDetails = frames.some((f) => f.heading === "Details");
-  if (!hasOverview) frames.push({ kind: "text", heading: "Overview", body: project.overview });
-  if (!hasApproach) frames.push({ kind: "text-dark", heading: "Approach", body: project.approach });
-  if (project.details && !hasDetails) frames.push({ kind: "text", heading: "Details", body: project.details });
+  // Ensure all text sections appear
+  const has = (h) => frames.some((f) => f.heading === h);
+  if (!has("Overview")) frames.push({ kind: "text", heading: "Overview", body: project.overview });
+  if (!has("Approach")) frames.push({ kind: "text-dark", heading: "Approach", body: project.approach });
+  if (project.details && !has("Details")) frames.push({ kind: "text", heading: "Details", body: project.details });
 
   return frames;
 }
@@ -175,31 +194,61 @@ export default async function ProjectPage({ params }) {
         </ScrollReveal>
       </section>
 
-      {/* ── LAYER 2: The immersive journey — sticky card stack ── */}
+      {/* ── LAYER 2: Sticky card stack ── */}
       <section className="jstack">
-        {frames.map((frame, i) => {
-          if (frame.kind === "image") {
+        {frames.map((frame, idx) => {
+          /* ── Full-bleed landscape ── */
+          if (frame.kind === "bleed") {
             return (
-              <div className="jf jf--image" key={i}>
-                <img
-                  src={frame.image.image}
-                  alt={frame.image.label}
-                  className="jf__img"
-                />
+              <div className="jf jf--bleed" key={idx}>
+                <img src={frame.image.image} alt={frame.image.label} className="jf__img" />
                 <span className="jf__label">{frame.image.label}</span>
               </div>
             );
           }
 
-          const isDark = frame.kind === "text-dark";
-          return (
-            <div className={`jf jf--text ${isDark ? "jf--dark" : ""}`} key={i}>
-              <div className="jf__text-inner">
-                <h2 className="jf__heading">{frame.heading}</h2>
-                <p className="jf__body">{frame.body}</p>
+          /* ── Portrait pair — two images share a frame ── */
+          if (frame.kind === "pair") {
+            return (
+              <div className="jf jf--pair" key={idx}>
+                <div className="jf__pair-cell">
+                  <img src={frame.left.image} alt={frame.left.label} className="jf__pair-img" />
+                  <span className="jf__pair-label">{frame.left.label}</span>
+                </div>
+                <div className="jf__pair-cell">
+                  <img src={frame.right.image} alt={frame.right.label} className="jf__pair-img" />
+                  <span className="jf__pair-label">{frame.right.label}</span>
+                </div>
               </div>
-            </div>
-          );
+            );
+          }
+
+          /* ── Solo portrait — centered on dark ── */
+          if (frame.kind === "showcase") {
+            return (
+              <div className="jf jf--showcase" key={idx}>
+                <div className="jf__showcase-frame">
+                  <img src={frame.image.image} alt={frame.image.label} className="jf__showcase-img" />
+                </div>
+                <span className="jf__showcase-label">{frame.image.label}</span>
+              </div>
+            );
+          }
+
+          /* ── Text frames ── */
+          if (frame.kind === "text" || frame.kind === "text-dark") {
+            const isDark = frame.kind === "text-dark";
+            return (
+              <div className={`jf jf--text ${isDark ? "jf--dark" : ""}`} key={idx}>
+                <div className="jf__text-inner">
+                  <h2 className="jf__heading">{frame.heading}</h2>
+                  <p className="jf__body">{frame.body}</p>
+                </div>
+              </div>
+            );
+          }
+
+          return null;
         })}
       </section>
 
@@ -209,16 +258,8 @@ export default async function ProjectPage({ params }) {
           <div className="project-detail__videos">
             {project.videos.map((video) => (
               <div className="project-detail__video-item" key={video.src}>
-                <video
-                  className="project-detail__video"
-                  src={video.src}
-                  controls
-                  preload="metadata"
-                  playsInline
-                />
-                {video.label && (
-                  <div className="project-detail__video-label">{video.label}</div>
-                )}
+                <video className="project-detail__video" src={video.src} controls preload="metadata" playsInline />
+                {video.label && <div className="project-detail__video-label">{video.label}</div>}
               </div>
             ))}
           </div>

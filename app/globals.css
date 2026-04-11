@@ -2001,7 +2001,7 @@ ul, ol { list-style: none; }
   position: relative;
 }
 
-/* Each frame — sticky, full viewport, stacks on scroll */
+/* Base frame — sticky, full viewport */
 .jf {
   position: sticky;
   top: 0;
@@ -2010,8 +2010,8 @@ ul, ol { list-style: none; }
   overflow: hidden;
 }
 
-/* Image frames */
-.jf--image {
+/* ── Type 1: Full-bleed landscape ── */
+.jf--bleed {
   background: #0a0a0a;
 }
 
@@ -2039,7 +2039,80 @@ ul, ol { list-style: none; }
   max-width: calc(100% - 64px);
 }
 
-/* Text frames */
+/* ── Type 2: Portrait pair — two images share a frame ── */
+.jf--pair {
+  background: #0a0a0a;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.jf__pair-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.jf__pair-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.jf__pair-label {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 14px;
+  border-radius: 6px;
+  max-width: calc(100% - 48px);
+}
+
+/* ── Type 3: Solo portrait — centered on dark, gallery-style ── */
+.jf--showcase {
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jf__showcase-frame {
+  height: 88%;
+  max-width: 55%;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+}
+
+.jf__showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.jf__showcase-label {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+/* ── Text frames ── */
 .jf--text {
   background: var(--surface);
   display: flex;
@@ -2687,11 +2760,16 @@ ul, ol { list-style: none; }
   .project-nav__item:first-child { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; }
   .project-nav__item:last-child { padding-left: 0; text-align: left; }
   .jf { position: relative; height: auto; min-height: 0; }
-  .jf--image { height: 70vh; min-height: 300px; }
-  .jf--text { padding: 64px 0; }
+  .jf--bleed { height: 60vh; min-height: 280px; }
+  .jf--pair { height: auto; grid-template-columns: 1fr 1fr; gap: 3px; aspect-ratio: 5 / 3; }
+  .jf--showcase { height: 75vh; min-height: 300px; }
+  .jf__showcase-frame { max-width: 75%; height: 80%; }
+  .jf__showcase-label { font-size: 0.6875rem; }
+  .jf--text { padding: 56px 0; }
   .jf__text-inner { padding: 0 24px; }
   .jf__heading { font-size: 1.3rem; }
   .jf__label { bottom: 16px; left: 16px; font-size: 0.6875rem; max-width: calc(100% - 32px); padding: 8px 12px; }
+  .jf__pair-label { bottom: 12px; left: 12px; font-size: 0.625rem; padding: 6px 10px; }
   .cta { padding: 72px 0; }
   .footer__column a { padding: 12px 0; }
   .work-filter__btn { padding: 12px 20px; min-height: 44px; }
