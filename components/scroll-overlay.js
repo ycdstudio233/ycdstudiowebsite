@@ -22,8 +22,6 @@ export function ScrollOverlay({ align, heading, body }) {
     veil.style.willChange = "opacity";
     story.style.willChange = "opacity, transform";
 
-    /* Track the untransformed .cinema__moment ancestor for accurate
-       scroll position (the CinematicReveal parent has transforms). */
     const moment = root.closest(".cinema__moment");
     if (!moment) return;
 
@@ -31,15 +29,14 @@ export function ScrollOverlay({ align, heading, body }) {
     const update = () => {
       const rect = moment.getBoundingClientRect();
       const vh = window.innerHeight;
-      // 0 = frame just entering viewport, 1 = frame fully exited top
       const progress = 1 - rect.bottom / (vh + rect.height);
 
-      // Veil: fades in from 35% → 60% scroll progress
-      const v = Math.max(0, Math.min(1, (progress - 0.35) / 0.25));
+      // Veil: fades in from 30% → 55%
+      const v = Math.max(0, Math.min(1, (progress - 0.30) / 0.25));
       veil.style.opacity = v;
 
-      // Text: fades in + rises from 45% → 70%
-      const t = Math.max(0, Math.min(1, (progress - 0.45) / 0.25));
+      // Text: fades in + rises from 42% → 65%
+      const t = Math.max(0, Math.min(1, (progress - 0.42) / 0.23));
       story.style.opacity = t;
       story.style.transform = `translateY(${24 * (1 - t)}px)`;
 
@@ -54,7 +51,7 @@ export function ScrollOverlay({ align, heading, body }) {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    update(); // initial position check
+    update();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 

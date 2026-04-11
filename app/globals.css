@@ -2157,32 +2157,33 @@ ul, ol { list-style: none; }
 .cinema__veil--left {
   background: linear-gradient(
     to right,
-    rgba(10, 10, 10, 0.92) 0%,
-    rgba(10, 10, 10, 0.72) 30%,
-    rgba(10, 10, 10, 0.2) 55%,
-    transparent 75%
+    rgba(10, 10, 10, 0.88) 0%,
+    rgba(10, 10, 10, 0.7) 28%,
+    rgba(10, 10, 10, 0.18) 52%,
+    transparent 70%
   );
 }
 
 .cinema__veil--right {
   background: linear-gradient(
     to left,
-    rgba(10, 10, 10, 0.92) 0%,
-    rgba(10, 10, 10, 0.72) 30%,
-    rgba(10, 10, 10, 0.2) 55%,
-    transparent 75%
+    rgba(10, 10, 10, 0.88) 0%,
+    rgba(10, 10, 10, 0.7) 28%,
+    rgba(10, 10, 10, 0.18) 52%,
+    transparent 70%
   );
 }
 
+/* Narrative text — vertically centered on the gradient side */
 .cinema__story {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 42%;
+  width: 44%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 64px;
+  padding: 72px 56px;
 }
 
 .cinema__story--left {
@@ -2200,16 +2201,16 @@ ul, ol { list-style: none; }
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 28px;
 }
 
 .cinema__story-body {
-  font-size: 1.0625rem;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+  line-height: 1.95;
+  color: rgba(255, 255, 255, 0.82);
   font-weight: 300;
-  max-width: 480px;
+  max-width: 520px;
 }
 
 .cinema__story--right .cinema__story-body {
@@ -2839,13 +2840,17 @@ ul, ol { list-style: none; }
   .cinema__float-caption { font-size: 0.625rem; bottom: 20px; }
   .cinema__label { bottom: 20px; left: 20px; font-size: 0.625rem; padding: 8px 12px; max-width: calc(100% - 40px); }
   .cinema__veil--left, .cinema__veil--right {
-    background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.65) 45%, rgba(10, 10, 10, 0.1) 75%, transparent 100%);
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 40%, rgba(10, 10, 10, 0.1) 70%, transparent 100%);
   }
   .cinema__story { width: 100%; top: auto; bottom: 0; left: 0; right: auto; padding: 40px 24px 48px; text-align: left; }
   .cinema__story--right { text-align: left; }
   .cinema__story--right .cinema__story-body { margin-left: 0; }
   .cinema__story-tag { font-size: 0.625rem; margin-bottom: 12px; }
   .cinema__story-body { font-size: 0.875rem; line-height: 1.7; }
+  .cinema__story--right { text-align: left; }
+  .cinema__story--right .cinema__story-body { margin-left: 0; }
+  .cinema__story-tag { font-size: 0.625rem; margin-bottom: 10px; }
+  .cinema__story-body { font-size: 0.8125rem; line-height: 1.7; }
   .cta { padding: 72px 0; }
   .footer__column a { padding: 12px 0; }
   .work-filter__btn { padding: 12px 20px; min-height: 44px; }
