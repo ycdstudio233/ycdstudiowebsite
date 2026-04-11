@@ -166,31 +166,23 @@ export default function CoastalHouseEditorial() {
         </div>
       </section>
 
-      {/* ── Remaining gallery — asymmetric pairs ── */}
-      <section className="ed-gallery">
-        <div className="container">
-          <ScrollReveal>
-            <div className="ed-gallery__row ed-gallery__row--asym">
-              <div className="ed-gallery__item ed-gallery__item--major">
-                <img src={g[7].image} alt={g[7].label} className="ed-gallery__img" />
-                <span className="ed-gallery__label">{g[7].label}</span>
-              </div>
-              <div className="ed-gallery__item ed-gallery__item--minor">
-                <img src={g[8].image} alt={g[8].label} className="ed-gallery__img" />
-                <span className="ed-gallery__label">{g[8].label}</span>
-              </div>
-            </div>
-          </ScrollReveal>
+      {/* ── Gallery pair — full-bleed 50/50 ── */}
+      <div className="ed-pair">
+        <div className="ed-pair__item">
+          <img src={g[7].image} alt={g[7].label} className="ed-pair__img" />
+          <span className="ed-pair__label">{g[7].label}</span>
         </div>
-      </section>
+        <div className="ed-pair__item">
+          <img src={g[8].image} alt={g[8].label} className="ed-pair__img" />
+          <span className="ed-pair__label">{g[8].label}</span>
+        </div>
+      </div>
 
       {/* ── Closing full-bleed image ── */}
-      <ScrollReveal>
-        <div className="ed-full-image">
-          <img src={g[9].image} alt={g[9].label} className="ed-full-image__img" />
-          <span className="ed-full-image__caption">{g[9].label}</span>
-        </div>
-      </ScrollReveal>
+      <div className="ed-full-image">
+        <img src={g[9].image} alt={g[9].label} className="ed-full-image__img" />
+        <span className="ed-full-image__caption">{g[9].label}</span>
+      </div>
 
       {/* ── Project navigation with thumbnails ── */}
       <section className="ed-nav">
