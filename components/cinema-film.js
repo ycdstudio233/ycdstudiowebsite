@@ -56,6 +56,7 @@ export function CinemaFilm({ frames }) {
         let opacity = 0;
         const imgEl = el.querySelector(".cinema-film__img");
         const textEl = el.querySelector(".cinema-film__text");
+        const labelEl = el.querySelector(".cinema-film__label");
 
         if (n === 1) {
           opacity = 1;
@@ -84,24 +85,54 @@ export function CinemaFilm({ frames }) {
               opacity = 1; /* hold at peak */
             }
 
-            /* Narrative: text rises during fade-in */
+            /* Label: fades in during hold zone so there's always action */
+            if (labelEl) {
+              if (t >= 0.30 && t <= 0.70) {
+                const labelT = (t - 0.30) / 0.40;
+                labelEl.style.opacity = labelT;
+                labelEl.style.transform = `translateY(${10 * (1 - labelT)}px)`;
+              } else if (t > 0.70) {
+                labelEl.style.opacity = 1;
+                labelEl.style.transform = "translateY(0)";
+              } else {
+                labelEl.style.opacity = 0;
+                labelEl.style.transform = "translateY(10px)";
+              }
+            }
+
+            /* Narrative: text rises during hold zone */
             if (textEl && imgEl) {
-              const textT = Math.max(0, Math.min(1, (t - 0.15) / 0.25));
-              textEl.style.opacity = textT;
-              textEl.style.transform = `translateY(${24 * (1 - textT)}px)`;
-              imgEl.style.transform = `translateY(${-30 * textT}px)`;
-            } else if (textEl) {
-              textEl.style.opacity = opacity > 0.1 ? 1 : 0;
-              textEl.style.transform = "translateY(0)";
+              if (t >= 0.30 && t <= 0.70) {
+                const textT = (t - 0.30) / 0.40;
+                textEl.style.opacity = textT;
+                textEl.style.transform = `translateY(${24 * (1 - textT)}px)`;
+                imgEl.style.transform = `translateY(${-30 * textT}px)`;
+              } else if (t > 0.70) {
+                textEl.style.opacity = 1;
+                textEl.style.transform = "translateY(0)";
+                imgEl.style.transform = "translateY(-30px)";
+              } else {
+                textEl.style.opacity = 0;
+                textEl.style.transform = "translateY(24px)";
+                imgEl.style.transform = "translateY(0)";
+              }
             }
           } else if (i === n - 1 && progress >= slideEnd) {
             opacity = 1; /* last slide stays visible */
+            if (labelEl) {
+              labelEl.style.opacity = 1;
+              labelEl.style.transform = "translateY(0)";
+            }
             if (textEl) {
               textEl.style.opacity = 1;
               textEl.style.transform = "translateY(0)";
             }
           } else {
             /* Hidden */
+            if (labelEl) {
+              labelEl.style.opacity = 0;
+              labelEl.style.transform = "translateY(10px)";
+            }
             if (textEl) {
               textEl.style.opacity = 0;
               textEl.style.transform = "translateY(24px)";
@@ -170,7 +201,7 @@ export function CinemaFilm({ frames }) {
                   className="cinema-film__img"
                   loading={idx < 2 ? "eager" : "lazy"}
                 />
-                <span className="cinema-film__label">{slide.image.label}</span>
+                <span className="cinema-film__label" style={{ opacity: 0, transform: "translateY(10px)" }}>{slide.image.label}</span>
               </>
             )}
           </div>
