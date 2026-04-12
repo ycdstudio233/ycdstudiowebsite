@@ -64,34 +64,41 @@ export function CinemaFilm({ frames }) {
             textEl.style.transform = "translateY(0)";
           }
         } else {
-          /* Sequential fade-through-dark — no image overlap.
-             Each transition: outgoing fades out → brief dark beat → incoming fades in.
-             Only one image visible at any time. Always interactive. */
-          const tp = progress * (n - 1);
-          const activeT = Math.min(Math.floor(tp), n - 2);
-          const t = Math.min(1, tp - activeT);
+          /* Sequential fade with hold — no image overlap.
+             35% fade-in → 30% hold at peak → 35% fade-out.
+             Only one image visible at any time. */
+          const perSlide = 1 / n;
+          const slideStart = i * perSlide;
+          const slideEnd = (i + 1) * perSlide;
 
-          if (i === activeT) {
-            /* Outgoing — fades to dark during first half */
-            if (t <= 0.5) {
-              opacity = 1 - t * 2;
+          if (progress >= slideStart && progress < slideEnd) {
+            const t = (progress - slideStart) / perSlide;
+
+            if (i === 0 && t < 0.35) {
+              opacity = 1; /* first slide starts fully visible */
+            } else if (t < 0.35) {
+              opacity = t / 0.35; /* fade in */
+            } else if (t > 0.65 && i < n - 1) {
+              opacity = 1 - (t - 0.65) / 0.35; /* fade out */
+            } else {
+              opacity = 1; /* hold at peak */
             }
-            if (textEl) {
-              textEl.style.opacity = opacity > 0.1 ? 1 : 0;
-              textEl.style.transform = "translateY(0)";
-            }
-            if (textEl && imgEl) imgEl.style.transform = "translateY(-30px)";
-          } else if (i === activeT + 1) {
-            /* Incoming — fades in from dark during second half */
-            if (t > 0.5) {
-              opacity = (t - 0.5) * 2;
-            }
-            /* Narrative: text rises once image is mostly visible */
+
+            /* Narrative: text rises during fade-in */
             if (textEl && imgEl) {
-              const textT = Math.max(0, Math.min(1, (t - 0.75) / 0.2));
+              const textT = Math.max(0, Math.min(1, (t - 0.15) / 0.25));
               textEl.style.opacity = textT;
               textEl.style.transform = `translateY(${24 * (1 - textT)}px)`;
               imgEl.style.transform = `translateY(${-30 * textT}px)`;
+            } else if (textEl) {
+              textEl.style.opacity = opacity > 0.1 ? 1 : 0;
+              textEl.style.transform = "translateY(0)";
+            }
+          } else if (i === n - 1 && progress >= slideEnd) {
+            opacity = 1; /* last slide stays visible */
+            if (textEl) {
+              textEl.style.opacity = 1;
+              textEl.style.transform = "translateY(0)";
             }
           } else {
             /* Hidden */
