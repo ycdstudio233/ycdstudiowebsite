@@ -65,7 +65,7 @@ export function CinemaFilm({ frames }) {
           }
         } else {
           /* Sequential fade with hold — no image overlap.
-             35% fade-in → 30% hold at peak → 35% fade-out.
+             30% fade-in → 40% hold at peak → 30% fade-out.
              Only one image visible at any time. */
           const perSlide = 1 / n;
           const slideStart = i * perSlide;
@@ -74,12 +74,12 @@ export function CinemaFilm({ frames }) {
           if (progress >= slideStart && progress < slideEnd) {
             const t = (progress - slideStart) / perSlide;
 
-            if (i === 0 && t < 0.35) {
+            if (i === 0 && t < 0.30) {
               opacity = 1; /* first slide starts fully visible */
-            } else if (t < 0.35) {
-              opacity = t / 0.35; /* fade in */
-            } else if (t > 0.65 && i < n - 1) {
-              opacity = 1 - (t - 0.65) / 0.35; /* fade out */
+            } else if (t < 0.30) {
+              opacity = t / 0.30; /* fade in */
+            } else if (t > 0.70 && i < n - 1) {
+              opacity = 1 - (t - 0.70) / 0.30; /* fade out */
             } else {
               opacity = 1; /* hold at peak */
             }
