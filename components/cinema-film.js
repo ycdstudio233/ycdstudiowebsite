@@ -85,13 +85,9 @@ export function CinemaFilm({ frames }) {
               opacity = 1; /* hold at peak */
             }
 
-            /* Label: fades in during hold zone so there's always action */
+            /* Label: appears instantly when hold zone starts */
             if (labelEl) {
-              if (t >= 0.30 && t <= 0.70) {
-                const labelT = (t - 0.30) / 0.40;
-                labelEl.style.opacity = labelT;
-                labelEl.style.transform = `translateY(${10 * (1 - labelT)}px)`;
-              } else if (t > 0.70) {
+              if (t >= 0.30) {
                 labelEl.style.opacity = 1;
                 labelEl.style.transform = "translateY(0)";
               } else {
@@ -100,14 +96,9 @@ export function CinemaFilm({ frames }) {
               }
             }
 
-            /* Narrative: text rises during hold zone */
+            /* Narrative: text appears instantly at hold zone */
             if (textEl && imgEl) {
-              if (t >= 0.30 && t <= 0.70) {
-                const textT = (t - 0.30) / 0.40;
-                textEl.style.opacity = textT;
-                textEl.style.transform = `translateY(${24 * (1 - textT)}px)`;
-                imgEl.style.transform = `translateY(${-30 * textT}px)`;
-              } else if (t > 0.70) {
+              if (t >= 0.30) {
                 textEl.style.opacity = 1;
                 textEl.style.transform = "translateY(0)";
                 imgEl.style.transform = "translateY(-30px)";
