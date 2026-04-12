@@ -2036,13 +2036,15 @@ ul, ol { list-style: none; }
 .cinema__cover {
   width: 100%;
   height: 100%;
-  object-fit: contain;         /* show full image on dark backdrop — no crop, no pixelation */
+  object-fit: cover;
   display: block;
 }
 
-/* Narrative frames need cover so text overlay always has a filled background */
-.cinema__fill--story .cinema__cover {
-  object-fit: cover;
+/* Per-project override: images below native res get scale-down to stay sharp */
+.cinema--sharp .cinema__cover,
+.cinema--sharp .cinema__duo-img,
+.cinema--sharp .cinema__reveal-img {
+  object-fit: scale-down;
 }
 
 /* ── Frosted label ── */
@@ -2082,7 +2084,7 @@ ul, ol { list-style: none; }
 .cinema__duo-img {
   width: 100%;
   height: 65vh;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
@@ -2123,7 +2125,7 @@ ul, ol { list-style: none; }
 .cinema__reveal-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
@@ -2829,13 +2831,13 @@ ul, ol { list-style: none; }
   /* Stack diptych vertically — full width per image */
   .cinema__moment--duo { grid-template-columns: 1fr; height: auto; gap: 3px; }
   .cinema__duo-cell { height: auto; }
-  .cinema__duo-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: contain; }
+  .cinema__duo-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: cover; }
   .cinema__duo-caption { bottom: 16px; left: 16px; font-size: 0.5625rem; padding: 6px 10px; max-width: calc(100% - 32px); }
 
   /* Stack reveal vertically */
   .cinema__reveal { grid-template-columns: 1fr; gap: 3px; }
   .cinema__reveal-cell { height: auto; }
-  .cinema__reveal-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: contain; }
+  .cinema__reveal-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: cover; }
   .cinema__label { bottom: 20px; left: 20px; font-size: 0.625rem; padding: 8px 12px; max-width: calc(100% - 40px); }
   .cinema__veil--left, .cinema__veil--right {
     background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 40%, rgba(10, 10, 10, 0.1) 70%, transparent 100%);
