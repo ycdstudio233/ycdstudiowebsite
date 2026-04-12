@@ -271,8 +271,8 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* ── LAYER 2: Cinematic journey ── */}
-      {slug === "coastal-house" && <CinemaFilm frames={frames} />}
-      <section className={`cinema${slug === "coastal-house" ? " cinema--has-film" : ""}`}>
+      <CinemaFilm frames={frames} />
+      <section className="cinema cinema--has-film">
         {frames.map((frame, idx) => {
           /* ── Immersive: wide landscape, full bleed ── */
           if (frame.kind === "immersive") {
