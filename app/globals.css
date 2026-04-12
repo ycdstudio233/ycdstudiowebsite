@@ -2045,11 +2045,6 @@ ul, ol { list-style: none; }
 }
 
 /* Per-project override: images below native res get scale-down to stay sharp */
-.cinema--sharp .cinema__cover,
-.cinema--sharp .cinema__duo-img,
-.cinema--sharp .cinema__reveal-img {
-  object-fit: scale-down;
-}
 
 /* ── Frosted label ── */
 .cinema__label {

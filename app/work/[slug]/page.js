@@ -178,18 +178,6 @@ export default async function ProjectPage({ params }) {
 
   const frames = buildCinemaFrames(project);
 
-  /* Projects whose gallery images benefit from scale-down (contain
-     without upscaling) instead of cover — either low-res renders
-     or images where the full composition matters more than fill. */
-  const sharpSlugs = new Set([
-    "hfa-tenant-improvement",
-    "cyprus-residence",
-    "spacearc",
-    "neighborhood-commons",
-    "lady-bird-boardwalk",
-    "st-marys-cathedral",
-  ]);
-  const cinemaClass = sharpSlugs.has(slug) ? "cinema cinema--sharp" : "cinema";
 
   return (
     <main className="page-shell">
@@ -269,7 +257,7 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* ── LAYER 2: Cinematic journey ── */}
-      <section className={cinemaClass}>
+      <section className="cinema">
         {frames.map((frame, idx) => {
           /* ── Immersive: wide landscape, full bleed ── */
           if (frame.kind === "immersive") {
