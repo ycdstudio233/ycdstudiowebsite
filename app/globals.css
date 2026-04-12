@@ -2009,6 +2009,9 @@ ul, ol { list-style: none; }
   overflow: hidden;
   margin-bottom: 16px;
 }
+.cinema__moment:last-child {
+  margin-bottom: 0;
+}
 
 /* ── Narrative: sticky pinning ── */
 .cinema__moment--narrative {
@@ -2033,13 +2036,22 @@ ul, ol { list-style: none; }
   height: 80vh;
 }
 
-/* ── Shared cover image — contain: fill container, never crop ── */
+/* ── Shared cover image — scale-down: never crop, never upscale ── */
 .cinema__cover {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: scale-down;
   display: block;
-  transition: transform 0.1s linear;  /* smooth parallax in narrative frames */
+}
+
+/* Low-res images: show at natural size, never upscale — stays sharp */
+.cinema__cover.cinema__cover--small,
+.cinema__duo-img.cinema__duo-img--small,
+.cinema__reveal-img.cinema__reveal-img--small {
+  object-fit: scale-down;
+}
+.cinema__fill--story .cinema__cover.cinema__cover--small {
+  object-fit: scale-down;
 }
 
 /* ── Frosted label ── */
@@ -2079,7 +2091,7 @@ ul, ol { list-style: none; }
 .cinema__duo-img {
   width: 100%;
   height: 65vh;
-  object-fit: contain;
+  object-fit: scale-down;
   display: block;
 }
 
@@ -2105,11 +2117,13 @@ ul, ol { list-style: none; }
 .cinema__moment--float {
   position: relative;
   overflow: hidden;
+  margin-bottom: 16px;
   height: 85vh;
   display: flex;
   align-items: center;
   background: #0a0a0a;
 }
+.cinema__moment--float:last-child { margin-bottom: 0; }
 
 .cinema__float-inner {
   position: relative;
@@ -2158,7 +2172,7 @@ ul, ol { list-style: none; }
 .cinema__reveal-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: scale-down;
   display: block;
 }
 
