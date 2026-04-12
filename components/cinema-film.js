@@ -65,9 +65,9 @@ export function CinemaFilm({ frames }) {
             textEl.style.transform = "translateY(0)";
           }
         } else {
-          /* Sequential fade with hold — no image overlap.
-             30% fade-in → 40% hold at peak → 30% fade-out.
-             Only one image visible at any time. */
+          /* Sequential fade — mostly interactive, brief peak for text.
+             42% fade-in → 15% hold (text appears) → 43% fade-out.
+             No image overlap. No image push/transform. */
           const perSlide = 1 / n;
           const slideStart = i * perSlide;
           const slideEnd = (i + 1) * perSlide;
@@ -75,60 +75,40 @@ export function CinemaFilm({ frames }) {
           if (progress >= slideStart && progress < slideEnd) {
             const t = (progress - slideStart) / perSlide;
 
-            if (i === 0 && t < 0.30) {
+            if (i === 0 && t < 0.42) {
               opacity = 1; /* first slide starts fully visible */
-            } else if (t < 0.30) {
-              opacity = t / 0.30; /* fade in */
-            } else if (t > 0.70 && i < n - 1) {
-              opacity = 1 - (t - 0.70) / 0.30; /* fade out */
+            } else if (t < 0.42) {
+              opacity = t / 0.42; /* fade in */
+            } else if (t > 0.57 && i < n - 1) {
+              opacity = 1 - (t - 0.57) / 0.43; /* fade out */
             } else {
-              opacity = 1; /* hold at peak */
+              opacity = 1; /* brief hold — text appears here */
             }
 
-            /* Label: appears instantly when hold zone starts */
+            /* Label: appears at peak */
             if (labelEl) {
-              if (t >= 0.30) {
-                labelEl.style.opacity = 1;
-                labelEl.style.transform = "translateY(0)";
-              } else {
-                labelEl.style.opacity = 0;
-                labelEl.style.transform = "translateY(10px)";
-              }
+              labelEl.style.opacity = t >= 0.42 ? 1 : 0;
             }
 
-            /* Narrative: text appears instantly at hold zone */
-            if (textEl && imgEl) {
-              if (t >= 0.30) {
-                textEl.style.opacity = 1;
-                textEl.style.transform = "translateY(0)";
-                imgEl.style.transform = "translateY(-30px)";
-              } else {
-                textEl.style.opacity = 0;
-                textEl.style.transform = "translateY(24px)";
-                imgEl.style.transform = "translateY(0)";
-              }
+            /* Narrative text: appears at peak, no image push */
+            if (textEl) {
+              textEl.style.opacity = t >= 0.42 ? 1 : 0;
+              textEl.style.transform = t >= 0.42 ? "translateY(0)" : "translateY(20px)";
             }
           } else if (i === n - 1 && progress >= slideEnd) {
-            opacity = 1; /* last slide stays visible */
-            if (labelEl) {
-              labelEl.style.opacity = 1;
-              labelEl.style.transform = "translateY(0)";
-            }
+            opacity = 1;
+            if (labelEl) labelEl.style.opacity = 1;
             if (textEl) {
               textEl.style.opacity = 1;
               textEl.style.transform = "translateY(0)";
             }
           } else {
             /* Hidden */
-            if (labelEl) {
-              labelEl.style.opacity = 0;
-              labelEl.style.transform = "translateY(10px)";
-            }
+            if (labelEl) labelEl.style.opacity = 0;
             if (textEl) {
               textEl.style.opacity = 0;
-              textEl.style.transform = "translateY(24px)";
+              textEl.style.transform = "translateY(20px)";
             }
-            if (textEl && imgEl) imgEl.style.transform = "translateY(0)";
           }
         }
 
