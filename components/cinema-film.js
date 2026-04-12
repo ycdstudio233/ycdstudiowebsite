@@ -52,52 +52,53 @@ export function CinemaFilm({ frames }) {
       if (totalScroll <= 0) { ticking = false; return; }
       const progress = Math.min(1, scrolled / totalScroll);
 
-      const perSlide = 1 / n;
-
       slideEls.forEach((el, i) => {
-        const slideStart = i * perSlide;
-        const slideEnd = (i + 1) * perSlide;
-
         let opacity = 0;
         const imgEl = el.querySelector(".cinema-film__img");
         const textEl = el.querySelector(".cinema-film__text");
 
-        if (progress >= slideStart && progress < slideEnd) {
-          const t = (progress - slideStart) / perSlide;
-
-          /* Crossfade: 30% fade-in, 40% hold, 30% fade-out */
-          if (i === 0 && t < 0.30) {
-            opacity = 1; /* first slide starts fully visible */
-          } else if (t < 0.30) {
-            const fadeIn = t / 0.30;
-            opacity = fadeIn * fadeIn * (3 - 2 * fadeIn); /* smoothstep */
-          } else if (t > 0.70 && i < n - 1) {
-            const fadeOut = (t - 0.70) / 0.30;
-            opacity = 1 - fadeOut * fadeOut * (3 - 2 * fadeOut);
-          } else {
-            opacity = 1;
-          }
-
-          /* Narrative: text rises + image slides up (slower reveal) */
-          if (textEl && imgEl) {
-            const textT = Math.max(0, Math.min(1, (t - 0.15) / 0.35));
-            const ease = textT * textT * (3 - 2 * textT);
-            textEl.style.opacity = ease;
-            textEl.style.transform = `translateY(${24 * (1 - ease)}px)`;
-            imgEl.style.transform = `translateY(${-30 * ease}px)`;
-          }
-        } else if (i === n - 1 && progress >= slideEnd) {
+        if (n === 1) {
           opacity = 1;
           if (textEl) {
             textEl.style.opacity = 1;
             textEl.style.transform = "translateY(0)";
           }
         } else {
-          if (textEl) {
-            textEl.style.opacity = 0;
-            textEl.style.transform = "translateY(20px)";
+          /* Continuous crossfade — no dead zones.
+             Maps progress [0,1] to n-1 transitions.
+             Every scroll pixel changes something on screen. */
+          const tp = progress * (n - 1);
+          const activeT = Math.min(Math.floor(tp), n - 2);
+          const t = Math.min(1, tp - activeT);
+          const smooth = t * t * (3 - 2 * t); /* smoothstep */
+
+          if (i === activeT) {
+            /* Outgoing slide — fading out */
+            opacity = 1 - smooth;
+            if (textEl) {
+              textEl.style.opacity = 1;
+              textEl.style.transform = "translateY(0)";
+            }
+            if (textEl && imgEl) imgEl.style.transform = "translateY(-30px)";
+          } else if (i === activeT + 1) {
+            /* Incoming slide — fading in */
+            opacity = smooth;
+            if (textEl && imgEl) {
+              /* Narrative: text rises during second half of crossfade */
+              const textT = Math.max(0, Math.min(1, (t - 0.35) / 0.45));
+              const ease = textT * textT * (3 - 2 * textT);
+              textEl.style.opacity = ease;
+              textEl.style.transform = `translateY(${24 * (1 - ease)}px)`;
+              imgEl.style.transform = `translateY(${-30 * ease}px)`;
+            }
+          } else {
+            /* Hidden slide */
+            if (textEl) {
+              textEl.style.opacity = 0;
+              textEl.style.transform = "translateY(24px)";
+            }
+            if (textEl && imgEl) imgEl.style.transform = "translateY(0)";
           }
-          if (imgEl) imgEl.style.transform = "translateY(0)";
         }
 
         el.style.opacity = opacity;
