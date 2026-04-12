@@ -65,14 +65,14 @@ export function CinemaFilm({ frames }) {
         if (progress >= slideStart && progress < slideEnd) {
           const t = (progress - slideStart) / perSlide;
 
-          /* Crossfade: 25% fade-in, 50% hold, 25% fade-out */
-          if (i === 0 && t < 0.25) {
+          /* Crossfade: 30% fade-in, 40% hold, 30% fade-out */
+          if (i === 0 && t < 0.30) {
             opacity = 1; /* first slide starts fully visible */
-          } else if (t < 0.25) {
-            const fadeIn = t / 0.25;
+          } else if (t < 0.30) {
+            const fadeIn = t / 0.30;
             opacity = fadeIn * fadeIn * (3 - 2 * fadeIn); /* smoothstep */
-          } else if (t > 0.75 && i < n - 1) {
-            const fadeOut = (t - 0.75) / 0.25;
+          } else if (t > 0.70 && i < n - 1) {
+            const fadeOut = (t - 0.70) / 0.30;
             opacity = 1 - fadeOut * fadeOut * (3 - 2 * fadeOut);
           } else {
             opacity = 1;
@@ -119,7 +119,7 @@ export function CinemaFilm({ frames }) {
   }, [slides.length]);
 
   /* More scroll per slide = slower, more cinematic pace */
-  const vhPerSlide = 150;
+  const vhPerSlide = 220;
   const runwayVh = slides.length * vhPerSlide + 50;
 
   return (
