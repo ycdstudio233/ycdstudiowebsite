@@ -64,35 +64,37 @@ export function CinemaFilm({ frames }) {
             textEl.style.transform = "translateY(0)";
           }
         } else {
-          /* Continuous crossfade — no dead zones.
-             Maps progress [0,1] to n-1 transitions.
-             Every scroll pixel changes something on screen. */
+          /* Sequential fade-through-dark — no image overlap.
+             Each transition: outgoing fades out → brief dark beat → incoming fades in.
+             Only one image visible at any time. Always interactive. */
           const tp = progress * (n - 1);
           const activeT = Math.min(Math.floor(tp), n - 2);
           const t = Math.min(1, tp - activeT);
-          const smooth = t * t * (3 - 2 * t); /* smoothstep */
 
           if (i === activeT) {
-            /* Outgoing slide — fading out */
-            opacity = 1 - smooth;
+            /* Outgoing — fades to dark during first half */
+            if (t <= 0.5) {
+              opacity = 1 - t * 2;
+            }
             if (textEl) {
-              textEl.style.opacity = 1;
+              textEl.style.opacity = opacity > 0.1 ? 1 : 0;
               textEl.style.transform = "translateY(0)";
             }
             if (textEl && imgEl) imgEl.style.transform = "translateY(-30px)";
           } else if (i === activeT + 1) {
-            /* Incoming slide — fading in */
-            opacity = smooth;
+            /* Incoming — fades in from dark during second half */
+            if (t > 0.5) {
+              opacity = (t - 0.5) * 2;
+            }
+            /* Narrative: text rises once image is mostly visible */
             if (textEl && imgEl) {
-              /* Narrative: text rises during second half of crossfade */
-              const textT = Math.max(0, Math.min(1, (t - 0.35) / 0.45));
-              const ease = textT * textT * (3 - 2 * textT);
-              textEl.style.opacity = ease;
-              textEl.style.transform = `translateY(${24 * (1 - ease)}px)`;
-              imgEl.style.transform = `translateY(${-30 * ease}px)`;
+              const textT = Math.max(0, Math.min(1, (t - 0.75) / 0.2));
+              textEl.style.opacity = textT;
+              textEl.style.transform = `translateY(${24 * (1 - textT)}px)`;
+              imgEl.style.transform = `translateY(${-30 * textT}px)`;
             }
           } else {
-            /* Hidden slide */
+            /* Hidden */
             if (textEl) {
               textEl.style.opacity = 0;
               textEl.style.transform = "translateY(24px)";
@@ -119,8 +121,9 @@ export function CinemaFilm({ frames }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [slides.length]);
 
-  /* More scroll per slide = slower, more cinematic pace */
-  const vhPerSlide = 220;
+  /* Scroll distance per slide — 150vh with sequential fades gives
+     ~75vh per fade (longer than old model's ~88vh effective fade) */
+  const vhPerSlide = 150;
   const runwayVh = slides.length * vhPerSlide + 50;
 
   return (
