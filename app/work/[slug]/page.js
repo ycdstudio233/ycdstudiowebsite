@@ -56,33 +56,44 @@ function ProjectJsonLd({ project, slug }) {
    • "immersive"  — wide landscapes fill the viewport, slide from left/right
    • "diptych"    — two portraits enter from opposing sides
    • "float"      — solo portrait floats on dark, offset and scaled
-   • "narrative"  — text overlaid on an image with gradient veil          */
+   • "narrative"  — text overlaid on an image with gradient veil
+
+   Narrative placement uses two modes:
+   • Explicit — gallery images with an `overlay` property become narrative
+     frames with that text, guaranteeing text matches the image.
+   • Calculated (fallback) — overview/approach/details are distributed at
+     evenly-spaced positions when no overlay data exists.                  */
 function buildCinemaFrames(project) {
   const images = project.gallery?.slice(1) || [];
   const frames = [];
   if (images.length === 0) return frames;
 
-  /* Collect text sections */
-  const allTexts = [];
-  if (project.overview) allTexts.push({ heading: "Overview", body: project.overview });
-  if (project.approach) allTexts.push({ heading: "Approach", body: project.approach });
-  if (project.details) allTexts.push({ heading: "Details", body: project.details });
+  /* Detect explicit overlay mode — if ANY image has overlay, skip calculated */
+  const hasExplicitOverlays = images.some(img => img.overlay);
 
-  /* Limit narrative frames — max floor(images/2) — and merge overflow */
-  const maxN = Math.min(allTexts.length, Math.floor(images.length / 2));
-  const narratives = allTexts.slice(0, maxN);
-  for (let t = maxN; t < allTexts.length; t++) {
-    if (narratives.length > 0) narratives[narratives.length - 1].body += "\n\n" + allTexts[t].body;
-  }
+  /* Calculated placement (fallback when no overlays) */
+  let narrativeAt = [];
+  let narratives = [];
 
-  /* Calculate narrative insertion indices — evenly spaced with min-gap 2 */
-  const step = images.length / (narratives.length + 1);
-  const narrativeAt = [];
-  for (let ni = 0; ni < narratives.length; ni++) {
-    let pos = Math.round((ni + 1) * step);
-    if (narrativeAt.length > 0) pos = Math.max(pos, narrativeAt[narrativeAt.length - 1] + 2);
-    else pos = Math.max(1, pos);
-    narrativeAt.push(Math.min(pos, images.length - 1));
+  if (!hasExplicitOverlays) {
+    const allTexts = [];
+    if (project.overview) allTexts.push({ heading: "Overview", body: project.overview });
+    if (project.approach) allTexts.push({ heading: "Approach", body: project.approach });
+    if (project.details) allTexts.push({ heading: "Details", body: project.details });
+
+    const maxN = Math.min(allTexts.length, Math.floor(images.length / 2));
+    narratives = allTexts.slice(0, maxN);
+    for (let t = maxN; t < allTexts.length; t++) {
+      if (narratives.length > 0) narratives[narratives.length - 1].body += "\n\n" + allTexts[t].body;
+    }
+
+    const step = images.length / (narratives.length + 1);
+    for (let ni = 0; ni < narratives.length; ni++) {
+      let pos = Math.round((ni + 1) * step);
+      if (narrativeAt.length > 0) pos = Math.max(pos, narrativeAt[narrativeAt.length - 1] + 2);
+      else pos = Math.max(1, pos);
+      narrativeAt.push(Math.min(pos, images.length - 1));
+    }
   }
 
   /* Walk through images and assign frame types */
@@ -96,8 +107,20 @@ function buildCinemaFrames(project) {
     const img = images[i];
     const from = dir % 2 === 0 ? "left" : "right";
 
-    /* Narrative frame at insertion point */
-    if (nIdx < narratives.length && count === narrativeAt[nIdx]) {
+    /* Explicit overlay → always becomes a narrative frame */
+    if (img.overlay) {
+      const nFrom = nDir % 2 === 0 ? "left" : "right";
+      frames.push({
+        kind: "narrative", image: img,
+        heading: img.overlay.heading, body: img.overlay.body,
+        from: nFrom, align: nFrom,
+      });
+      nDir++; dir++; i++; count++;
+      continue;
+    }
+
+    /* Calculated narrative frame at insertion point (fallback) */
+    if (!hasExplicitOverlays && nIdx < narratives.length && count === narrativeAt[nIdx]) {
       const nFrom = nDir % 2 === 0 ? "left" : "right";
       frames.push({
         kind: "narrative", image: img,
@@ -121,8 +144,9 @@ function buildCinemaFrames(project) {
       dir++;
     } else {
       const next = images[i + 1];
-      const nextReserved = nIdx < narratives.length && count + 1 === narrativeAt[nIdx];
-      if (next && !next.wide && !next.solo && !nextReserved) {
+      const nextReserved = !hasExplicitOverlays && nIdx < narratives.length && count + 1 === narrativeAt[nIdx];
+      const nextHasOverlay = next?.overlay;
+      if (next && !next.wide && !next.solo && !nextReserved && !nextHasOverlay) {
         /* Immediate portrait pair → static diptych */
         frames.push({ kind: "diptych", left: img, right: next });
         dir++; i++; count++;
@@ -135,18 +159,20 @@ function buildCinemaFrames(project) {
     i++; count++;
   }
 
-  /* Fallback for remaining narratives */
-  while (nIdx < narratives.length) {
-    const nFrom = nDir % 2 === 0 ? "left" : "right";
-    const bg = images[images.length - 1] || project.gallery?.[0];
-    if (bg) {
-      frames.push({
-        kind: "narrative", image: bg,
-        heading: narratives[nIdx].heading, body: narratives[nIdx].body,
-        from: nFrom, align: nFrom,
-      });
+  /* Fallback for remaining calculated narratives */
+  if (!hasExplicitOverlays) {
+    while (nIdx < narratives.length) {
+      const nFrom = nDir % 2 === 0 ? "left" : "right";
+      const bg = images[images.length - 1] || project.gallery?.[0];
+      if (bg) {
+        frames.push({
+          kind: "narrative", image: bg,
+          heading: narratives[nIdx].heading, body: narratives[nIdx].body,
+          from: nFrom, align: nFrom,
+        });
+      }
+      nIdx++; nDir++; dir++;
     }
-    nIdx++; nDir++; dir++;
   }
 
   return frames;
