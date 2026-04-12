@@ -1,8 +1,11 @@
 import "./globals.css";
+import Script from "next/script";
 import { SiteHeader } from "../components/site-header";
 import { SiteFooter } from "../components/site-footer";
 import { CustomCursor } from "../components/custom-cursor";
 import { ScrollProgress } from "../components/scroll-progress";
+
+const GA_ID = "G-5Y4TM0KE9N";
 
 export const metadata = {
   metadataBase: new URL("https://ycd.studio"),
@@ -111,6 +114,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
