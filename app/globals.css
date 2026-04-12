@@ -2257,6 +2257,77 @@ ul, ol { list-style: none; }
   margin-left: auto;
 }
 
+/* ── CinemaFilm: mobile pinned crossfade — hidden on desktop ── */
+.cinema-film { display: none; }
+
+@media (max-width: 768px) {
+  .cinema-film { display: block; position: relative; background: #0a0a0a; }
+  .cinema-film__screen {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+  .cinema-film__slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    will-change: opacity;
+  }
+  .cinema-film__img {
+    width: 100%;
+    height: 100vh;
+    object-fit: scale-down;
+    display: block;
+  }
+  .cinema-film__img--narrative {
+    height: 58vh;
+    will-change: transform;
+  }
+  .cinema-film__label {
+    position: absolute;
+    bottom: 28px;
+    left: 20px;
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 8px 12px;
+    border-radius: 4px;
+    max-width: calc(100% - 40px);
+    line-height: 1.4;
+  }
+  .cinema-film__text {
+    padding: 24px 20px;
+    will-change: opacity, transform;
+  }
+  .cinema-film__tag {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 12px;
+  }
+  .cinema-film__body {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 300;
+  }
+  /* Hide regular cinema on mobile when film version exists */
+  .cinema--has-film { display: none; }
+}
+
 .project-detail__specs {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

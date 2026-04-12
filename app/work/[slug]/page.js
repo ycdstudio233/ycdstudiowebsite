@@ -4,6 +4,7 @@ import { ProjectVisual } from "../../../components/project-visual";
 import { ScrollReveal } from "../../../components/scroll-reveal";
 import { CinematicReveal } from "../../../components/cinematic-reveal";
 import { CinemaScroll } from "../../../components/cinema-scroll";
+import { CinemaFilm } from "../../../components/cinema-film";
 import { ScrollOverlay } from "../../../components/scroll-overlay";
 import { RevealPair } from "../../../components/reveal-pair";
 import { projectDetails } from "../../../lib/project-details";
@@ -270,7 +271,8 @@ export default async function ProjectPage({ params }) {
       </section>
 
       {/* ── LAYER 2: Cinematic journey ── */}
-      <section className="cinema">
+      {slug === "coastal-house" && <CinemaFilm frames={frames} />}
+      <section className={`cinema${slug === "coastal-house" ? " cinema--has-film" : ""}`}>
         {frames.map((frame, idx) => {
           /* ── Immersive: wide landscape, full bleed ── */
           if (frame.kind === "immersive") {
