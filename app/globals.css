@@ -2029,15 +2029,20 @@ ul, ol { list-style: none; }
 .cinema__fill {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
 }
 
 /* ── Shared cover image ── */
 .cinema__cover {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;         /* show full image on dark backdrop — no crop, no pixelation */
   display: block;
+}
+
+/* Narrative frames need cover so text overlay always has a filled background */
+.cinema__fill--story .cinema__cover {
+  object-fit: cover;
 }
 
 /* ── Frosted label ── */
@@ -2064,7 +2069,7 @@ ul, ol { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3px;
-  height: 100vh;
+  height: 65vh;
   background: #0a0a0a;
 }
 
@@ -2076,8 +2081,8 @@ ul, ol { list-style: none; }
 
 .cinema__duo-img {
   width: 100%;
-  height: 100vh;
-  object-fit: cover;
+  height: 65vh;
+  object-fit: contain;
   display: block;
 }
 
@@ -2118,7 +2123,7 @@ ul, ol { list-style: none; }
 .cinema__reveal-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -2815,22 +2820,27 @@ ul, ol { list-style: none; }
   .project-nav { grid-template-columns: 1fr; }
   .project-nav__item:first-child { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; }
   .project-nav__item:last-child { padding-left: 0; text-align: left; }
-  .cinema__fill { height: 60vh; }
+  .cinema__fill { height: auto; min-height: 30vh; }
+  .cinema__cover { height: auto; max-height: 70vh; }
   .cinema__fill--story { height: 100vh; }
+  .cinema__fill--story .cinema__cover { height: 100%; max-height: none; object-fit: cover; }
   .cinema__sticky-runway { height: 180vh; }
-  .cinema__moment--duo { height: 50vh; gap: 2px; }
-  .cinema__duo-img { height: 50vh; min-height: 260px; }
+
+  /* Stack diptych vertically — full width per image */
+  .cinema__moment--duo { grid-template-columns: 1fr; height: auto; gap: 3px; }
+  .cinema__duo-cell { height: auto; }
+  .cinema__duo-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: contain; }
   .cinema__duo-caption { bottom: 16px; left: 16px; font-size: 0.5625rem; padding: 6px 10px; max-width: calc(100% - 32px); }
-  .cinema__reveal { gap: 2px; }
+
+  /* Stack reveal vertically */
+  .cinema__reveal { grid-template-columns: 1fr; gap: 3px; }
+  .cinema__reveal-cell { height: auto; }
+  .cinema__reveal-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: contain; }
   .cinema__label { bottom: 20px; left: 20px; font-size: 0.625rem; padding: 8px 12px; max-width: calc(100% - 40px); }
   .cinema__veil--left, .cinema__veil--right {
     background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 40%, rgba(10, 10, 10, 0.1) 70%, transparent 100%);
   }
   .cinema__story { width: 100%; top: auto; bottom: 0; left: 0; right: auto; padding: 40px 24px 48px; text-align: left; }
-  .cinema__story--right { text-align: left; }
-  .cinema__story--right .cinema__story-body { margin-left: 0; }
-  .cinema__story-tag { font-size: 0.625rem; margin-bottom: 12px; }
-  .cinema__story-body { font-size: 0.875rem; line-height: 1.7; }
   .cinema__story--right { text-align: left; }
   .cinema__story--right .cinema__story-body { margin-left: 0; }
   .cinema__story-tag { font-size: 0.625rem; margin-bottom: 10px; }
