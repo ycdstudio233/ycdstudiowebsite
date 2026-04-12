@@ -91,10 +91,8 @@ function buildCinemaFrames(project) {
   let nIdx = 0;
   let count = 0;
   let i = 0;
-  const used = new Set(); /* track images consumed by lookahead pairing */
 
   while (i < images.length) {
-    if (used.has(i)) { i++; count++; continue; }
     const img = images[i];
     const from = dir % 2 === 0 ? "left" : "right";
 
@@ -110,6 +108,13 @@ function buildCinemaFrames(project) {
       continue;
     }
 
+    /* Solo-flagged image — always gets its own float frame */
+    if (img.solo) {
+      frames.push({ kind: "float", image: img, from });
+      dir++; i++; count++;
+      continue;
+    }
+
     /* Visual frames */
     if (img.wide) {
       frames.push({ kind: "immersive", image: img, from });
@@ -117,30 +122,15 @@ function buildCinemaFrames(project) {
     } else {
       const next = images[i + 1];
       const nextReserved = nIdx < narratives.length && count + 1 === narrativeAt[nIdx];
-      if (next && !next.wide && !nextReserved && !used.has(i + 1)) {
+      if (next && !next.wide && !next.solo && !nextReserved) {
         /* Immediate portrait pair → static diptych */
         frames.push({ kind: "diptych", left: img, right: next });
         dir++; i++; count++;
       } else {
-        /* Lone portrait → look ahead for a partner (up to 4 slots) */
-        let partner = null;
-        let pIdx = -1;
-        for (let j = i + 1; j < images.length && j <= i + 4; j++) {
-          if (used.has(j)) continue;
-          const jCount = count + (j - i);
-          const jReserved = narrativeAt.includes(jCount);
-          if (!images[j].wide && !jReserved) {
-            partner = images[j];
-            pIdx = j;
-            break;
-          }
-        }
-        if (partner) {
-          /* Progressive diptych — second image reveals on scroll */
-          frames.push({ kind: "reveal", first: img, second: partner, from });
-          used.add(pIdx);
+        /* Lone portrait — float if low-res, immersive if high-res */
+        if (img.small) {
+          frames.push({ kind: "float", image: img, from });
         } else {
-          /* Truly alone — go full-bleed, no void */
           frames.push({ kind: "immersive", image: img, from });
         }
         dir++;
@@ -285,6 +275,19 @@ export default async function ProjectPage({ params }) {
                 <CinematicReveal from="right" delay={0.12} className="cinema__duo-cell">
                   <img src={frame.right.image} alt={frame.right.label} className={rightCls} />
                   <span className="cinema__duo-caption">{frame.right.label}</span>
+                </CinematicReveal>
+              </div>
+            );
+          }
+
+          /* ── Float: solo portrait on dark, full composition ── */
+          if (frame.kind === "float") {
+            const side = frame.from === "right" ? "float-right" : "float-left";
+            return (
+              <div className={`cinema__moment cinema__moment--float cinema__moment--${side}`} key={idx}>
+                <CinematicReveal from={frame.from} className="cinema__float-inner">
+                  <img src={frame.image.image} alt={frame.image.label} className="cinema__float-img" />
+                  <span className="cinema__float-label">{frame.image.label}</span>
                 </CinematicReveal>
               </div>
             );
