@@ -2126,13 +2126,9 @@ ul, ol { list-style: none; }
   height: 78vh;
   flex-shrink: 0;
 }
-.cinema__moment--float-right {
-  justify-content: flex-end;
-  padding-right: 8%;
-}
+.cinema__moment--float-right,
 .cinema__moment--float-left {
-  justify-content: flex-start;
-  padding-left: 8%;
+  justify-content: center;
 }
 .cinema__float-img {
   height: 100%;
