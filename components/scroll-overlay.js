@@ -21,6 +21,10 @@ export function ScrollOverlay({ align, heading, body }) {
     const story = storyRef.current;
     if (!root || !veil || !story) return;
 
+    /* On mobile, text flows below image — no scroll-driven animation needed.
+       CSS handles layout + visibility via !important overrides. */
+    if (window.innerWidth <= 768) return;
+
     veil.style.willChange = "opacity";
     story.style.willChange = "opacity, transform";
 

@@ -38,30 +38,36 @@ export function CinemaScroll({
       const total = vh + rect.height;
       const progress = Math.max(0, Math.min(1, (vh - rect.top) / total));
 
+      const isMobile = vh < 900;
       let opacity = 1;
       let tx = 0;
       let ty = 0;
 
-      if (progress < 0.18) {
+      // Tighter phases on mobile for less dead space
+      const enterEnd = isMobile ? 0.10 : 0.18;
+      const exitStart = isMobile ? 0.90 : 0.82;
+      const slideDist = isMobile ? 30 : 60;
+
+      if (progress < enterEnd) {
         // ── Enter phase ──
-        const t = progress / 0.18;
+        const t = progress / enterEnd;
         const ease = t * t * (3 - 2 * t); // smoothstep
         opacity = ease;
 
         if (!noTransform) {
-          const slide = 60 * (1 - ease);
+          const slide = slideDist * (1 - ease);
           if (from === "left") tx = -slide;
           else if (from === "right") tx = slide;
           else ty = slide * 0.6;
         }
-      } else if (progress > 0.82) {
-        // ── Exit phase ──
-        const t = (progress - 0.82) / 0.18;
+      } else if (progress > exitStart) {
+        // ── Exit phase ── subtle fade, not full disappear
+        const t = (progress - exitStart) / (1 - exitStart);
         const ease = t * t * (3 - 2 * t);
-        opacity = 1 - ease * 0.85;
+        opacity = 1 - ease * 0.5; // max 50% fade on exit
 
         if (!noTransform) {
-          ty = -24 * ease;
+          ty = -16 * ease;
         }
       }
 
