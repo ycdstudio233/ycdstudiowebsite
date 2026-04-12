@@ -65,24 +65,26 @@ export function CinemaFilm({ frames }) {
         if (progress >= slideStart && progress < slideEnd) {
           const t = (progress - slideStart) / perSlide;
 
-          /* Crossfade */
-          if (i === 0 && t < 0.12) {
-            opacity = 1;
-          } else if (t < 0.12) {
-            opacity = t / 0.12;
-          } else if (t > 0.85 && i < n - 1) {
-            opacity = 1 - (t - 0.85) / 0.15;
+          /* Crossfade: 25% fade-in, 50% hold, 25% fade-out */
+          if (i === 0 && t < 0.25) {
+            opacity = 1; /* first slide starts fully visible */
+          } else if (t < 0.25) {
+            const fadeIn = t / 0.25;
+            opacity = fadeIn * fadeIn * (3 - 2 * fadeIn); /* smoothstep */
+          } else if (t > 0.75 && i < n - 1) {
+            const fadeOut = (t - 0.75) / 0.25;
+            opacity = 1 - fadeOut * fadeOut * (3 - 2 * fadeOut);
           } else {
             opacity = 1;
           }
 
-          /* Narrative: text rises + image slides up */
+          /* Narrative: text rises + image slides up (slower reveal) */
           if (textEl && imgEl) {
-            const textT = Math.max(0, Math.min(1, (t - 0.20) / 0.30));
+            const textT = Math.max(0, Math.min(1, (t - 0.15) / 0.35));
             const ease = textT * textT * (3 - 2 * textT);
             textEl.style.opacity = ease;
-            textEl.style.transform = `translateY(${20 * (1 - ease)}px)`;
-            imgEl.style.transform = `translateY(${-24 * ease}px)`;
+            textEl.style.transform = `translateY(${24 * (1 - ease)}px)`;
+            imgEl.style.transform = `translateY(${-30 * ease}px)`;
           }
         } else if (i === n - 1 && progress >= slideEnd) {
           opacity = 1;
@@ -116,7 +118,9 @@ export function CinemaFilm({ frames }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [slides.length]);
 
-  const runwayVh = slides.length * 100 + 50;
+  /* More scroll per slide = slower, more cinematic pace */
+  const vhPerSlide = 150;
+  const runwayVh = slides.length * vhPerSlide + 50;
 
   return (
     <div
