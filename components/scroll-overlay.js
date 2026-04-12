@@ -29,6 +29,10 @@ export function ScrollOverlay({ align, heading, body }) {
     const runway = root.closest(".cinema__sticky-runway");
     if (!runway) return;
 
+    /* Find sibling cover image for subtle parallax shift */
+    const coverImg = root.closest(".cinema__fill")?.querySelector(".cinema__cover");
+    if (coverImg) coverImg.style.willChange = "transform";
+
     let ticking = false;
     const update = () => {
       const rect = runway.getBoundingClientRect();
@@ -45,6 +49,12 @@ export function ScrollOverlay({ align, heading, body }) {
       const t = Math.max(0, Math.min(1, (progress - 0.40) / 0.35));
       story.style.opacity = t;
       story.style.transform = `translateY(${24 * (1 - t)}px)`;
+
+      // Image: subtle upward drift as text reveals (parallax)
+      if (coverImg) {
+        const imgShift = -20 * v; // tied to veil, max -20px
+        coverImg.style.transform = `translateY(${imgShift}px) scale(${1 + 0.02 * (1 - v)})`;
+      }
 
       ticking = false;
     };

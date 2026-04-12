@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ProjectVisual } from "../../../components/project-visual";
 import { ScrollReveal } from "../../../components/scroll-reveal";
 import { CinematicReveal } from "../../../components/cinematic-reveal";
+import { CinemaScroll } from "../../../components/cinema-scroll";
 import { ScrollOverlay } from "../../../components/scroll-overlay";
 import { RevealPair } from "../../../components/reveal-pair";
 import { projectDetails } from "../../../lib/project-details";
@@ -276,29 +277,29 @@ export default async function ProjectPage({ params }) {
             const coverCls = frame.image.small ? "cinema__cover cinema__cover--small" : "cinema__cover";
             return (
               <div className="cinema__moment" key={idx}>
-                <CinematicReveal from={frame.from} className="cinema__fill">
+                <CinemaScroll from={frame.from} className="cinema__fill">
                   <img src={frame.image.image} alt={frame.image.label} className={coverCls} />
                   <span className="cinema__label">{frame.image.label}</span>
-                </CinematicReveal>
+                </CinemaScroll>
               </div>
             );
           }
 
-          /* ── Diptych: two portraits, opposing entry ── */
+          /* ── Diptych: two portraits, fade in as a unit ── */
           if (frame.kind === "diptych") {
             const leftCls = frame.left.small ? "cinema__duo-img cinema__duo-img--small" : "cinema__duo-img";
             const rightCls = frame.right.small ? "cinema__duo-img cinema__duo-img--small" : "cinema__duo-img";
             return (
-              <div className="cinema__moment cinema__moment--duo" key={idx}>
-                <CinematicReveal from="left" className="cinema__duo-cell">
+              <CinemaScroll from="bottom" className="cinema__moment cinema__moment--duo" key={idx}>
+                <div className="cinema__duo-cell">
                   <img src={frame.left.image} alt={frame.left.label} className={leftCls} />
                   <span className="cinema__duo-caption">{frame.left.label}</span>
-                </CinematicReveal>
-                <CinematicReveal from="right" delay={0.12} className="cinema__duo-cell">
+                </div>
+                <div className="cinema__duo-cell">
                   <img src={frame.right.image} alt={frame.right.label} className={rightCls} />
                   <span className="cinema__duo-caption">{frame.right.label}</span>
-                </CinematicReveal>
-              </div>
+                </div>
+              </CinemaScroll>
             );
           }
 
@@ -307,10 +308,10 @@ export default async function ProjectPage({ params }) {
             const side = frame.from === "right" ? "float-right" : "float-left";
             return (
               <div className={`cinema__moment cinema__moment--float cinema__moment--${side}`} key={idx}>
-                <CinematicReveal from={frame.from} className="cinema__float-inner">
+                <CinemaScroll from={frame.from} className="cinema__float-inner">
                   <img src={frame.image.image} alt={frame.image.label} className="cinema__float-img" />
                   <span className="cinema__float-label">{frame.image.label}</span>
-                </CinematicReveal>
+                </CinemaScroll>
               </div>
             );
           }
@@ -324,18 +325,18 @@ export default async function ProjectPage({ params }) {
             );
           }
 
-          /* ── Narrative: image pins → overlay fades → text rises → move on ── */
+          /* ── Narrative: seamless fade → image pins → text rises → fade out ── */
           if (frame.kind === "narrative") {
             const narrativeCoverCls = frame.image.small ? "cinema__cover cinema__cover--small" : "cinema__cover";
             return (
-              <div className="cinema__moment cinema__moment--narrative" key={idx}>
+              <CinemaScroll noTransform className="cinema__moment cinema__moment--narrative" key={idx}>
                 <div className="cinema__sticky-runway">
-                  <CinematicReveal from={frame.from} scale className="cinema__fill cinema__fill--story cinema__sticky-frame">
+                  <div className="cinema__fill cinema__fill--story cinema__sticky-frame">
                     <img src={frame.image.image} alt={frame.image.label} className={narrativeCoverCls} />
                     <ScrollOverlay align={frame.align} heading={frame.heading} body={frame.body} />
-                  </CinematicReveal>
+                  </div>
                 </div>
-              </div>
+              </CinemaScroll>
             );
           }
 

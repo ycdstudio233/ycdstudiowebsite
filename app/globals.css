@@ -2007,10 +2007,7 @@ ul, ol { list-style: none; }
 .cinema__moment {
   position: relative;
   overflow: hidden;
-  margin-bottom: 16px;
-}
-.cinema__moment:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0;       /* seamless flow — fading handles transitions */
 }
 
 /* ── Narrative: sticky pinning ── */
@@ -2042,6 +2039,7 @@ ul, ol { list-style: none; }
   height: 100%;
   object-fit: scale-down;
   display: block;
+  transition: transform 0.1s linear;  /* smooth parallax in narrative frames */
 }
 
 /* Low-res images: show at natural size, never upscale — stays sharp */
@@ -2117,13 +2115,11 @@ ul, ol { list-style: none; }
 .cinema__moment--float {
   position: relative;
   overflow: hidden;
-  margin-bottom: 16px;
   height: 85vh;
   display: flex;
   align-items: center;
   background: #0a0a0a;
 }
-.cinema__moment--float:last-child { margin-bottom: 0; }
 
 .cinema__float-inner {
   position: relative;
