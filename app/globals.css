@@ -2044,6 +2044,16 @@ ul, ol { list-style: none; }
   display: block;
 }
 
+/* Low-res images: show at natural size, never upscale — stays sharp */
+.cinema__cover.cinema__cover--small,
+.cinema__duo-img.cinema__duo-img--small,
+.cinema__reveal-img.cinema__reveal-img--small {
+  object-fit: scale-down;
+}
+.cinema__fill--story .cinema__cover.cinema__cover--small {
+  object-fit: scale-down;
+}
+
 /* ── Frosted label ── */
 .cinema__label {
   position: absolute;

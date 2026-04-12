@@ -261,10 +261,11 @@ export default async function ProjectPage({ params }) {
         {frames.map((frame, idx) => {
           /* ── Immersive: wide landscape, full bleed ── */
           if (frame.kind === "immersive") {
+            const coverCls = frame.image.small ? "cinema__cover cinema__cover--small" : "cinema__cover";
             return (
               <div className="cinema__moment" key={idx}>
                 <CinematicReveal from={frame.from} className="cinema__fill">
-                  <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
+                  <img src={frame.image.image} alt={frame.image.label} className={coverCls} />
                   <span className="cinema__label">{frame.image.label}</span>
                 </CinematicReveal>
               </div>
@@ -273,14 +274,16 @@ export default async function ProjectPage({ params }) {
 
           /* ── Diptych: two portraits, opposing entry ── */
           if (frame.kind === "diptych") {
+            const leftCls = frame.left.small ? "cinema__duo-img cinema__duo-img--small" : "cinema__duo-img";
+            const rightCls = frame.right.small ? "cinema__duo-img cinema__duo-img--small" : "cinema__duo-img";
             return (
               <div className="cinema__moment cinema__moment--duo" key={idx}>
                 <CinematicReveal from="left" className="cinema__duo-cell">
-                  <img src={frame.left.image} alt={frame.left.label} className="cinema__duo-img" />
+                  <img src={frame.left.image} alt={frame.left.label} className={leftCls} />
                   <span className="cinema__duo-caption">{frame.left.label}</span>
                 </CinematicReveal>
                 <CinematicReveal from="right" delay={0.12} className="cinema__duo-cell">
-                  <img src={frame.right.image} alt={frame.right.label} className="cinema__duo-img" />
+                  <img src={frame.right.image} alt={frame.right.label} className={rightCls} />
                   <span className="cinema__duo-caption">{frame.right.label}</span>
                 </CinematicReveal>
               </div>
@@ -298,11 +301,12 @@ export default async function ProjectPage({ params }) {
 
           /* ── Narrative: image pins → overlay fades → text rises → move on ── */
           if (frame.kind === "narrative") {
+            const narrativeCoverCls = frame.image.small ? "cinema__cover cinema__cover--small" : "cinema__cover";
             return (
               <div className="cinema__moment cinema__moment--narrative" key={idx}>
                 <div className="cinema__sticky-runway">
                   <CinematicReveal from={frame.from} scale className="cinema__fill cinema__fill--story cinema__sticky-frame">
-                    <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
+                    <img src={frame.image.image} alt={frame.image.label} className={narrativeCoverCls} />
                     <ScrollOverlay align={frame.align} heading={frame.heading} body={frame.body} />
                   </CinematicReveal>
                 </div>
