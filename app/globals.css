@@ -2036,11 +2036,11 @@ ul, ol { list-style: none; }
   height: 80vh;
 }
 
-/* ── Shared cover image ── */
+/* ── Shared cover image — scale-down: never crop, never upscale ── */
 .cinema__cover {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: scale-down;
   display: block;
 }
 
@@ -2091,7 +2091,7 @@ ul, ol { list-style: none; }
 .cinema__duo-img {
   width: 100%;
   height: 65vh;
-  object-fit: cover;
+  object-fit: scale-down;
   display: block;
 }
 
@@ -2176,7 +2176,7 @@ ul, ol { list-style: none; }
 .cinema__reveal-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: scale-down;
   display: block;
 }
 
@@ -2876,19 +2876,19 @@ ul, ol { list-style: none; }
   .cinema__fill { height: auto; min-height: 30vh; }
   .cinema__cover { height: auto; max-height: 70vh; }
   .cinema__fill--story { height: 100vh; }
-  .cinema__fill--story .cinema__cover { height: 100%; max-height: none; object-fit: cover; }
+  .cinema__fill--story .cinema__cover { height: 100%; max-height: none; object-fit: scale-down; }
   .cinema__sticky-runway { height: 180vh; }
 
   /* Stack diptych vertically — full width per image */
   .cinema__moment--duo { grid-template-columns: 1fr; height: auto; gap: 3px; }
   .cinema__duo-cell { height: auto; }
-  .cinema__duo-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: cover; }
+  .cinema__duo-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: scale-down; }
   .cinema__duo-caption { bottom: 16px; left: 16px; font-size: 0.5625rem; padding: 6px 10px; max-width: calc(100% - 32px); }
 
   /* Stack reveal vertically */
   .cinema__reveal { grid-template-columns: 1fr; gap: 3px; }
   .cinema__reveal-cell { height: auto; }
-  .cinema__reveal-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: cover; }
+  .cinema__reveal-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: scale-down; }
 
   /* Float: center on mobile, larger image */
   .cinema__moment--float { height: auto; min-height: 50vh; justify-content: center !important; padding: 6vh 6% !important; }
