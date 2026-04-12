@@ -127,12 +127,8 @@ function buildCinemaFrames(project) {
         frames.push({ kind: "diptych", left: img, right: next });
         dir++; i++; count++;
       } else {
-        /* Lone portrait — float if low-res, immersive if high-res */
-        if (img.small) {
-          frames.push({ kind: "float", image: img, from });
-        } else {
-          frames.push({ kind: "immersive", image: img, from });
-        }
+        /* Lone portrait — always float, never crop */
+        frames.push({ kind: "float", image: img, from });
         dir++;
       }
     }
