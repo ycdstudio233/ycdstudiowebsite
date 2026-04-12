@@ -85,15 +85,30 @@ export function CinemaFilm({ frames }) {
               opacity = 1; /* brief hold — text appears here */
             }
 
-            /* Label: appears at peak */
+            /* Label: fades in during hold zone */
             if (labelEl) {
-              labelEl.style.opacity = t >= 0.42 ? 1 : 0;
+              if (t >= 0.42 && t <= 0.57) {
+                labelEl.style.opacity = (t - 0.42) / 0.15;
+              } else if (t > 0.57) {
+                labelEl.style.opacity = 1;
+              } else {
+                labelEl.style.opacity = 0;
+              }
             }
 
-            /* Narrative text: appears at peak, no image push */
+            /* Narrative text: fades in during hold zone, no image push */
             if (textEl) {
-              textEl.style.opacity = t >= 0.42 ? 1 : 0;
-              textEl.style.transform = t >= 0.42 ? "translateY(0)" : "translateY(20px)";
+              if (t >= 0.42 && t <= 0.57) {
+                const textT = (t - 0.42) / 0.15;
+                textEl.style.opacity = textT;
+                textEl.style.transform = `translateY(${12 * (1 - textT)}px)`;
+              } else if (t > 0.57) {
+                textEl.style.opacity = 1;
+                textEl.style.transform = "translateY(0)";
+              } else {
+                textEl.style.opacity = 0;
+                textEl.style.transform = "translateY(12px)";
+              }
             }
           } else if (i === n - 1 && progress >= slideEnd) {
             opacity = 1;
