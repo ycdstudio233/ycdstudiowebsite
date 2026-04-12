@@ -2033,23 +2033,13 @@ ul, ol { list-style: none; }
   height: 80vh;
 }
 
-/* ── Shared cover image — scale-down: never crop, never upscale ── */
+/* ── Shared cover image — contain: fill container, never crop ── */
 .cinema__cover {
   width: 100%;
   height: 100%;
-  object-fit: scale-down;
+  object-fit: contain;
   display: block;
   transition: transform 0.1s linear;  /* smooth parallax in narrative frames */
-}
-
-/* Low-res images: show at natural size, never upscale — stays sharp */
-.cinema__cover.cinema__cover--small,
-.cinema__duo-img.cinema__duo-img--small,
-.cinema__reveal-img.cinema__reveal-img--small {
-  object-fit: scale-down;
-}
-.cinema__fill--story .cinema__cover.cinema__cover--small {
-  object-fit: scale-down;
 }
 
 /* ── Frosted label ── */
@@ -2089,7 +2079,7 @@ ul, ol { list-style: none; }
 .cinema__duo-img {
   width: 100%;
   height: 65vh;
-  object-fit: scale-down;
+  object-fit: contain;
   display: block;
 }
 
@@ -2168,7 +2158,7 @@ ul, ol { list-style: none; }
 .cinema__reveal-img {
   width: 100%;
   height: 100%;
-  object-fit: scale-down;
+  object-fit: contain;
   display: block;
 }
 
@@ -2874,7 +2864,7 @@ ul, ol { list-style: none; }
   .cinema__sticky-runway { height: auto; }
   .cinema__sticky-frame.cinema__fill { position: relative; height: auto; }
   .cinema__fill--story { height: auto; }
-  .cinema__fill--story .cinema__cover { height: 54vh; width: 100%; object-fit: scale-down; }
+  .cinema__fill--story .cinema__cover { height: 54vh; width: 100%; object-fit: contain; }
 
   /* Hide veil — no overlay on mobile */
   .cinema__veil,
@@ -2903,13 +2893,13 @@ ul, ol { list-style: none; }
   /* Stack diptych vertically — full width per image */
   .cinema__moment--duo { grid-template-columns: 1fr; height: auto; gap: 3px; }
   .cinema__duo-cell { height: auto; }
-  .cinema__duo-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: scale-down; }
+  .cinema__duo-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: contain; }
   .cinema__duo-caption { bottom: 16px; left: 16px; font-size: 0.5625rem; padding: 6px 10px; max-width: calc(100% - 32px); }
 
   /* Stack reveal vertically */
   .cinema__reveal { grid-template-columns: 1fr; gap: 3px; }
   .cinema__reveal-cell { height: auto; }
-  .cinema__reveal-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: scale-down; }
+  .cinema__reveal-img { width: 100%; height: auto; max-height: 60vh; min-height: 200px; object-fit: contain; }
 
   /* Float: center on mobile */
   .cinema__moment--float { height: auto; min-height: 50vh; justify-content: center !important; padding: 6vh 6% !important; }
