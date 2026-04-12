@@ -261,9 +261,10 @@ export default async function ProjectPage({ params }) {
         {frames.map((frame, idx) => {
           /* ── Immersive: wide landscape, full bleed ── */
           if (frame.kind === "immersive") {
+            const fillCls = frame.image.wide ? "cinema__fill cinema__fill--wide" : "cinema__fill cinema__fill--portrait";
             return (
               <div className="cinema__moment" key={idx}>
-                <CinematicReveal from={frame.from} className="cinema__fill">
+                <CinematicReveal from={frame.from} className={fillCls}>
                   <img src={frame.image.image} alt={frame.image.label} className="cinema__cover" />
                   <span className="cinema__label">{frame.image.label}</span>
                 </CinematicReveal>
