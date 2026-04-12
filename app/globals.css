@@ -2007,6 +2007,10 @@ ul, ol { list-style: none; }
 .cinema__moment {
   position: relative;
   overflow: hidden;
+  margin-bottom: 16px;
+}
+.cinema__moment:last-child {
+  margin-bottom: 0;
 }
 
 /* ── Narrative: sticky pinning ── */

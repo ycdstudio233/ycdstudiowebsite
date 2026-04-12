@@ -182,7 +182,6 @@ export default async function ProjectPage({ params }) {
      without upscaling) instead of cover — either low-res renders
      or images where the full composition matters more than fill. */
   const sharpSlugs = new Set([
-    "bird-residence",
     "hfa-tenant-improvement",
     "cyprus-residence",
     "spacearc",
