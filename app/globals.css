@@ -2402,6 +2402,46 @@ ul, ol { list-style: none; }
   letter-spacing: -0.02em;
 }
 
+/* ── Related Reading (project pages) ── */
+.project-related-reading {
+  border-top: 1px solid var(--line);
+  padding: 48px 0;
+}
+.project-related-reading__heading {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.project-related-reading__links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.project-related-reading__link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  transition: opacity var(--transition);
+}
+.project-related-reading__link:hover {
+  opacity: 0.7;
+}
+.project-related-reading__cat {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.project-related-reading__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 /* ===== Contact ===== */
 
 .contact-grid {

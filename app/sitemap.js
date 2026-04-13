@@ -20,6 +20,9 @@ export default function sitemap() {
     { url: `${BASE_URL}/multi-family`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE_URL}/commercial`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE_URL}/sacred`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/san-francisco`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE_URL}/oakland`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE_URL}/bay-area`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
   ];
 
   const projectPages = Object.keys(projectDetails).map((slug) => ({

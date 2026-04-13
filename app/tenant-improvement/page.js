@@ -408,6 +408,110 @@ export default function TenantImprovementPage() {
         </div>
       </section>
 
+      {/* ── Types of TI — Detailed ── */}
+      <section className="section section--dark" id="ti-types">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Project Types"
+              title="What each type of TI involves."
+              description="Different businesses face different design, code, and permitting challenges. Here is what to expect for the most common tenant improvement categories we handle."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="ti-info-grid">
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Restaurant and food service tenant improvements</h3>
+                <p className="ti-info-card__text">
+                  Restaurant TI is the most complex category of commercial interior work.
+                  Beyond standard architectural design, a restaurant build-out involves
+                  commercial kitchen layout, exhaust hood specification (Type I for
+                  grease-laden cooking, Type II for heat and steam), grease interceptor
+                  sizing and placement, health department plan review, and fire suppression
+                  coordination. The kitchen layout must balance operational efficiency with
+                  code-mandated clearances, and the front-of-house must deliver the brand
+                  experience while meeting occupancy limits, accessibility requirements,
+                  and egress paths. We coordinate with kitchen equipment vendors, MEP
+                  engineers, and health department reviewers simultaneously to keep the
+                  project moving. Our restaurant TI experience spans fast-casual concepts,
+                  full-service dining, bars, cafes, and ghost kitchens.
+                </p>
+                <Link href="/tenant-improvement/restaurant" className="ti-info-card__link">
+                  Restaurant TI details
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Retail tenant improvements</h3>
+                <p className="ti-info-card__text">
+                  Retail TI projects center on customer experience, brand identity, and
+                  efficient merchandising. Design priorities include storefront presentation,
+                  interior circulation, display fixture integration, point-of-sale placement,
+                  and back-of-house storage. Code requirements for retail spaces focus on
+                  occupancy classification, accessible path of travel from the public way
+                  through the sales floor to fitting rooms and restrooms, and energy-compliant
+                  lighting that also serves the merchandising strategy. For multi-tenant
+                  retail buildings, we coordinate with the landlord on storefront standards,
+                  sign criteria, and shared utility infrastructure. Retail build-outs are
+                  often on tight timelines driven by lease commencement dates or seasonal
+                  openings, so we design for efficient permitting and straightforward
+                  construction.
+                </p>
+                <Link href="/tenant-improvement/retail" className="ti-info-card__link">
+                  Retail TI details
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Office tenant improvements</h3>
+                <p className="ti-info-card__text">
+                  Office TI ranges from basic demising walls and carpet to full build-outs
+                  with private offices, conference rooms, break rooms, server rooms, and
+                  reception areas. The key design decisions involve balancing open workspace
+                  with private space, acoustic separation between meeting rooms and work
+                  areas, HVAC zoning for comfort and energy efficiency, and electrical and
+                  data infrastructure to support modern technology needs. ADA compliance in
+                  office spaces includes accessible routes throughout, compliant restrooms,
+                  proper door clearances and hardware, and accessible common areas. For
+                  coworking conversions, we also address higher plumbing fixture counts,
+                  shared kitchen facilities, and assembly occupancy requirements for event
+                  spaces. We design offices that function well on day one and accommodate
+                  growth without requiring another round of construction.
+                </p>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Adaptive reuse and change of use</h3>
+                <p className="ti-info-card__text">
+                  Adaptive reuse projects convert existing buildings to new purposes —
+                  warehouses to restaurants, offices to retail, industrial spaces to creative
+                  studios, or residential to commercial. These projects involve the most complex
+                  code analysis because changing a building&apos;s occupancy classification triggers
+                  a cascade of requirements: structural evaluation for new loads, seismic
+                  upgrade assessment, new fire and life safety systems, full accessibility
+                  upgrades, and zoning confirmation. In the Bay Area, adaptive reuse is
+                  increasingly common as tenants seek unique, character-rich spaces in
+                  converted industrial buildings and historic structures. We navigate the
+                  additional regulatory layers — zoning variances, conditional use permits,
+                  historic preservation review — that make these projects viable. The reward
+                  is a space with authenticity and character that no ground-up build can match.
+                </p>
+                <Link href="/tenant-improvement/adaptive-reuse" className="ti-info-card__link">
+                  Adaptive reuse details
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ── Before / After Showcase ── */}
       <section className="section section--dark">
         <div className="container">
@@ -469,6 +573,92 @@ export default function TenantImprovementPage() {
         </div>
       </section>
 
+      {/* ── Process Deep Dive ── */}
+      <section className="section section--dark" id="ti-process-detail">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Inside the Process"
+              title="What actually happens at each stage."
+              description="A tenant improvement is a coordinated effort between architect, tenant, landlord, contractor, engineers, and city agencies. Here is what each phase involves and why it matters."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="ti-info-grid">
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Initial consultation and space assessment</h3>
+                <p className="ti-info-card__text">
+                  Every TI project starts with understanding the space as it exists today. We conduct
+                  a thorough site visit to document existing conditions — wall locations, ceiling
+                  heights, structural elements, mechanical systems, plumbing routing, and electrical
+                  capacity. For restaurant projects, we evaluate whether the space has adequate gas
+                  service, grease interceptor capacity, and roof access for exhaust penetrations.
+                  For office and retail work, we assess floor loading, HVAC zoning, and
+                  accessibility paths. This assessment is the foundation for every decision that
+                  follows. We also review your lease to understand TI allowance terms, landlord
+                  approval requirements, and any restrictions on modifications. If you have not
+                  signed a lease yet, this is the ideal time to involve us — a pre-lease walkthrough
+                  can identify deal-breakers before you commit.
+                </p>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Design development and construction documents</h3>
+                <p className="ti-info-card__text">
+                  With site conditions documented, we move into design. This phase produces
+                  the drawings your contractor will build from and the city will review for
+                  permit approval. For most TI projects, our deliverables include architectural
+                  floor plans, reflected ceiling plans, interior elevations, finish schedules,
+                  door and hardware schedules, and construction details. We coordinate with
+                  MEP engineers (mechanical, electrical, plumbing) to integrate their systems
+                  into the design. Structural engineering is brought in when walls are being
+                  removed, new openings are cut, or equipment loads require it. For restaurant
+                  projects, we also prepare kitchen equipment plans, hood schedules, and plumbing
+                  fixture diagrams. The goal of this phase is a complete, coordinated set of
+                  documents that answers every question before construction begins — reducing
+                  RFIs, change orders, and delays during build-out.
+                </p>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Permit coordination with the city</h3>
+                <p className="ti-info-card__text">
+                  Permitting is where many TI projects stall. Each Bay Area jurisdiction has
+                  its own submission requirements, review timelines, and plan check priorities.
+                  We prepare the full permit application package — drawings, calculations,
+                  energy compliance forms (Title 24), and agency-specific cover sheets. We
+                  submit to the building department and track the review through each discipline:
+                  architectural, structural, mechanical, electrical, plumbing, fire, and
+                  accessibility. When plan check comments come back, we respond promptly with
+                  revised drawings and written responses that address each comment directly.
+                  For restaurant projects, we also coordinate parallel reviews with the health
+                  department, fire department, and sometimes the local sewer district for
+                  grease interceptor permits. Our 98% first-pass approval rate comes from
+                  submitting thorough, code-compliant documents — not from shortcuts.
+                </p>
+              </div>
+              <div className="ti-info-card ti-info-card--dark">
+                <h3 className="ti-info-card__title">Construction administration and close-out</h3>
+                <p className="ti-info-card__text">
+                  Once the permit is issued and your contractor begins work, our role shifts
+                  to construction administration. We review contractor submittals to confirm
+                  materials and equipment match the specifications. We respond to RFIs
+                  (requests for information) when field conditions differ from what the
+                  drawings anticipated. We conduct periodic site visits to verify the work
+                  matches the design intent — checking everything from wall framing locations
+                  to finish installations. For complex projects, we attend progress meetings
+                  with the contractor and owner to resolve issues in real time. At project
+                  completion, we assist with final inspection coordination, helping ensure
+                  the space passes all city inspections and receives its certificate of
+                  occupancy. For restaurants, this includes health department final inspection
+                  and fire department sign-off. The project is not done until you have the
+                  approvals you need to open your doors.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ── Cost Guide ── */}
       <section className="section section--dark" id="ti-costs">
         <div className="container">
@@ -498,6 +688,84 @@ export default function TenantImprovementPage() {
               Actual construction costs depend on contractor, materials, and site conditions.
               We provide detailed cost guidance specific to your project during the design phase.
             </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── Cost Factors ── */}
+      <section className="section" id="ti-cost-factors">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Understanding Costs"
+              title="What drives tenant improvement costs."
+              description="Price per square foot is a starting point, not an answer. Here are the factors that actually determine what your project will cost."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="ti-info-grid">
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Scope of work: cosmetic vs. structural</h3>
+                <p className="ti-info-card__text">
+                  The single largest cost driver is how deep the renovation goes. A cosmetic
+                  refresh — new paint, flooring, lighting, and minor fixture updates — requires
+                  minimal engineering and can often be permitted with a simplified plan set. A
+                  partial renovation that involves moving walls, adding plumbing fixtures, or
+                  modifying HVAC zones requires full engineering coordination and more detailed
+                  construction documents. A gut renovation that strips the space to its shell
+                  and rebuilds everything — new walls, full MEP systems, structural modifications —
+                  is the most document-intensive and construction-costly scope. Understanding
+                  where your project falls on this spectrum is the first step in realistic
+                  budgeting.
+                </p>
+              </div>
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Building code compliance</h3>
+                <p className="ti-info-card__text">
+                  California&apos;s building codes add layers of requirements that directly affect
+                  cost. Title 24 energy compliance means new lighting must meet strict efficiency
+                  standards, HVAC systems must be properly sized and controlled, and building
+                  envelope performance may need upgrading. ADA and CBC accessibility requirements
+                  trigger path-of-travel upgrades when renovation costs exceed thresholds — this
+                  can mean new restrooms, ramps, door hardware, and signage that were not in your
+                  original scope. Seismic bracing requirements for suspended ceilings, mechanical
+                  equipment, and piping add cost in older buildings. Fire sprinkler modifications
+                  are triggered by changes in occupancy or layout. These are not optional line
+                  items — they are code requirements that affect every commercial renovation in
+                  the state.
+                </p>
+              </div>
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Mechanical, electrical, and plumbing</h3>
+                <p className="ti-info-card__text">
+                  MEP work is often the largest portion of construction cost in a TI project,
+                  especially for restaurants and medical facilities. Adding new plumbing fixtures
+                  means routing waste and supply lines, sometimes through concrete slabs. HVAC
+                  modifications — new ductwork, additional zones, exhaust systems — require
+                  engineering calculations and coordination with the building&apos;s existing systems.
+                  Electrical work includes not just outlets and lighting but also panel capacity,
+                  which in older buildings may require a service upgrade from the utility. For
+                  restaurant projects, kitchen exhaust hoods, makeup air systems, and grease
+                  interceptors represent significant MEP cost centers. We coordinate all MEP
+                  engineering early in design so there are no surprises when bids come in.
+                </p>
+              </div>
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Permits, timeline, and material selections</h3>
+                <p className="ti-info-card__text">
+                  Permit fees vary significantly across Bay Area cities — San Francisco
+                  charges fees based on project valuation that can run into thousands of dollars
+                  for larger projects. Permit review timelines directly affect your carrying costs:
+                  every month you are paying rent without operating is money spent. Expedited
+                  review is available in some jurisdictions for an additional fee. Material
+                  selections also drive cost in both directions. Luxury finishes, custom
+                  millwork, and imported tile increase budgets. But thoughtful material choices
+                  can reduce cost without reducing quality — we help clients identify where to
+                  invest and where to save, ensuring the TI allowance goes as far as possible.
+                </p>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -578,6 +846,92 @@ export default function TenantImprovementPage() {
               </div>
             ))}
           </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── Bay Area Context ── */}
+      <section className="section">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Local Expertise"
+              title="Tenant improvements in the Bay Area."
+              description="The Bay Area is one of the most complex markets for commercial renovation. Here is what makes it different and why local experience matters."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="ti-info-grid">
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Navigating Bay Area permitting</h3>
+                <p className="ti-info-card__text">
+                  The San Francisco Bay Area is not a single permit jurisdiction — it is
+                  dozens of cities, each with its own building department, review process,
+                  and interpretation of the California Building Code. San Francisco&apos;s DBI
+                  (Department of Building Inspection) processes thousands of commercial permits
+                  annually, with review timelines ranging from over-the-counter approval for
+                  minor work to 16 or more weeks for full restaurant build-outs. Oakland&apos;s
+                  Planning and Building Department has streamlined review for small commercial
+                  projects but requires full plan check for change-of-use applications. Palo
+                  Alto adds architectural review board oversight for projects in its downtown
+                  zone. We have submitted permits in every major Bay Area jurisdiction, and
+                  we understand the specific requirements, reviewer expectations, and procedural
+                  nuances that affect approval timelines. This local knowledge directly
+                  translates to faster permits and fewer correction cycles.
+                </p>
+              </div>
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Working with landlords on tenant improvements</h3>
+                <p className="ti-info-card__text">
+                  In most commercial leases, the landlord retains approval authority over
+                  tenant improvements. This means your design needs to satisfy not just the
+                  city&apos;s code requirements but also the landlord&apos;s building standards, insurance
+                  requirements, and long-term property concerns. We coordinate with landlord
+                  representatives throughout the design process — submitting drawings for
+                  review, addressing their comments, and ensuring our work aligns with the
+                  building&apos;s base systems. Common landlord concerns include roof penetrations
+                  for exhaust systems, structural modifications, storefront changes, and
+                  mechanical equipment placement. Proactive landlord coordination prevents
+                  redesign after permits are already in review. For multi-tenant buildings,
+                  we also coordinate with the building&apos;s property management to schedule work
+                  around other tenants&apos; operations.
+                </p>
+              </div>
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Common Bay Area building types</h3>
+                <p className="ti-info-card__text">
+                  The Bay Area&apos;s commercial building stock spans more than a century of
+                  construction. We regularly work with Type III (wood-frame over retail
+                  podium) mixed-use buildings, Type V wood-frame commercial strips, Type I
+                  and II steel and concrete high-rises, unreinforced masonry buildings in
+                  historic districts, and converted warehouse and industrial spaces. Each
+                  building type presents specific challenges: older masonry buildings may
+                  require seismic upgrades when occupancy changes, wood-frame buildings have
+                  fire separation requirements between tenants, and concrete structures
+                  complicate plumbing and electrical routing. Understanding the structural
+                  and code implications of your building type is essential before design
+                  begins — it affects layout options, construction cost, and permit pathway.
+                </p>
+              </div>
+              <div className="ti-info-card">
+                <h3 className="ti-info-card__title">Local code requirements</h3>
+                <p className="ti-info-card__text">
+                  Beyond the California Building Code, Bay Area jurisdictions enforce local
+                  amendments and additional requirements. San Francisco&apos;s Green Building
+                  Ordinance mandates specific sustainability measures for commercial interiors.
+                  Several cities require separate water efficiency calculations. Seismic
+                  retrofit ordinances in San Francisco and Oakland can be triggered by
+                  certain change-of-use applications. The Bay Area Air Quality Management
+                  District (BAAQMD) has authority over commercial kitchen exhaust systems.
+                  Local fire departments enforce specific occupancy and egress requirements
+                  that may differ from the base code. Health departments in each county have
+                  their own plan review process for food service establishments. Navigating
+                  these overlapping authorities is a core part of what we do — and it is the
+                  reason local experience is not optional for Bay Area tenant improvements.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

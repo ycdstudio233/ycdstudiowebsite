@@ -9,6 +9,61 @@ import { ScrollOverlay } from "../../../components/scroll-overlay";
 import { RevealPair } from "../../../components/reveal-pair";
 import { projectDetails } from "../../../lib/project-details";
 import { allProjects } from "../../../lib/site-data";
+import { blogPosts } from "../../../lib/blog-data";
+
+/* ── Category-to-blog mapping for Related Reading ── */
+const categoryBlogMap = {
+  "Hospitality / Restaurant": [
+    "restaurant-design-bay-area-guide",
+    "commercial-buildout-timeline-bay-area",
+    "title-24-commercial-tenant-improvement",
+  ],
+  "Hospitality": [
+    "commercial-buildout-timeline-bay-area",
+    "commercial-tenant-improvement-lease-questions",
+  ],
+  "Commercial / Tenant Improvement": [
+    "tenant-improvement-bay-area-architect",
+    "commercial-tenant-improvement-lease-questions",
+    "title-24-commercial-tenant-improvement",
+  ],
+  "Commercial / Adaptive Reuse": [
+    "tenant-improvement-bay-area-architect",
+    "commercial-buildout-timeline-bay-area",
+  ],
+  "Commercial / Public Realm": [
+    "tenant-improvement-bay-area-architect",
+    "commercial-buildout-timeline-bay-area",
+  ],
+  "Residential": [
+    "bathroom-remodel-guide-california",
+    "adus-backyard-living",
+  ],
+  "Residential / Modular": [
+    "adus-backyard-living",
+    "jadus-california",
+  ],
+  "Residential / Multi-Family": [
+    "adus-backyard-living",
+    "bathroom-remodel-guide-california",
+  ],
+  "Multi-Family Housing": [
+    "adus-backyard-living",
+    "bathroom-remodel-guide-california",
+  ],
+  "Multi-Family / Mixed-Use": [
+    "adus-backyard-living",
+    "tenant-improvement-bay-area-architect",
+  ],
+};
+
+function getRelatedBlogPosts(category) {
+  const slugs = categoryBlogMap[category] || [];
+  return slugs
+    .map((s) => blogPosts.find((p) => p.slug === s))
+    .filter(Boolean)
+    .slice(0, 2);
+}
 
 export function generateStaticParams() {
   return Object.keys(projectDetails).map((slug) => ({ slug }));
@@ -369,6 +424,33 @@ export default async function ProjectPage({ params }) {
           </div>
         </section>
       )}
+
+      {/* ── Related Reading ── */}
+      {(() => {
+        const relatedPosts = getRelatedBlogPosts(project.category);
+        if (relatedPosts.length === 0) return null;
+        return (
+          <section className="container">
+            <ScrollReveal>
+              <div className="project-related-reading">
+                <h3 className="project-related-reading__heading">Related Reading</h3>
+                <div className="project-related-reading__links">
+                  {relatedPosts.map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="project-related-reading__link"
+                    >
+                      <span className="project-related-reading__cat">{post.category}</span>
+                      <span className="project-related-reading__title">{post.title}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </section>
+        );
+      })()}
 
       {/* ── Navigation ── */}
       <section className="container">
