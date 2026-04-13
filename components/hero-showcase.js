@@ -370,9 +370,9 @@ export function HeroShowcase() {
       {/* Project info — bottom left */}
       <div className="hero-showcase__info">
         <div className="hero-showcase__category">{active.category}</div>
-        <h2 className="hero-showcase__title" key={active.slug}>
+        <h1 className="hero-showcase__title" key={active.slug}>
           {active.title}
-        </h2>
+        </h1>
         <div className="hero-showcase__location">{active.location}</div>
       </div>
 

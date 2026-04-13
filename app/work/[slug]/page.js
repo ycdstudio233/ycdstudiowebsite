@@ -22,6 +22,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `${project.title} — ${project.category} in ${project.location}`,
     description: project.summary,
+    alternates: {
+      canonical: `https://ycd.studio/work/${slug}`,
+    },
     openGraph: {
       title: `${project.title} — ${project.category} | YCD Studio`,
       description: project.summary,

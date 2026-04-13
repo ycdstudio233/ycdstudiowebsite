@@ -17,12 +17,45 @@ export async function generateMetadata({ params }) {
   return {
     title: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
+    alternates: {
+      canonical: `https://ycd.studio/blog/${slug}`,
+    },
     openGraph: {
       title: `${post.seoTitle || post.title} | YCD Studio`,
       description: post.seoDescription || post.excerpt,
       ...(post.heroImage && { images: [{ url: post.heroImage, alt: post.title }] }),
     },
   };
+}
+
+function BlogPostJsonLd({ post, slug }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.seoTitle || post.title,
+    description: post.seoDescription || post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Organization",
+      name: "YCD Studio",
+      url: "https://ycd.studio",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "YCD Studio",
+      url: "https://ycd.studio",
+    },
+    url: `https://ycd.studio/blog/${slug}`,
+    ...(post.heroImage && {
+      image: `https://ycd.studio${post.heroImage}`,
+    }),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
 }
 
 function formatDate(dateString) {
@@ -118,6 +151,7 @@ export default async function BlogPostPage({ params }) {
 
   return (
     <main className="page-shell">
+      <BlogPostJsonLd post={post} slug={slug} />
       <article className="blog-article">
         {/* Hero */}
         <div className="blog-article__hero">
