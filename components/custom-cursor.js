@@ -21,7 +21,7 @@ export function CustomCursor() {
       // Detect dark background under cursor
       const el = document.elementFromPoint(e.clientX, e.clientY);
       if (el) {
-        const isDark = el.closest(".section--dark, .cta, .closing, .mobile-nav--open, [data-dark]");
+        const isDark = el.closest(".section--dark, .cta, .closing, .credentials, .mobile-nav--open, [data-dark]");
         setOnDark(!!isDark);
       }
     };
