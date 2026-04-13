@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
+import { publications } from "../lib/site-data";
 
 const items = [
   // Awards
@@ -15,17 +16,12 @@ const items = [
   { label: "Tabyabasi Balik", sub: "Restaurant", type: "client" },
   { label: "SpaceArc", sub: "Experimental", type: "client" },
   { label: "Cousins Maine Lobster", sub: "Restaurant", type: "client" },
-  // Publications
-  { label: "Archinect", sub: "Publication", type: "press" },
-  { label: "ArchDaily", sub: "Publication", type: "press" },
-  { label: "Yanko Design", sub: "Publication", type: "press" },
-  { label: "Interior Design", sub: "Publication", type: "press" },
-  { label: "Inhabitat", sub: "Publication", type: "press" },
-  { label: "World Architecture", sub: "Publication", type: "press" },
-  { label: "Interesting Engineering", sub: "Publication", type: "press" },
-  { label: "Designboom", sub: "Publication", type: "press" },
-  { label: "Arkiv", sub: "Publication", type: "press" },
-  { label: "Arkitera", sub: "Publication", type: "press" },
+  // Publications — from centralized data
+  ...publications.map((pub) => ({
+    label: pub.outlet,
+    sub: "Publication",
+    type: "press",
+  })),
 ];
 
 function buildTickerItems(source) {

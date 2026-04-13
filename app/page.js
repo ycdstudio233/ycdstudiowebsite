@@ -9,6 +9,7 @@ import {
   heroStats,
   services,
   testimonials,
+  publications,
 } from "../lib/site-data";
 
 export default function HomePage() {
@@ -164,6 +165,28 @@ export default function HomePage() {
               </div>
             ))}
           </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── Featured In — press logo strip ── */}
+      <section className="featured-in">
+        <div className="container">
+          <ScrollReveal>
+            <p className="featured-in__label">As featured in</p>
+            <div className="featured-in__strip">
+              {publications.map((pub) => (
+                <a
+                  key={pub.outlet}
+                  href={pub.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="featured-in__item"
+                >
+                  {pub.outlet}
+                </a>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

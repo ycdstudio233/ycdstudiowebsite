@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { publications } from "../lib/site-data";
 
-const recognitionItems = [
+const awards = [
   {
     name: "Gehry Prize",
     detail: "Awarded by SCI-Arc for outstanding design excellence and pushing the boundaries of architectural thinking.",
@@ -23,39 +24,15 @@ const recognitionItems = [
     detail: "Selected for design excellence across multiple project categories in the annual awards program.",
     year: "2024",
   },
+];
+
+const recognitionItems = [
+  ...awards,
   { name: "divider" },
-  {
-    name: "Archinect",
-    detail: "Featured for innovative approach to adaptive reuse and mixed-use residential design.",
-  },
-  {
-    name: "ArchDaily",
-    detail: "Published project work reaching ArchDaily's global audience of architects and designers.",
-  },
-  {
-    name: "SCI-Arc",
-    detail: "Academic and professional recognition from the Southern California Institute of Architecture.",
-  },
-  {
-    name: "Yanko Design",
-    detail: "Featured for experimental and forward-thinking design concepts.",
-  },
-  {
-    name: "Interior Design",
-    detail: "Highlighted in one of the industry's leading publications for interior and spatial design.",
-  },
-  {
-    name: "Interesting Engineering",
-    detail: "Covered for the intersection of engineering innovation and architectural design.",
-  },
-  {
-    name: "Inhabitat",
-    detail: "Featured for sustainable design practices and environmentally conscious architecture.",
-  },
-  {
-    name: "Arkitera",
-    detail: "Published in Turkey's largest architecture platform, reaching a wide professional audience.",
-  },
+  ...publications.map((pub) => ({
+    name: pub.outlet,
+    url: pub.url,
+  })),
 ];
 
 export function RecognitionBand() {
@@ -69,6 +46,23 @@ export function RecognitionBand() {
           {recognitionItems.map((item, i) =>
             item.name === "divider" ? (
               <span key={i} className="recognition-band__divider" />
+            ) : item.url ? (
+              <a
+                key={item.name}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="recognition-band__item"
+                onMouseEnter={() => setActive(i)}
+                onMouseLeave={() => setActive(null)}
+              >
+                <span className="recognition-band__name">{item.name}</span>
+                {active === i && (
+                  <span className="recognition-band__detail recognition-band__detail--link">
+                    View article &#8599;
+                  </span>
+                )}
+              </a>
             ) : (
               <button
                 key={item.name}
@@ -79,8 +73,7 @@ export function RecognitionBand() {
               >
                 {item.year && <span className="recognition-band__year">{item.year}</span>}
                 <span className="recognition-band__name">{item.name}</span>
-
-                {active === i && (
+                {active === i && item.detail && (
                   <span className="recognition-band__detail">
                     {item.detail}
                   </span>

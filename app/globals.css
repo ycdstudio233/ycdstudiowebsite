@@ -1325,6 +1325,52 @@ ul, ol { list-style: none; }
   text-align: center;
 }
 
+/* ===== Featured In — press strip ===== */
+
+.featured-in {
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.featured-in__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.featured-in__strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 32px;
+}
+.featured-in__item {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+.featured-in__item:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 768px) {
+  .featured-in {
+    padding: 48px 0;
+  }
+  .featured-in__strip {
+    gap: 10px 24px;
+  }
+  .featured-in__item {
+    font-size: 0.75rem;
+  }
+}
+
 /* ===== Credentials Ticker ===== */
 
 .credentials-ticker {
