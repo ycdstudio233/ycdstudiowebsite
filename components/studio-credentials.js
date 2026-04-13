@@ -23,7 +23,7 @@ const clients = [
   {
     name: "SpaceArc",
     tag: "Experimental",
-    image: "/projects/spacearc-pod/Image-1.webp",
+    image: "/projects/spacearc/Image-1.webp",
   },
   { name: "Cousins Maine Lobster", tag: "Restaurant", image: null },
 ];

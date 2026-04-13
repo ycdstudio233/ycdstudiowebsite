@@ -415,7 +415,7 @@ export default function CommercialPage() {
               </Link>
               <Link
                 className="btn btn--ghost-light btn--large"
-                href="mailto:hello@ycd.studio?subject=Commercial%20Architecture%20Inquiry"
+                href="mailto:info@ycd.studio?subject=Commercial%20Architecture%20Inquiry"
               >
                 Email us directly
               </Link>

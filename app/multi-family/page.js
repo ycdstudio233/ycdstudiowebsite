@@ -360,7 +360,7 @@ export default function MultiFamilyPage() {
               </Link>
               <Link
                 className="btn btn--ghost-light btn--large"
-                href="mailto:hello@ycd.studio?subject=Multi-Family%20Project%20Inquiry"
+                href="mailto:info@ycd.studio?subject=Multi-Family%20Project%20Inquiry"
               >
                 Request a feasibility review
               </Link>

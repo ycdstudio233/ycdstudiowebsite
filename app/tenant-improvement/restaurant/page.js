@@ -620,7 +620,7 @@ export default function RestaurantTenantImprovementPage() {
               </Link>
               <Link
                 className="btn btn--ghost-light btn--large"
-                href="mailto:hello@ycd.studio?subject=Restaurant%20TI%20Pre-Lease%20Walkthrough"
+                href="mailto:info@ycd.studio?subject=Restaurant%20TI%20Pre-Lease%20Walkthrough"
               >
                 Book a pre-lease walkthrough
               </Link>

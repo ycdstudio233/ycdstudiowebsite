@@ -593,7 +593,7 @@ export default function RetailOfficeTIPage() {
               </Link>
               <Link
                 className="btn btn--ghost-light btn--large"
-                href="mailto:hello@ycd.studio?subject=Retail%20/%20Office%20TI%20Inquiry"
+                href="mailto:info@ycd.studio?subject=Retail%20/%20Office%20TI%20Inquiry"
               >
                 Email us directly
               </Link>

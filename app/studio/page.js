@@ -146,9 +146,6 @@ export default function StudioPage() {
         <div className="cta__bg" aria-hidden="true" />
         <div className="container">
           <ScrollReveal>
-            <p className="cta__proof">&ldquo;They made the entire process feel effortless. The result speaks for itself.&rdquo; — Tamy V., Client</p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
             <h2 className="cta__title">Let&apos;s build something together.</h2>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>

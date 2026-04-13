@@ -351,7 +351,7 @@ export default function OaklandPage() {
               </Link>
               <Link
                 className="btn btn--ghost-light btn--large"
-                href="mailto:hello@ycd.studio?subject=East%20Bay%20Project%20Inquiry"
+                href="mailto:info@ycd.studio?subject=East%20Bay%20Project%20Inquiry"
               >
                 Email us directly
               </Link>

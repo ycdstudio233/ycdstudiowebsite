@@ -1079,7 +1079,7 @@ export default function TenantImprovementPage() {
               <Link className="btn btn--inverse btn--large" href="/contact">
                 Start a TI project
               </Link>
-              <Link className="btn btn--ghost-light btn--large" href="mailto:hello@ycd.studio?subject=TI%20Pre-Lease%20Walkthrough">
+              <Link className="btn btn--ghost-light btn--large" href="mailto:info@ycd.studio?subject=TI%20Pre-Lease%20Walkthrough">
                 Book a pre-lease walkthrough
               </Link>
             </div>

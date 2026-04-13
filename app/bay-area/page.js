@@ -392,7 +392,7 @@ export default function BayAreaPage() {
               </Link>
               <Link
                 className="btn btn--ghost-light btn--large"
-                href="mailto:hello@ycd.studio?subject=Bay%20Area%20Project%20Inquiry"
+                href="mailto:info@ycd.studio?subject=Bay%20Area%20Project%20Inquiry"
               >
                 Email us directly
               </Link>

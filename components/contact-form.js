@@ -48,9 +48,12 @@ export function ContactForm() {
     e.preventDefault();
     setStatus("sending");
     try {
-      // Simulate API call (wire to real endpoint later)
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      // await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(formData) });
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed");
       setStatus("success");
     } catch {
       setStatus("error");

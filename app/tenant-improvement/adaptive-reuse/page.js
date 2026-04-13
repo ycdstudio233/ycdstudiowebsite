@@ -549,7 +549,7 @@ export default function AdaptiveReusePage() {
               <Link className="btn btn--inverse btn--large" href="/contact">
                 Start an adaptive reuse project
               </Link>
-              <Link className="btn btn--ghost-light btn--large" href="mailto:hello@ycd.studio?subject=Adaptive%20Reuse%20Feasibility%20Assessment">
+              <Link className="btn btn--ghost-light btn--large" href="mailto:info@ycd.studio?subject=Adaptive%20Reuse%20Feasibility%20Assessment">
                 Request a feasibility assessment
               </Link>
             </div>

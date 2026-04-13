@@ -21,7 +21,9 @@ export function CustomCursor() {
       // Detect dark background under cursor
       const el = document.elementFromPoint(e.clientX, e.clientY);
       if (el) {
-        const isDark = el.closest(".section--dark, .cta, .closing, .credentials, .mobile-nav--open, [data-dark]");
+        const isDark = el.closest(
+          ".section--dark, .cta, .closing, .credentials, .studio-cred, .mobile-nav--open, [data-dark], .hero-showcase, .cinema, .cinema-film, .ti-sub-section--dark, .credentials-ticker, .recognition-band, .trust-band, .person-hero--dark, .person-stats, .person-map, .person-cta--dark"
+        );
         setOnDark(!!isDark);
       }
     };
