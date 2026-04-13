@@ -574,6 +574,41 @@ export default function PersonPage() {
         </div>
       </section>
 
+      {/* ─── PUBLICATIONS ─── */}
+      {person.publications && person.publications.length > 0 && (
+        <section className="person-press">
+          <div className="person-press__container">
+            <Reveal>
+              <div className="person-press__header">
+                <p className="person-press__eyebrow">
+                  <span className="person-hero__dash" />
+                  Press
+                </p>
+                <h2 className="person-press__title">Featured in</h2>
+              </div>
+            </Reveal>
+            <div className="person-press__grid">
+              {person.publications.map((pub, i) => (
+                <Reveal key={i} delay={i * 0.05}>
+                  <a
+                    href={pub.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="person-press__card"
+                  >
+                    <span className="person-press__outlet">{pub.outlet}</span>
+                    <span className="person-press__article">{pub.title}</span>
+                    <span className="person-press__arrow">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </span>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── CTA ─── */}
       <section className="person-cta person-cta--dark">
         <Reveal>

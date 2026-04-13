@@ -34,6 +34,9 @@ function PersonJsonLd({ person, slug }) {
       "@type": "Place",
       address: person.location,
     },
+    ...(person.publications && {
+      sameAs: person.publications.map((p) => p.url),
+    }),
   };
 
   return (
