@@ -88,8 +88,15 @@ function buildCinemaFrames(project) {
 
     const maxN = Math.min(allTexts.length, Math.floor(images.length / 2));
     narratives = allTexts.slice(0, maxN);
-    for (let t = maxN; t < allTexts.length; t++) {
-      if (narratives.length > 0) narratives[narratives.length - 1].body += "\n\n" + allTexts[t].body;
+    /* Don't merge extra texts — they create massive text walls on mobile.
+       Just use the first maxN texts and drop the rest. */
+
+    /* Truncate any narrative body to ~250 chars max */
+    for (const n of narratives) {
+      if (n.body.length > 250) {
+        const cut = n.body.lastIndexOf(" ", 250);
+        n.body = n.body.slice(0, cut > 200 ? cut : 250) + " …";
+      }
     }
 
     const step = images.length / (narratives.length + 1);

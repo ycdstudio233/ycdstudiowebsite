@@ -2251,6 +2251,10 @@ ul, ol { list-style: none; }
   color: rgba(255, 255, 255, 0.82);
   font-weight: 300;
   max-width: 520px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .cinema__story--right .cinema__story-body {
@@ -2323,6 +2327,10 @@ ul, ol { list-style: none; }
     line-height: 1.75;
     color: rgba(255, 255, 255, 0.82);
     font-weight: 300;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   /* Hide regular cinema on mobile when film version exists */
   .cinema--has-film { display: none; }
