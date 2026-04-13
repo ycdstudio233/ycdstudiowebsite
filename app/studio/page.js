@@ -4,7 +4,7 @@ import { PageHero } from "../../components/page-hero";
 import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { AnimatedCounter } from "../../components/animated-counter";
-import { RecognitionBand } from "../../components/recognition-band";
+import { StudioCredentials } from "../../components/studio-credentials";
 import { ServiceReveal } from "../../components/service-reveal";
 import {
   studioNotes,
@@ -138,8 +138,8 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Recognition — interactive band */}
-      <RecognitionBand />
+      {/* Recognition — interactive credentials */}
+      <StudioCredentials />
 
       {/* CTA */}
       <section className="cta">
