@@ -8141,3 +8141,126 @@ ul, ol { list-style: none; }
     align-items: center;
   }
 }
+
+/* ===== Credentials Section ===== */
+
+.credentials {
+  background: #0a0a0a;
+  padding: 100px 0;
+  width: 100%;
+}
+
+.credentials__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 64px;
+}
+
+.credentials__label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+/* -- Press column -- */
+
+.credentials__press-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: color var(--transition-fast);
+}
+
+.credentials__press-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.credentials__arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.credentials__press-link:hover .credentials__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* -- Awards column -- */
+
+.credentials__award {
+  margin-bottom: 24px;
+}
+
+.credentials__award-year {
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.credentials__award-name {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
+}
+
+/* -- Clients column -- */
+
+.credentials__client {
+  padding: 10px 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.credentials__client-name {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.credentials__client-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+  margin-left: 8px;
+}
+
+/* -- Credentials responsive -- */
+
+@media (max-width: 768px) {
+  .credentials {
+    padding: 64px 0;
+  }
+
+  .credentials__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .credentials__col {
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .credentials__col:first-child {
+    padding-top: 0;
+  }
+
+  .credentials__col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}

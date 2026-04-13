@@ -3,13 +3,12 @@ import { HeroShowcase } from "../components/hero-showcase";
 import { SectionHeading } from "../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../components/scroll-reveal";
 import { AnimatedCounter } from "../components/animated-counter";
-import { CredentialsTicker } from "../components/credentials-ticker";
 import {
   featuredProjects,
   heroStats,
   services,
-  testimonials,
   publications,
+  awards,
 } from "../lib/site-data";
 
 export default function HomePage() {
@@ -144,54 +143,88 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
-      <section className="section">
+      {/* ── Credentials — press, awards, clients ── */}
+      <section className="credentials">
         <div className="container">
-          <ScrollReveal>
-            <SectionHeading
-              eyebrow="Clients"
-              title="What people say."
-            />
-          </ScrollReveal>
-
-          <StaggerReveal className="testimonials-grid" staggerDelay={0.1}>
-            {testimonials.map((t) => (
-              <div className="testimonial" key={t.name}>
-                <p className="testimonial__quote">&ldquo;{t.quote}&rdquo;</p>
-                <div className="testimonial__author">
-                  <span className="testimonial__name">{t.name}</span>
-                  <span className="testimonial__role">{t.role}</span>
-                </div>
-              </div>
-            ))}
-          </StaggerReveal>
-        </div>
-      </section>
-
-      {/* ── Featured In — press logo strip ── */}
-      <section className="featured-in">
-        <div className="container">
-          <ScrollReveal>
-            <p className="featured-in__label">As featured in</p>
-            <div className="featured-in__strip">
-              {publications.map((pub) => (
-                <a
-                  key={pub.outlet}
-                  href={pub.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="featured-in__item"
-                >
-                  {pub.outlet}
-                </a>
-              ))}
+          <div className="credentials__grid">
+            {/* Press column */}
+            <div className="credentials__col">
+              <ScrollReveal>
+                <span className="credentials__label">Press</span>
+              </ScrollReveal>
+              <StaggerReveal staggerDelay={0.04}>
+                {publications.map((pub) => (
+                  <a
+                    key={pub.outlet}
+                    href={pub.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="credentials__press-link"
+                  >
+                    <span>{pub.outlet}</span>
+                    <svg
+                      className="credentials__arrow"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="M4 12L12 4M12 4H5M12 4v7"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                ))}
+              </StaggerReveal>
             </div>
-          </ScrollReveal>
+
+            {/* Awards column */}
+            <div className="credentials__col">
+              <ScrollReveal>
+                <span className="credentials__label">Awards</span>
+              </ScrollReveal>
+              <StaggerReveal staggerDelay={0.1}>
+                {awards.map((a) => (
+                  <div className="credentials__award" key={a.title}>
+                    <span className="credentials__award-year">{a.year}</span>
+                    <span className="credentials__award-name">{a.title}</span>
+                  </div>
+                ))}
+              </StaggerReveal>
+            </div>
+
+            {/* Clients column */}
+            <div className="credentials__col">
+              <ScrollReveal>
+                <span className="credentials__label">Clients</span>
+              </ScrollReveal>
+              <StaggerReveal staggerDelay={0.08}>
+                {[
+                  { name: "Bikanervala", tag: "Restaurant" },
+                  { name: "Hampton Inn", tag: "Hospitality" },
+                  { name: "Benjamin Moore", tag: "Commercial" },
+                  { name: "Tabyabasi Balik", tag: "Restaurant" },
+                  { name: "SpaceArc", tag: "Experimental" },
+                  { name: "Cousins Maine Lobster", tag: "Restaurant" },
+                ].map((client) => (
+                  <div className="credentials__client" key={client.name}>
+                    <span className="credentials__client-name">
+                      {client.name}
+                    </span>
+                    <span className="credentials__client-tag">
+                      {client.tag}
+                    </span>
+                  </div>
+                ))}
+              </StaggerReveal>
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* ── Credentials — awards, clients, press in one interactive band ── */}
-      <CredentialsTicker />
 
       {/* ── CTA ── */}
       <section className="closing">
