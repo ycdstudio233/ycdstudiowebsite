@@ -4,6 +4,8 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 
 import { RelatedReading } from "../../components/related-links";
+import { FaqAccordion } from "../../components/faq-accordion";
+import { sacredFaqs } from "../../lib/service-faqs";
 export const metadata = {
   title: "Sacred Architect — Churches, Mosques & Worship Spaces",
   description:
@@ -231,6 +233,24 @@ export default function SacredArchitecturePage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* ── FAQ (emits FAQPage JSON-LD for rich results) ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Common questions about sacred architecture."
+              description="Acoustics, historic preservation, liturgical design, and how we work with congregations of any faith."
+            />
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="ti-faq-wrap">
+              <FaqAccordion faqs={sacredFaqs} />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Related Reading — cross-linked blog posts for SEO + reader value */}
       <RelatedReading servicePath="/sacred" />
 

@@ -159,7 +159,8 @@
       "Bash(node scripts/seo/gsc-not-indexed.mjs)",
       "Bash(xargs grep *)",
       "Bash(curl -s https://ycd.studio/sacred)",
-      "Bash(node scripts/seo/_wire-related-reading.mjs)"
+      "Bash(node scripts/seo/_wire-related-reading.mjs)",
+      "Bash(node scripts/seo/_wire-faq-sections.mjs)"
     ]
   }
 }

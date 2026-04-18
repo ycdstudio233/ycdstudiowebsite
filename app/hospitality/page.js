@@ -5,6 +5,8 @@ import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { RotatingHeroImage } from "../../components/rotating-hero-image";
 
 import { RelatedReading } from "../../components/related-links";
+import { FaqAccordion } from "../../components/faq-accordion";
+import { hospitalityFaqs } from "../../lib/service-faqs";
 export const metadata = {
   title: "Bay Area Restaurant & Hotel Architect",
   description:
@@ -429,6 +431,24 @@ export default function HospitalityPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* ── FAQ (emits FAQPage JSON-LD for rich results) ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Common questions about restaurant & hotel design."
+              description="Health department, ABC licensing, kitchen exhaust, and Bay Area hospitality permitting — answered."
+            />
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="ti-faq-wrap">
+              <FaqAccordion faqs={hospitalityFaqs} />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Related Reading — cross-linked blog posts for SEO + reader value */}
       <RelatedReading servicePath="/hospitality" />
 

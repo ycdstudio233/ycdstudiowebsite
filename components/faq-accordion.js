@@ -2,7 +2,9 @@
 
 import { useState, useCallback } from "react";
 
-const faqData = [
+// Default FAQ content for /tenant-improvement (preserved from original).
+// Any page can pass its own `faqs` prop to override.
+const defaultFaqs = [
   {
     question: "What is a tenant improvement (TI)?",
     answer:
@@ -45,58 +47,77 @@ const faqData = [
   },
 ];
 
-export function FaqAccordion() {
+export function FaqAccordion({ faqs }) {
+  const items = faqs && faqs.length ? faqs : defaultFaqs;
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = useCallback((i) => {
     setOpenIndex((prev) => (prev === i ? null : i));
   }, []);
 
+  // Emit JSON-LD in parallel with microdata. Google prefers JSON-LD,
+  // and having both is fine — no conflict.
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
   return (
-    <div className="faq-list" itemScope itemType="https://schema.org/FAQPage">
-      {faqData.map((item, i) => {
-        const isOpen = openIndex === i;
-        return (
-          <div
-            key={i}
-            className={`faq-item${isOpen ? " faq-item--open" : ""}`}
-            itemScope
-            itemProp="mainEntity"
-            itemType="https://schema.org/Question"
-          >
-            <button
-              className="faq-item__trigger"
-              onClick={() => toggle(i)}
-              aria-expanded={isOpen}
-            >
-              <span className="faq-item__question" itemProp="name">
-                {item.question}
-              </span>
-              <span className="faq-item__icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M5 8l5 5 5-5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <div className="faq-list" itemScope itemType="https://schema.org/FAQPage">
+        {items.map((item, i) => {
+          const isOpen = openIndex === i;
+          return (
             <div
-              className="faq-item__body"
+              key={i}
+              className={`faq-item${isOpen ? " faq-item--open" : ""}`}
               itemScope
-              itemProp="acceptedAnswer"
-              itemType="https://schema.org/Answer"
+              itemProp="mainEntity"
+              itemType="https://schema.org/Question"
             >
-              <p className="faq-item__answer" itemProp="text">
-                {item.answer}
-              </p>
+              <button
+                className="faq-item__trigger"
+                onClick={() => toggle(i)}
+                aria-expanded={isOpen}
+              >
+                <span className="faq-item__question" itemProp="name">
+                  {item.question}
+                </span>
+                <span className="faq-item__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M5 8l5 5 5-5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <div
+                className="faq-item__body"
+                itemScope
+                itemProp="acceptedAnswer"
+                itemType="https://schema.org/Answer"
+              >
+                <p className="faq-item__answer" itemProp="text">
+                  {item.answer}
+                </p>
+              </div>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </>
   );
 }

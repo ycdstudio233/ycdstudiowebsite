@@ -5,6 +5,8 @@ import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { allProjects } from "../../lib/site-data";
 
 import { RelatedReading } from "../../components/related-links";
+import { FaqAccordion } from "../../components/faq-accordion";
+import { residentialFaqs } from "../../lib/service-faqs";
 export const metadata = {
   title: "Bay Area Residential Architect — Homes & ADUs",
   description:
@@ -459,6 +461,24 @@ export default function ResidentialPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* ── FAQ (emits FAQPage JSON-LD for rich results) ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Common questions about residential architecture."
+              description="Everything you need to know before starting a custom home, ADU, or remodel in the Bay Area."
+            />
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="ti-faq-wrap">
+              <FaqAccordion faqs={residentialFaqs} />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Related Reading — cross-linked blog posts for SEO + reader value */}
       <RelatedReading servicePath="/residential" />
 

@@ -4,6 +4,8 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 
 import { RelatedReading } from "../../components/related-links";
+import { FaqAccordion } from "../../components/faq-accordion";
+import { commercialFaqs } from "../../lib/service-faqs";
 export const metadata = {
   title: "Bay Area Commercial Architect — Office & Retail",
   description:
@@ -393,6 +395,24 @@ export default function CommercialPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* ── FAQ (emits FAQPage JSON-LD for rich results) ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Common questions about commercial architecture."
+              description="Title 24, ADA, seismic, and Bay Area commercial permit timelines — answered."
+            />
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="ti-faq-wrap">
+              <FaqAccordion faqs={commercialFaqs} />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Related Reading — cross-linked blog posts for SEO + reader value */}
       <RelatedReading servicePath="/commercial" />
 

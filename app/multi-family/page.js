@@ -4,6 +4,8 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 
 import { RelatedReading } from "../../components/related-links";
+import { FaqAccordion } from "../../components/faq-accordion";
+import { multiFamilyFaqs } from "../../lib/service-faqs";
 export const metadata = {
   title: "Bay Area Multi-Family Architect — Apartments & Condos",
   description:
@@ -338,6 +340,24 @@ export default function MultiFamilyPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* ── FAQ (emits FAQPage JSON-LD for rich results) ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Common questions about multi-family development."
+              description="SB 9, density bonus, CEQA, and Bay Area entitlement timelines — answered for developers and property owners."
+            />
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="ti-faq-wrap">
+              <FaqAccordion faqs={multiFamilyFaqs} />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Related Reading — cross-linked blog posts for SEO + reader value */}
       <RelatedReading servicePath="/multi-family" />
 
