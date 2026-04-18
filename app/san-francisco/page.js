@@ -5,6 +5,7 @@ import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { projectDetails } from "../../lib/project-details";
 import { allProjects } from "../../lib/site-data";
 
+import { RelatedReading } from "../../components/related-links";
 export const metadata = {
   title: "San Francisco Architect — Restaurants, TI & Homes",
   description:
@@ -328,6 +329,9 @@ export default function SanFranciscoPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* Related Reading — cross-linked blog posts for SEO + reader value */}
+      <RelatedReading servicePath="/san-francisco" />
+
       <section className="closing">
         <div className="container closing__container">
           <ScrollReveal>

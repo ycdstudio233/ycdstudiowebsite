@@ -4,6 +4,7 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { RotatingHeroImage } from "../../components/rotating-hero-image";
 
+import { RelatedReading } from "../../components/related-links";
 export const metadata = {
   title: "Bay Area Restaurant & Hotel Architect",
   description:
@@ -428,6 +429,9 @@ export default function HospitalityPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* Related Reading — cross-linked blog posts for SEO + reader value */}
+      <RelatedReading servicePath="/hospitality" />
+
       <section className="closing">
         <div className="container closing__container">
           <ScrollReveal>

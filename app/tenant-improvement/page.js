@@ -5,6 +5,7 @@ import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { AnimatedCounter } from "../../components/animated-counter";
 import { FaqAccordion } from "../../components/faq-accordion";
 
+import { RelatedReading } from "../../components/related-links";
 export const metadata = {
   title: "Bay Area Tenant Improvement Architect",
   description:
@@ -1061,6 +1062,9 @@ export default function TenantImprovementPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* Related Reading — cross-linked blog posts for SEO + reader value */}
+      <RelatedReading servicePath="/tenant-improvement" />
+
       <section className="closing">
         <div className="container closing__container">
           <ScrollReveal>

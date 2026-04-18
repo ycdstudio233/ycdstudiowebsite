@@ -8486,3 +8486,116 @@ ul, ol { list-style: none; }
     padding-bottom: 0;
   }
 }
+
+/* ── Related Links (blog↔services cross-linking) ───────────────────── */
+.related-links {
+  background: #0A0A0A;
+  color: #fff;
+  padding: 80px 0;
+}
+
+.related-links--reading {
+  background: #F5F5F3;
+  color: #0A0A0A;
+}
+
+.related-links__header {
+  margin-bottom: 40px;
+  max-width: 640px;
+}
+
+.related-links__eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+.related-links__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 450;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.related-links__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.related-links__card {
+  display: block;
+  background: #fff;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  border-radius: 12px;
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.related-links__card:hover {
+  border-color: rgba(10, 10, 10, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(10, 10, 10, 0.06);
+}
+
+.related-links__card-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.related-links__card-excerpt {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(10, 10, 10, 0.68);
+  margin: 0 0 16px;
+}
+
+.related-links__card-arrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #0A0A0A;
+}
+
+.related-links__service-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.related-links__service-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 450;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.related-links__service-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .related-links { padding: 56px 0; }
+  .related-links__header { margin-bottom: 28px; }
+  .related-links__grid { gap: 16px; }
+  .related-links__card { padding: 22px; }
+}

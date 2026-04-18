@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ScrollReveal } from "../../../components/scroll-reveal";
 import { YCDLogo } from "../../../components/ycd-logo";
 import { blogPosts, getBlogPost, getAllSlugs } from "../../../lib/blog-data";
+import { RelatedServices } from "../../../components/related-links";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -269,6 +270,9 @@ export default async function BlogPostPage({ params }) {
           </div>
         </div>
       </article>
+
+      {/* Related service pages — in-body contextual links for SEO + reader value */}
+      <RelatedServices postSlug={slug} />
 
       {/* Bottom CTA */}
       <ScrollReveal>

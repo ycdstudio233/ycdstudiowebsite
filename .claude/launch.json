@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--", "-p", "3045"],
       "port": 3045
+    },
+    {
+      "name": "templates",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "instagram-may-2026/templates", "-p", "3046"],
+      "port": 3046
     }
   ]
 }

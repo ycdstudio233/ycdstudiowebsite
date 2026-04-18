@@ -3,6 +3,7 @@ import Image from "next/image";
 import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 
+import { RelatedReading } from "../../components/related-links";
 export const metadata = {
   title: "Bay Area Multi-Family Architect — Apartments & Condos",
   description:
@@ -337,6 +338,9 @@ export default function MultiFamilyPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* Related Reading — cross-linked blog posts for SEO + reader value */}
+      <RelatedReading servicePath="/multi-family" />
+
       <section className="closing">
         <div className="container closing__container">
           <ScrollReveal>

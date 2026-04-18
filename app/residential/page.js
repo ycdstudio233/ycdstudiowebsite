@@ -4,6 +4,7 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { allProjects } from "../../lib/site-data";
 
+import { RelatedReading } from "../../components/related-links";
 export const metadata = {
   title: "Bay Area Residential Architect — Homes & ADUs",
   description:
@@ -458,6 +459,9 @@ export default function ResidentialPage() {
       </section>
 
       {/* ── CTA ── */}
+      {/* Related Reading — cross-linked blog posts for SEO + reader value */}
+      <RelatedReading servicePath="/residential" />
+
       <section className="closing">
         <div className="container closing__container">
           <ScrollReveal>
