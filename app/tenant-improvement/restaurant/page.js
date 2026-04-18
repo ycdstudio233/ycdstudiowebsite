@@ -507,7 +507,7 @@ export default function RestaurantTenantImprovementPage() {
                   {project.image ? (
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={project.imageAlt || project.title}
                       width={640}
                       height={480}
                       style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}

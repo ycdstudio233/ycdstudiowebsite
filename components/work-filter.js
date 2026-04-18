@@ -74,7 +74,7 @@ export function WorkFilter({ projects }) {
               <div className="project-card__visual" aria-hidden="true">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={project.imageAlt || project.title}
                   className="project-card__img"
                   loading="lazy"
                 />

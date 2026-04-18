@@ -351,7 +351,7 @@ export default function CommercialPage() {
                 <div className="ti-project-row__visual">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.imageAlt || project.title}
                     width={200}
                     height={150}
                     style={{

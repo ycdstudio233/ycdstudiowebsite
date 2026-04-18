@@ -160,7 +160,11 @@
       "Bash(xargs grep *)",
       "Bash(curl -s https://ycd.studio/sacred)",
       "Bash(node scripts/seo/_wire-related-reading.mjs)",
-      "Bash(node scripts/seo/_wire-faq-sections.mjs)"
+      "Bash(node scripts/seo/_wire-faq-sections.mjs)",
+      "Bash(curl -s https://ycd.studio)",
+      "Bash(curl -s https://ycd.studio/)",
+      "Bash(curl -s https://ycd.studio/residential)",
+      "Bash(node scripts/seo/_add-image-alt.mjs)"
     ]
   }
 }

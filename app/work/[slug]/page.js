@@ -304,7 +304,7 @@ export default async function ProjectPage({ params }) {
             {project.gallery?.[0]?.image ? (
               <img
                 src={project.gallery[0].image}
-                alt={project.title}
+                alt={project.imageAlt || project.title}
                 className="project-detail__hero-img"
               />
             ) : (

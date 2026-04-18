@@ -791,7 +791,7 @@ export default function TenantImprovementPage() {
               >
                 <div className="ti-project-row__visual">
                   {project.image ? (
-                    <Image src={project.image} alt={project.title} width={200} height={150} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <Image src={project.image} alt={project.imageAlt || project.title} width={200} height={150} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : (
                     <div className="ti-project-row__placeholder">
                       <span>{project.title.charAt(0)}</span>

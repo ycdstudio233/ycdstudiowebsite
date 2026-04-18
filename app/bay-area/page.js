@@ -258,7 +258,7 @@ export default function BayAreaPage() {
                 <div className="ti-sub-project__visual">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.imageAlt || project.title}
                     width={640}
                     height={480}
                     style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
@@ -311,7 +311,7 @@ export default function BayAreaPage() {
                   <div className="project-card__visual" aria-hidden="true">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={project.imageAlt || project.title}
                       className="project-card__img"
                       loading="lazy"
                     />

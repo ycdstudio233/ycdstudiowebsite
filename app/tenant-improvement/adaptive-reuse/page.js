@@ -481,7 +481,7 @@ export default function AdaptiveReusePage() {
               <div className="ti-sub-project-card" key={project.title}>
                 <div className="ti-sub-project-card__visual">
                   {project.image ? (
-                    <img src={project.image} alt={project.title} />
+                    <img src={project.image} alt={project.imageAlt || project.title} />
                   ) : (
                     <Image
                       src="/projects/market-tower/Image-3.webp"
