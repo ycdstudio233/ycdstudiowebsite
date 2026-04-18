@@ -4,8 +4,7 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 
 export const metadata = {
-  title:
-    "Commercial Architecture — Office, Retail & Mixed-Use Design | YCD Studio",
+  title: "Bay Area Commercial Architect — Office & Retail",
   description:
     "Bay Area commercial architecture firm specializing in office buildings, retail centers, civic facilities, and mixed-use developments. Ground-up design, Title 24 compliance, ADA accessibility, and seismic engineering across San Francisco, Oakland, and Silicon Valley.",
   keywords:

@@ -5,11 +5,11 @@ import { ContactForm } from "../../components/contact-form";
 import { contactOptions } from "../../lib/site-data";
 
 export const metadata = {
-  title: "Contact YCD Studio — Top Bay Area Architecture & Design Firm",
+  title: "Contact — Start a Bay Area Project",
   description:
     "Contact YCD Studio to discuss restaurant tenant improvement, commercial renovations, hospitality spaces, or select residential projects in the Bay Area today.",
   openGraph: {
-    title: "Contact YCD Studio — Top Bay Area Architecture & Design Firm",
+    title: "Contact — Start a Bay Area Project | YCD Studio",
     description:
       "Contact YCD Studio to discuss restaurant tenant improvement, commercial renovations, hospitality spaces, or select residential projects in the Bay Area today.",
   },

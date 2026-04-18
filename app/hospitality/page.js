@@ -5,14 +5,13 @@ import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { RotatingHeroImage } from "../../components/rotating-hero-image";
 
 export const metadata = {
-  title:
-    "Hospitality Architecture — Restaurants, Hotels & Cafes | YCD Studio",
+  title: "Bay Area Restaurant & Hotel Architect",
   description:
     "Bay Area hospitality architecture firm specializing in restaurants, hotels, cafes, bars, and food halls. Kitchen design, health department permits, ABC licensing, exhaust systems, and guest-flow planning from concept through certificate of occupancy.",
   keywords:
     "hospitality architecture Bay Area, restaurant architect San Francisco, hotel architect Bay Area, cafe design architect, bar design architect, food hall architect, hospitality design firm, restaurant permits Bay Area, hotel renovation Bay Area, boutique hotel architect California",
   openGraph: {
-    title: "Hospitality Architecture — Restaurants, Hotels & Cafes | YCD Studio",
+    title: "Bay Area Restaurant & Hotel Architect | YCD Studio",
     description:
       "Bay Area hospitality design — restaurants, hotels, cafes, bars, and food halls. We handle kitchen layout, exhaust engineering, health department coordination, ABC compliance, and multi-agency permitting.",
   },

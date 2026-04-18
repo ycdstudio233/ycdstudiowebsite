@@ -5,8 +5,7 @@ import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
 import { RotatingHeroImage } from "../../../components/rotating-hero-image";
 
 export const metadata = {
-  title:
-    "Restaurant Tenant Improvement Architect — Bay Area Kitchen Design & Permits | YCD Studio",
+  title: "Bay Area Restaurant TI Architect — Kitchen & Permits",
   description:
     "Restaurant tenant improvement architecture in the San Francisco Bay Area. Kitchen layout, exhaust hood design, grease traps, health department permits, FOH/BOH flow, bar design, and ADA compliance. From lease signing to opening day.",
   keywords:

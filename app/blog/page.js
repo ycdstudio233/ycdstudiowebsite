@@ -8,11 +8,11 @@ const blogPosts = [...rawPosts].sort(
 );
 
 export const metadata = {
-  title: "Architecture And Design Blog — Expert Insights By YCD Studio",
+  title: "Architecture & Design Insights",
   description:
     "Read YCD Studio's blog for insights on restaurant tenant improvement, commercial renovations, permitting, and retail and hospitality design trends.",
   openGraph: {
-    title: "Architecture And Design Blog — Expert Insights By YCD Studio",
+    title: "Architecture & Design Insights | YCD Studio",
     description:
       "Read YCD Studio's blog for insights on restaurant tenant improvement, commercial renovations, permitting, and retail and hospitality design trends.",
   },

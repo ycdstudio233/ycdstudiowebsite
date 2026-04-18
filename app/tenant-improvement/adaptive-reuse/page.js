@@ -4,14 +4,13 @@ import { SectionHeading } from "../../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
 
 export const metadata = {
-  title:
-    "Adaptive Reuse Architect Bay Area — Warehouse to Restaurant Conversion & Change of Use Permits | YCD Studio",
+  title: "Bay Area Adaptive Reuse Architect — Conversions",
   description:
     "Bay Area adaptive reuse architecture — warehouse to restaurant conversions, change of use permits, office to retail transformations, and historic building renovations. YCD Studio navigates zoning changes, seismic upgrades, and complex permit pathways in San Francisco, Oakland, and the greater Bay Area.",
   keywords:
     "adaptive reuse architect Bay Area, change of use permit San Francisco, warehouse to restaurant conversion, adaptive reuse San Francisco, office to retail conversion, industrial to mixed-use, historic preservation architect, change of occupancy permit Bay Area, warehouse conversion architect, building repurposing Bay Area",
   openGraph: {
-    title: "Adaptive Reuse Architecture — Warehouse Conversions & Change of Use | YCD Studio",
+    title: "Bay Area Adaptive Reuse Architect — Conversions | YCD Studio",
     description:
       "We convert warehouses to restaurants, offices to retail, and industrial buildings to mixed-use. Expert permit navigation for change-of-use projects across the Bay Area.",
   },

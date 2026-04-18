@@ -6,13 +6,13 @@ import { projectDetails } from "../../lib/project-details";
 import { allProjects } from "../../lib/site-data";
 
 export const metadata = {
-  title: "Oakland & East Bay Architecture Firm | YCD Studio",
+  title: "Oakland & East Bay Architect — ADUs, TI, Homes",
   description:
     "YCD Studio is an architecture firm serving Oakland, Moraga, Danville, and the East Bay. Residential design, ADUs, tenant improvements, and commercial architecture.",
   keywords:
     "Oakland architect, East Bay architecture firm, Moraga ADU architect, residential architect Oakland, tenant improvement Oakland, East Bay commercial architect, ADU architect Contra Costa County",
   openGraph: {
-    title: "Oakland & East Bay Architecture Firm | YCD Studio",
+    title: "Oakland & East Bay Architect — ADUs, TI, Homes | YCD Studio",
     description:
       "YCD Studio is an architecture firm serving Oakland, Moraga, Danville, and the East Bay. Residential design, ADUs, tenant improvements, and commercial architecture.",
     url: "https://ycd.studio/oakland",

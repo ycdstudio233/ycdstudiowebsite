@@ -6,13 +6,13 @@ import { projectDetails } from "../../lib/project-details";
 import { allProjects } from "../../lib/site-data";
 
 export const metadata = {
-  title: "San Francisco Architecture & Tenant Improvement | YCD Studio",
+  title: "San Francisco Architect — Restaurants, TI & Homes",
   description:
     "YCD Studio designs restaurants, commercial spaces, and residences across San Francisco. Tenant improvement, hospitality, and residential architecture from concept through construction.",
   keywords:
     "San Francisco architect, SF tenant improvement, restaurant design San Francisco, commercial architect SF, residential architect San Francisco, Fisherman's Wharf restaurant design, San Francisco permit architect",
   openGraph: {
-    title: "San Francisco Architecture & Tenant Improvement | YCD Studio",
+    title: "San Francisco Architect — Restaurants, TI & Homes | YCD Studio",
     description:
       "YCD Studio designs restaurants, commercial spaces, and residences across San Francisco. Tenant improvement, hospitality, and residential architecture.",
     url: "https://ycd.studio/san-francisco",

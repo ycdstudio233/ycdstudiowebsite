@@ -13,11 +13,11 @@ import {
 } from "../../lib/site-data";
 
 export const metadata = {
-  title: "About YCD Studio — Bay Area Architects and Designers",
+  title: { absolute: "About YCD Studio — Bay Area Architects" },
   description:
     "YCD Studio is a San Francisco Bay Area design firm specializing in expert restaurant tenant improvements and custom commercial renovations for hospitality.",
   openGraph: {
-    title: "About YCD Studio — Bay Area Architects and Designers",
+    title: "About YCD Studio — Bay Area Architects",
     description:
       "YCD Studio is a San Francisco Bay Area design firm specializing in expert restaurant tenant improvements and custom commercial renovations for hospitality.",
   },

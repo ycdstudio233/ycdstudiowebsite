@@ -5,8 +5,7 @@ import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 import { allProjects } from "../../lib/site-data";
 
 export const metadata = {
-  title:
-    "Residential Architect Bay Area — Custom Homes, ADUs & Remodels | YCD Studio",
+  title: "Bay Area Residential Architect — Homes & ADUs",
   description:
     "Bay Area residential architecture firm. Custom homes, ADUs, JADUs, additions, and whole-home remodels across San Francisco, Oakland, the East Bay, and South Bay. Full-service design from feasibility through construction.",
   keywords:

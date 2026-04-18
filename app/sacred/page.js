@@ -4,8 +4,7 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 
 export const metadata = {
-  title:
-    "Sacred & Liturgical Architecture — Churches, Mosques, Meditation Spaces | YCD Studio",
+  title: "Sacred Architect — Churches, Mosques & Worship Spaces",
   description:
     "Sacred and liturgical architecture by YCD Studio. We design churches, cathedrals, mosques, Islamic centers, synagogues, and meditation spaces that honor tradition while serving contemporary congregations. Bay Area architects with national liturgical design experience.",
   keywords:

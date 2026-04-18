@@ -4,8 +4,7 @@ import { SectionHeading } from "../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
 
 export const metadata = {
-  title:
-    "Multi-Family Architect — Bay Area Apartments, Condos & Mixed-Use | YCD Studio",
+  title: "Bay Area Multi-Family Architect — Apartments & Condos",
   description:
     "Multi-family architecture in the San Francisco Bay Area. Apartments, condos, townhomes, and mixed-use developments. SB 9, density bonus, CEQA navigation, affordable housing compliance, and entitlement strategy. YCD Studio designs housing that strengthens communities.",
   keywords:

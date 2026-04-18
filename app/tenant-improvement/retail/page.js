@@ -4,8 +4,7 @@ import { SectionHeading } from "../../../components/section-heading";
 import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
 
 export const metadata = {
-  title:
-    "Retail & Office Tenant Improvement Architect — Bay Area Build-Outs & Permits | YCD Studio",
+  title: "Bay Area Retail TI Architect — Office & Storefront",
   description:
     "Retail build-out and office tenant improvement architecture in the San Francisco Bay Area. Storefront renovations, coworking conversions, medical/dental clinics, and commercial office build-outs — designed, documented, and permitted by YCD Studio.",
   keywords:

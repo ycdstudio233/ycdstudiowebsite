@@ -6,7 +6,7 @@ import { AnimatedCounter } from "../../components/animated-counter";
 import { FaqAccordion } from "../../components/faq-accordion";
 
 export const metadata = {
-  title: "Bay Area Tenant Improvement Architect & TI Permits",
+  title: "Bay Area Tenant Improvement Architect",
   description:
     "Tenant improvement architect in the San Francisco Bay Area providing design, permitting, and build-ready drawings for restaurants, retail, clinics, and offices.",
   keywords:

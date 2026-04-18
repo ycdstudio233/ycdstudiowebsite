@@ -4,6 +4,7 @@ import { SiteHeader } from "../components/site-header";
 import { SiteFooter } from "../components/site-footer";
 import { CustomCursor } from "../components/custom-cursor";
 import { ScrollProgress } from "../components/scroll-progress";
+import { BreadcrumbSchema } from "../components/breadcrumb-schema";
 
 const GA_ID = "G-5Y4TM0KE9N";
 
@@ -142,6 +143,7 @@ export default function RootLayout({ children }) {
             gtag('config', '${GA_ID}');
           `}
         </Script>
+        <BreadcrumbSchema />
         <CustomCursor />
         <ScrollProgress />
         <SiteHeader />

@@ -6,13 +6,13 @@ import { projectDetails } from "../../lib/project-details";
 import { allProjects } from "../../lib/site-data";
 
 export const metadata = {
-  title: "Bay Area Architecture & Design Firm | YCD Studio",
+  title: "Bay Area Architect — Full-Service Design Firm",
   description:
     "YCD Studio is a Bay Area architecture firm specializing in tenant improvements, restaurant design, residential architecture, and commercial projects across San Francisco, Oakland, and the greater Bay Area.",
   keywords:
     "Bay Area architect, Bay Area architecture firm, San Francisco architect, Oakland architect, tenant improvement Bay Area, restaurant design Bay Area, residential architect Bay Area, ADU architect Bay Area, commercial architect Bay Area",
   openGraph: {
-    title: "Bay Area Architecture & Design Firm | YCD Studio",
+    title: "Bay Area Architect — Full-Service Design Firm | YCD Studio",
     description:
       "YCD Studio is a Bay Area architecture firm specializing in tenant improvements, restaurant design, residential architecture, and commercial projects across San Francisco, Oakland, and the greater Bay Area.",
     url: "https://ycd.studio/bay-area",
