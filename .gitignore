@@ -4,3 +4,11 @@ out
 dist
 npm-debug.log*
 .DS_Store
+
+# SEO reports (can be regenerated)
+seo-reports/
+
+# Local env
+.env.local
+.env
+

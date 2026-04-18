@@ -4996,11 +4996,11 @@ ul, ol { list-style: none; }
   }
 
   .section {
-    padding: 72px 0;
+    padding: 56px 0;
   }
 
   .section__header {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .section__title,
@@ -5017,13 +5017,26 @@ ul, ol { list-style: none; }
   }
 
   .page-hero {
-    padding: 56px 0 40px;
+    padding: 32px 0 16px;
+  }
+
+  .page-hero__eyebrow {
+    margin-bottom: 14px;
   }
 
   .page-hero__title {
-    max-width: 12ch;
-    font-size: clamp(2rem, 8.8vw, 3.1rem);
-    margin-bottom: 18px;
+    max-width: 16ch;
+    font-size: clamp(1.75rem, 7.5vw, 2.5rem);
+    margin-bottom: 12px;
+  }
+
+  .page-hero__desc {
+    margin-bottom: 0;
+    font-size: 0.9375rem;
+  }
+
+  .work-page__grid {
+    padding: 12px 0 56px;
   }
 
   .cta {

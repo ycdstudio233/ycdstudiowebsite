@@ -7,6 +7,7 @@ import {
   featuredProjects,
   heroStats,
   services,
+  locations,
   publications,
   awards,
 } from "../lib/site-data";
@@ -115,8 +116,8 @@ export default function HomePage() {
           <ScrollReveal>
             <SectionHeading
               eyebrow="What We Do"
-              title="Three things, done well."
-              description="Every project type gets the same level of care — from feasibility through construction."
+              title="Six practices, one studio."
+              description="From tenant improvements to ground-up construction, every project type gets the same level of care — feasibility, permitting, and build-ready drawings."
             />
           </ScrollReveal>
 
@@ -129,6 +130,43 @@ export default function HomePage() {
                 <div className="service-item__tags">
                   {service.points.map((point) => (
                     <span className="service-item__tag" key={point}>{point}</span>
+                  ))}
+                </div>
+                <span className="service-item__bubble" aria-hidden="true">
+                  Explore
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── Where We Work — location landing pages ── */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Where We Work"
+              title="Designing across the Bay Area."
+              description="We serve clients across the Bay Area, from dense urban tenant improvements in San Francisco to adaptive reuse and ADUs across the East Bay."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="services-grid" staggerDelay={0.1}>
+            {locations.map((location) => (
+              <Link
+                href={location.href}
+                className="service-item service-item--link"
+                key={location.title}
+              >
+                <h3 className="service-item__title">{location.title}</h3>
+                <p className="service-item__desc">{location.description}</p>
+                <div className="service-item__tags">
+                  {location.highlights.map((h) => (
+                    <span className="service-item__tag" key={h}>{h}</span>
                   ))}
                 </div>
                 <span className="service-item__bubble" aria-hidden="true">

@@ -11,5 +11,9 @@
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "resend": "^6.11.0"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "googleapis": "^171.4.0"
   }
 }

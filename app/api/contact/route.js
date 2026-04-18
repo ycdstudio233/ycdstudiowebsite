@@ -1,6 +1,17 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazily instantiate so a missing RESEND_API_KEY doesn't crash the build.
+// Real requests still require the env var to be set at runtime.
+let _resend = null;
+function getResend() {
+  if (!_resend) {
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY is not set");
+    }
+    _resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return _resend;
+}
 
 export async function POST(request) {
   try {
@@ -14,6 +25,8 @@ export async function POST(request) {
         { status: 400 }
       );
     }
+
+    const resend = getResend();
 
     // Send notification to YCD Studio
     await resend.emails.send({
