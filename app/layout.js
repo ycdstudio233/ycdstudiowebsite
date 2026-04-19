@@ -48,9 +48,12 @@ export const metadata = {
     icon: "/icon.png",
     apple: "/apple-icon.png",
   },
-  alternates: {
-    canonical: "https://ycd.studio",
-  },
+  // IMPORTANT: do NOT set a global `alternates.canonical` here. The root
+  // layout's metadata is inherited by every page, so a hardcoded canonical
+  // would make every page claim it is a duplicate of the homepage.
+  // Individual pages (blog posts, project pages) set their own canonical in
+  // generateMetadata when they need one. Everywhere else, Google correctly
+  // self-canonicalizes to the current URL.
   robots: {
     index: true,
     follow: true,

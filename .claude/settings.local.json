@@ -170,7 +170,8 @@
       "Bash(curl -s -o /dev/null -w '%{http_code}' https://ycd.studio__TRACKED_VAR__)",
       "Bash(curl -sI https://ycd.studio__TRACKED_VAR__)",
       "Bash(curl -sILo /dev/null -w '%{url_effective} %{http_code}' https://ycd.studio__TRACKED_VAR__)",
-      "Bash(curl -s https://ycd.studio/tenant-improvement)"
+      "Bash(curl -s https://ycd.studio/tenant-improvement)",
+      "Bash(curl -s https://ycd.studio__TRACKED_VAR__)"
     ]
   }
 }
