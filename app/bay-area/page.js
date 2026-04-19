@@ -139,28 +139,48 @@ const services = [
   },
 ];
 
+/* ── Regional breakdown. /bay-area is the umbrella page; /san-francisco and
+   /oakland are child pages that deep-dive into those regions. Peninsula,
+   South Bay, and North Bay are covered here for now. ─────────────────── */
 const regions = [
   {
     name: "San Francisco",
+    scope: "Urban core: 7×7 miles, 850k residents",
     description:
-      "Tenant improvements, restaurants, adaptive reuse, and residential projects across the city. We work with DBI, the Planning Department, and the Port of San Francisco.",
+      "Dense urban tenant improvements, restaurant TI, waterfront hospitality at the Embarcadero, and custom residential work across Noe Valley, the Richmond, and the Sunset. We navigate DBI's multi-step plan check, Port of San Francisco review for pier projects, Section 311 neighbor notification, and Article 10/11 historic district review.",
+    specialty: "Restaurant TI, adaptive reuse, dense urban infill",
     link: "/san-francisco",
+    linkLabel: "Our San Francisco practice →",
   },
   {
     name: "Oakland & East Bay",
+    scope: "Oakland, Berkeley, Moraga, Walnut Creek, Contra Costa County",
     description:
-      "Residential design, ADUs, and commercial projects in Oakland, Moraga, Walnut Creek, Berkeley, and Contra Costa County. Efficient permit processes and proactive ADU policy.",
+      "ADU design is our most active work in the East Bay — California's state-level ADU laws combine with Oakland's fee waivers and Contra Costa County's fast review cycles to make the region dramatically more productive than San Francisco for accessory housing. We also design custom homes in the hills and mixed-use projects along transit corridors.",
+    specialty: "ADUs, JADUs, custom homes, adaptive reuse",
     link: "/oakland",
+    linkLabel: "Our East Bay practice →",
+  },
+  {
+    name: "Peninsula & Silicon Valley",
+    scope: "Palo Alto, Menlo Park, Mountain View, Redwood City, San Mateo",
+    description:
+      "Custom residential work, office tenant improvements for tech companies, and commercial retrofits in the Peninsula's varied jurisdictions. Palo Alto's Individual Review process for single-family homes adds time but forces a design conversation that typically improves outcomes. San Jose's Express Plan Check clears compliant commercial TI in 3–4 weeks — among the fastest in California.",
+    specialty: "Tech office TI, custom homes, Peninsula residential",
   },
   {
     name: "South Bay",
+    scope: "San Jose, Santa Clara, Cupertino, Sunnyvale",
     description:
-      "Projects in San Jose, Palo Alto, Mountain View, and surrounding cities. Express plan check in San Jose and design review processes in Palo Alto and neighboring jurisdictions.",
+      "Commercial TI for the tech economy, multi-family infill housing along El Camino Real, and custom residential work in the foothills. San Jose has adopted some of the most ambitious housing element goals in the state, making the South Bay one of the most productive markets for SB 9 and density-bonus projects.",
+    specialty: "Multi-family, commercial TI, SB 9 entitlements",
   },
   {
     name: "North Bay",
+    scope: "Sonoma, Napa, Marin counties",
     description:
-      "Residential projects in Sonoma County and Marin. Wine country homes, custom residences, and renovations designed to respond to the region's climate and landscape.",
+      "Wine country custom homes, agricultural tourism hospitality (tasting rooms, hotel concepts in Napa and Sonoma), and coastal residential work. Sonoma and Napa counties have their own distinct review processes, with additional agricultural-overlay and viewshed-protection requirements. Marin enforces some of the strictest hillside design standards in the state.",
+    specialty: "Wine country residential, agricultural hospitality",
   },
 ];
 
@@ -355,10 +375,20 @@ export default function BayAreaPage() {
                     region.name
                   )}
                 </h3>
+                {region.scope && (
+                  <p style={{ fontSize: "0.8125rem", opacity: 0.6, margin: "0 0 8px", letterSpacing: "0.02em" }}>
+                    {region.scope}
+                  </p>
+                )}
                 <p className="ti-sub-challenge__desc">{region.description}</p>
+                {region.specialty && (
+                  <p style={{ fontSize: "0.8125rem", fontWeight: 500, margin: "12px 0 0", opacity: 0.85 }}>
+                    Specialty: <span style={{ opacity: 0.75, fontWeight: 400 }}>{region.specialty}</span>
+                  </p>
+                )}
                 {region.link && (
                   <Link href={region.link} className="ti-sub-project__link" style={{ marginTop: "12px", display: "inline-flex" }}>
-                    View {region.name} projects
+                    {region.linkLabel || `View ${region.name} projects`}
                     <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
                       <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

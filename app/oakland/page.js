@@ -85,6 +85,58 @@ const featuredWork = [
   },
 ];
 
+/* ── East Bay cities we serve (distinct to Oakland page) ── */
+const eastBayCities = [
+  {
+    name: "Oakland",
+    note: "Adaptive reuse of industrial stock in West Oakland and Jack London Square, residential renovations across Rockridge, Temescal, and Piedmont Avenue, and commercial TI along Telegraph and Broadway. Oakland has one of the most ADU-friendly permit processes in the Bay Area and offers fee waivers for units under 750 sq ft.",
+  },
+  {
+    name: "Berkeley",
+    note: "Residential additions in the Berkeley Hills and flats, tenant improvements along Shattuck and College, and sacred architecture work with Berkeley's diverse faith communities. Berkeley's design-review process for visible additions can add months — we manage presentations and revisions.",
+  },
+  {
+    name: "Moraga & Lamorinda",
+    note: "Custom homes and detached ADUs across Moraga, Orinda, and Lafayette. Our Moraga ADU project demonstrates our approach: small-lot zoning analysis, setback optimization under California's state ADU preemption, and a clean contemporary design that respects hillside context.",
+  },
+  {
+    name: "Walnut Creek & Contra Costa",
+    note: "Commercial TI in downtown Walnut Creek, residential additions in Lafayette and Alamo, and ADU work across Contra Costa County. Most jurisdictions process straightforward residential permits in 4–6 weeks, with dedicated ADU tracks cleared even faster.",
+  },
+  {
+    name: "Concord, Danville & San Ramon",
+    note: "Restaurant and retail tenant improvements across the 680 corridor, custom homes in Diablo and Blackhawk, and office build-outs in Bishop Ranch. Contra Costa County jurisdictions vary in speed — we've worked with most and know which have the fastest turnaround.",
+  },
+  {
+    name: "Albany, El Cerrito & Richmond",
+    note: "Residential remodels, ADU conversions, and smaller-scale commercial work. These cities have been expanding their ADU policies and offer increasingly streamlined permit pathways, making them productive markets for homeowners looking to add rental income or multi-generational housing.",
+  },
+];
+
+/* ── ADU policy advantages specific to the East Bay ── */
+const eastBayAduAdvantages = [
+  {
+    title: "Oakland's fee-waived ADU program",
+    detail:
+      "Oakland waives impact fees on all ADUs under 750 sq ft and has published pre-approved ADU plan sets for detached units — both of which can save homeowners $20K–$40K versus jurisdictions that haven't adopted these measures.",
+  },
+  {
+    title: "Contra Costa County's efficient review cycles",
+    detail:
+      "Unincorporated Contra Costa County building division consistently clears complete ADU applications in 3–4 weeks. That's among the fastest in the Bay Area and makes the East Bay a genuinely attractive option for owners who want to move quickly.",
+  },
+  {
+    title: "SB 9 lot splits in single-family zones",
+    detail:
+      "SB 9 (2022) lets homeowners split a single-family lot and build up to 4 units on what was previously a 1-unit parcel. The East Bay has more eligible single-family lots than San Francisco, making SB 9 a more practical tool here than in denser markets.",
+  },
+  {
+    title: "Wildfire Urban Interface (WUI) compliance",
+    detail:
+      "Oakland hills, Berkeley hills, and Contra Costa hillside lots often fall within WUI zones, which trigger enhanced fire-resistive construction (Class A roofs, ember-resistant vents, tempered glass). We design to these requirements from the outset rather than retrofitting the project after plan check.",
+  },
+];
+
 const services = [
   {
     title: "ADUs & Residential",
@@ -183,6 +235,50 @@ export default function OaklandPage() {
                 <h3 className="ti-sub-scope-card__title">{service.title}</h3>
                 <p className="ti-sub-scope-card__desc">{service.description}</p>
               </Link>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── East Bay Cities (distinct content for this page only — SEO differentiation) ── */}
+      <section className="section section--dark" id="eb-cities">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="East Bay Cities"
+              title="Where we work across the East Bay."
+              description="Each East Bay jurisdiction has its own permit process, zoning rules, and review timelines. We know the differences and design accordingly."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="ti-sub-challenges" staggerDelay={0.08}>
+            {eastBayCities.map((c) => (
+              <div className="ti-sub-challenge" key={c.name}>
+                <h3 className="ti-sub-challenge__title">{c.name}</h3>
+                <p className="ti-sub-challenge__desc">{c.note}</p>
+              </div>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── East Bay ADU Policy Advantages (unique to this page) ── */}
+      <section className="section" id="eb-adu">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Why East Bay for ADUs"
+              title="The East Bay is California's most ADU-friendly region."
+              description="California's state-level ADU laws apply everywhere, but the East Bay has layered local policies that make ADU projects dramatically faster and cheaper here than in denser parts of the Bay Area."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="ti-sub-scope-grid" staggerDelay={0.08}>
+            {eastBayAduAdvantages.map((a) => (
+              <div className="ti-sub-scope-card" key={a.title}>
+                <h3 className="ti-sub-scope-card__title">{a.title}</h3>
+                <p className="ti-sub-scope-card__desc">{a.detail}</p>
+              </div>
             ))}
           </StaggerReveal>
         </div>

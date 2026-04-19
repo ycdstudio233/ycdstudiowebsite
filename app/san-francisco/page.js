@@ -86,6 +86,34 @@ const featuredWork = [
   },
 ];
 
+/* ── SF Neighborhoods we work in ── */
+const sfNeighborhoods = [
+  {
+    name: "SoMa & Mission Bay",
+    note: "Tech tenant improvements, adaptive reuse of warehouse stock, and ground-up mixed-use. DBI plan check for SoMa projects typically clears in 8–12 weeks for office TI, 10–16 weeks for conversions touching life-safety systems.",
+  },
+  {
+    name: "Mission & Valencia Corridor",
+    note: "Restaurant TI, retail storefronts, and boutique hospitality. Expect Planning Department notification requirements for Mission Street formula retail and Calle 24 Latino Cultural District overlays.",
+  },
+  {
+    name: "Fisherman's Wharf & Embarcadero",
+    note: "Waterfront hospitality, pier tenant improvements, tourism retail. Projects on Port of San Francisco property trigger a dual-review process — we completed Pier 41 / Cousins Maine Lobster as a case study in navigating both DBI and Port review.",
+  },
+  {
+    name: "Downtown & Union Square",
+    note: "High-rise retrofits, office TI, retail. Our Market Tower facade-led retrofit shows our approach to high-density commercial adaptive reuse — preserving the existing frame while modernizing skin, systems, and ground-floor activation.",
+  },
+  {
+    name: "Chinatown & North Beach",
+    note: "Historic-district restaurant and retail work. Article 10 landmark buildings and Chinatown SUD (Special Use District) require additional Planning review and sometimes Historic Preservation Commission sign-off.",
+  },
+  {
+    name: "Richmond, Sunset & Outer Neighborhoods",
+    note: "Custom homes, ADUs, and residential remodels. RH-1 and RH-2 zoning triggers Section 311 neighbor notification for most additions. ADUs benefit from a dedicated DBI track but still require careful zoning review.",
+  },
+];
+
 const services = [
   {
     title: "Tenant Improvement",
@@ -185,6 +213,28 @@ export default function SanFranciscoPage() {
                 <h3 className="ti-sub-scope-card__title">{service.title}</h3>
                 <p className="ti-sub-scope-card__desc">{service.description}</p>
               </Link>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── SF Neighborhoods (distinct content for this page only — SEO differentiation) ── */}
+      <section className="section section--dark" id="sf-neighborhoods">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Neighborhoods"
+              title="Where we work across San Francisco."
+              description="San Francisco is a city of micro-neighborhoods, each with its own zoning overlays, review requirements, and design character. We've worked across the city and know where the friction points are."
+            />
+          </ScrollReveal>
+
+          <StaggerReveal className="ti-sub-challenges" staggerDelay={0.08}>
+            {sfNeighborhoods.map((n) => (
+              <div className="ti-sub-challenge" key={n.name}>
+                <h3 className="ti-sub-challenge__title">{n.name}</h3>
+                <p className="ti-sub-challenge__desc">{n.note}</p>
+              </div>
             ))}
           </StaggerReveal>
         </div>
