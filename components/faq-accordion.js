@@ -67,29 +67,29 @@ export function FaqAccordion({ faqs }) {
     })),
   };
 
+  // Single source of truth for FAQ schema: JSON-LD only. Microdata itemScope/
+  // itemProp attributes were removed to prevent Google flagging "Duplicate
+  // field FAQPage" — the JSON-LD below is what Google prefers anyway.
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <div className="faq-list" itemScope itemType="https://schema.org/FAQPage">
+      <div className="faq-list">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
           return (
             <div
               key={i}
               className={`faq-item${isOpen ? " faq-item--open" : ""}`}
-              itemScope
-              itemProp="mainEntity"
-              itemType="https://schema.org/Question"
             >
               <button
                 className="faq-item__trigger"
                 onClick={() => toggle(i)}
                 aria-expanded={isOpen}
               >
-                <span className="faq-item__question" itemProp="name">
+                <span className="faq-item__question">
                   {item.question}
                 </span>
                 <span className="faq-item__icon" aria-hidden="true">
@@ -104,13 +104,8 @@ export function FaqAccordion({ faqs }) {
                   </svg>
                 </span>
               </button>
-              <div
-                className="faq-item__body"
-                itemScope
-                itemProp="acceptedAnswer"
-                itemType="https://schema.org/Answer"
-              >
-                <p className="faq-item__answer" itemProp="text">
+              <div className="faq-item__body">
+                <p className="faq-item__answer">
                   {item.answer}
                 </p>
               </div>

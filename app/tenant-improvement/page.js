@@ -217,84 +217,14 @@ const tiTestimonials = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is a tenant improvement (TI)?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A tenant improvement is any modification made to a leased commercial space to suit a new tenant's needs — from minor cosmetic updates to full gut renovations. This includes new layouts, plumbing, electrical, HVAC modifications, ADA compliance upgrades, and finish work. TI projects are common in restaurants, retail, offices, and mixed-use buildings throughout the Bay Area.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long does a typical TI project take?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Timeline varies by scope. A straightforward cosmetic refresh (paint, flooring, lighting) can be designed and permitted in 4–6 weeks. A full gut renovation with new plumbing, kitchen exhaust, or structural modifications typically takes 3–6 months from design through permit approval. Construction duration depends on your contractor and scope — we coordinate closely to keep things moving.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do I need a permit for tenant improvements in San Francisco?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: 'Almost always, yes. San Francisco requires permits for most interior alterations — especially changes to walls, plumbing, electrical, or mechanical systems. Even "minor" work like adding a sink or relocating a door often triggers permit review. We handle the full permit process, including plan preparation, agency submittals, and any required corrections.',
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What does ADA compliance involve for my space?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "When you renovate a commercial space, ADA (Americans with Disabilities Act) requirements are triggered. This typically includes accessible restrooms, clearances for wheelchair access, compliant door hardware, signage, and path-of-travel upgrades. The scope depends on your renovation budget — California uses a 20% threshold rule. We design ADA compliance into every project from day one, so there are no surprises during plan check.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How much do tenant improvements cost?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Costs depend heavily on scope, location, and building condition. In the Bay Area, light TI work (cosmetic upgrades, paint, flooring) runs $50–$100/sq ft. Mid-range renovations (new layout, some MEP work) typically fall between $100–$200/sq ft. Full gut renovations with new kitchens or specialized systems can exceed $250/sq ft. We provide detailed cost guidance early so you can plan with confidence.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What's the difference between a TI allowance and out-of-pocket cost?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A TI allowance is the dollar amount your landlord contributes toward improving the space — it's negotiated in your lease. Anything beyond that allowance is your out-of-pocket cost. We help you maximize your TI allowance by designing efficiently, prioritizing high-impact improvements, and producing clear documentation that landlords and contractors can work from without ambiguity.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can you help with restaurant-specific tenant improvements?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely — restaurant TI is one of our core specialties. We handle kitchen layout, exhaust hood design coordination, grease trap placement, health department requirements, Type I and Type II hood specifications, ADA-compliant restrooms, and front-of-house design. We've completed restaurant TI projects across the Bay Area for concepts ranging from fast-casual to fine dining.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What areas do you serve?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We're based in the San Francisco Bay Area and serve clients across San Francisco, Oakland, San Jose, Palo Alto, Berkeley, and surrounding cities. We also take on select projects in other California markets and nationally for the right fit.",
-      },
-    },
-  ],
-};
+// NOTE: FAQPage JSON-LD used to live here as an inline schema block. It's been
+// removed — the <FaqAccordion /> component below now emits the single canonical
+// FAQPage JSON-LD for this page, and having two caused Google Search Console to
+// flag "Duplicate field FAQPage" and disqualify the rich result.
 
 export default function TenantImprovementPage() {
   return (
     <main className="page-shell">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       {/* ── Hero ── */}
       <section className="ti-hero">
         <div className="container">

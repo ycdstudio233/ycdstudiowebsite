@@ -164,7 +164,13 @@
       "Bash(curl -s https://ycd.studio)",
       "Bash(curl -s https://ycd.studio/)",
       "Bash(curl -s https://ycd.studio/residential)",
-      "Bash(node scripts/seo/_add-image-alt.mjs)"
+      "Bash(node scripts/seo/_add-image-alt.mjs)",
+      "Bash(node scripts/seo/seo-report.mjs)",
+      "Bash(ls next.config*)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' https://ycd.studio__TRACKED_VAR__)",
+      "Bash(curl -sI https://ycd.studio__TRACKED_VAR__)",
+      "Bash(curl -sILo /dev/null -w '%{url_effective} %{http_code}' https://ycd.studio__TRACKED_VAR__)",
+      "Bash(curl -s https://ycd.studio/tenant-improvement)"
     ]
   }
 }
