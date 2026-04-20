@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import NextImage from "next/image";
 import { useRouter } from "next/navigation";
 
 const allHeroProjects = [
@@ -297,19 +298,50 @@ export function HeroShowcase() {
           className={`hero-showcase__bg${i === activeIndex ? " hero-showcase__bg--active" : ""}`}
           style={{ background: project.gradient }}
         >
-          {loadedImages[project.slug] && (
+          {/* LCP fix: the FIRST slide always renders an optimized <Image> so
+              Next.js can preload a responsive variant. Subsequent slides keep
+              the CSS background-image pattern (they load during rotation, not
+              at LCP time — so Next.js optimization is less critical there).
+              The mouse-move transform still applies to the parent div, so the
+              interaction is preserved. */}
+          {i === 0 ? (
             <div
               className="hero-showcase__image"
               style={{
-                backgroundImage: `url(${project.image})`,
                 transform: isMobile
                   ? "scale(1.05)"
                   : `scale(1.05) translate(${(mousePos.x - 0.5) * -15}px, ${(mousePos.y - 0.5) * -10}px)`,
               }}
-            />
+            >
+              <NextImage
+                src={project.image}
+                alt={project.title}
+                fill
+                priority
+                fetchPriority="high"
+                sizes="100vw"
+                quality={80}
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          ) : (
+            loadedImages[project.slug] && (
+              <div
+                className="hero-showcase__image"
+                style={{
+                  backgroundImage: `url(${project.image})`,
+                  transform: isMobile
+                    ? "scale(1.05)"
+                    : `scale(1.05) translate(${(mousePos.x - 0.5) * -15}px, ${(mousePos.y - 0.5) * -10}px)`,
+                }}
+              />
+            )
           )}
           <div className="hero-showcase__pattern" />
-          {!loadedImages[project.slug] && (
+          {/* Skeleton shapes only for slides 2+ while they're still loading.
+              First slide uses <Image priority> so it's never in the "still
+              loading" state at LCP time. */}
+          {i !== 0 && !loadedImages[project.slug] && (
             <>
               <div
                 className="hero-showcase__shape"

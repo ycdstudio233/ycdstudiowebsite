@@ -1,6 +1,18 @@
 import "./globals.css";
 import Script from "next/script";
+import { Inter } from "next/font/google";
 import { SiteHeader } from "../components/site-header";
+
+// Self-host Inter via next/font. Replaces the external Google Fonts <link>
+// which was render-blocking by ~100ms on mobile 4G even with display=swap.
+// next/font downloads the font at build time, serves it from our own origin,
+// and emits a CSS variable we can use in globals.css.
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-inter",
+});
 import { SiteFooter } from "../components/site-footer";
 import { CustomCursor } from "../components/custom-cursor";
 import { ScrollProgress } from "../components/scroll-progress";
@@ -119,18 +131,8 @@ function JsonLd() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;550;600;700&display=swap"
-          rel="stylesheet"
-        />
         <JsonLd />
       </head>
       <body>

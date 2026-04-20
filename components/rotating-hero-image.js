@@ -25,10 +25,19 @@ export function RotatingHeroImage({ images, interval = 4000 }) {
           <Image
             src={img.src}
             alt={img.alt}
-            width={640}
-            height={480}
+            width={1280}
+            height={960}
+            // sizes is critical: on mobile the hero fills the viewport, on
+            // desktop it's the right column (~50%), and we cap display width.
+            // Without this, Next.js serves the largest variant on every device.
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
             priority={i === 0}
+            // Only preload fetchPriority on the first (LCP) image. Others are
+            // rendered but only become visible on rotation, so they shouldn't
+            // compete for the critical download budget.
+            fetchPriority={i === 0 ? "high" : "low"}
+            loading={i === 0 ? "eager" : "lazy"}
           />
         </div>
       ))}

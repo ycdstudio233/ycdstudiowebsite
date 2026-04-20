@@ -280,7 +280,9 @@ export default function RetailOfficeTIPage() {
                   width={640}
                   height={480}
                   style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px"
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </ScrollReveal>

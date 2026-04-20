@@ -204,7 +204,9 @@ export default function OaklandPage() {
                   alt="Moraga ADU — residential architecture in the East Bay by YCD Studio"
                   width={720}
                   height={540}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px"
                   priority
+                  fetchPriority="high"
                   style={{ width: "100%", height: "100%", borderRadius: "16px", objectFit: "cover" }}
                 />
               </div>

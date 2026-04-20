@@ -259,10 +259,12 @@ export default function TenantImprovementPage() {
                 <Image
                   src="/projects/piddeg-restaurant/Image-2.webp"
                   alt="PiddeG Restaurant — completed tenant improvement"
-                  width={640}
-                  height={480}
+                  width={1280}
+                  height={960}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px"
                   style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </ScrollReveal>
