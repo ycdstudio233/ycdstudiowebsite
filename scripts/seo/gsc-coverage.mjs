@@ -275,6 +275,10 @@ async function main() {
   if (!isFirstRun) {
     console.log(`Changes: ${newWins.length} wins, ${newFailures.length} regressions, ${allChanges.length - newWins.length - newFailures.length} neutral`);
   }
+
+  // Non-zero exit code on regressions so this can be wired into a cron/CI
+  // job that alerts only when something actually broke.
+  if (newFailures.length > 0) process.exit(1);
 }
 
 main().catch((e) => {

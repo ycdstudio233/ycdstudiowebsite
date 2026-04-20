@@ -4,7 +4,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "seo:queries": "node scripts/seo/gsc-queries.mjs",
+    "seo:opportunities": "node scripts/seo/gsc-opportunities.mjs",
+    "seo:pages": "node scripts/seo/gsc-pages.mjs",
+    "seo:coverage": "node scripts/seo/gsc-coverage.mjs",
+    "seo:pagespeed": "node scripts/seo/pagespeed.mjs",
+    "seo:landing": "node scripts/seo/ga4-landing.mjs",
+    "seo:acquisition": "node scripts/seo/ga4-acquisition.mjs",
+    "seo:report": "node scripts/seo/seo-report.mjs",
+    "seo:check": "npm run seo:coverage && npm run seo:pagespeed",
+    "seo:weekly": "npm run seo:report && npm run seo:coverage && npm run seo:pagespeed"
   },
   "dependencies": {
     "next": "15.5.14",
