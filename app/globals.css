@@ -6626,6 +6626,20 @@ ul, ol { list-style: none; }
   max-width: 520px;
 }
 
+/* ti-sub-timeline was originally built for section--dark. When reused on a
+   light section (e.g. /studio "How We Work") the white text disappears on
+   the white background. Restore readable dark text in that context. */
+.section:not(.section--dark) .ti-sub-timeline__title {
+  color: var(--ink, #0A0A0A);
+}
+.section:not(.section--dark) .ti-sub-timeline__desc {
+  color: var(--muted, rgba(10, 10, 10, 0.68));
+}
+.section:not(.section--dark) .ti-sub-timeline__number {
+  color: #fff;
+  background: var(--accent, #5700EF);
+}
+
 /* ─── Handle Cards ─── */
 .ti-sub-handle-grid {
   display: grid;
