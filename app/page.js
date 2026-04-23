@@ -178,6 +178,34 @@ export default function HomePage() {
               </Link>
             ))}
           </StaggerReveal>
+
+          {/* Sub-service quick links — push internal link equity to focused
+              service+location landing pages like /oakland/adu. Discoverable
+              from the homepage without requiring a click into the location hub. */}
+          {locations.some((l) => l.subLinks?.length) && (
+            <ScrollReveal delay={0.2}>
+              <div style={{ marginTop: 36, display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", fontSize: "0.9375rem" }}>
+                {locations.flatMap((l) =>
+                  (l.subLinks || []).map((sub) => (
+                    <Link
+                      key={sub.href}
+                      href={sub.href}
+                      style={{
+                        padding: "10px 18px",
+                        borderRadius: 999,
+                        border: "1px solid rgba(255,255,255,0.18)",
+                        color: "rgba(255,255,255,0.9)",
+                        textDecoration: "none",
+                        transition: "border-color 0.2s, background 0.2s",
+                      }}
+                    >
+                      {sub.label} →
+                    </Link>
+                  ))
+                )}
+              </div>
+            </ScrollReveal>
+          )}
         </div>
       </section>
 

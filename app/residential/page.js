@@ -57,6 +57,11 @@ const scopeItems = [
       "Pre-approved ADU plan programs (select jurisdictions)",
       "Utility separation and sub-metering strategies",
     ],
+    deepLinks: [
+      { href: "/oakland/adu", label: "Oakland ADU architect details →" },
+      { href: "/blog/adu-cost-bay-area-2026", label: "Bay Area ADU cost guide 2026 →" },
+      { href: "/blog/adu-vs-jadu-california-guide", label: "ADU vs JADU: which to build →" },
+    ],
   },
   {
     title: "Remodels & Additions",
@@ -278,6 +283,15 @@ export default function ResidentialPage() {
                     <li key={detail}>{detail}</li>
                   ))}
                 </ul>
+                {item.deepLinks?.length > 0 && (
+                  <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(10,10,10,0.1)", display: "flex", flexDirection: "column", gap: 6, fontSize: "0.875rem" }}>
+                    {item.deepLinks.map((dl) => (
+                      <Link key={dl.href} href={dl.href} style={{ color: "inherit", textDecoration: "none", fontWeight: 500 }}>
+                        {dl.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </StaggerReveal>
