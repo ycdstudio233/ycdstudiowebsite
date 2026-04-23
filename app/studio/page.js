@@ -9,7 +9,7 @@ import { ServiceReveal } from "../../components/service-reveal";
 import {
   studioNotes,
   studioStats,
-  teamMembers,
+  visibleTeamMembers as teamMembers,
   services,
   locations,
 } from "../../lib/site-data";

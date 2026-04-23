@@ -175,7 +175,9 @@
       "Bash(node scripts/seo/gsc-coverage.mjs)",
       "Bash(node scripts/seo/pagespeed.mjs --strategy=mobile)",
       "Bash(node scripts/seo/pagespeed.mjs)",
-      "Bash(node scripts/seo/_add-hero-sizes.mjs)"
+      "Bash(node scripts/seo/_add-hero-sizes.mjs)",
+      "Bash(node scripts/seo/gsc-opportunities.mjs 90)",
+      "Bash(curl -s https://ycd.studio/studio)"
     ]
   }
 }
