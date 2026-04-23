@@ -47,6 +47,7 @@ export default function sitemap() {
     { path: "/sacred", file: "app/sacred/page.js", priority: 0.8, changeFrequency: "monthly" },
     { path: "/san-francisco", file: "app/san-francisco/page.js", priority: 0.85, changeFrequency: "monthly" },
     { path: "/oakland", file: "app/oakland/page.js", priority: 0.85, changeFrequency: "monthly" },
+    { path: "/oakland/adu", file: "app/oakland/adu/page.js", priority: 0.9, changeFrequency: "monthly" },
     { path: "/bay-area", file: "app/bay-area/page.js", priority: 0.85, changeFrequency: "monthly" },
   ];
 

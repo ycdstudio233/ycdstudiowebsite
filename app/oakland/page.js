@@ -139,9 +139,15 @@ const eastBayAduAdvantages = [
 
 const services = [
   {
-    title: "ADUs & Residential",
+    title: "Oakland ADU Architect",
     description:
-      "Custom homes, ADUs, and renovations across Oakland and the East Bay. We work with local building departments in Oakland, Moraga, Walnut Creek, Concord, and Contra Costa County to navigate permit pathways, including California's streamlined ADU provisions.",
+      "Detached, attached, and garage-conversion ADUs across Oakland, Berkeley, Moraga, and Contra Costa County. Oakland's fee-waived permit process, pre-approved plan program, and streamlined review make it California's most ADU-friendly city.",
+    link: "/oakland/adu",
+  },
+  {
+    title: "Custom Homes & Remodels",
+    description:
+      "Ground-up custom homes and whole-home remodels across Oakland and the East Bay. We navigate the region's hillside zoning, WUI requirements, and historic overlays to deliver permit-ready designs on first submittal.",
     link: "/residential",
   },
   {
@@ -283,6 +289,17 @@ export default function OaklandPage() {
               </div>
             ))}
           </StaggerReveal>
+
+          <ScrollReveal delay={0.2}>
+            <div style={{ textAlign: "center", marginTop: 40 }}>
+              <Link href="/oakland/adu" className="btn btn--primary btn--large">
+                Oakland ADU architect — full details
+              </Link>
+              <p style={{ fontSize: "0.875rem", opacity: 0.7, marginTop: 12 }}>
+                Cost ranges, permit timelines, process, and a free 30-min feasibility call.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
