@@ -6640,6 +6640,76 @@ ul, ol { list-style: none; }
   background: var(--accent, #5700EF);
 }
 
+/* Same story for the rest of the ti-sub-* family — they were all authored
+   against .section--dark. When dropped into a light section they vanish.
+   Scope these overrides tightly to .section:not(.section--dark) so dark
+   sections keep their original look. */
+
+/* Cost cards */
+.section:not(.section--dark) .ti-sub-cost-card {
+  background: rgba(10, 10, 10, 0.03);
+  border-color: var(--line, rgba(10, 10, 10, 0.1));
+}
+.section:not(.section--dark) .ti-sub-cost-card__range {
+  color: var(--ink, #0A0A0A);
+}
+.section:not(.section--dark) .ti-sub-cost-card__scope {
+  color: var(--muted, rgba(10, 10, 10, 0.55));
+}
+.section:not(.section--dark) .ti-sub-cost-card__includes {
+  color: var(--muted, rgba(10, 10, 10, 0.68));
+  border-bottom-color: var(--line, rgba(10, 10, 10, 0.1));
+}
+.section:not(.section--dark) .ti-sub-cost-card__timeline {
+  color: var(--muted, rgba(10, 10, 10, 0.6));
+}
+.section:not(.section--dark) .ti-sub-cost-card__desc {
+  color: var(--muted, rgba(10, 10, 10, 0.68));
+}
+.section:not(.section--dark) .ti-sub-cost-card__header .ti-sub-cost-card__title {
+  color: var(--ink, #0A0A0A);
+}
+.section:not(.section--dark) .ti-sub-cost-disclaimer {
+  color: var(--muted, rgba(10, 10, 10, 0.6));
+}
+
+/* Challenge cards */
+.section:not(.section--dark) .ti-sub-challenge {
+  background: rgba(10, 10, 10, 0.03);
+  border-color: var(--line, rgba(10, 10, 10, 0.1));
+}
+.section:not(.section--dark) .ti-sub-challenge:hover {
+  border-color: var(--accent, #5700EF);
+}
+.section:not(.section--dark) .ti-sub-challenge__title {
+  color: var(--ink, #0A0A0A);
+}
+.section:not(.section--dark) .ti-sub-challenge__desc {
+  color: var(--muted, rgba(10, 10, 10, 0.7));
+}
+
+/* Permit steps — number circle already sits on accent, keep white text.
+   Title is fine (inherits ink); desc already uses var(--muted). No override
+   needed for permit-step, but explicitly pin title just in case. */
+.section:not(.section--dark) .ti-sub-permit-step__title {
+  color: var(--ink, #0A0A0A);
+}
+
+/* Sustainability cards */
+.section:not(.section--dark) .ti-sub-sustainability-card {
+  background: rgba(10, 10, 10, 0.03);
+  border-color: var(--line, rgba(10, 10, 10, 0.1));
+}
+.section:not(.section--dark) .ti-sub-sustainability-card:hover {
+  border-color: var(--accent, #5700EF);
+}
+.section:not(.section--dark) .ti-sub-sustainability-card__title {
+  color: var(--ink, #0A0A0A);
+}
+.section:not(.section--dark) .ti-sub-sustainability-card__desc {
+  color: var(--muted, rgba(10, 10, 10, 0.65));
+}
+
 /* ─── Handle Cards ─── */
 .ti-sub-handle-grid {
   display: grid;
