@@ -102,11 +102,11 @@ const tiProjects = [
   },
   {
     slug: "piddeg-restaurant",
-    title: "PiddeG Restaurant",
+    title: "PiddeG Mediterranean Eatery — Walnut Creek",
     type: "Restaurant TI",
-    location: "Bay Area, CA",
-    scope: "Interior renovation — 1,800 SF",
-    description: "Fast-casual concept with efficient kitchen layout, branded interior, and ADA-compliant restrooms. Designed and permitted in under 6 weeks.",
+    location: "Walnut Creek, CA",
+    scope: "Interior renovation — 2,200 SF",
+    description: "Walnut Creek Turkish-Mediterranean restaurant at the Encina Grande center. Efficient kitchen layout, branded interior, pide oven as focal point, and ADA-compliant restrooms. Designed and permitted in under 6 weeks. 4.8 stars / 160+ Google reviews post-opening.",
     image: "/projects/piddeg-restaurant/Image-4.webp",
   },
   {

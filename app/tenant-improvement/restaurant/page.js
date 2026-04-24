@@ -238,16 +238,16 @@ const costRanges = [
 const featuredProjects = [
   {
     slug: "piddeg-restaurant",
-    title: "PiddeG Restaurant",
-    location: "Bay Area, CA",
-    scope: "Interior renovation — 1,800 SF",
+    title: "PiddeG Mediterranean Eatery — Walnut Creek",
+    location: "Walnut Creek, CA",
+    scope: "Interior renovation — 2,200 SF",
     image: "/projects/piddeg-restaurant/Image-4.webp",
     description:
-      "Fast-casual pide (Turkish flatbread) concept with an efficient open kitchen visible to guests. The design centered on a custom stone oven as the focal point, with a streamlined prep-to-serve workflow. Designed and permitted in under 6 weeks — one of our fastest restaurant TI projects.",
+      "Turkish-Mediterranean pide concept at Walnut Creek's Encina Grande center. Efficient open kitchen visible to guests, pide oven as focal point, streamlined prep-to-serve workflow. Designed and permitted in under 6 weeks. Since opening, PiddeG has earned 4.8 stars across 160+ Google reviews.",
     highlights: [
-      "Stone oven as design centerpiece",
-      "Efficient prep-to-serve workflow",
-      "Counter-service FOH design",
+      "Walnut Creek Mediterranean destination",
+      "4.8 stars / 160+ Google reviews",
+      "Pide oven as design centerpiece",
       "6-week design-to-permit timeline",
     ],
   },

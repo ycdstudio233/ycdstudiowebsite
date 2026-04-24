@@ -192,16 +192,16 @@ const featuredProjects = [
   },
   {
     slug: "piddeg-restaurant",
-    title: "PiddeG Restaurant",
-    location: "Bay Area, CA",
-    scope: "Fast-casual restaurant — interior renovation",
+    title: "PiddeG Mediterranean Eatery — Walnut Creek",
+    location: "Walnut Creek, CA",
+    scope: "Fast-casual Mediterranean restaurant — interior renovation, 2,200 SF",
     image: "/projects/piddeg-restaurant/Image-4.webp",
     description:
-      "Fast-casual pide (Turkish flatbread) concept centered on a custom stone oven as the focal point. Efficient open kitchen visible to guests, streamlined prep-to-serve workflow, and a warm material palette. Designed and permitted in under 6 weeks.",
+      "YCD Studio designed PiddeG Mediterranean Eatery at Walnut Creek's Encina Grande center. A Turkish-Mediterranean pide concept centered on a custom pide oven as the focal point, with an efficient open kitchen visible to guests and a warm material palette. Designed and permitted in under 6 weeks. Since opening, the restaurant has earned a 4.8-star rating across 160+ Google reviews.",
     highlights: [
-      "Stone oven as design centerpiece",
-      "Open kitchen with guest visibility",
-      "Counter-service FOH design",
+      "Walnut Creek Mediterranean destination",
+      "4.8 stars / 160+ Google reviews post-opening",
+      "Pide oven as design centerpiece",
       "6-week design-to-permit timeline",
     ],
   },
