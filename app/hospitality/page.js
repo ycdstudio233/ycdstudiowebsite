@@ -177,17 +177,17 @@ const featuredProjects = [
   },
   {
     slug: "pier-41-restaurant",
-    title: "Pier 41 — Cousins Maine Lobster",
+    title: "Cousins Maine Lobster — Pier 41, San Francisco",
     location: "San Francisco, CA",
-    scope: "Waterfront restaurant — multi-agency permit coordination",
+    scope: "Architect of record — franchise tenant improvement at Fisherman's Wharf",
     image: "/projects/pier-41-restaurant/Image-1.webp",
     description:
-      "High-profile waterfront tenant improvement at Fisherman's Wharf requiring coordination with the Port of San Francisco, SF Building Department, Fire Department, and Environmental Health. The waterfront location added structural and wind-load considerations for all rooftop equipment.",
+      "YCD Studio served as architect of record for Cousins Maine Lobster's San Francisco location at Pier 41, Fisherman's Wharf. We prepared construction documents and coordinated permitting with the Port of San Francisco, SF Building Department, Fire Department, and Environmental Health — implementing the franchise's brand and design standards on a waterfront pier-level site.",
     highlights: [
-      "Port of SF landlord coordination",
-      "Multi-agency permit management",
-      "Wind-rated rooftop exhaust systems",
-      "High-occupancy waterfront dining",
+      "Cousins Maine Lobster SF location",
+      "Port of SF + multi-agency coordination",
+      "Franchise brand-standards execution",
+      "Fisherman's Wharf high-traffic site",
     ],
   },
   {
