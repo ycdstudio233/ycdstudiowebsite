@@ -7,15 +7,15 @@ import { RelatedReading } from "../../components/related-links";
 import { FaqAccordion } from "../../components/faq-accordion";
 import { multiFamilyFaqs } from "../../lib/service-faqs";
 export const metadata = {
-  title: "Bay Area Multi-Family Architect — Apartments & Condos",
+  title: "Multi-Family Architects San Francisco & Bay Area — Apartments, Condos, Mixed-Use",
   description:
-    "Multi-family architecture in the San Francisco Bay Area. Apartments, condos, townhomes, and mixed-use developments. SB 9, density bonus, CEQA navigation, affordable housing compliance, and entitlement strategy. YCD Studio designs housing that strengthens communities.",
+    "San Francisco & Bay Area multi-family architects. Apartments, condos, townhomes, and mixed-use. SF Planning Code, 22% inclusionary zoning, SB 9, SB 35, density bonus, and CEQA navigation from feasibility through construction administration.",
   keywords:
-    "multi-family architect Bay Area, apartment architect San Francisco, mixed-use architect Bay Area, condo architect San Francisco, townhome architect Bay Area, SB 9 architect, density bonus architect, CEQA housing Bay Area, affordable housing architect, multi-family housing Bay Area, ADU architect Bay Area, infill housing architect",
+    "multi family architects san francisco, multi-family architect Bay Area, apartment architect San Francisco, mixed-use architect Bay Area, condo architect San Francisco, townhome architect Bay Area, SB 9 architect, density bonus architect, CEQA housing Bay Area, affordable housing architect, multi-family housing Bay Area, ADU architect Bay Area, infill housing architect, san francisco apartment architect, san francisco housing architect",
   openGraph: {
-    title: "Multi-Family Architecture — YCD Studio",
+    title: "Multi-Family Architects — San Francisco & Bay Area | YCD Studio",
     description:
-      "Bay Area multi-family housing design — apartments, condos, mixed-use, and townhomes. From feasibility through construction administration.",
+      "San Francisco & Bay Area multi-family housing design — apartments, condos, mixed-use, and townhomes. From feasibility through construction administration.",
   },
 };
 
@@ -168,17 +168,18 @@ export default function MultiFamilyPage() {
                 </Link>
                 <div className="ti-sub-hero__eyebrow">Multi-Family Architecture</div>
                 <h1 className="ti-sub-hero__title">
-                  Housing that strengthens<br />
-                  communities.
+                  Multi-family architects for<br />
+                  San Francisco &amp; the Bay Area.
                 </h1>
                 <p className="ti-sub-hero__subtitle">
-                  We design multi-family housing across the San Francisco Bay
-                  Area — apartments, condominiums, townhomes, and mixed-use
-                  developments. From feasibility analysis and entitlement
-                  strategy through construction administration, we help
-                  developers and property owners navigate the Bay Area&apos;s
-                  complex regulatory landscape to deliver housing that works
-                  financially and enriches neighborhoods.
+                  YCD Studio designs multi-family housing across San Francisco
+                  and the greater Bay Area — apartments, condominiums,
+                  townhomes, and mixed-use developments. From feasibility
+                  analysis and entitlement strategy through construction
+                  administration, we help developers and property owners
+                  navigate San Francisco Planning Code, 22% inclusionary
+                  zoning, SB 9, SB 35, density bonus, and CEQA to deliver
+                  housing that works financially and enriches neighborhoods.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.15}>
