@@ -363,7 +363,7 @@ export default function RetailOfficeTIPage() {
                   <li>Building department review only</li>
                   <li>No health department approval needed</li>
                   <li>No kitchen exhaust or grease trap review</li>
-                  <li>4 -- 8 week typical plan check</li>
+                  <li>4&ndash;8 week typical plan check</li>
                   <li>1 round of corrections typical</li>
                   <li>Over-the-counter possible for minor work</li>
                 </ul>
@@ -376,8 +376,8 @@ export default function RetailOfficeTIPage() {
                   <li>Building dept. + health dept. + fire dept.</li>
                   <li>Health department plan review required</li>
                   <li>Type I/II hood and grease interceptor review</li>
-                  <li>8 -- 16 week typical plan check</li>
-                  <li>2 -- 3 rounds of corrections typical</li>
+                  <li>8&ndash;16 week typical plan check</li>
+                  <li>2&ndash;3 rounds of corrections typical</li>
                   <li>Over-the-counter rarely available</li>
                 </ul>
               </div>

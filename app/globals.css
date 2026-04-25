@@ -7125,6 +7125,94 @@ ul, ol { list-style: none; }
   color: var(--accent);
 }
 
+/* ─── Permit Compare (Retail page — side-by-side cards comparing
+       Retail/Office TI vs Restaurant TI permit complexity) ─── */
+.ti-sub-permit-compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto 48px;
+}
+
+.ti-sub-permit-compare__item {
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--surface, rgba(10, 10, 10, 0.03));
+  border: 1px solid var(--line, rgba(10, 10, 10, 0.1));
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.ti-sub-permit-compare__item:hover {
+  border-color: var(--accent, #5700EF);
+  transform: translateY(-2px);
+}
+
+.ti-sub-permit-compare__item--highlight {
+  background: var(--accent-glow, rgba(87, 0, 239, 0.06));
+  border-color: var(--accent, #5700EF);
+}
+
+.ti-sub-permit-compare__label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent, #5700EF);
+  margin: 0 0 16px;
+}
+
+.ti-sub-permit-compare__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ti-sub-permit-compare__list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink, #0A0A0A);
+}
+
+.ti-sub-permit-compare__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 12px;
+  height: 2px;
+  background: var(--accent, #5700EF);
+  border-radius: 2px;
+}
+
+/* Dark-section override (kept consistent with the rest of ti-sub-* family) */
+.section--dark .ti-sub-permit-compare__item {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.section--dark .ti-sub-permit-compare__item--highlight {
+  background: rgba(87, 0, 239, 0.18);
+  border-color: var(--accent, #5700EF);
+}
+.section--dark .ti-sub-permit-compare__list li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 768px) {
+  .ti-sub-permit-compare {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .ti-sub-permit-compare__item {
+    padding: 24px;
+  }
+}
+
 /* ─── Permit Timeline (Adaptive Reuse) ─── */
 .ti-sub-permit-timeline {
   display: flex;
