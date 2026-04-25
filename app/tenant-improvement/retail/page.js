@@ -451,25 +451,25 @@ export default function RetailOfficeTIPage() {
         </div>
       </section>
 
-      {/* ── Featured Project: HFA Office ── */}
+      {/* ── Featured Project: Hawaii Fluid Art ── */}
       <section className="ti-sub-section" id="ti-sub-featured">
         <div className="container">
           <ScrollReveal>
             <SectionHeading
               eyebrow="Featured Project"
-              title="HFA Office — San Francisco"
-              description="A 3,200 SF professional office build-out with conference rooms, open workspace, private offices, and full ADA path-of-travel upgrades."
+              title="Hawaii Fluid Art — Bay Area"
+              description="A 1,800 SF retail-to-art-studio tenant improvement for the Hawaii Fluid Art franchise — combining a workshop for pour-painting classes, a retail shop for art supplies, and a gallery for completed works in one compact, vibrant footprint."
             />
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <div className="ti-sub-featured">
               <div className="ti-sub-featured__gallery">
-                <Image src="/projects/hfa-tenant-improvement/Image-1.webp" alt="Hawaii Fluid Art — open workspace" width={800} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+                <Image src="/projects/hfa-tenant-improvement/Image-1.webp" alt="Hawaii Fluid Art — studio interior with hot pink accent walls" width={800} height={500} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
                 <div className="ti-sub-featured__image-row">
-                  <Image src="/projects/hfa-tenant-improvement/Image-5.webp" alt="Hawaii Fluid Art — art studio" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
-                  <Image src="/projects/hfa-tenant-improvement/Image-3.webp" alt="Hawaii Fluid Art — workshop area" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
-                  <Image src="/projects/hfa-tenant-improvement/Image-7.webp" alt="Hawaii Fluid Art — floor plan" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+                  <Image src="/projects/hfa-tenant-improvement/Image-2.webp" alt="Hawaii Fluid Art — workshop with teal walls and group class" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+                  <Image src="/projects/hfa-tenant-improvement/Image-3.webp" alt="Hawaii Fluid Art — gallery wall and mural" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
+                  <Image src="/projects/hfa-tenant-improvement/Image-8.webp" alt="Hawaii Fluid Art — illuminated storefront at night" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }} />
                 </div>
               </div>
 
@@ -480,7 +480,7 @@ export default function RetailOfficeTIPage() {
                       Project Type
                     </span>
                     <span className="ti-sub-featured__meta-value">
-                      Office Build-Out
+                      Retail / Art Studio (Franchise TI)
                     </span>
                   </div>
                   <div className="ti-sub-featured__meta-item">
@@ -488,19 +488,19 @@ export default function RetailOfficeTIPage() {
                       Location
                     </span>
                     <span className="ti-sub-featured__meta-value">
-                      San Francisco, CA
+                      Bay Area, CA
                     </span>
                   </div>
                   <div className="ti-sub-featured__meta-item">
                     <span className="ti-sub-featured__meta-label">Size</span>
                     <span className="ti-sub-featured__meta-value">
-                      3,200 SF
+                      1,800 SF
                     </span>
                   </div>
                   <div className="ti-sub-featured__meta-item">
                     <span className="ti-sub-featured__meta-label">Scope</span>
                     <span className="ti-sub-featured__meta-value">
-                      Full interior build-out
+                      Retail shell to multi-use studio
                     </span>
                   </div>
                 </div>
@@ -508,19 +508,14 @@ export default function RetailOfficeTIPage() {
                 <div className="ti-sub-featured__scope">
                   <h4>What we delivered</h4>
                   <ul>
-                    <li>Space programming and layout optimization</li>
-                    <li>
-                      4 private offices, 2 conference rooms, open workspace for
-                      16
-                    </li>
-                    <li>Kitchenette and break area design</li>
-                    <li>Full ADA path-of-travel upgrades including restrooms</li>
-                    <li>MEP coordination with mechanical and electrical engineers</li>
-                    <li>
-                      Title 24 energy compliance documentation
-                    </li>
-                    <li>Permit drawings and plan-check response</li>
-                    <li>Construction administration through final inspection</li>
+                    <li>Multi-zone layout: workshop, retail, and gallery in one footprint</li>
+                    <li>Workshop tables with sight lines to gallery and retail areas</li>
+                    <li>Storefront design with window graphics and illuminated signage</li>
+                    <li>Reception, dessert/display case, and retail counter design</li>
+                    <li>Brand-standard finishes: hot pink walls, teal workshop zones, mural-ready feature walls</li>
+                    <li>Flexible lighting — workshop task light + ambient gallery viewing</li>
+                    <li>ADA path-of-travel upgrades and accessible restroom</li>
+                    <li>Permit drawings and plan-check response. Stamped by the project&rsquo;s licensed architect of record.</li>
                   </ul>
                 </div>
 

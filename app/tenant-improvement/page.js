@@ -111,11 +111,11 @@ const tiProjects = [
   },
   {
     slug: "hfa-tenant-improvement",
-    title: "HFA Office",
-    type: "Commercial TI",
-    location: "San Francisco, CA",
-    scope: "Office build-out — 3,200 SF",
-    description: "Professional office conversion with conference rooms, open workspace, private offices, and full ADA path-of-travel upgrades.",
+    title: "Hawaii Fluid Art",
+    type: "Retail / Art Studio TI",
+    location: "Bay Area, CA",
+    scope: "Retail-to-art-studio conversion — 1,800 SF (franchise location)",
+    description: "Tenant improvement for the Hawaii Fluid Art franchise — workshop for pour-painting classes, retail shop for art supplies, and gallery for completed works in one vibrant 1,800 SF footprint. Brand-standard hot pink and teal palette, neon signage, illuminated storefront.",
     image: "/projects/hfa-tenant-improvement/Image-1.webp",
   },
   {
