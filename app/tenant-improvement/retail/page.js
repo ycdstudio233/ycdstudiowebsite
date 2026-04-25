@@ -150,29 +150,29 @@ const permitSteps = [
 const costRanges = [
   {
     level: "Cosmetic Refresh",
-    range: "$40 -- $80 /sf",
+    range: "$40\u2013$80 /sf",
     scope: "Light renovation",
     includes:
       "New paint, flooring, lighting fixtures, minor electrical. No wall moves or plumbing changes. Typical for retail refreshes and office cosmetic updates.",
-    timeline: "3 -- 5 weeks design + permit",
+    timeline: "3\u20135 weeks design + permit",
     example: "Retail storefront repaint with new flooring and lighting",
   },
   {
     level: "Standard Build-Out",
-    range: "$80 -- $160 /sf",
+    range: "$80\u2013$160 /sf",
     scope: "Partial renovation",
     includes:
       "New partition walls, ceilings, MEP modifications, ADA upgrades, new finishes. The most common scope for office build-outs and retail conversions.",
-    timeline: "6 -- 10 weeks design + permit",
+    timeline: "6\u201310 weeks design + permit",
     example: "Office suite with private offices, conference room, and kitchenette",
   },
   {
     level: "Full Build-Out",
-    range: "$160 -- $280+ /sf",
+    range: "$160\u2013$280+ /sf",
     scope: "Gut renovation",
     includes:
       "Complete interior demolition, new layout, full MEP systems, specialty spaces (server rooms, medical exam rooms), storefront replacement. For ground-up commercial interiors.",
-    timeline: "10 -- 16 weeks design + permit",
+    timeline: "10\u201316 weeks design + permit",
     example: "Medical clinic with specialized ventilation and plumbing",
   },
 ];
