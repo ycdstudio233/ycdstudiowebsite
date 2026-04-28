@@ -517,6 +517,20 @@ const nextConfig = {
         permanent: true,
       },
 
+      // ── Orphan old WordPress blog posts that have no equivalent on the new
+      //    site. Catches them so they don't show as 404s in GSC. Add new
+      //    entries here whenever GSC reveals more legacy URLs. ──
+      {
+        source: "/top-5-tools-for-web-developers",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/top-5-tools-for-web-developers/",
+        destination: "/blog",
+        permanent: true,
+      },
+
       // ── Old WordPress search query (?s={term}) ──
       // Old WordPress search form — Google indexed the literal template URL.
       // Any homepage hit with ?s=... query → redirect to /blog (closest equivalent).
