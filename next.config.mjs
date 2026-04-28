@@ -417,9 +417,14 @@ const nextConfig = {
         permanent: true,
       },
 
-      // ── Paginated archives ──
+      // ── Paginated archives (both trailing-slash variants) ──
       {
         source: "/works/page/:num",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/works/page/:num/",
         destination: "/work",
         permanent: true,
       },
@@ -428,10 +433,23 @@ const nextConfig = {
         destination: "/work",
         permanent: true,
       },
+      {
+        source: "/portfolio/page/:num/",
+        destination: "/work",
+        permanent: true,
+      },
 
-      // ── WordPress taxonomy pages (catch-all) ──
+      // ── WordPress taxonomy pages (catch-all, with trailing-slash variants) ──
+      // path-to-regexp's :slug* matches zero+ segments WITHOUT trailing slash,
+      // so URLs like /tag/branding/feed/ don't match /tag/:slug*. Adding explicit
+      // trailing-slash variants picks them up.
       {
         source: "/category/:slug*",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/category/:slug*/",
         destination: "/blog",
         permanent: true,
       },
@@ -441,7 +459,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/author/:slug*/",
+        destination: "/studio",
+        permanent: true,
+      },
+      {
         source: "/tag/:slug*",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/tag/:slug*/",
         destination: "/blog",
         permanent: true,
       },
@@ -451,8 +479,51 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/portfolio-tags/:slug*/",
+        destination: "/work",
+        permanent: true,
+      },
+      {
         source: "/portfolio-categories/:slug*",
         destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/portfolio-categories/:slug*/",
+        destination: "/work",
+        permanent: true,
+      },
+
+      // ── Old WordPress RSS feed paths (any */feed/ URL) ──
+      // Catches /feed/, /tag/x/feed/, /portfolio-tags/x/feed/, etc.
+      {
+        source: "/feed",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/feed/",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/:path*/feed",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/:path*/feed/",
+        destination: "/blog",
+        permanent: true,
+      },
+
+      // ── Old WordPress search query (?s={term}) ──
+      // Old WordPress search form — Google indexed the literal template URL.
+      // Any homepage hit with ?s=... query → redirect to /blog (closest equivalent).
+      {
+        source: "/",
+        has: [{ type: "query", key: "s" }],
+        destination: "/blog",
         permanent: true,
       },
     ];
