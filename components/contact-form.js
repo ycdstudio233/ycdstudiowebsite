@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 const projectTypes = [
@@ -38,7 +38,17 @@ export function ContactForm() {
     budget: "",
     timeline: "",
     message: "",
+    // Honeypot field — invisible to humans, bots fill every field. If this is
+    // populated on the server, the submission is silently rejected.
+    website: "",
   });
+
+  // Submission timer — captured on mount. Real users take >3 s to fill a form;
+  // bots POST instantly. The server rejects submissions that arrive too fast.
+  const startTimeRef = useRef(null);
+  useEffect(() => {
+    startTimeRef.current = Date.now();
+  }, []);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -51,7 +61,11 @@ export function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          // Time elapsed since form mount, in milliseconds. Server checks this.
+          elapsedMs: startTimeRef.current ? Date.now() - startTimeRef.current : 0,
+        }),
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
@@ -83,6 +97,32 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
+      {/* Honeypot field — visually hidden, semantically labeled to avoid
+          accessibility flags, and tab-skipped. Real users never fill it.
+          Bots that blindly populate every field trigger a silent rejection. */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-10000px",
+          top: "auto",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
+      >
+        <label htmlFor="cf-website">Website (leave blank)</label>
+        <input
+          type="text"
+          id="cf-website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.website}
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="contact-form__row">
         <div className="contact-form__field">
           <label className="contact-form__label" htmlFor="cf-name">Name</label>
