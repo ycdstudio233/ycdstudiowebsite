@@ -89,6 +89,26 @@ export async function generateMetadata({ params }) {
 }
 
 function ProjectJsonLd({ project, slug }) {
+  /* Build ImageObject array for every gallery image. When a photographer is
+     attached to the project, attach Schema.org image-credit metadata
+     (creator + creditText + copyrightNotice) per Google's image license
+     guidelines. AI engines and Google Images use these fields directly. */
+  const imageObjects =
+    project.gallery?.map((g) => ({
+      "@type": "ImageObject",
+      url: `https://ycd.studio${g.image}`,
+      name: g.label,
+      ...(project.photographer && {
+        creator: {
+          "@type": "Person",
+          name: project.photographer.name,
+          ...(project.photographer.url && { url: project.photographer.url }),
+        },
+        creditText: project.photographer.name,
+        copyrightNotice: `© ${project.photographer.name}`,
+      }),
+    })) || [];
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -99,9 +119,7 @@ function ProjectJsonLd({ project, slug }) {
     locationCreated: { "@type": "Place", name: project.location },
     dateCreated: project.year,
     genre: project.category,
-    ...(project.gallery?.[0]?.image && {
-      image: `https://ycd.studio${project.gallery[0].image}`,
-    }),
+    ...(imageObjects.length > 0 && { image: imageObjects }),
   };
   return (
     <script
@@ -410,6 +428,27 @@ export default async function ProjectPage({ params }) {
           return null;
         })}
       </section>
+
+      {/* ── Photography credit ── */}
+      {project.photographer && (
+        <section className="container">
+          <div className="project-detail__credit">
+            Photography by{" "}
+            {project.photographer.url ? (
+              <a
+                href={project.photographer.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-detail__credit-link"
+              >
+                {project.photographer.name}
+              </a>
+            ) : (
+              <span>{project.photographer.name}</span>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* ── Videos ── */}
       {project.videos && project.videos.length > 0 && (
