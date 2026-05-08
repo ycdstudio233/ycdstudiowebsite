@@ -324,6 +324,9 @@ export default async function ProjectPage({ params }) {
                 src={project.gallery[0].image}
                 alt={project.imageAlt || project.title}
                 className="project-detail__hero-img"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             ) : (
               <ProjectVisual title={project.title} variant={project.variant} />
@@ -363,7 +366,7 @@ export default async function ProjectPage({ params }) {
             return (
               <div className="cinema__moment" key={idx}>
                 <CinemaScroll from={frame.from} className="cinema__fill">
-                  <img src={frame.image.image} alt={frame.image.label} className={coverCls} />
+                  <img src={frame.image.image} alt={frame.image.label} className={coverCls} loading="lazy" decoding="async" />
                   <span className="cinema__label">{frame.image.label}</span>
                 </CinemaScroll>
               </div>
@@ -377,11 +380,11 @@ export default async function ProjectPage({ params }) {
             return (
               <CinemaScroll from="bottom" className="cinema__moment cinema__moment--duo" key={idx}>
                 <div className="cinema__duo-cell">
-                  <img src={frame.left.image} alt={frame.left.label} className={leftCls} />
+                  <img src={frame.left.image} alt={frame.left.label} className={leftCls} loading="lazy" decoding="async" />
                   <span className="cinema__duo-caption">{frame.left.label}</span>
                 </div>
                 <div className="cinema__duo-cell">
-                  <img src={frame.right.image} alt={frame.right.label} className={rightCls} />
+                  <img src={frame.right.image} alt={frame.right.label} className={rightCls} loading="lazy" decoding="async" />
                   <span className="cinema__duo-caption">{frame.right.label}</span>
                 </div>
               </CinemaScroll>
@@ -394,7 +397,7 @@ export default async function ProjectPage({ params }) {
             return (
               <div className={`cinema__moment cinema__moment--float cinema__moment--${side}`} key={idx}>
                 <CinemaScroll from={frame.from} className="cinema__float-inner">
-                  <img src={frame.image.image} alt={frame.image.label} className="cinema__float-img" />
+                  <img src={frame.image.image} alt={frame.image.label} className="cinema__float-img" loading="lazy" decoding="async" />
                   <span className="cinema__float-label">{frame.image.label}</span>
                 </CinemaScroll>
               </div>
@@ -417,7 +420,7 @@ export default async function ProjectPage({ params }) {
               <CinemaScroll noTransform className="cinema__moment cinema__moment--narrative" key={idx}>
                 <div className="cinema__sticky-runway">
                   <div className="cinema__fill cinema__fill--story cinema__sticky-frame">
-                    <img src={frame.image.image} alt={frame.image.label} className={narrativeCoverCls} />
+                    <img src={frame.image.image} alt={frame.image.label} className={narrativeCoverCls} loading="lazy" decoding="async" />
                     <ScrollOverlay align={frame.align} heading={frame.heading} body={frame.body} />
                   </div>
                 </div>
