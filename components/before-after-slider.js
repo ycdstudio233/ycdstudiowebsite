@@ -27,6 +27,7 @@ export function BeforeAfterSlider({
   beforeCaption = "Before",
   afterCaption = "After",
   caption,
+  aspectRatio,
 }) {
   const [position, setPosition] = useState(50); // percent (0-100)
   const containerRef = useRef(null);
@@ -97,6 +98,7 @@ export function BeforeAfterSlider({
       <div
         ref={containerRef}
         className="before-after-slider__container"
+        style={aspectRatio ? { aspectRatio } : undefined}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
