@@ -2066,7 +2066,13 @@ ul, ol { list-style: none; }
 }
 
 .cinema__sticky-runway {
-  height: 200vh;            /* scroll runway while image stays pinned */
+  /* Reduced from 200vh to 140vh (May 2026). The narrative frame pins one
+     image while text scrolls over it; 200vh of scroll on a single pinned
+     image was the worst offender for the "too many scrolls between actions"
+     hesitation users were reporting. 140vh still gives the text overlay
+     enough scroll distance to read at natural pace without parking the
+     visitor on one frame for two full screen heights. */
+  height: 140vh;
   position: relative;
 }
 
@@ -2080,7 +2086,16 @@ ul, ol { list-style: none; }
 .cinema__fill {
   position: relative;
   width: 100%;
-  height: 80vh;
+  /* Reduced from 80vh to 65vh (May 2026) so each frame consumes less scroll
+     distance — fewer wheel rotations between visible "action" transitions.
+     Image still uses object-fit: scale-down so it never crops. */
+  height: 65vh;
+}
+
+@media (max-width: 768px) {
+  .cinema__fill {
+    height: 60vh;
+  }
 }
 
 /* ── Shared cover image — scale-down: never crop, never upscale ── */
@@ -2125,8 +2140,16 @@ ul, ol { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3px;
-  height: 65vh;
+  /* Reduced from 65vh to 55vh (May 2026) — same scroll-tightening as
+     .cinema__fill above, applied to the two-portrait frame variant. */
+  height: 55vh;
   background: #0a0a0a;
+}
+
+@media (max-width: 768px) {
+  .cinema__moment--duo {
+    height: 50vh;
+  }
 }
 
 .cinema__duo-cell {
