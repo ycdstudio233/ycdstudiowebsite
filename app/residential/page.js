@@ -8,15 +8,15 @@ import { RelatedReading } from "../../components/related-links";
 import { FaqAccordion } from "../../components/faq-accordion";
 import { residentialFaqs } from "../../lib/service-faqs";
 export const metadata = {
-  title: "Bay Area Residential Architect — Homes & ADUs",
+  title: "Custom Residential Architect — SF Bay Area | Homes, ADUs, Remodels",
   description:
-    "Bay Area residential architecture firm. Custom homes, ADUs, JADUs, additions, and whole-home remodels across San Francisco, Oakland, the East Bay, and South Bay. Full-service design from feasibility through construction.",
+    "Custom residential architecture across the SF Bay Area — homes, ADUs, JADUs, additions, and whole-home remodels. We design from scratch (not pre-approved plans) for the specific conditions of your site. Full service from feasibility through construction.",
   keywords:
-    "residential architect Bay Area, custom home architect San Francisco, ADU architect, JADU California, kitchen remodel Bay Area, home addition architect, Title 24 compliance, residential design Oakland, East Bay architect",
+    "custom residential architect Bay Area, custom home architect San Francisco, ADU architect, JADU California, kitchen remodel Bay Area, home addition architect, Title 24 compliance, residential design Oakland, East Bay architect, custom ADU Bay Area",
   openGraph: {
-    title: "Residential Architect Bay Area — YCD Studio",
+    title: "Custom Residential Architect — SF Bay Area | YCD Studio",
     description:
-      "Custom homes, ADUs, remodels, and additions across the Bay Area. Full-service architecture from concept through construction.",
+      "Custom homes, ADUs, remodels, and additions across the Bay Area. Designed from scratch for your site — not pre-approved plans. Full service from concept through construction.",
     url: "https://ycd.studio/residential",
     siteName: "YCD Studio",
     type: "website",

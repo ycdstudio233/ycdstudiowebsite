@@ -105,6 +105,16 @@ function JsonLd() {
       },
       geoRadius: "100",
     },
+    /* sameAs: links the entity to its presence on other authoritative
+       platforms. AI engines (Perplexity, ChatGPT, Google AI Overview) use
+       these to confirm "this is the same firm referenced on those other
+       sites." Add new entries when each account goes live:
+         - Yelp Business profile URL
+         - Houzz Pro profile URL
+         - Architizer firm profile URL
+         - Google Business Profile URL
+         - Facebook page URL
+         - YouTube channel URL */
     sameAs: [
       "https://instagram.com/ycd.studios",
       "https://linkedin.com/company/ycd-studio",
@@ -114,11 +124,38 @@ function JsonLd() {
       "Interior Design",
       "Tenant Improvement",
       "Restaurant Design",
+      "Cafe Design",
+      "Hotel Design",
       "Hospitality Design",
       "Residential Remodeling",
+      "Custom Home Design",
+      "Accessory Dwelling Units (ADU)",
+      "Junior Accessory Dwelling Units (JADU)",
+      "Garage Conversions",
+      "Multi-Family Housing",
       "Commercial Design",
+      "Retail Tenant Improvement",
+      "Office Tenant Improvement",
       "Adaptive Reuse",
+      "Change of Use Permits",
+      "Feasibility Studies",
+      "California Title 24 Compliance",
+      "California Building Code",
+      "Bay Area Permitting",
+      "ADA Path-of-Travel Compliance",
+      "Franchise Architecture",
     ],
+    serviceType: [
+      "Architectural design",
+      "Tenant improvement design",
+      "Feasibility studies",
+      "Permit drawings and coordination",
+      "ADU and JADU design",
+      "Restaurant and hospitality design",
+      "Adaptive reuse and change-of-use projects",
+      "Custom residential design",
+    ],
+    slogan: "Custom Bay Area architecture — designed for your site, not from a template.",
   };
 
   return (

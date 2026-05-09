@@ -30,12 +30,27 @@ export async function generateMetadata({ params }) {
 }
 
 function BlogPostJsonLd({ post, slug }) {
+  /* AEO-optimized BlogPosting schema:
+     - dateModified falls back to date when post hasn't been updated, signaling
+       freshness either way (AI engines weight this heavily for legal/regulatory
+       topics where "current" matters)
+     - mainEntityOfPage canonicalizes the article URL for citation pipelines
+     - publisher.logo satisfies Google's BlogPosting required-fields check
+     - speakable marks which DOM regions voice assistants and AI engines should
+       extract as the high-signal summary of the article (headline, excerpt,
+       section headings) */
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
     datePublished: post.date,
+    dateModified: post.dateModified || post.date,
+    inLanguage: "en-US",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://ycd.studio/blog/${slug}`,
+    },
     author: {
       "@type": "Organization",
       name: "YCD Studio",
@@ -45,11 +60,19 @@ function BlogPostJsonLd({ post, slug }) {
       "@type": "Organization",
       name: "YCD Studio",
       url: "https://ycd.studio",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://ycd.studio/ycd-logo-original.png",
+      },
     },
     url: `https://ycd.studio/blog/${slug}`,
     ...(post.heroImage && {
       image: `https://ycd.studio${post.heroImage}`,
     }),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".blog-article__excerpt", "h2"],
+    },
   };
   return (
     <script

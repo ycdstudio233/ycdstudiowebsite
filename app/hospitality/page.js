@@ -8,15 +8,15 @@ import { RelatedReading } from "../../components/related-links";
 import { FaqAccordion } from "../../components/faq-accordion";
 import { hospitalityFaqs } from "../../lib/service-faqs";
 export const metadata = {
-  title: "Bay Area Restaurant & Hotel Architect",
+  title: "Bay Area Restaurant & Cafe Architect — Permits, Kitchen, Build-Out",
   description:
-    "Bay Area hospitality architecture firm specializing in restaurants, hotels, cafes, bars, and food halls. Kitchen design, health department permits, ABC licensing, exhaust systems, and guest-flow planning from concept through certificate of occupancy.",
+    "Restaurant, cafe, hotel, and bar architects across the Bay Area. Kitchen design, Type I/II hood and grease interceptor coordination, health department permits, ABC licensing, and multi-agency build-outs. Recent: Cousins Maine Lobster (Pier 41 SF), PiddeG Mediterranean (Walnut Creek).",
   keywords:
-    "hospitality architecture Bay Area, restaurant architect San Francisco, hotel architect Bay Area, cafe design architect, bar design architect, food hall architect, hospitality design firm, restaurant permits Bay Area, hotel renovation Bay Area, boutique hotel architect California",
+    "Bay Area restaurant architect, cafe architect San Francisco, restaurant tenant improvement Bay Area, hotel architect Bay Area, kitchen design architect, restaurant permits San Francisco, ABC license architect, food hall architect, hospitality design firm Bay Area, boutique hotel architect California, Cousins Maine Lobster, PiddeG Walnut Creek",
   openGraph: {
-    title: "Bay Area Restaurant & Hotel Architect | YCD Studio",
+    title: "Bay Area Restaurant & Cafe Architect | YCD Studio",
     description:
-      "Bay Area hospitality design — restaurants, hotels, cafes, bars, and food halls. We handle kitchen layout, exhaust engineering, health department coordination, ABC compliance, and multi-agency permitting.",
+      "Restaurant, cafe, and hotel design across the Bay Area — kitchen layouts, exhaust engineering, health department coordination, ABC compliance, and multi-agency permitting. Recent work: Cousins Maine Lobster, PiddeG, Tabya, Hawaii Fluid Art.",
   },
 };
 

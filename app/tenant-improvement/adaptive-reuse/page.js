@@ -5,15 +5,15 @@ import { ScrollReveal, StaggerReveal } from "../../../components/scroll-reveal";
 
 import { RelatedReading } from "../../../components/related-links";
 export const metadata = {
-  title: "Bay Area Adaptive Reuse Architect — Conversions",
+  title: "Bay Area Building Conversion Architect | Adaptive Reuse, Change of Use",
   description:
-    "Bay Area adaptive reuse architecture — warehouse to restaurant conversions, change of use permits, office to retail transformations, and historic building renovations. YCD Studio navigates zoning changes, seismic upgrades, and complex permit pathways in San Francisco, Oakland, and the greater Bay Area.",
+    "Building conversion specialists across the Bay Area: warehouse-to-restaurant, office-to-retail, industrial-to-mixed-use. We handle change-of-use permits, occupancy reclassification (M to A-2, B to F-1), seismic upgrade triggers, and the multi-department review pathways most architects avoid.",
   keywords:
-    "adaptive reuse architect Bay Area, change of use permit San Francisco, warehouse to restaurant conversion, adaptive reuse San Francisco, office to retail conversion, industrial to mixed-use, historic preservation architect, change of occupancy permit Bay Area, warehouse conversion architect, building repurposing Bay Area",
+    "building conversion architect Bay Area, adaptive reuse architect, change of use permit San Francisco, warehouse to restaurant conversion, office to retail conversion, industrial to mixed-use, occupancy reclassification, change of occupancy permit Bay Area, warehouse conversion architect, building repurposing Bay Area, A-2 occupancy permit, historic preservation architect",
   openGraph: {
-    title: "Bay Area Adaptive Reuse Architect — Conversions | YCD Studio",
+    title: "Bay Area Building Conversion Architect | YCD Studio",
     description:
-      "We convert warehouses to restaurants, offices to retail, and industrial buildings to mixed-use. Expert permit navigation for change-of-use projects across the Bay Area.",
+      "Warehouse to restaurant, office to retail, industrial to mixed-use. Change-of-use permits, occupancy reclassification, and the seismic and code thresholds that make conversions complex.",
   },
 };
 
