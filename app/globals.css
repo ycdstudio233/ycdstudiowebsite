@@ -3485,6 +3485,161 @@ ul, ol { list-style: none; }
   margin-bottom: 0;
 }
 
+/* ─── Before/After Slider — interactive comparison component used in blog
+       posts where transformation matters (bathroom remodels, adaptive reuse,
+       etc.). Pure CSS layout; the component handles drag/keyboard interaction.
+       AEO-friendly: both images are real <img> tags, indexed normally. ─── */
+.before-after-slider {
+  margin: 32px 0;
+  padding: 0;
+}
+
+.before-after-slider__container {
+  position: relative;
+  width: 100%;
+  /* 16:9 cinematic ratio. Both images use object-fit: cover so any aspect
+     mismatch (e.g., portrait BEFORE + landscape AFTER) crops cleanly to the
+     container's middle band rather than letterboxing. */
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: ew-resize;
+  user-select: none;
+  background: var(--surface, #f5f5f3);
+  touch-action: pan-y; /* allow vertical scroll, capture horizontal drag */
+}
+
+.before-after-slider__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.before-after-slider__before-clip {
+  position: absolute;
+  inset: 0;
+  /* clipPath set inline by the component based on slider position */
+  will-change: clip-path;
+}
+
+.before-after-slider__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 44px; /* generous touch target */
+  margin-left: -22px; /* center on the line */
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.before-after-slider__handle:focus-visible {
+  outline: none;
+}
+
+.before-after-slider__handle:focus-visible .before-after-slider__handle-grip {
+  box-shadow: 0 0 0 3px var(--accent, #5700EF), 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.before-after-slider__handle-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.before-after-slider__handle-grip {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--ink, #0A0A0A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.before-after-slider__handle:hover .before-after-slider__handle-grip {
+  transform: scale(1.06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.before-after-slider__label {
+  position: absolute;
+  top: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 6px 12px;
+  border-radius: 4px;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.before-after-slider__label--before {
+  left: 14px;
+}
+
+.before-after-slider__label--after {
+  right: 14px;
+}
+
+.before-after-slider__caption {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted, rgba(10, 10, 10, 0.6));
+  text-align: center;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .before-after-slider__handle-grip,
+  .before-after-slider__before-clip {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .before-after-slider__container {
+    /* Slightly taller ratio on mobile so portrait BEFORE doesn't get cropped
+       too aggressively; still cinematic but more vertical room. */
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+  }
+  .before-after-slider__label {
+    font-size: 10px;
+    padding: 4px 9px;
+    top: 10px;
+  }
+  .before-after-slider__label--before {
+    left: 10px;
+  }
+  .before-after-slider__label--after {
+    right: 10px;
+  }
+}
+
 /* Photography credit on project pages — small, restrained,
    sits between the cinema gallery and any video/related sections. */
 .project-detail__credit {

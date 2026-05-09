@@ -5,6 +5,7 @@ import { ScrollReveal } from "../../../components/scroll-reveal";
 import { YCDLogo } from "../../../components/ycd-logo";
 import { blogPosts, getBlogPost, getAllSlugs } from "../../../lib/blog-data";
 import { RelatedServices } from "../../../components/related-links";
+import { BeforeAfterSlider } from "../../../components/before-after-slider";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -110,6 +111,18 @@ function ContentBlock({ block }) {
             <figcaption className="blog-post__caption">{block.caption}</figcaption>
           )}
         </figure>
+      );
+    case "beforeAfter":
+      return (
+        <BeforeAfterSlider
+          before={block.before}
+          after={block.after}
+          beforeAlt={block.beforeAlt}
+          afterAlt={block.afterAlt}
+          beforeCaption={block.beforeCaption}
+          afterCaption={block.afterCaption}
+          caption={block.caption}
+        />
       );
     case "quote":
       return (
