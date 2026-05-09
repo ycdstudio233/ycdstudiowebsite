@@ -54,10 +54,11 @@ export function CinemaScroll({
       // Tightened May 2026 to remove the "gap of action" hesitation users
       // were reporting. Image now reaches full opacity quickly after entering,
       // holds solid through most of its visible life, and only fades on
-      // actual exit.
-      const enterEnd = isMobile ? 0.05 : 0.08;
-      const exitStart = isMobile ? 0.95 : 0.92;
-      const slideDist = isMobile ? 18 : 32;
+      // actual exit. Mobile values further tightened on user request — small
+      // touch screens need motion to feel even snappier.
+      const enterEnd = isMobile ? 0.03 : 0.08;
+      const exitStart = isMobile ? 0.97 : 0.92;
+      const slideDist = isMobile ? 12 : 32;
 
       if (progress < enterEnd) {
         // ── Enter phase ──
