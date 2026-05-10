@@ -7,18 +7,18 @@ import { RelatedReading } from "../../../components/related-links";
 import { relatedPostsFor } from "../../../lib/related-links";
 
 export const metadata = {
-  title: "Oakland ADU Architect — Design, Permits & Cost",
+  title: "Oakland ADU Architect 2026: Custom ADU Design from $50K to $400K",
   description:
-    "Oakland ADU architect specializing in detached, attached, and garage-conversion ADUs. Oakland's fee-waived permit process, streamlined review, and 2026 cost ranges. Serving Oakland, Berkeley, Moraga, and the greater East Bay.",
+    "Oakland ADU architects designing custom detached, attached, and garage-conversion ADUs across the East Bay. 2026 cost ranges from $50K (JADU) to $400K (full detached), Oakland's fee-waived permit process, real timeline expectations, and what to expect from each design phase.",
   keywords:
-    "Oakland ADU architect, ADU architect Oakland, accessory dwelling unit Oakland, East Bay ADU, Oakland ADU permit, Oakland ADU cost, detached ADU Oakland, garage conversion Oakland, ADU plans Oakland, Berkeley ADU architect, Moraga ADU architect, Contra Costa ADU architect",
+    "Oakland ADU architect, ADU architect Oakland, accessory dwelling unit Oakland, East Bay ADU, Oakland ADU permit, Oakland ADU cost, detached ADU Oakland, garage conversion Oakland, ADU plans Oakland, Berkeley ADU architect, Moraga ADU architect, Contra Costa ADU architect, ADU cost Oakland 2026",
   alternates: {
     canonical: "https://ycd.studio/oakland/adu",
   },
   openGraph: {
-    title: "Oakland ADU Architect — Design, Permits & Cost | YCD Studio",
+    title: "Oakland ADU Architect 2026 — Custom ADU Design | YCD Studio",
     description:
-      "Oakland ADU architect specializing in detached, attached, and garage-conversion ADUs. Oakland's fee-waived permit process, streamlined review, and 2026 cost ranges.",
+      "Custom ADU architects in Oakland — detached, attached, and garage-conversion ADUs across the East Bay. 2026 cost ranges, Oakland's fee-waived permit process, real timeline expectations from a Bay Area firm.",
     url: "https://ycd.studio/oakland/adu",
     siteName: "YCD Studio",
     type: "website",
