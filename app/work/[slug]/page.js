@@ -91,8 +91,14 @@ export async function generateMetadata({ params }) {
 function ProjectJsonLd({ project, slug }) {
   /* Build ImageObject array for every gallery image. When a photographer is
      attached to the project, attach Schema.org image-credit metadata
-     (creator + creditText + copyrightNotice) per Google's image license
-     guidelines. AI engines and Google Images use these fields directly. */
+     (creator + creditText + copyrightNotice + license + acquireLicensePage)
+     per Google's image license guidelines.
+
+     license + acquireLicensePage added May 2026 after GSC coverage report
+     flagged these as missing fields. With them present, the photos become
+     eligible for Google's Image License badge in image search — a real
+     discovery signal. Falls back to photographer.url when no dedicated
+     license/acquisition page exists. */
   const imageObjects =
     project.gallery?.map((g) => ({
       "@type": "ImageObject",
@@ -106,6 +112,9 @@ function ProjectJsonLd({ project, slug }) {
         },
         creditText: project.photographer.name,
         copyrightNotice: `© ${project.photographer.name}`,
+        license: project.photographer.licensePage || project.photographer.url,
+        acquireLicensePage:
+          project.photographer.acquireLicensePage || project.photographer.url,
       }),
     })) || [];
 
