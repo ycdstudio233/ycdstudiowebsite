@@ -49,6 +49,7 @@ export default function sitemap() {
     { path: "/oakland", file: "app/oakland/page.js", priority: 0.85, changeFrequency: "monthly" },
     { path: "/oakland/adu", file: "app/oakland/adu/page.js", priority: 0.9, changeFrequency: "monthly" },
     { path: "/moraga/adu", file: "app/moraga/adu/page.js", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/walnut-creek/restaurant", file: "app/walnut-creek/restaurant/page.js", priority: 0.9, changeFrequency: "monthly" },
     { path: "/bay-area", file: "app/bay-area/page.js", priority: 0.85, changeFrequency: "monthly" },
   ];
 
