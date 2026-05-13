@@ -1,9 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ScrollReveal, StaggerReveal } from "../../components/scroll-reveal";
-import { blogPosts as rawPosts } from "../../lib/blog-data";
+import { getPublishedPosts } from "../../lib/blog-data";
 
-const blogPosts = [...rawPosts].sort(
+// getPublishedPosts() filters out drafts and scheduled (future-dated) posts.
+// Builds happen at deploy time, so scheduled posts go live on the next
+// build on or after their publishDate.
+const blogPosts = [...getPublishedPosts()].sort(
   (a, b) => new Date(b.date) - new Date(a.date)
 );
 

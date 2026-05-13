@@ -9,7 +9,7 @@ import { ScrollOverlay } from "../../../components/scroll-overlay";
 import { RevealPair } from "../../../components/reveal-pair";
 import { projectDetails } from "../../../lib/project-details";
 import { allProjects } from "../../../lib/site-data";
-import { blogPosts } from "../../../lib/blog-data";
+import { getPublishedPosts } from "../../../lib/blog-data";
 
 /* ── Category-to-blog mapping for Related Reading ── */
 const categoryBlogMap = {
@@ -60,7 +60,7 @@ const categoryBlogMap = {
 function getRelatedBlogPosts(category) {
   const slugs = categoryBlogMap[category] || [];
   return slugs
-    .map((s) => blogPosts.find((p) => p.slug === s))
+    .map((s) => getPublishedPosts().find((p) => p.slug === s))
     .filter(Boolean)
     .slice(0, 2);
 }

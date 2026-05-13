@@ -2,7 +2,7 @@ import { execSync } from "node:child_process";
 import { statSync } from "node:fs";
 import path from "node:path";
 import { projectDetails } from "../lib/project-details";
-import { blogPosts } from "../lib/blog-data";
+import { getPublishedPosts } from "../lib/blog-data";
 import { teamDetails } from "../lib/team-data";
 
 const BASE_URL = "https://ycd.studio";
@@ -77,7 +77,7 @@ export default function sitemap() {
   // Blog posts — authoring date is authoritative; bump to the
   // blog-data.js mtime if it's newer (content edits after publish).
   const blogDataMod = lastModFor("lib/blog-data.js");
-  const blogPages = blogPosts.map((post) => {
+  const blogPages = getPublishedPosts().map((post) => {
     const publishDate = new Date(post.date);
     const mod = publishDate > blogDataMod ? publishDate : blogDataMod;
     return {

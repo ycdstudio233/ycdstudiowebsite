@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ScrollReveal } from "../../../components/scroll-reveal";
 import { YCDLogo } from "../../../components/ycd-logo";
-import { blogPosts, getBlogPost, getAllSlugs } from "../../../lib/blog-data";
+import { getBlogPost, getAllSlugs, getPublishedPosts } from "../../../lib/blog-data";
 import { RelatedServices } from "../../../components/related-links";
 import { BeforeAfterSlider } from "../../../components/before-after-slider";
 
@@ -186,7 +186,7 @@ export default async function BlogPostPage({ params }) {
   }, 0);
   const readingTime = Math.max(1, Math.round(wordCount / 200));
 
-  const relatedPosts = blogPosts
+  const relatedPosts = getPublishedPosts()
     .filter((p) => p.category === post.category && p.slug !== post.slug)
     .slice(0, 3);
 
