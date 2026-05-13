@@ -3269,6 +3269,36 @@ ul, ol { list-style: none; }
   font-style: italic;
 }
 
+/* Editorial note / disclaimer block. Visually distinct from body content
+   so users parse it as meta-information rather than article claims.
+   Semantic <aside> + role="note" surface the same separation to screen
+   readers and search engines without competing for snippet eligibility. */
+.blog-post__disclaimer {
+  margin: 32px 0;
+  padding: 18px 22px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 3px solid rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.025);
+  border-radius: 0 8px 8px 0;
+}
+
+.blog-post__disclaimer p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.72);
+  margin: 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .blog-post__disclaimer {
+    padding: 16px 18px;
+  }
+  .blog-post__disclaimer p {
+    font-size: 13.5px;
+  }
+}
+
 /* Lists */
 .blog-post__list {
   margin: 24px 0;

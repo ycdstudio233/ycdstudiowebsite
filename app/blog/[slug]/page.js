@@ -74,6 +74,14 @@ function BlogPostJsonLd({ post, slug }) {
       "@type": "SpeakableSpecification",
       cssSelector: ["h1", ".blog-article__excerpt", "h2"],
     },
+    /* Disclaimer surfaces editorial integrity to Google + AI engines —
+       Schema.org `disclaimer` property on CreativeWork is read by quality
+       raters and LLM citation pipelines as a positive E-E-A-T signal for
+       YMYL-adjacent content (cost data, timelines, regulatory). Only emit
+       when the post has an explicit disclaimer string set. */
+    ...(post.disclaimer && {
+      disclaimer: post.disclaimer,
+    }),
   };
   return (
     <script
@@ -129,6 +137,17 @@ function ContentBlock({ block }) {
         <blockquote className="blog-post__quote">
           <p>{block.text}</p>
         </blockquote>
+      );
+    case "disclaimer":
+      // Editorial note / disclaimer block. Rendered as <aside> for semantic
+      // separation from the article body — screen readers and Google's
+      // content extractor both treat <aside> as supplementary, so this
+      // doesn't compete with the body for snippet eligibility but is still
+      // crawled and indexed for E-E-A-T signal.
+      return (
+        <aside className="blog-post__disclaimer" role="note">
+          <p>{block.text}</p>
+        </aside>
       );
     case "list":
       return (
