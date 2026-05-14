@@ -2,19 +2,32 @@
 const nextConfig = {
   async redirects() {
     return [
-      /* ══════════════════════════════════════════════════════
+      /* ══════════════════════════════════════════════════════════════
          WordPress → New Site  (301 permanent redirects)
-         Preserves SEO equity from indexed WordPress URLs
-         ══════════════════════════════════════════════════════ */
+         Preserves SEO equity from indexed WordPress URLs.
+
+         Note on trailing slashes:
+         Next.js's default `trailingSlash: false` config strips trailing
+         slashes from incoming URLs BEFORE user-defined redirects fire.
+         So `/jadus-california/` becomes `/jadus-california` on the
+         first hop, then our redirect below fires on the second hop.
+         We don't maintain duplicate `/foo/` entries for simple paths
+         because they would never fire — they'd be dead code.
+
+         Verified by curl 2026-05-14:
+         GET /jadus-california/ → 308 → /jadus-california (no slash)
+                                → 308 → /blog/jadus-california
+
+         Trailing-slash variants ARE retained on catch-all patterns
+         (`:slug*`, `:path*`) and parameterized patterns (`:num`)
+         because path-to-regexp in isolation doesn't match a trailing
+         slash against a no-slash pattern. Even though Next.js's strip
+         likely makes them redundant too, keeping them is defensive.
+         ══════════════════════════════════════════════════════════════ */
 
       // ── Blog posts ──
       {
         source: "/title-24-commercial-tenant-improvement-bay-area",
-        destination: "/blog/title-24-commercial-tenant-improvement",
-        permanent: true,
-      },
-      {
-        source: "/title-24-commercial-tenant-improvement-bay-area/",
         destination: "/blog/title-24-commercial-tenant-improvement",
         permanent: true,
       },
@@ -24,17 +37,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/commercial-tenant-improvement-lease-questions/",
-        destination: "/blog/commercial-tenant-improvement-lease-questions",
-        permanent: true,
-      },
-      {
         source: "/tenant-improvement-bay-area-architect",
-        destination: "/blog/tenant-improvement-bay-area-architect",
-        permanent: true,
-      },
-      {
-        source: "/tenant-improvement-bay-area-architect/",
         destination: "/blog/tenant-improvement-bay-area-architect",
         permanent: true,
       },
@@ -44,27 +47,12 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/adus-backyard-living/",
-        destination: "/blog/adus-backyard-living",
-        permanent: true,
-      },
-      {
         source: "/jadus-california",
         destination: "/blog/jadus-california",
         permanent: true,
       },
       {
-        source: "/jadus-california/",
-        destination: "/blog/jadus-california",
-        permanent: true,
-      },
-      {
         source: "/bathroom-remodel-guide-california",
-        destination: "/blog/bathroom-remodel-guide-california",
-        permanent: true,
-      },
-      {
-        source: "/bathroom-remodel-guide-california/",
         destination: "/blog/bathroom-remodel-guide-california",
         permanent: true,
       },
@@ -76,17 +64,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/about/",
-        destination: "/studio",
-        permanent: true,
-      },
-      {
         source: "/works",
-        destination: "/work",
-        permanent: true,
-      },
-      {
-        source: "/works/",
         destination: "/work",
         permanent: true,
       },
@@ -96,17 +74,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/tenant-improvement-architect-bay-area/",
-        destination: "/tenant-improvement",
-        permanent: true,
-      },
-      {
         source: "/burak-celik",
-        destination: "/team/burak-celik",
-        permanent: true,
-      },
-      {
-        source: "/burak-celik/",
         destination: "/team/burak-celik",
         permanent: true,
       },
@@ -118,17 +86,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/sonoma-residence/",
-        destination: "/work/sonoma-residence",
-        permanent: true,
-      },
-      {
         source: "/portfolio/piddeg-restaurant-tenant-improvement-danville-california",
-        destination: "/work/piddeg-restaurant",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/piddeg-restaurant-tenant-improvement-danville-california/",
         destination: "/work/piddeg-restaurant",
         permanent: true,
       },
@@ -138,17 +96,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/hawaii-fluid-art-tenant-improvement-danville/",
-        destination: "/work/hfa-tenant-improvement",
-        permanent: true,
-      },
-      {
         source: "/portfolio/the-cottage",
-        destination: "/work/the-cottage",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/the-cottage/",
         destination: "/work/the-cottage",
         permanent: true,
       },
@@ -158,17 +106,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/market-tower-commercial-renovation-san-francisco/",
-        destination: "/work/market-tower",
-        permanent: true,
-      },
-      {
         source: "/portfolio/pier-41-restaurant-tenant-improvement-san-francisco",
-        destination: "/work/pier-41-restaurant",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/pier-41-restaurant-tenant-improvement-san-francisco/",
         destination: "/work/pier-41-restaurant",
         permanent: true,
       },
@@ -178,17 +116,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/bay-area-neighborhood-commons/",
-        destination: "/work/neighborhood-commons",
-        permanent: true,
-      },
-      {
         source: "/portfolio/coastline-residence",
-        destination: "/work/coastline-residence",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/coastline-residence/",
         destination: "/work/coastline-residence",
         permanent: true,
       },
@@ -198,17 +126,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/hampton-by-hilton-ordu/",
-        destination: "/work/hampton-by-hilton-ordu",
-        permanent: true,
-      },
-      {
         source: "/portfolio/north-loft-residences",
-        destination: "/work/north-loft-residences",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/north-loft-residences/",
         destination: "/work/north-loft-residences",
         permanent: true,
       },
@@ -218,17 +136,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/alemany-farmers-market/",
-        destination: "/work/alemany-farmers-market",
-        permanent: true,
-      },
-      {
         source: "/portfolio/aurora-residences",
-        destination: "/work/aurora-residences",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/aurora-residences/",
         destination: "/work/aurora-residences",
         permanent: true,
       },
@@ -238,17 +146,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/cappadocia-science-museum/",
-        destination: "/work",
-        permanent: true,
-      },
-      {
         source: "/portfolio/fatsa-ilica",
-        destination: "/work/fatsa-ilica",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/fatsa-ilica/",
         destination: "/work/fatsa-ilica",
         permanent: true,
       },
@@ -258,17 +156,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/lady_bird_lake/",
-        destination: "/work/lady-bird-boardwalk",
-        permanent: true,
-      },
-      {
         source: "/portfolio/coastal-house",
-        destination: "/work/coastal-house",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/coastal-house/",
         destination: "/work/coastal-house",
         permanent: true,
       },
@@ -278,17 +166,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/spacearc-pod/",
-        destination: "/work/spacearc-pod",
-        permanent: true,
-      },
-      {
         source: "/portfolio/pixel-heights",
-        destination: "/work/pixel-heights",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/pixel-heights/",
         destination: "/work/pixel-heights",
         permanent: true,
       },
@@ -298,17 +176,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/moraga-adu/",
-        destination: "/work/moraga-adu",
-        permanent: true,
-      },
-      {
         source: "/portfolio/cyprus-residence",
-        destination: "/work/cyprus-residence",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/cyprus-residence/",
         destination: "/work/cyprus-residence",
         permanent: true,
       },
@@ -318,29 +186,24 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio/tabya-restaurant/",
-        destination: "/work/tabya-restaurant",
-        permanent: true,
-      },
-      {
         source: "/portfolio/bird-residence",
         destination: "/work/bird-residence",
         permanent: true,
       },
       {
-        source: "/portfolio/bird-residence/",
-        destination: "/work/bird-residence",
+        source: "/portfolio/expanding-digital-boundaries",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/portfolio/the-endless-pattern-of-innovation",
+        destination: "/work",
         permanent: true,
       },
 
       // ── Catch-all: /portfolio/ index ──
       {
         source: "/portfolio",
-        destination: "/work",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/",
         destination: "/work",
         permanent: true,
       },
@@ -352,17 +215,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio-tags/residential/",
-        destination: "/residential",
-        permanent: true,
-      },
-      {
         source: "/portfolio-tags/multi-family",
-        destination: "/multi-family",
-        permanent: true,
-      },
-      {
-        source: "/portfolio-tags/multi-family/",
         destination: "/multi-family",
         permanent: true,
       },
@@ -372,17 +225,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/portfolio-tags/restaurant/",
-        destination: "/hospitality",
-        permanent: true,
-      },
-      {
         source: "/portfolio-tags/hospitality",
-        destination: "/hospitality",
-        permanent: true,
-      },
-      {
-        source: "/portfolio-tags/hospitality/",
         destination: "/hospitality",
         permanent: true,
       },
@@ -391,33 +234,9 @@ const nextConfig = {
         destination: "/tenant-improvement",
         permanent: true,
       },
-      {
-        source: "/portfolio-tags/tenant-improvement/",
-        destination: "/tenant-improvement",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/expanding-digital-boundaries",
-        destination: "/work",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/expanding-digital-boundaries/",
-        destination: "/work",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/the-endless-pattern-of-innovation",
-        destination: "/work",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/the-endless-pattern-of-innovation/",
-        destination: "/work",
-        permanent: true,
-      },
 
-      // ── Paginated archives (both trailing-slash variants) ──
+      // ── Paginated archives (parameterized — keep trailing-slash variant
+      //    for defensive matching of path-to-regexp) ──
       {
         source: "/works/page/:num",
         destination: "/work",
@@ -525,15 +344,13 @@ const nextConfig = {
         destination: "/blog",
         permanent: true,
       },
-      {
-        source: "/top-5-tools-for-web-developers/",
-        destination: "/blog",
-        permanent: true,
-      },
 
       // ── Old WordPress search query (?s={term}) ──
       // Old WordPress search form — Google indexed the literal template URL.
       // Any homepage hit with ?s=... query → redirect to /blog (closest equivalent).
+      // Note: Next.js auto-forwards query strings to redirect destinations
+      // (lands on /blog?s={term}, which renders /blog normally — the query is
+      // ignored by the /blog page). Stripping the query would require middleware.
       {
         source: "/",
         has: [{ type: "query", key: "s" }],
