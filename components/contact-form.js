@@ -69,6 +69,26 @@ export function ContactForm() {
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
+
+      /* GA4 conversion tracking — fire the recommended `generate_lead` event
+         on successful form submit so we can attribute leads back to entry
+         pages via GA4's Path Exploration report. The `project_type` custom
+         parameter lets us segment leads by intent (residential / TI /
+         restaurant / etc.), which feeds into understanding which content
+         clusters and entry pages convert which kinds of clients.
+
+         Wrapped in a typeof check because gtag may not be loaded during
+         development / local builds, and we don't want to throw inside the
+         success path. */
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", {
+          project_type: formData.projectType || "unspecified",
+          has_message: Boolean(formData.message),
+          form_fill_seconds: Math.round(
+            (Date.now() - (startTimeRef.current || Date.now())) / 1000
+          ),
+        });
+      }
     } catch {
       setStatus("error");
     }

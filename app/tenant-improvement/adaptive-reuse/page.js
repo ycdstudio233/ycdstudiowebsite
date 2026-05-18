@@ -273,9 +273,140 @@ const sustainabilityPoints = [
   },
 ];
 
+/* FAQPage + Service JSON-LD for adaptive reuse / building conversion.
+   Two combined schemas:
+
+   1. Service schema with areaServed (Bay Area cities) — ties this page to
+      "adaptive reuse architect Bay Area" / "building conversion San Francisco"
+      / "change of use Oakland" query clusters.
+
+   2. FAQPage with 8 high-intent Q&A pairs covering the questions operators
+      and owners actually ask about adaptive reuse: change of use vs change
+      of occupancy distinction, common conversions (warehouse-to-restaurant,
+      office-to-retail), seismic triggers, historic-resource constraints,
+      timelines, and cost ranges. FAQPage is one of the highest-citation-rate
+      schemas for AI Overview + Perplexity + ChatGPT — they extract Q&A pairs
+      directly. Added in response to ChatGPT-referred lead pattern (a real
+      adaptive reuse inquiry from May 2026 traced to LLM referral, not Google
+      organic). */
+function AdaptiveReuseJsonLd() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Adaptive Reuse & Building Conversion Architecture",
+    name: "Bay Area Building Conversion & Adaptive Reuse Architect",
+    description:
+      "Adaptive reuse and building conversion architecture across the Bay Area. Warehouse-to-restaurant, office-to-retail, industrial-to-mixed-use, and residential-to-commercial conversions. Change-of-use permits, occupancy reclassification, seismic upgrade triggers, historic preservation, and multi-department review pathways.",
+    provider: {
+      "@type": "ArchitecturalFirm",
+      name: "YCD Studio",
+      url: "https://ycd.studio",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "CA",
+        addressCountry: "US",
+      },
+    },
+    areaServed: [
+      { "@type": "City", name: "San Francisco" },
+      { "@type": "City", name: "Oakland" },
+      { "@type": "City", name: "Berkeley" },
+      { "@type": "City", name: "Walnut Creek" },
+      { "@type": "City", name: "San Jose" },
+      { "@type": "City", name: "Emeryville" },
+      { "@type": "AdministrativeArea", name: "San Francisco Bay Area" },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the difference between change of use and change of occupancy?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Change of use is a Planning Code concept — moving between Planning use categories (e.g., General Retail to Restaurant). Change of occupancy is a Building Code concept tied to California Building Code Chapter 3 occupancy groups (e.g., Group M to Group A-2). They sometimes coincide; they often don't. A clothing store converting to a small café where the café stays under 750 square feet of assembly area can be a Planning change of use without a Building Code change of occupancy — both spaces remain Group M or B/M mixed under CBC. A clothing store converting to a full-service restaurant with an A-2 dining room is both a change of use and a change of occupancy, requiring full code compliance with the new occupancy. The distinction determines whether your project routes to over-the-counter permit review (days) or in-house review (weeks to months).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How long does an adaptive reuse project take in the Bay Area?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Adaptive reuse projects typically take 6 to 18 months from initial feasibility to certificate of occupancy, depending on scope and jurisdiction. Simple change-of-use conversions in Oakland or Walnut Creek with clear zoning can complete permit review in 8 to 12 weeks. San Francisco DBI in-house review typically runs 8 to 14 weeks for restaurant or retail conversions, sometimes longer when Section 311 neighborhood notification or full ADA path-of-travel review is triggered. Historic resource constraints, conditional use authorization hearings, or seismic retrofit requirements can extend timelines materially. Construction typically takes another 3 to 9 months depending on scope.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What does an adaptive reuse project cost?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Bay Area adaptive reuse projects typically cost $200 to $350 per square foot in 2026, with significant variation based on the original building condition, the target use, and the jurisdiction. Warehouse-to-restaurant conversions are usually the highest cost driver in the range due to commercial kitchen infrastructure, Type I hood and exhaust to roof, grease interceptor sizing, ADA upgrades, and assembly-level fire protection. Office-to-retail conversions tend to land at the lower end of the range. Above hard construction, soft costs typically add 12 to 18 percent for architectural design, structural engineering, Title 24 energy modeling, environmental assessment (Phase I/II if industrial history), and permit fees. Specific project budgets should be developed with a licensed architect and cost consultant.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "When does adaptive reuse trigger a seismic upgrade?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Several scenarios commonly trigger seismic upgrade obligations on Bay Area adaptive reuse projects. A change of occupancy to a higher-risk category (e.g., from S or B to A-2 assembly) may require structural evaluation against current code. Substantial alterations crossing the valuation threshold (approximately $203,611 in 2025 per the Division of the State Architect annual update, indexed each January) can trigger whole-building code compliance. Buildings in San Francisco's Mandatory Soft-Story Retrofit Program (Ordinance 66-13 / SF Existing Building Code Chapter 4D) must complete retrofit before or in conjunction with other major work. Unreinforced masonry buildings in Berkeley, Oakland, and other cities have separate retrofit obligations. The specific seismic path depends on building type, age, and jurisdiction — confirm with a licensed structural engineer.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I convert a warehouse into a restaurant in the Bay Area?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, but it's one of the most code-intensive adaptive reuse paths. Converting a warehouse or industrial space (CBC occupancy groups S or F) to a restaurant (A-2 assembly) triggers a full change of occupancy with significant new requirements: full sprinkler system installation, Type I or II commercial hood with exhaust to roof, grease interceptor sized to drain load, ADA-compliant restrooms and path of travel, seismic evaluation (especially for unreinforced masonry), and parking analysis. Zoning must allow restaurant use at the address — if not, a conditional use authorization hearing may be required. The aesthetic appeal of raw warehouse space is real, but the code path adds 4 to 8 months of permit work and meaningful construction cost beyond a typical restaurant tenant improvement.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is a conditional use authorization and when is it required for adaptive reuse?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "A conditional use authorization (CUA) is a discretionary land-use permit issued by a city's Planning Commission after a public hearing. It's required when the proposed use isn't principally permitted under the parcel's zoning but is conditionally allowed subject to Planning Commission review. Many adaptive reuse projects trigger CUA — converting industrial to residential, residential to commercial, or any conversion in a zone where the new use is conditionally permitted. The CUA process typically adds 3 to 6 months to the project timeline (sometimes longer if continued or appealed) and exposes the project to public comment and Discretionary Review. San Francisco's Proposition H (2020) and Small Business Recovery Act (2021) streamlined many small-business CUA paths into administrative over-the-counter approvals, but larger adaptive reuse projects often still require the full CUA process.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does adaptive reuse require historic preservation review?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Often yes, depending on the building's historic status. In San Francisco, any building 45 years or older requires mandatory historic-resource screening, and properties flagged on the Property Information Map as Category A (City Landmark) or in a Conservation District require an Administrative Certificate of Appropriateness or Minor Permit to Alter through Planning Preservation. In Oakland, Berkeley, and other Bay Area cities, designated historic landmarks and contributors to historic districts have their own preservation review pathways. Adaptive reuse of historic buildings can also qualify for federal Historic Tax Credits (20% of qualified rehabilitation expenditures) if the building is on the National Register and the work follows the Secretary of the Interior's Standards — a significant financial incentive worth evaluating early.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Why hire an architect for adaptive reuse instead of just a general contractor?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Adaptive reuse projects sit at the intersection of zoning, building code, fire code, accessibility, energy code, historic preservation, and often environmental remediation — multi-disciplinary regulatory complexity that goes well beyond standard construction. A licensed architect leads the feasibility analysis (can your goal actually happen on this site?), prepares the entitlement and permit submittals across multiple departments, coordinates structural, mechanical, electrical, plumbing, and Title 24 consultants, and manages the change-of-use or change-of-occupancy analysis. General contractors are essential partners during construction but typically do not handle entitlement, permitting, or code-path analysis at the level adaptive reuse requires. The architect's involvement before lease signing — running early feasibility against zoning and the building's code-readiness — is where the largest budget and timeline risks get caught.",
+        },
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+    </>
+  );
+}
+
 export default function AdaptiveReusePage() {
   return (
     <main className="page-shell">
+      <AdaptiveReuseJsonLd />
       {/* ── Hero ── */}
       <section className="ti-sub-hero">
         <div className="container">
