@@ -118,13 +118,43 @@ function ProjectJsonLd({ project, slug }) {
       }),
     })) || [];
 
+  /* Creator attribution. For YCD's own projects creator = YCD Studio.
+     For projects with an explicit designer credit (leadDesignFirm or
+     leadDesignPerson set on the record), the schema.org creator becomes
+     the Person + Organization who designed the project, and YCD Studio
+     is recorded as publisher of this portfolio entry. Keeps the
+     attribution layer Google and LLMs read consistent with the visible
+     credit in the page metadata block. */
+  let creator;
+  let publisher;
+  if (project.leadDesignFirm || project.leadDesignPerson) {
+    const creators = [];
+    if (project.leadDesignPerson) {
+      creators.push({
+        "@type": "Person",
+        name: project.leadDesignPerson,
+        ...(project.leadDesignFirm && {
+          affiliation: { "@type": "Organization", name: project.leadDesignFirm },
+        }),
+      });
+    }
+    if (project.leadDesignFirm) {
+      creators.push({ "@type": "Organization", name: project.leadDesignFirm });
+    }
+    creator = creators.length === 1 ? creators[0] : creators;
+    publisher = { "@type": "Organization", name: "YCD Studio", url: "https://ycd.studio" };
+  } else {
+    creator = { "@type": "Organization", name: "YCD Studio", url: "https://ycd.studio" };
+  }
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
     description: project.summary,
     url: `https://ycd.studio/work/${slug}`,
-    creator: { "@type": "Organization", name: "YCD Studio", url: "https://ycd.studio" },
+    creator,
+    ...(publisher && { publisher }),
     locationCreated: { "@type": "Place", name: project.location },
     dateCreated: project.year,
     genre: project.category,
@@ -361,6 +391,21 @@ export default async function ProjectPage({ params }) {
               <span className="project-detail__spec-label">Client</span>
               <span className="project-detail__spec-value">{project.client}</span>
             </div>
+            {/* Optional "Designer" credit — surfaces when leadDesignPerson or
+                leadDesignFirm is set on a project. Combines both into a clean
+                display string ("Seth C. Dunn, Praxis Architecture"). The same
+                fields drive the JSON-LD creator schema below so Google and
+                LLMs see consistent attribution. */}
+            {(project.leadDesignPerson || project.leadDesignFirm) && (
+              <div className="project-detail__spec">
+                <span className="project-detail__spec-label">Designer</span>
+                <span className="project-detail__spec-value">
+                  {[project.leadDesignPerson, project.leadDesignFirm]
+                    .filter(Boolean)
+                    .join(", ")}
+                </span>
+              </div>
+            )}
           </div>
         </ScrollReveal>
       </section>
